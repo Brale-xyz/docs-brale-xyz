@@ -80,12 +80,6 @@ const config: Config = {
           position: "left",
           label: "Guides",
         },
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Tutorial",
-        },
         // { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/brale-xyz",
