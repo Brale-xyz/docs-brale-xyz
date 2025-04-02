@@ -1,0 +1,6 @@
+/.cache
+/app/styles/app.css
+/functions
+/node_modules
+/public/build
+/.wrangler/

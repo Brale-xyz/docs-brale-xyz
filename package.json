@@ -1,50 +1,70 @@
 {
-	"name": "docs-brale-xyz",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"docusaurus": "docusaurus",
-		"start": "docusaurus start",
-		"build": "docusaurus build",
-		"swizzle": "docusaurus swizzle",
-		"deploy": "npm run build && wrangler pages deploy ./build",
-		"clear": "docusaurus clear",
-		"serve": "docusaurus serve",
-		"write-translations": "docusaurus write-translations",
-		"write-heading-ids": "docusaurus write-heading-ids",
-		"typecheck": "tsc",
-		"preview": "npm run build && wrangler pages dev ./build"
-	},
-	"dependencies": {
-		"@docusaurus/core": "3.7.0",
-		"@docusaurus/preset-classic": "3.7.0",
-		"@mdx-js/react": "^3.0.0",
-		"clsx": "^2.0.0",
-		"prism-react-renderer": "^2.3.0",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
-	},
-	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20250402.0",
-		"@docusaurus/module-type-aliases": "3.7.0",
-		"@docusaurus/tsconfig": "3.7.0",
-		"@docusaurus/types": "3.7.0",
-		"typescript": "~5.6.2",
-		"wrangler": "^4.6.0"
-	},
-	"browserslist": {
-		"production": [
-			">0.5%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 3 chrome version",
-			"last 3 firefox version",
-			"last 5 safari version"
-		]
-	},
-	"engines": {
-		"node": ">=18.0"
-	}
+  "name": "docs-brale-xyz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "npm run pages:build && wrangler pages deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "lint:fix": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint . --fix"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.7.0",
+    "@docusaurus/preset-classic": "3.7.0",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241004.0",
+    "@commitlint/cli": "19.6.1",
+    "@commitlint/config-conventional": "19.6.0",
+    "@docusaurus/module-type-aliases": "3.7.0",
+    "@docusaurus/tsconfig": "3.7.0",
+    "@docusaurus/types": "3.7.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "autoprefixer": "10.4.20",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-typescript": "3.7.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.4",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint-plugin-simple-import-sort": "12.1.1",
+    "eslint-plugin-sonarjs": "0.25.1",
+    "prettier": "^3.5.3",
+    "typescript": "~5.6.2",
+    "wrangler": "^4.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
 }
