@@ -68,12 +68,18 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Brale",
       logo: {
         alt: "Brale logo",
-        src: "img/logo.svg",
+        src: "img/brale-logo-light.svg",
+        srcDark: "img/brale-logo-dark.svg",
       },
       items: [
+        {
+          type: "docSidebar",
+          sidebarId: "guideSidebar",
+          position: "left",
+          label: "Guides",
+        },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
