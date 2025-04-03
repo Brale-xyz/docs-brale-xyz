@@ -3,3 +3,139 @@ sidebar_position: 2
 ---
 
 # Fiat to Stablecoin (Onramp)
+
+Brale makes it easy for you and your customers to convert USD into stablecoins via wire transfer or ACH.
+
+There are two ways to onramp to stablecoins through the Brale API:
+
+- Submit a Transfer request with a source valueType of wire or ACH
+- Create an Automation, which automatically mints stablecoins to a pre-configured destination wallet (Automatic On-Ramp)
+
+Businesses can also onramp directly via the Brale Dashboard, and individuals can onramp through [Brale.io](#).
+
+## Fiat to Stablecoin via Wire
+
+Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by calling the Transfers endpoint with the source `transfer_type` of `wire`.
+
+### Request
+
+**POST** `https://api.brale.xyz/transfer`
+
+```json showLineNumbers
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "value_type": "usd",
+    "transfer_type": "wire"
+  },
+  "destination": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "ysbc",
+    "transfer_type": "solana"
+  }
+}
+```
+
+### Response
+
+```json showLineNumbers
+{
+  "id": "transfer_123",
+  "status": "pending",
+  "amount": "100.0",
+  "source": {
+    "transfer_type": "wire",
+    "value_type": "usd"
+  },
+  "destination": {
+    "transfer_type": "polygon",
+    "value_type": "ysbc",
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b"
+  },
+  "source_deposit_instructions": {
+    // ...Brale bank details
+  }
+}
+```
+
+Initially, the status of the transfer will be `pending`. Once Brale receives the funds at the bank account provided in `soure_deposit_instructions` the stablecoins will immediately be minted to the destination wallet.
+
+## Fetching Transfers
+
+Query a transfer that has been created through **GET** `https://api.brale.xyz/transfer/:id`.
+
+```json showLineNumbers
+{
+  "status": "pending",
+  "amount": "100.00",
+  "created_at": "2025-02-05T19:39:14.316Z",
+  "updated_at": "2025-02-05T19:39:14.316Z",
+  "source": {
+    "value_type": "usd",
+    "transfer_type": "wire"
+  },
+  "destination": {
+    "address_id": "string",
+    "value_type": "ysbc",
+    "transfer_type": "polygon"
+  },
+  "gasFee": "0.01"
+}
+```
+
+## Fiat to Stablecoin Automation (Automatic On-Ramp)
+
+Automations provide a unique account number and routing number that accepts wire transfers and ACH deposits, and automatically mints stablecoins to a pre-defined wallet address. Businesses can use automations to direct unique pre-funding coordinates to their customers, which mint stablecoins in customers' wallets.
+
+### Request
+
+Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by creating a fiat-to-stablecoin automation.
+
+```json showLineNumbers
+{
+  "name": "XYZ Automation",
+  "destination": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "ysbc",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+### Response
+
+The response will return the unique account number and routing number to direct to your customer.
+
+```json showLineNumbers
+{
+  "name": "XYZ Onramp",
+  "status": "complete",
+  "source_deposit_instructions": {
+    "bank_beneficiary_name": "Jane Business",
+    "bank_name": "Example Bank",
+    "bank_address": "456 Commerce St., Des Moines, IA 50309",
+    "bank_beneficiary": "XYZ Holdings LLC",
+    "bank_account_number": "123456789",
+    "bank_routing_number": "87654321"
+  },
+  "destination": {
+    "address_id": "0xDEADBEEF",
+    "value_type": "YSBC",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+## Brale.io (Beta)
+
+Brale.io is a hosted on-ramp you can direct your users to in order to acquire stablecoins you have created. Users can acquire your stablecoin via:
+
+- USDC
+- ACH (coming soon)
+
+All KYC requirements are performed by Brale.io directly.
+
+To get access to Brale.io, please reach out to our team at [support@brale.xyz](mailto:support@brale.xyz).

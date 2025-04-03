@@ -3,3 +3,58 @@ sidebar_position: 4
 ---
 
 # Stablecoin to Stablecoin (Swap)
+
+Brale makes it easy to swap between stablecoins, and to swap stablecoins between blockchains. See [Supported Stablecoins and Blockchains](/docs/coverage/stablecoins-and-blockchains) for the full list.
+
+## Swap Your Stablecoin Cross Chain
+
+Stablecoins are issued natively on each chain and can be swapped 1:1 between chains at any time. Stablecoins are burned on the source chain, and minted on the destination chain.
+
+### Request
+
+**Swap from Solana to Base**
+
+**POST** `https://api.brale.xyz/transfer`
+
+```json showLineNumbers
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "value_type": "YSBC",
+    "transfer_type": "solana"
+  },
+  "destination": {
+    "address_id": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+    "value_type": "YSBC",
+    "transfer_type": "base"
+  }
+}
+```
+
+## Swap between Your Stablecoin and USDC
+
+Swap between Brale-issued stablecoins, USDC, and Paxos-issued stablecoins 1:1 without slippage.
+
+### Request
+
+**POST** `https://api.brale.xyz/transfer`
+
+```json showLineNumbers
+{
+  "amount": "100",
+  "sourceAddress": {
+    "addressId": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "valueType": "USDC",
+    "transferType": "solana"
+  },
+  "destinationAddress": {
+    "addressId": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+    "valueType": "YSBC",
+    "transferType": "solana"
+  }
+}
+```

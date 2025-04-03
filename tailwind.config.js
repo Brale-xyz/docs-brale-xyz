@@ -9,6 +9,7 @@ module.exports = {
   // Prevent Tailwind from resetting base styles
   corePlugins: {
     preflight: false,
+    container: false, // Disable Tailwind's container plugin
   },
   theme: {
     extend: {
@@ -21,6 +22,17 @@ module.exports = {
         "primary-light": "var(--ifm-color-primary-light)",
         "primary-lighter": "var(--ifm-color-primary-lighter)",
         "primary-lightest": "var(--ifm-color-primary-lightest)",
+      },
+      // Preserve Docusaurus container widths
+      container: {
+        center: true,
+        padding: "var(--ifm-spacing-horizontal)",
+        screens: {
+          sm: "var(--ifm-container-width-sm)",
+          md: "var(--ifm-container-width-md)",
+          lg: "var(--ifm-container-width-lg)",
+          xl: "var(--ifm-container-width-xl)",
+        },
       },
     },
   },

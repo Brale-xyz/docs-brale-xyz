@@ -3,3 +3,71 @@ sidebar_position: 6
 ---
 
 # Tokenization
+
+Brale enables businesses to issue, manage, and custody tokens on all supported blockchains.
+
+Tokenization makes it easy to manage on-chain supply of digital assets against off-chain reserves (or points, goods and services, etc.) across multiple blockchains. This also enables local currency stablecoins with existing banking relationships to easily manage on-chain operations with their team, or to expand their assets to additional blockchains without development effort.
+
+To get access to the Tokenization API, reach out to our team at [support@brale.xyz](mailto:support@brale.xyz).
+
+## Issue Tokens
+
+Issue new tokens on all supported blockchains through the Brale Dashboard.
+
+![Brale Dashboard Issue Tokens Screenshot](./img/issue-tokens.png)
+
+## Increasing and Decreasing Supply of Tokens
+
+Mint and Burn using [Transfers](/docs/key-concepts/transfers) or via the Brale Dashboard.
+
+### Mint More Supply
+
+![Brale Dashbord Mint More Supply Screenshot](./img/mint-more-supply.png)
+
+**POST** `https://api.brale.xyz/transfers`
+
+```json showLineNumbers
+{
+  "amount": "100",
+  "destination_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+### Decrease Supply
+
+**POST** `https://api.brale.xyz/transfers`
+
+```json showLineNumbers
+{
+  "amount": "100",
+  "source_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+### Transfer Tokens
+
+**POST** `https://api.brale.xyz/transfers`
+
+```json showLineNumbers
+{
+  "amount": "100",
+  "source_address": {
+    "address_id": "string",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  },
+  "destination_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```

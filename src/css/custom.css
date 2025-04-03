@@ -36,5 +36,11 @@
 
 /* Add any custom Tailwind styles in a layer to prevent conflicts */
 @layer components {
-  /* Your custom component styles here */
+  .video-container {
+    @apply relative w-full aspect-video mb-4;
+  }
+
+  .video-container iframe {
+    @apply absolute inset-0 w-full h-full;
+  }
 }
