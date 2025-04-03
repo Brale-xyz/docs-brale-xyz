@@ -3,3 +3,72 @@ sidebar_position: 3
 ---
 
 # Accounts
+
+Accounts represent your customers. When you register an account with Brale, we conduct KYB checks to ensure secure and compliant fund transfers between your customers' banks accounts and wallets.
+
+To KYB and approve an account, we collect key details such as business name and EIN. For more information, see our [Compliance Requirements](https://docs.brale.xyz/docs/compliance-requirements). If additional details are required, we will notify you with the necessary steps to complete KYB.
+
+:::note
+Accounts can also be onboarded by directing your customers to signup for Brale directly at https://app.brale.xyz/signup.
+:::
+
+## Creating a customer
+
+**POST** `https://api.brale.xyz/accounts`
+
+```json showLineNumbers
+{
+  "business_name": "ABC Company Inc",
+  "ein": "111-11-1111",
+  "business_type": "Corporation",
+  "address": {
+    "street_line_1": "123 Main St",
+    "street_line_2": "Apt C",
+    "city": "Des Moines",
+    "state": "Iowa",
+    "zip": "12345",
+    "country": "USA"
+  },
+  "phone_number": "2134678902",
+  "email": "mark@example.com",
+  "website": "abccompany.com",
+  "ultimate_beneficial_owners": [
+    {
+      "name": "John Doe",
+      "ssn": "222-22-2222",
+      "address": {
+        "street_line_1": "456 Elm St",
+        "street_line_2": "Suite 5",
+        "city": "Chicago",
+        "state": "Illinois",
+        "zip": "60601",
+        "country": "USA"
+      }
+    }
+  ]
+}
+```
+
+## Account Status
+
+Brale will review the Account and return a `status` field denoting the customer's KYB status. If the customer is in a pending status, you will need to wait for the customer to be verified before creating or linking addresses or bank accounts.
+
+Some Accounts may require additional documentation for verification, which are returned in `kyb_requirements`.
+
+**GET** `https://api.brale.xyz/accounts/:id`
+
+```json showLineNumbers
+{
+  "status": "complete",
+  "business_name": "ABC Company Inc"
+  //	...
+}
+```
+
+### Account Statuses
+
+| Value      | Description                                  |
+| ---------- | -------------------------------------------- |
+| `pending`  | KYB is in progress                           |
+| `complete` | KYB is completed and the account is approved |
+| `rejected` | The account's KYB was rejected               |

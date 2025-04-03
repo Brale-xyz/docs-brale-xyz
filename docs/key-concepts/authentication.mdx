@@ -3,3 +3,43 @@ sidebar_position: 2
 ---
 
 # Authentication
+
+The Brale API uses Bearer Authentication and API keys to authenticate your requests.
+
+## API Keys
+
+Your ability to authenticate to the API is granted through an API Key associated with an Application. Applications are specific to testnet or mainnet access, and have a specific set of permissions. You can create multiple API applications within the dashboard, each assigned specific API scopes.
+
+## Create API Credentials
+
+Create an application on the Settings page in the Dashboard. Brale will make your API key available only once. Please save the key in a secure location.
+
+![Brale Dashboard Create API Credentials Screenshot](./img/create-api-credentials.png)
+
+## Obtain an Access Token
+
+Brale uses OAuth2 with the `client_credentials` grant type for secure access to our APIs. Sending a request to the Auth endpoint will return a bearer token to be used on all subsequent calls. The response will include the number of remaining seconds that the token is valid before a new one will need to be retrieved.
+
+The Authorization header uses Basic HTTP Authentication. This requires encoding your `client_id`and `client_secret` into a Base64 format.
+
+To generate the Base64 encoded string, you can use a command-line tool like base64 or an online encoder. Ensure that your `client_id` and `client_secret` are separated by a colon (:) and then encoded. This encoded string will be used in the Authorization header.
+
+```curl showLineNumbers
+curl --request POST \
+  --url https://auth.brale.xyz/oauth2/token \
+  --header 'Authorization: Basic ${BASE_64_OF(client_id:client_secret)}' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data grant_type=client_credentials
+```
+
+## Authenticated Requests
+
+Include the bearer token in the Authorization header of your API requests.
+
+```curl showLineNumbers
+curl --request GET \
+  --url https://api.brale.xyz/tokens \
+  --header 'Authorization: Bearer OiVz67P7emAx0JUJRmYHP4pI-nSlYQn7ivTQE.A-tXeGnuzQBRSjq9QNGQXZ4aRl7Rbm8wY'
+```
+
+![Brale Dashboard Created API Credentials Screenshot](./img/authenticated-requests.png)

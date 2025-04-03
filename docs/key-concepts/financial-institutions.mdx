@@ -3,3 +3,160 @@ sidebar_position: 5
 ---
 
 # Financial Institutions
+
+Financial Institutions represent your customer's financial accounts (bank accounts) that can be used to withdraw or receive funds. You can add external accounts through:
+
+1. Financial Institutions API
+2. Plaid
+
+## Create through the Financial Institutions API
+
+Link your customer's bank account by adding it to their Account.
+
+**POST** `https://api.brale.xyz/accounts/account_id/financial_institutions/external`
+
+```json title="Request Body" showLineNumbers
+{
+  "name": "Business Checking Account",
+  "transfer_type": ["ACH", "Wire"],
+  "metadata": {
+    "nickname": "Payroll Account",
+    "created_by": "InternalUser123"
+  },
+  "bank_details": {
+    "owner": "Jane Doe",
+    "account_number": "1234567890",
+    "routing_number": "987654321",
+    "name": "Example Bank",
+    "address": {
+      "street_line_1": "100 Example St",
+      "street_line_2": "Suite 500",
+      "city": "Springfield",
+      "state": "CA",
+      "zip": "90001",
+      "country": "US"
+    },
+    "account_type": "checking"
+  }
+}
+```
+
+:::note
+You can also add Financial Institutions through the Brale Dashboard settings page at https://app.brale.xyz/settings.
+:::
+
+## Fetching Financial Institutions
+
+Retrieve details of a linked financial institution by ID.
+
+**GET** `https://api.brale.xyz/accounts/account_id/financial_institutions/:id`
+
+```json title="Response Body" showLineNumbers
+{
+  "name": "Business Checking Account",
+  "transfer_type": ["ACH", "Wire"],
+  "metadata": {
+    "nickname": "Payroll Account",
+    "created_by": "InternalUser123"
+  },
+  "bank_details": {
+    "owner": "Jane Doe",
+    "account_number": "1234567890",
+    "routing_number": "987654321",
+    "name": "Example Bank",
+    "address": {
+      "street_line_1": "100 Example St",
+      "street_line_2": "Suite 500",
+      "city": "Springfield",
+      "state": "CA",
+      "zip": "90001",
+      "country": "US"
+    },
+    "account_type": "checking"
+  }
+}
+```
+
+## Create Financial Institutions through Plaid
+
+This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Financial Institutions can be used for ACH pulls.
+
+### Overview of the Flow
+
+1. Request a Plaid Link Token from Brale.
+2. Initialize Plaid Link in your front-end using the `link_token`.
+3. Plaid returns a `public_token` once the user has successfully linked their account.
+4. Exchange the `public_token` with Brale to finalize the linking process.
+5. Fetch the newly created Financial Institutions for the end user, then proceed with transfers, withdrawals, etc.
+
+### Request a Plaid Link Token
+
+**POST** `https://api.brale.xyz/financial_institution/plaid_link_token`
+
+```json title="Response Body" showLineNumbers
+{
+  "link_token": "link_token_XYZ",
+  "expires_at": "2025-03-23T03:22:34.086Z",
+  "exchange_callback_url": "https://api.brale.xyz/exchange_public_token/{unique-id}"
+}
+```
+
+| Parameters              | Description                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| `link_token`            | The token you will use to launch Plaid Link in your front-end or mobile app.       |
+| `expires_at`            | Time at which the `link_token` will no longer be valid.                            |
+| `exchange_callback_url` | The endpoint to which you should send the `public_token` to finalize the exchange. |
+
+### Render the Plaid Link SDK
+
+In your front-end, initialize Plaid Link using the link_token you received.
+
+For production apps, it's recommended you send the `public_token` to your own backend (over HTTPS), and then have your backend call our exchange endpoint. That way, you avoid exposing your own platform API keys in the browser.
+
+### Exchange the Public Token
+
+Once the user completes linking, you'll receive a `public_token`. You must exchange it for permanent access tokens and link information.
+
+**POST** `https://api.brale.xyz/financial_institution/exchange_public_token`
+
+```json title="Request Body" showLineNumbers
+{
+  "public_token": "public_token_XYZ"
+}
+```
+
+After this call completes, our system retrieves the linked bank accounts and creates External Accounts for each account the user selected.
+
+### Check for Newly Created Financial Institutions
+
+Shortly after exchanging the public token, the user's bank accounts are idempotently created as Financial Institutions which you can query.
+
+**GET** `https://api.brale.xyz/financial_institutions/:id`
+
+```json title="Response Body" showLineNumbers
+{
+  "name": "Business Checking Account",
+  "transfer_type": ["ACH", "Wire"],
+  "metadata": {
+    "nickname": "Payroll Account",
+    "created_by": "InternalUser123"
+  },
+  "bank_details": {
+    "owner": "Jane Doe",
+    "account_number": "1234567890",
+    "routing_number": "987654321",
+    "name": "Example Bank",
+    "address": {
+      "street_line_1": "100 Example St",
+      "street_line_2": "Suite 500",
+      "city": "Springfield",
+      "state": "CA",
+      "zip": "90001",
+      "country": "US"
+    },
+    "account_type": "checking"
+  }
+}
+```
+
+At this point, you can initiate ACH pulls or other transactions using these new Financial Institutions.
