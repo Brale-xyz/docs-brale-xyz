@@ -10,13 +10,11 @@ Brale makes it easy to swap between stablecoins, and to swap stablecoins between
 
 Stablecoins are issued natively on each chain and can be swapped 1:1 between chains at any time. Stablecoins are burned on the source chain, and minted on the destination chain.
 
-### Request
-
 **Swap from Solana to Base**
 
 **POST** `https://api.brale.xyz/transfer`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "amount": {
     "value": "100",
@@ -39,11 +37,9 @@ Stablecoins are issued natively on each chain and can be swapped 1:1 between cha
 
 Swap between Brale-issued stablecoins, USDC, and Paxos-issued stablecoins 1:1 without slippage.
 
-### Request
-
 **POST** `https://api.brale.xyz/transfer`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "amount": "100",
   "sourceAddress": {

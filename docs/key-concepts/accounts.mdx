@@ -16,7 +16,7 @@ Accounts can also be onboarded by directing your customers to signup for Brale d
 
 **POST** `https://api.brale.xyz/accounts`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "business_name": "ABC Company Inc",
   "ein": "111-11-1111",
@@ -57,7 +57,7 @@ Some Accounts may require additional documentation for verification, which are r
 
 **GET** `https://api.brale.xyz/accounts/:id`
 
-```json showLineNumbers
+```json title="Response Body" showLineNumbers
 {
   "status": "complete",
   "business_name": "ABC Company Inc"

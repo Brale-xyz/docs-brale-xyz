@@ -21,11 +21,9 @@ You can add financial institutions in two ways:
 
 Here is an example of directly adding a financial institution.
 
-### Request
-
 **POST** `https://api.brale.xyz/financialinstitution/externals`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "name": "Company ABC Checking",
   "transfer_type": ["Ach", "Wire"],
@@ -51,9 +49,7 @@ Here is an example of directly adding a financial institution.
 }
 ```
 
-### Response
-
-```json showLineNumbers
+```json title="Response Body" showLineNumbers
 {
   "id": "2AbCdEfGHiJkLmN0pQrStUvWxYz"
 }
@@ -63,11 +59,9 @@ Here is an example of directly adding a financial institution.
 
 Once your customer has a Financial Institution and stablecoins are held in a Brale controlled address, you can submit a Transfer request with the destination of the financial institution.
 
-### Request
-
 **POST** `https://api.brale.xyz/transfer`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "amount": {
     "value": "100",
@@ -91,11 +85,9 @@ Brale will burn the stablecoins from the Source Address immediately, and then tr
 
 ## Stablecoin to MXN via SPEI
 
-### Request
-
 **POST** `https://api.brale.xyz/transfer`
 
-```json showLineNumbers
+```json title="Request Body" showLineNumbers
 {
   "amount": {
     "value": "100",

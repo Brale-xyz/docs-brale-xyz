@@ -3,3 +3,43 @@ sidebar_position: 8
 ---
 
 # Rates
+
+Rates are quotes for foreign exchange conversions (USDC to MXN, etc.). Rates returns a set of rate quotes from exchanges or local liquidity providers to help determine the optimal route based on a number of factors (price, liquidity depth, etc.
+
+- **`sourceValueType`**: the currency you'd like to convert from
+- **`destinationValueType`**: the currency you'd like to convert to
+
+**GET** `/rate?sourceValueType=USDC&destinationValueType=MXN`
+
+```json title="Response Body" showLineNumbers
+[
+  {
+    "exchange": "Exchange1",
+    "orderLimit": 500000.0,
+    "settlementTime": "T+1",
+    "baseRate": 18.95,
+    "fees": {
+      "networkFee": 0.001,
+      "exchangeFee": 0.05
+    },
+    "effectiveRate": 18.9,
+    "valueType": "MXN",
+    "transferType": "spei",
+    "expirationTimestamp": "2025-02-06T14:00:00Z"
+  },
+  {
+    "exchange": "Exhange2",
+    "orderLimit": 300000.0,
+    "settlementTime": "T+0",
+    "baseRate": 18.9,
+    "fees": {
+      "networkFee": 0.001,
+      "exchangeFee": 0.03
+    },
+    "effectiveRate": 18.87,
+    "valueType": "spei",
+    "transferType": "bank_transfer",
+    "expirationTimestamp": "2025-02-06T13:45:00Z"
+  }
+]
+```

@@ -24,7 +24,7 @@ The Authorization header uses Basic HTTP Authentication. This requires encoding 
 
 To generate the Base64 encoded string, you can use a command-line tool like base64 or an online encoder. Ensure that your `client_id` and `client_secret` are separated by a colon (:) and then encoded. This encoded string will be used in the Authorization header.
 
-```curl showLineNumbers
+```curl title="Request Body" showLineNumbers
 curl --request POST \
   --url https://auth.brale.xyz/oauth2/token \
   --header 'Authorization: Basic ${BASE_64_OF(client_id:client_secret)}' \
@@ -36,7 +36,7 @@ curl --request POST \
 
 Include the bearer token in the Authorization header of your API requests.
 
-```curl showLineNumbers
+```curl title="Request Body" showLineNumbers
 curl --request GET \
   --url https://api.brale.xyz/tokens \
   --header 'Authorization: Bearer OiVz67P7emAx0JUJRmYHP4pI-nSlYQn7ivTQE.A-tXeGnuzQBRSjq9QNGQXZ4aRl7Rbm8wY'
