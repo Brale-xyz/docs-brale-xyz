@@ -50,6 +50,12 @@
 }
 
 div[class*='codeBlockContainer_'],
+div[class*='codeBlockContent_'] pre.prism-code[class*='codeBlock_'],
+pre.prism-code[class*='codeBlock_'] span[class*='codeLineNumber_'] {
+  background-color: var(--brale-background-color-secondary) !important;
+}
+
+div[class*='codeBlockContainer_'],
 div[class*='codeBlockContent_'],
 code[class*='codeBlockLines_'],
 pre[class*='codeBlock_'] {
@@ -85,6 +91,10 @@ tbody {
   width: 100%;
 }
 
+.breadcrumbs__link {
+  color: var(--brale-text-color-secondary);
+}
+
 .breadcrumbs__item--active .breadcrumbs__link,
 :root .card,
 :root .card[class^='cardContainer'],
@@ -100,6 +110,10 @@ tbody {
 
 .navbar {
   box-shadow: none;
+}
+
+.navbar__link {
+  font-size: 14px;
 }
 
 .pagination-nav__sublabel {
@@ -164,6 +178,10 @@ tbody {
   border-bottom: 1px solid var(--brale-border-color-dark);
 }
 
+[data-theme='dark'] .breadcrumbs__link {
+  color: var(--brale-text-color-tertiary-dark);
+}
+
 [data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link,
 [data-theme='dark'] .card,
 [data-theme='dark'] .card[class^='cardContainer'],
@@ -184,6 +202,7 @@ tbody {
   color: var(--brale-text-color-tertiary-dark);
 }
 
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link,
 [data-theme='dark'] .menu__link:hover,
 [data-theme='dark'] .table-of-contents__link.toc-highlight.table-of-contents__link--active {
   color: var(--brale-text-color-primary-dark);
