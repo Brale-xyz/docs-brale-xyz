@@ -9,8 +9,13 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Light mode styles: you can override the default Infima variables here. */
 :root {
+  --brale-global-border-color: #d0d5dd;
+  --brale-border-radius: 0.75rem;
+  --brale-background-color: #f2f4f7;
+  --ifm-navbar-background-color: var(--brale-background-color);
+  --ifm-card-border-radius: var(--brale-border-radius);
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -19,11 +24,21 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
+  --ifm-global-radius: var(--brale-border-radius);
+  --ifm-toc-border-color: var(--brale-global-border-color) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
+.navbar {
+  border-bottom: 1px solid var(--brale-global-border-color);
+  box-shadow: none;
+}
+
+/* Dark mode styles: for readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --brale-global-border-color-dark: #424242;
+  --brale-background-color-dark: #000;
+  --ifm-navbar-background-color: var(--brale-background-color-dark);
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -31,16 +46,37 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
+  --ifm-toc-border-color: var(--brale-global-border-color-dark) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid var(--brale-global-border-color-dark);
 }
 
 /* Add any custom Tailwind styles in a layer to prevent conflicts */
 @layer components {
+  .global-border {
+    @apply border border-solid border-gray-300 dark:border-gray-700;
+  }
+
+  .global-rounded {
+    @apply rounded-xl;
+  }
+
+  article img {
+    @apply global-border global-rounded;
+  }
+
+  .border-primary {
+    @apply border-gray-300 dark:border-gray-700;
+  }
+
   .video-container {
-    @apply relative w-full aspect-video mb-4;
+    @apply global-border global-rounded relative mb-4 aspect-video w-full overflow-clip;
   }
 
   .video-container iframe {
-    @apply absolute inset-0 w-full h-full;
+    @apply absolute inset-0 h-full w-full;
   }
 }
