@@ -11,47 +11,100 @@
 
 /* Light mode styles: you can override the default Infima variables here. */
 :root {
-  --brale-global-border-color: #d0d5dd;
+  --brale-border-color: #d0d5dd;
+  --brale-border-color-hover: #98a2b3;
   --brale-border-radius: 0.75rem;
   --brale-background-color: #f2f4f7;
+  --brale-background-color-secondary: #ffffff;
+  --brale-text-color-primary: #000000;
+  --brale-text-color-secondary: #374151;
+  --brale-text-color-tertiary: #6938ef;
+
+  --ifm-background-color: var(--brale-background-color) !important;
+  --ifm-breadcrumb-item-background-active: var(--brale-background-color-secondary);
+  --ifm-heading-color: var(--brale-text-color-primary);
   --ifm-navbar-background-color: var(--brale-background-color);
+  --ifm-card-background-color: var(--brale-background-color-secondary);
   --ifm-card-border-radius: var(--brale-border-radius);
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #000000;
   --ifm-code-font-size: 95%;
+  --ifm-font-color-base: var(--brale-text-color-secondary);
   --ifm-global-radius: var(--brale-border-radius);
-  --ifm-toc-border-color: var(--brale-global-border-color) !important;
+  --ifm-menu-color: var(--brale-text-color-secondary);
+  --ifm-menu-color-active: var(--brale-text-color-tertiary);
+  --ifm-toc-border-color: var(--brale-border-color) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-.navbar {
-  border-bottom: 1px solid var(--brale-global-border-color);
-  box-shadow: none;
+:root .card:hover,
+:root .card[class^='cardContainer']:hover,
+.pagination-nav__link.pagination-nav__link--prev:hover,
+.pagination-nav__link.pagination-nav__link--next:hover {
+  border: 1px solid var(--brale-border-color-hover);
+}
+
+main article .theme-doc-markdown.markdown {
+  --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: none;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link,
+:root .card,
+:root .card[class^='cardContainer'],
+.navbar,
+.pagination-nav__link.pagination-nav__link--prev,
+.pagination-nav__link.pagination-nav__link--next {
+  box-shadow: none !important;
+  border: 1px solid var(--brale-border-color);
+}
+
+.table-of-contents__link.toc-highlight.table-of-contents__link--active {
+  color: var(--brale-text-color-tertiary);
 }
 
 /* Dark mode styles: for readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --brale-global-border-color-dark: #424242;
-  --brale-background-color-dark: #000;
+  --brale-border-color-dark: #424242;
+  --brale-border-color-dark-hover: #5c5c5c;
+  --brale-background-color-dark: #000000;
+  --brale-background-color-dark-secondary: #18181b;
+  --brale-text-color-primary-dark: #ffffff;
+  --brale-text-color-secondary-dark: #d1d5db;
+  --brale-text-color-tertiary-dark: #8791a4;
+
+  --ifm-background-color: var(--brale-background-color-dark) !important;
+  --ifm-breadcrumb-item-background-active: var(--brale-background-color-dark-secondary);
+  --ifm-heading-color: var(--brale-text-color-primary-dark);
   --ifm-navbar-background-color: var(--brale-background-color-dark);
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --ifm-toc-border-color: var(--brale-global-border-color-dark) !important;
+  --ifm-card-background-color: var(--brale-background-color-dark-secondary);
+  --ifm-color-primary: #ffffff;
+  --ifm-font-color-base: var(--brale-text-color-secondary-dark);
+  --ifm-menu-color: var(--brale-text-color-tertiary-dark);
+  --ifm-menu-color-active: var(--brale-text-color-primary-dark);
+  --ifm-toc-border-color: var(--brale-border-color-dark) !important;
+  --ifm-toc-link-color: var(--brale-text-color-tertiary-dark);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-[data-theme='dark'] .navbar {
-  border-bottom: 1px solid var(--brale-global-border-color-dark);
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link,
+[data-theme='dark'] .card,
+[data-theme='dark'] .card[class^='cardContainer'],
+[data-theme='dark'] .navbar,
+[data-theme='dark'] .pagination-nav__link,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--prev,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--next {
+  border: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] .card:hover,
+[data-theme='dark'] .card[class^='cardContainer']:hover,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--prev:hover,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--next:hover {
+  border: 1px solid var(--brale-border-color-dark-hover);
+}
+
+[data-theme='dark'] .table-of-contents__link.toc-highlight.table-of-contents__link--active {
+  color: var(--brale-text-color-primary-dark);
 }
 
 /* Add any custom Tailwind styles in a layer to prevent conflicts */
