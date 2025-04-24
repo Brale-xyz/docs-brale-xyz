@@ -87,10 +87,11 @@ const config: Config = {
           position: 'right',
         },
       ],
+      hideOnScroll: true,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: ['bash'],
     },
   } satisfies Preset.ThemeConfig,
