@@ -87,7 +87,6 @@ const config: Config = {
           position: 'right',
         },
       ],
-      hideOnScroll: true,
     },
     prism: {
       theme: prismThemes.oneLight,

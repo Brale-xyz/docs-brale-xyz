@@ -58,12 +58,15 @@ pre[class*='codeBlock_'] {
 }
 
 p code,
+table th,
+table td,
 td code,
 div[class*='codeBlockContainer_'] {
   border: 1px solid var(--brale-border-color);
 }
 
 div[class*='codeBlockTitle_'],
+table thead tr,
 .navbar {
   border-bottom: 1px solid var(--brale-border-color);
 }
@@ -75,6 +78,11 @@ main article .theme-doc-markdown.markdown {
 
 nav.menu.thin-scrollbar {
   padding: 0.5rem;
+}
+
+thead,
+tbody {
+  width: 100%;
 }
 
 .breadcrumbs__item--active .breadcrumbs__link,
@@ -143,12 +151,15 @@ nav.menu.thin-scrollbar {
 }
 
 [data-theme='dark'] p code,
+[data-theme='dark'] table th,
+[data-theme='dark'] table td,
 [data-theme='dark'] td code,
 [data-theme='dark'] div[class*='codeBlockContainer_'] {
   border: 1px solid var(--brale-border-color-dark);
 }
 
 [data-theme='dark'] div[class*='codeBlockTitle_'],
+[data-theme='dark'] table thead tr,
 [data-theme='dark'] .navbar {
   border-bottom: 1px solid var(--brale-border-color-dark);
 }
