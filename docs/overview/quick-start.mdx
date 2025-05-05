@@ -2,23 +2,35 @@
 sidebar_position: 2
 ---
 
-# Quick Start
+# Quick Start - Your First Stablecoin Transfer
 
-## 1. Create a Brale account
+Get authenticated, grab your IDs, and create your first stablecoin transfer in less than five minutes.
 
-Visit https://app.brale.xyz/signup to sign up for a Brale account. You will need to complete KYB before you are approved for API access.
+## 1. Sign up for Brale
+
+Visit [https://app.brale.xyz/signup](https://app.brale.xyz/signup) to sign up for a Brale account. You will need to complete KYB before you are approved for API access.
 
 ## 2. Create API credentials
 
-Create an application on the [Settings](https://app.brale.xyz/settings?tab=api) page in the Dashboard. Brale will make your API key available only once. Please save the key in a secure location.
+Create an application on the [Settings](https://app.brale.xyz/settings?tab=api) page in the Dashboard.
 
-![NEED TO UPDATE](./img/api-credentials.png)
+<WIPCallout callout="Add image: https://files.readme.io/75926af3020175b1752d0519b1702e15fa017fdb6bf3b559d0eb26810e494981-Screenshot_2025-01-28_at_11.44.35_AM.png" />
+
+Select "Mainnet" and enable all resources.
+
+<WIPCallout callout="Add image: https://files.readme.io/fd051d8249224ae25c1aa0dced29dc940c88a88ebf88ef915633f2100b2ea94e-Screenshot_2025-04-17_at_9.20.21_PM.png" />
+
+:::warning[API Key]
+Brale will make your API key available only once. Please save the key in a secure location.
+:::
 
 ## 3. Authenticate
 
-Brale uses OAuth2 with the `client_credentials` grant type for secure access to our APIs. Sending a request to the Auth endpoint will return a bearer token to be used on all subsequent calls. The Authorization header uses Basic HTTP Authentication and requires encoding your `client_id` and `client_secret` into a Base64 format.
+Brale uses OAuth2 with the `client_credentials` grant type for secure access to our APIs. Sending a request to the Auth endpoint will return a bearer token to be used on all subsequent calls. The Authorization header uses Basic HTTP Authentication and requires encoding your `client_id` and `client_secret` into a Base64 format.
 
-```shell title="Request Body" showLineNumbers
+To generate the Base64 encoded string, you can use a command-line tool like base64 or an online encoder. Ensure that your `client_id` and `client_secret` are separated by a colon `:` and then encoded. This encoded string will be used in the Authorization header.
+
+```shell title="Request"
 curl --request POST \
   --url https://auth.brale.xyz/oauth2/token \
   --header 'Authorization: Basic ${BASE_64_OF(client_id:client_secret)}' \
@@ -26,30 +38,138 @@ curl --request POST \
   --data grant_type=client_credentials
 ```
 
-## 4. Create your first transfer
+Using the Brale API Postman collection, you can configure the `client_id` and the `client_secret` environment variables that are used to authenticate against the API.
 
-Use Transfers to initiate funds movement from fiat to stablecoins (onramp), stablecoins to fiat (offramp), or stablecoins to stablecoins.
+<WIPCallout callout="Add image: https://files.readme.io/c7afedaaaa1538b12500b23cadcd46ea1d7e6e7a642071ef83962fe88a0b692c-Screenshot_2025-04-08_at_2.19.21_PM.png" />
 
-Here’s an example of onramping USD to your own stablecoin (YSBC) via wire transfer.
+Once these variables are added, you can request an Auth token from the Authorization tab.
 
-**POST** `https://api.brale.xyz/accounts/your_account_id/transfer`
+<WIPCallout callout="Add image: https://files.readme.io/099868845cef63fabbbe214bae6001f5b0ea45d6176480ab294bc574a0ad5b85-Screenshot_2025-04-08_at_2.24.23_PM.png" />
 
-```json title="Request Body" showLineNumbers
+## 4. Get your Account ID
+
+Now fetch your account ID that you will pass into subsequent requests. Since you haven't registered any customer accounts yet, the only account ID returned will be your own account.
+
+```shell
+GET https://api.brale.xyz/accounts
+```
+
+```shell title="Request"
+curl --request GET \
+  --url https://api.brale.xyz/accounts \
+  --header "Authorization: Bearer ${AUTH_TOKEN}"
+```
+
+```json title="Response" showLineNumbers
 {
-  "amount": {
-    "value": "10",
-    "currency": "USD"
-  },
-  "source": {
-    "value_type": "usd",
-    "transfer_type": "wire"
-  },
-  "destination": {
-    "address_id": "string",
-    "value_type": "ysbc",
-    "transfer_type": "solana"
-  }
+  "accounts": [
+    "2Js1YFqlfxgNqC2KTPEjrWIwKU7" // Your account ID
+  ]
 }
 ```
 
-Now that you've completed your first transfer, follow [Guides](/docs/category/guides) to get a deeper understanding of how to build with Brale.
+## 5. Get your Address ID
+
+Now fetch your Addresses, which are the on-chain wallets associated with your account. Pass in your account ID in the path.
+
+Brale automatically creates custodial wallets for your account - you do not need to create them. You'll see one for EVM (Ethereum compatible) blockchains, one for Solana, etc.
+
+```shell
+GET https://api.brale.xyz/accounts/:account_id/addresses
+```
+
+```shell title="Request"
+# 👇 Set this once after Step 4
+ACCOUNT_ID="2Js1YFqlfxgNqC2KTPEjrWIwKU7"
+
+curl --request GET \
+  --url "https://api.brale.xyz/accounts/${ACCOUNT_ID}/addresses" \
+  --header "Authorization: Bearer ${AUTH_TOKEN}"
+
+```
+
+```json title="Response" showLineNumbers
+{
+  "addresses": [
+    {
+      "id": "2MhCCIHulVdXrHiEuQDJvnKbSkl", // The ID of your EVM wallet address
+      "name": "Custodial",
+      "status": "active",
+      "type": "internal", // Internal wallets already exist in your account
+      "address": "0xB2952EDba91FeAeaDBeCC4030203367A5B9b4701",
+      "created": "2023-03-07T17:31:37.997502Z",
+      "transfer_types": [
+        "avalanche",
+        "ethereum",
+        "fuji",
+        "mordor",
+        "classic",
+        "sepolia",
+        "alfajores",
+        "celo",
+        "base",
+        "base_sepolia",
+        "optimism",
+        "amoy",
+        "polygon",
+        "arbitrum",
+        "viction",
+        "bnb"
+      ]
+    }
+    // More addresses
+  ]
+}
+```
+
+:::note[Path Rule]
+
+Every endpoint that contains `{account_id}` must be called with the value you fetched in Step 4, e.g.
+GET https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/addresses
+Do not send the account ID in the body or query string.
+:::
+
+## 6. Create your first transfer
+
+Use Transfers to initiate funds movement from fiat to stablecoins (onramp), stablecoins to fiat (offramp), or stablecoins to stablecoins.
+
+Here’s an example of onramping USD to SBC on Base via wire transfer. Include the account ID and the address ID you fetched in Step 4. You must also include an idempotency key.
+
+```shell
+POST https://api.brale.xyz/accounts/:account_id/transfers
+```
+
+```shell title="Request"
+curl --request POST \
+  --url "https://api.brale.xyz/accounts/${ACCOUNT_ID}/transfers" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer ${AUTH_TOKEN}" \
+  --header "Idempotency-Key: $(uuidgen)" \          # generate a fresh key for each transfer
+  --data '{
+    "amount":    { "value": "10", "currency": "USD" },
+    "source":    { "value_type": "USD", "transfer_type": "wire" },
+    "destination": {
+      "address_id": "'"${ADDRESS_ID}"'",
+      "value_type": "SBC",
+      "transfer_type": "base"
+    }
+  }'
+```
+
+The response will include the ID of the transfer, which is opened in a pending state.
+
+```json title="Response" showLineNumbers
+{
+  "id": "2vmNl7oBpIaM3lANbcsVPxXFHlG"
+}
+```
+
+## Next Steps
+
+Now that you've created your first transfer, follow [Guides](/docs/category/guides) to get a deeper understanding of how to build with Brale.
+
+## Troubleshooting Common Issues
+
+| Issue                      | Fix                                                                                            |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `404`: `Account not found` | Replace `:account_id` with your account ID. Retrieve with GET `https://api.brale.xyz/accounts` |
