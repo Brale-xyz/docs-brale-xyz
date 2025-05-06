@@ -6,17 +6,19 @@ sidebar_position: 3
 
 Accounts represent your customers. When you register an account with Brale, we conduct KYB checks to ensure secure and compliant fund transfers between your customers' banks accounts and wallets.
 
-To KYB and approve an account, we collect key details such as business name and EIN. For more information, see our [Compliance Requirements](https://docs.brale.xyz/docs/compliance-requirements). If additional details are required, we will notify you with the necessary steps to complete KYB.
+To KYB and approve an account, we collect key details such as business name and EIN. For more information, see our [Compliance Requirements](/docs/coverage/compliance-requirements). If additional details are required, we will notify you with the necessary steps to complete KYB.
 
 :::note
-Accounts can also be onboarded by directing your customers to signup for Brale directly at https://app.brale.xyz/signup.
+Customers can also self onboard at https://app.brale.xyz/signup.
 :::
 
 ## Creating a customer
 
-**POST** `https://api.brale.xyz/accounts`
+```shell
+POST https://api.brale.xyz/accounts
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
   "business_name": "ABC Company Inc",
   "ein": "111-11-1111",
@@ -32,20 +34,18 @@ Accounts can also be onboarded by directing your customers to signup for Brale d
   "phone_number": "2134678902",
   "email": "mark@example.com",
   "website": "abccompany.com",
-  "ultimate_beneficial_owners": [
-    {
-      "name": "John Doe",
-      "ssn": "222-22-2222",
-      "address": {
-        "street_line_1": "456 Elm St",
-        "street_line_2": "Suite 5",
-        "city": "Chicago",
-        "state": "Illinois",
-        "zip": "60601",
-        "country": "USA"
-      }
+  "business_controller": {
+    "name": "John Doe",
+    "ssn": "222-22-2222",
+    "address": {
+      "street_line_1": "456 Elm St",
+      "street_line_2": "Suite 5",
+      "city": "Chicago",
+      "state": "Illinois",
+      "zip": "60601",
+      "country": "USA"
     }
-  ]
+  }
 }
 ```
 
@@ -53,11 +53,11 @@ Accounts can also be onboarded by directing your customers to signup for Brale d
 
 Brale will review the Account and return a `status` field denoting the customer's KYB status. If the customer is in a pending status, you will need to wait for the customer to be verified before creating or linking addresses or bank accounts.
 
-Some Accounts may require additional documentation for verification, which are returned in `kyb_requirements`.
+```shell
+GET https://api.brale.xyz/accounts/:id
+```
 
-**GET** `https://api.brale.xyz/accounts/:id`
-
-```json title="Response Body" showLineNumbers
+```json title="Response" showLineNumbers
 {
   "status": "complete",
   "business_name": "ABC Company Inc"
@@ -72,3 +72,13 @@ Some Accounts may require additional documentation for verification, which are r
 | `pending`  | KYB is in progress                           |
 | `complete` | KYB is completed and the account is approved |
 | `rejected` | The account's KYB was rejected               |
+
+## Using Account ID in every request
+
+All resources in the Brale API (Addresses, Financial Institutions, Transfers, Automations, etc.) are scoped to specific accounts. Supply the ID in the path, never in the body.
+
+:::info[Path Rule]
+
+Every endpoint that contains `{account_id}` must be called by including the account ID in the path.
+E.g. `GET https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/addresses`. Do not send the account ID in the body or query string.
+:::

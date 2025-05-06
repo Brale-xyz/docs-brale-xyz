@@ -63,11 +63,9 @@ pre[class*='codeBlock_'] {
   box-shadow: none;
 }
 
-p code,
-ul code,
+:is(p, ul, td, h1, h2, h3, h4, h5, h6) code,
 table th,
 table td,
-td code,
 div[class*='codeBlockContainer_'] {
   border: 1px solid var(--brale-border-color);
 }
@@ -165,8 +163,7 @@ tbody {
   background-color: var(--brale-background-color-dark-secondary) !important;
 }
 
-[data-theme='dark'] p code,
-[data-theme='dark'] ul code,
+[data-theme='dark'] :is(p, ul, td, h1, h2, h3, h4, h5, h6) code,
 [data-theme='dark'] table th,
 [data-theme='dark'] table td,
 [data-theme='dark'] td code,
