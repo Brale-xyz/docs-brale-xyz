@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 type IntroProps = Readonly<{
   heading: string;
-  subheading?: string;
+  subheading?: ReactNode;
 }>;
 
 export function Intro({ heading, subheading }: IntroProps): ReactNode {
