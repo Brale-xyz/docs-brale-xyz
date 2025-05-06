@@ -18,9 +18,7 @@ Customers can also self onboard at https://app.brale.xyz/signup.
 
 ## Creating a customer
 
-```shell
-POST https://api.brale.xyz/accounts
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts" />
 
 ```json title="Request" showLineNumbers
 {
@@ -57,9 +55,7 @@ POST https://api.brale.xyz/accounts
 
 Brale will review the Account and return a `status` field denoting the customer's KYB status. If the customer is in a pending status, you will need to wait for the customer to be verified before creating or linking addresses or bank accounts.
 
-```shell
-GET https://api.brale.xyz/accounts/:id
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/:id" />
 
 ```json title="Response" showLineNumbers
 {

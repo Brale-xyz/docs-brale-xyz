@@ -12,9 +12,7 @@ sidebar_label: 'Stablecoin Payouts'
 
 ## USDC Payout
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/transfer
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfer" />
 
 ```json title="Request" showLineNumbers
 {
@@ -39,9 +37,7 @@ POST https://api.brale.xyz/accounts/account_id/transfer
 
 A common workflow is to hold custodial balances in the form of your created stablecoin, but to process payouts in another stablecoin, like USDC. Here is an example of paying out of your stablecoin balance to USDC on Solana.
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```json title="Request" showLineNumbers
 {

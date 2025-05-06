@@ -24,9 +24,7 @@ Automations provide a unique account number and routing number for wire transfer
 
 Create an automation to receive USD and automatically mint SBC to a Solana wallet.
 
-```
-POST https://api.brale.xyz/accounts/account_id/automations
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
 ```json title="Request" showLineNumbers
 {
@@ -50,9 +48,7 @@ POST https://api.brale.xyz/accounts/account_id/automations
 
 Retrieve all automations associated with a customer Account.
 
-```
-GET https://api.brale.xyz/accounts/account_id/automations
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
 ```json title="Response" showLineNumbers
 {
@@ -99,6 +95,7 @@ GET https://api.brale.xyz/accounts/account_id/automations
 
 Retrieve a specific Automation.
 
-```
-GET https://api.brale.xyz/accounts/account_id/automations/automation_id
-```
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/automations/automation_id"
+/>

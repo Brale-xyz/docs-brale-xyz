@@ -229,4 +229,8 @@ tbody {
   .border-primary {
     @apply border-gray-300 dark:border-gray-700;
   }
+
+  .bg-secondary {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
 }

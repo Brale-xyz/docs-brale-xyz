@@ -33,9 +33,7 @@ Retrieve all addresses associated with the authenticated Account.
 
 This endpoint returns all addresses (whether internal or external) linked to the Account.
 
-```shell
-GET https://api.brale.xyz/accounts/account_id/addresses
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/addresses" />
 
 ```json title="Response" showLineNumbers
 {
@@ -81,9 +79,10 @@ GET https://api.brale.xyz/accounts/account_id/addresses
 
 You can query the stablecoin balance of an internal address.
 
-```
-GET https://api.brale.xyz/accounts/account_id/addresses/address_id/balances?transfer_type=chain&value_type=token
-```
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/addresses/address_id/balances?transfer_type=chain&value_type=token"
+/>
 
 ```json title="Response" showLineNumbers
 {
@@ -102,9 +101,7 @@ GET https://api.brale.xyz/accounts/account_id/addresses/address_id/balances?tran
 
 External addresses enable users to deposit stablecoins into or withdraw stablecoins from custodial addresses. To link an external wallet to an Account, send the following request:
 
-```
-POST https://api.brale.xyz/accounts/account_id/addresses/external
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
 
 ```json title="Request" showLineNumbers
 {

@@ -29,9 +29,10 @@ You can add financial institutions in two ways:
 
 Here is an example of directly adding a financial institution.
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/financial-institutions/external
-```
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
+/>
 
 ```json title="Request" showLineNumbers
 {
@@ -69,9 +70,7 @@ POST https://api.brale.xyz/accounts/account_id/financial-institutions/external
 
 Once your customer has a Financial Institution and stablecoins are held in a Brale controlled address, you can submit a Transfer request with the destination of the financial institution.
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```json title="Request" showLineNumbers
 {

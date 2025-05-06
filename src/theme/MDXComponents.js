@@ -1,8 +1,9 @@
 import MDXComponents from '@theme-original/MDXComponents';
-import { Intro, WIPCallout, YouTubeEmbed } from '@site/src/components/shared';
+import { HTTPMethod, Intro, WIPCallout, YouTubeEmbed } from '@site/src/components/shared';
 
 export default {
   ...MDXComponents,
+  HTTPMethod,
   Intro,
   WIPCallout,
   YouTubeEmbed,

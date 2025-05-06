@@ -21,9 +21,7 @@ Businesses can also onramp directly via the Brale Dashboard, and individuals can
 
 Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by calling the Transfers endpoint with the source `transfer_type` of `wire`.
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```json title="Request" showLineNumbers
 {
@@ -72,9 +70,7 @@ Initially, the status of the transfer will be `pending`. Once Brale receives the
 
 Query a transfer that has been created through:
 
-```shell
-GET https://api.brale.xyz/accounts/account_id/transfers/:id
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/transfers/:id" />
 
 ```json title="Response" showLineNumbers
 {
@@ -104,9 +100,7 @@ Automations provide a unique account number and routing number that accepts wire
 
 Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by creating a fiat-to-stablecoin automation.
 
-```shell
-POST https://api.brale.xyz/accounts/account_id/automations
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
 ```json title="Request" showLineNumbers
 {

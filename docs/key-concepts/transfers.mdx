@@ -44,17 +44,13 @@ Each source and destination includes:
 
 Every request is scoped to an account, so the path always starts with:
 
-```
-POST /accounts/{account_id}/transfers // The ID of your or your customer's account
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/{account_id}/transfers" />
 
 ## USD to Stablecoin (Wire Transfer)
 
 Accept a USD deposit to mint stablecoins.
 
-```
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```shell
 curl --request POST \
@@ -79,9 +75,10 @@ curl --request POST \
 }
 ```
 
-```
-GET https://api.brale.xyz/accounts/account_id/transfers/transfer_id
-```
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/transfers/transfer_id"
+/>
 
 The transfer will be opened in a pending state until funds are received. When initiating a fiat to stablecoin transfer via wire, we will return a set of `wire_instructions` so you can provide them to your customer.
 
@@ -114,9 +111,7 @@ The transfer will be opened in a pending state until funds are received. When in
 
 Offramp your stablecoin to USD via wire transfer.
 
-```
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```json title="Request" showLineNumbers
 {
@@ -169,9 +164,7 @@ POST https://api.brale.xyz/accounts/account_id/transfers
 
 Process stablecoin payouts to one or many external addresses (EOAs).
 
-```
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
 ```json title="Request" showLineNumbers
 {

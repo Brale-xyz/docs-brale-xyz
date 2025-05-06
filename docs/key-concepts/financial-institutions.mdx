@@ -19,9 +19,10 @@ You can add external accounts through:
 
 Link your customer's bank account by adding it to their Account.
 
-```
-POST https://api.brale.xyz/accounts/account_id/financial-institutions/external
-```
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
+/>
 
 ```json title="Request" showLineNumbers
 {
@@ -56,9 +57,10 @@ You can also add Financial Institutions through the Brale Dashboard settings pag
 
 Retrieve details of a linked financial institution by ID.
 
-```
-GET https://api.brale.xyz/accounts/account_id/financial-institutions/:id
-```
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/:id"
+/>
 
 ```json title="Response" showLineNumbers
 {
@@ -88,9 +90,7 @@ This guide walks you through how to enable your customers to securely link their
 
 ### Request a Plaid Link Token
 
-```
-POST https://api.brale.xyz/financial_institution/plaid_link_token
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/financial_institution/plaid_link_token" />
 
 ```json title="Response" showLineNumbers
 {
@@ -132,9 +132,7 @@ After this call completes, our system retrieves the linked bank accounts and cre
 
 Shortly after exchanging the public token, the user’s bank accounts are idempotently created as Financial Institutions which you can query.
 
-```
-GET https://api.brale.xyz/financial_institutions/:id
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/financial_institutions/:id" />
 
 ```json title="Response" showLineNumbers
 {
