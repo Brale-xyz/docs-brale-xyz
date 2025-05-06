@@ -1,3 +1,6 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /* Import Tailwind layers first */
 @tailwind base;
 @tailwind components;
@@ -40,6 +43,8 @@
   --ifm-pagination-nav-border-radius: var(--brale-border-radius-card);
   --ifm-toc-border-color: var(--brale-border-color) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 :root .card:hover,
