@@ -1,8 +1,8 @@
 import MDXComponents from '@theme-original/MDXComponents';
-import { WIPCallout } from '@site/src/components/shared/WIPCallout';
+import { WIPCallout, YouTubeEmbed } from '@site/src/components/shared';
 
 export default {
-  // Re-use the default mapping
   ...MDXComponents,
   WIPCallout,
+  YouTubeEmbed,
 };

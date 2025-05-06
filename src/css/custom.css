@@ -64,6 +64,7 @@ pre[class*='codeBlock_'] {
 }
 
 p code,
+ul code,
 table th,
 table td,
 td code,
@@ -165,6 +166,7 @@ tbody {
 }
 
 [data-theme='dark'] p code,
+[data-theme='dark'] ul code,
 [data-theme='dark'] table th,
 [data-theme='dark'] table td,
 [data-theme='dark'] td code,
@@ -224,13 +226,5 @@ tbody {
 
   .border-primary {
     @apply border-gray-300 dark:border-gray-700;
-  }
-
-  .video-container {
-    @apply global-border global-rounded relative mb-4 aspect-video w-full overflow-clip;
-  }
-
-  .video-container iframe {
-    @apply absolute inset-0 h-full w-full;
   }
 }

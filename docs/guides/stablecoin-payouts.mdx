@@ -4,15 +4,20 @@ sidebar_position: 5
 
 # Stablecoin Payouts
 
-Stablecoin payouts are Transfers from an internal (Brale custodial) address to one or many external addresses.
+Leverage stablecoin payouts alongside traditional payment methods to send money to on-chain addresses anywhere in the world. Payouts are Transfers from an internal (Brale custodial) address to one or many external addresses.
 
 ## USDC Payout
 
-**POST** `https://api.brale.xyz/transfer`
+```shell
+POST https://api.brale.xyz/accounts/account_id/transfer
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
-  "amount": "100",
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
   "source": {
     "addressId": "string",
     "valueType": "USDC",
@@ -30,9 +35,11 @@ Stablecoin payouts are Transfers from an internal (Brale custodial) address to o
 
 A common workflow is to hold custodial balances in the form of your created stablecoin, but to process payouts in another stablecoin, like USDC. Here is an example of paying out of your stablecoin balance to USDC on Solana.
 
-**POST** `https://api.brale.xyz/transfer`
+```shell
+POST https://api.brale.xyz/accounts/account_id/transfers
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
   "amount": {
     "value": "100",

@@ -8,18 +8,20 @@ Brale makes it easy for you and your customers to convert USD into stablecoins v
 
 There are two ways to onramp to stablecoins through the Brale API:
 
-- Submit a Transfer request with a source valueType of wire or ACH
-- Create an Automation, which automatically mints stablecoins to a pre-configured destination wallet (Automatic On-Ramp)
+- Submit a [Transfer](/docs/key-concepts/transfers) request with a source value_type of wire or ACH
+- Create an Automation, which automatically mints stablecoins to a pre-configured destination wallet when funds are received (Automatic Onramp)
 
-Businesses can also onramp directly via the Brale Dashboard, and individuals can onramp through [Brale.io](#).
+Businesses can also onramp directly via the Brale Dashboard, and individuals can onramp through Brale.io.
 
 ## Fiat to Stablecoin via Wire
 
 Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by calling the Transfers endpoint with the source `transfer_type` of `wire`.
 
-**POST** `https://api.brale.xyz/transfer`
+```shell
+POST https://api.brale.xyz/accounts/account_id/transfers
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
   "amount": {
     "value": "100",
@@ -37,11 +39,14 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 }
 ```
 
-```json title="Response Body" showLineNumbers
+```json title="Response" showLineNumbers
 {
   "id": "transfer_123",
   "status": "pending",
-  "amount": "100.0",
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
   "source": {
     "transfer_type": "wire",
     "value_type": "usd"
@@ -57,16 +62,23 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 }
 ```
 
-Initially, the status of the transfer will be `pending`. Once Brale receives the funds at the bank account provided in `soure_deposit_instructions` the stablecoins will immediately be minted to the destination wallet.
+Initially, the status of the transfer will be `pending`. Once Brale receives the funds at the bank account provided in `source_deposit_instructions` the stablecoins will immediately be minted to the destination wallet.
 
-## Fetching Transfers
+### Fetching Transfers
 
-Query a transfer that has been created through **GET** `https://api.brale.xyz/transfer/:id`.
+Query a transfer that has been created through:
 
-```json title="Response Body" showLineNumbers
+```shell
+GET https://api.brale.xyz/accounts/account_id/transfers/:id
+```
+
+```json title="Request" showLineNumbers
 {
   "status": "pending",
-  "amount": "100.00",
+  "amount": {
+    "value": "1",
+    "currency": "USD"
+  },
   "created_at": "2025-02-05T19:39:14.316Z",
   "updated_at": "2025-02-05T19:39:14.316Z",
   "source": {
@@ -82,13 +94,17 @@ Query a transfer that has been created through **GET** `https://api.brale.xyz/tr
 }
 ```
 
-## Fiat to Stablecoin Automation (Automatic On-Ramp)
+## Fiat to Stablecoin Automation (Automatic Onramp)
 
 Automations provide a unique account number and routing number that accepts wire transfers and ACH deposits, and automatically mints stablecoins to a pre-defined wallet address. Businesses can use automations to direct unique pre-funding coordinates to their customers, which mint stablecoins in customers' wallets.
 
 Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by creating a fiat-to-stablecoin automation.
 
-```json title="Request Body" showLineNumbers
+```shell
+POST https://api.brale.xyz/accounts/account_id/automations
+```
+
+```json title="Request" showLineNumbers
 {
   "name": "XYZ Automation",
   "destination": {
@@ -101,7 +117,7 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 
 The response will return the unique account number and routing number to direct to your customer.
 
-```json title="Response Body" showLineNumbers
+```json title="Response" showLineNumbers
 {
   "name": "XYZ Onramp",
   "status": "complete",
@@ -123,7 +139,7 @@ The response will return the unique account number and routing number to direct 
 
 ## Brale.io (Beta)
 
-Brale.io is a hosted on-ramp you can direct your users to in order to acquire stablecoins you have created. Users can acquire your stablecoin via:
+Brale.io is a hosted onramp you can direct your users to in order to acquire stablecoins you have created. Users can acquire your stablecoin via:
 
 - USDC
 - ACH (coming soon)

@@ -8,22 +8,28 @@ Brale makes it easy for you and your customers to convert stablecoins into USD v
 
 In order to submit a stablecoin-to-fiat transaction, first you need to:
 
-- Create an [Account](/docs/concepts/accounts) respresenting your customer
-- Create a [Financial Institution](/docs/concepts/financial-institutions) which is your customer's bank account where Brale will deposit USD
+- Create an [Account](/docs/key-concepts/accounts) respresenting your customer
+- Create a [Financial Institution](/docs/key-concepts/financial-institutions) which is your customer's bank account where Brale will deposit USD
 - Deposit stablecoins to a Brale custodial address (address with type `internal`)
+
+## Stablecoin to Fiat via Wire
+
+Here is an example of offramping to your own stablecoin (YSBC) via wire transfer by calling the Transfers endpoint with the destination `transfer_type` of `wire`.
 
 ## Link a Financial Institution to your customer's Account
 
 You can add financial institutions in two ways:
 
 1. Financial Institutions API
-2. Plaid (_coming soon_)
+2. Plaid (coming soon)
 
 Here is an example of directly adding a financial institution.
 
-**POST** `https://api.brale.xyz/financialinstitution/externals`
+```shell
+POST https://api.brale.xyz/accounts/account_id/financial-institutions/external
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
   "name": "Company ABC Checking",
   "transfer_type": ["Ach", "Wire"],
@@ -49,7 +55,7 @@ Here is an example of directly adding a financial institution.
 }
 ```
 
-```json title="Response Body" showLineNumbers
+```json title="Response" showLineNumbers
 {
   "id": "2AbCdEfGHiJkLmN0pQrStUvWxYz"
 }
@@ -59,9 +65,11 @@ Here is an example of directly adding a financial institution.
 
 Once your customer has a Financial Institution and stablecoins are held in a Brale controlled address, you can submit a Transfer request with the destination of the financial institution.
 
-**POST** `https://api.brale.xyz/transfer`
+```shell
+POST https://api.brale.xyz/accounts/account_id/transfers
+```
 
-```json title="Request Body" showLineNumbers
+```json title="Request" showLineNumbers
 {
   "amount": {
     "value": "100",
@@ -82,26 +90,3 @@ Once your customer has a Financial Institution and stablecoins are held in a Bra
 ```
 
 Brale will burn the stablecoins from the Source Address immediately, and then transfer USD to the destination bank account.
-
-## Stablecoin to MXN via SPEI
-
-**POST** `https://api.brale.xyz/transfer`
-
-```json title="Request Body" showLineNumbers
-{
-  "amount": {
-    "value": "100",
-    "currency": "USD"
-  },
-  "source": {
-    "address_id": "string",
-    "value_type": "USDC",
-    "transfer_type": "solana"
-  },
-  "destination": {
-    "financial_institution_id": "2AbCdEfGHiJkLmN0pQrStUvWxYz",
-    "value_type": "MXN",
-    "transfer_type": "spei"
-  }
-}
-```
