@@ -1,0 +1,119 @@
+---
+sidebar_position: 3
+title: 'Transfers'
+description: 'Create and manage transfers between fiat and stablecoins'
+---
+
+# Transfers
+
+Transfers are the primary way to move funds in the Brale API. They can be used for:
+
+- Converting fiat to stablecoins (onramp)
+- Converting stablecoins to fiat (offramp)
+- Converting between stablecoins (swap)
+
+## Create Transfer
+
+Create a new transfer between fiat and stablecoins.
+
+```bash
+POST /accounts/{account_id}/transfers
+```
+
+### Example Request
+
+```bash
+curl --request POST \
+  --url https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/transfers \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer ${ACCESS_TOKEN}' \
+  --header 'Idempotency-Key: ${UNIQUE_KEY}' \
+  --data '{
+    "amount": {
+      "value": "100.00",
+      "currency": "USD"
+    },
+    "source": {
+      "value_type": "USD",
+      "transfer_type": "wire"
+    },
+    "destination": {
+      "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+      "value_type": "SBC",
+      "transfer_type": "base"
+    }
+  }'
+```
+
+### Example Response
+
+```json
+{
+  "id": "2vmNl7oBpIaM3lANbcsVPxXFHlG",
+  "status": "pending",
+  "amount": {
+    "value": "100.00",
+    "currency": "USD"
+  },
+  "source": {
+    "value_type": "USD",
+    "transfer_type": "wire"
+  },
+  "destination": {
+    "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+    "value_type": "SBC",
+    "transfer_type": "base"
+  },
+  "created": "2024-01-01T00:00:00Z"
+}
+```
+
+## Get Transfer
+
+Retrieve details for a specific transfer.
+
+```bash
+GET /accounts/{account_id}/transfers/{transfer_id}
+```
+
+### Example Request
+
+```bash
+curl --request GET \
+  --url https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/transfers/2vmNl7oBpIaM3lANbcsVPxXFHlG \
+  --header 'Authorization: Bearer ${ACCESS_TOKEN}'
+```
+
+### Example Response
+
+```json
+{
+  "id": "2vmNl7oBpIaM3lANbcsVPxXFHlG",
+  "status": "completed",
+  "amount": {
+    "value": "100.00",
+    "currency": "USD"
+  },
+  "source": {
+    "value_type": "USD",
+    "transfer_type": "wire"
+  },
+  "destination": {
+    "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+    "value_type": "SBC",
+    "transfer_type": "base"
+  },
+  "created": "2024-01-01T00:00:00Z",
+  "completed": "2024-01-01T00:05:00Z"
+}
+```
+
+## Transfer Types
+
+The Brale API supports the following transfer types:
+
+- `wire`: Wire transfers
+- `ach`: ACH transfers
+- `base`: Base network transfers
+- `ethereum`: Ethereum network transfers
+- `solana`: Solana network transfers

@@ -63,6 +63,12 @@ const config: Config = {
           label: 'Guides',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'apiSidebar',
+          position: 'left',
+          label: 'API',
+        },
+        {
           href: 'https://github.com/brale-xyz/docs-brale-xyz',
           label: 'GitHub',
           position: 'right',
