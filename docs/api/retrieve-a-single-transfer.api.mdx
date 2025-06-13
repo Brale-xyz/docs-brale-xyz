@@ -1,0 +1,127 @@
+---
+id: retrieve-a-single-transfer
+title: 'Retrieve a single transfer'
+description: 'Returns details for a specific transfer.'
+sidebar_label: 'Retrieve a single transfer'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVllvGzcQ/isEn5pAt2RbXhQFHCQp/JQgsV9qGwaXnLVYr0iGh2xF0H/vDHdlr484TdH0qfuyPGY+zj2z4VFcBV6c8RMvTKjAB37R4wqC9NpFbQ0v+CeIyZvAFESh68Aq65lgwYHUlZYstpwD3uNOeLGESDDF2YYb3CCAkNImEy+1QhJNkE7EBa49fEnag+JF9Al6PMgFLAUvNjyuHXGG6LW54tvHIp0sgB2/ZbZiEVctPpLdPfmzntopy7cXhBmcNQECwUxGI/o9ZD5iAUHrez5myz9BRhRIWhMBhUae18PX9Hsi0h2t89aBj7p5KUQRU3gqeo/DrVi6mo4cGNWqI5bZOC+Sj0ejAcqP1NKDiKAuxbMc6Pol3XCFRP2o0dZdmMlostcfTfqjvZPxYTE9LMazwXS8/wcBJ6d+DnCwyUv4vtlWok5w2dC8ZIvTz28Jduexv8Fxg4GVLa0UhkSgOH+G3qS6FiUxNBF4z68OSjWZw6x/OIX9/mw6nvbn85Hsi/JwfDAHIdW0JPxKG2GkFvWlNiHqmCjKfvi1cirV3kGFr+HXn4kJ9MV8Pu+X1cFcVWIu9yczviUL6JgZdqXhnVHO6pxnFOYRpWnC/H/L/4eWvxLhPXzHLJjM42eB8HBL51ijFxal51eQ3UU1suDDtpCG4ea+ZG+HO3/gMW6RPIBf7Up88jVyLmJ0oRgOhdOD0osaBrfrr/xxKf3orUqSNqyByFU0gExex3WGewPCgz9KJM/ZRff6M1XHJp66RHdmIBF4W9ezsTPRExlOA+RC3mCwaK/BMJ87HChWebvM1wTOoDU7W2nBPtDRhMlaY9W+xDKp8I8Rgf2wtjcDdmxknVQD3qBqkzfnnDit119zuhS7p3/NVL+dc7YAobB/npvsM20qm/VqffeG7MmOQ0gYgtjsjGIfPGqJfs+A7OjjMapJHmlUnAzQ/08Ub2BCcs76GBg2EYxRieox3YW2XegemgDJMLxYmbCTYYpByGTIGdYhwjKgsqxpGqStxg53YzroDTk2O5QvshLiDaBpKi1ivugSBhDLGp+o1wP2nhzRkdEaHCxc6GEfrtpVZr8RrpEghWjVOh86sbYpIkX2c1YbTcSW4hqF15GBCGviKZOuuxI0ymIUuCZOQ/YIZocNcSlynWunC5yIvIYV0Bj0sL8/Nvvmvs//yBzVxnSE2zh0tdBZjpxqmzZZz3ZTVUDy4sGEdZevdIMnmEQLVIF4NptSBDj19XZLx18SeMo7XK6E103VwixUOmRL8KLCAIcXdPrlUztXvWLPz2Tf0KU9FGZNoUv9AXe4vIb1w4GRZrp/QZyOf/6BPCTHBVI1iZpN1FwcSQkudlholKOqdVdgf393gln9F4U84Hc=
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Retrieve a single transfer'}></Heading>
+
+<MethodEndpoint
+  method={'get'}
+  path={'/accounts/{account_id}/transfers/{id}'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Returns details for a specific transfer.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+    {
+      name: 'id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the transfer',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A single transfer object',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              status: { type: 'string', example: 'pending' },
+              amount: { type: 'string', example: '100.00' },
+              created_at: {
+                type: 'string',
+                format: 'date-time',
+                example: '2025-02-05T19:39:14.316Z',
+              },
+              updated_at: {
+                type: 'string',
+                format: 'date-time',
+                example: '2025-02-05T19:39:14.316Z',
+              },
+              source: {
+                type: 'object',
+                properties: {
+                  value_type: { type: 'string', example: 'USD' },
+                  transfer_type: { type: 'string', example: 'wire' },
+                  address_id: {
+                    type: 'string',
+                    nullable: true,
+                    example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                  },
+                  financial_institution_id: {
+                    type: 'string',
+                    nullable: true,
+                    example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                  },
+                },
+                title: 'TransferEndpoint',
+              },
+              destination: {
+                type: 'object',
+                properties: {
+                  value_type: { type: 'string', example: 'USD' },
+                  transfer_type: { type: 'string', example: 'wire' },
+                  address_id: {
+                    type: 'string',
+                    nullable: true,
+                    example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                  },
+                  financial_institution_id: {
+                    type: 'string',
+                    nullable: true,
+                    example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                  },
+                },
+                title: 'TransferEndpoint',
+              },
+              gasFee: { type: 'string', example: '0.01' },
+            },
+            title: 'Transfer',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

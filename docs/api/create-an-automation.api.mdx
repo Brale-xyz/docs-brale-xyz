@@ -1,0 +1,111 @@
+---
+id: create-an-automation
+title: 'Create an Automation'
+description: 'Creates a new automation.'
+sidebar_label: 'Create an Automation'
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVm1v2zgM/iuCP90Ncd6WtmtwOCDtdkAwDC36AqzXFp1i041aW9IkuakX5L8fKTmJk7Td7T5ePjiWRZHUQ/Ih55Hj9zYaXkej0qmCO6GkjW5bUQo2MULTOhpGxwa4A8s4kzBjfCXavpFRK9Lc8AIcGFI0jyQu8AxPElVKdydSFBGkRXM3xXcD30thII2GzpTQimwyhYJHw3nkKk0nrTNC3keLbS8upsDGH5nKmMO3Wj+KzYP6KfAUDBqoHRinUGjlQCZV/BmqX7MMz7zQOX0TpCbGh4p7/feDvf1o268RK6X4XgILx1lpIWVOMW3gCaRjaalzkSCATGkwAeM2+8STKTs9Ob9g5BZYx4oSH3i4hlms/WePULXZpd+6vCQMDHOiwEPoZTzhZDAYR73B8yH7FjxHpwG9Pojhw+EEV+n7mOM6HvT393uD3sGg2+1+YwwjubgNEKHaI5VWhMs2YomS6JCjLa7DrfA2nQdLQMx3AVWTB0gc5YihuzsBlnZDhLZhb6L+9epvdiIxr3SdB05Ib+uOp6kBa39upBakBHzTVP+L/DwT4yLrfbn42tej7sPVfvY4vvh0dUy2n3hewl04/paa8yMv7gyXNgPzL05YlXPJo8WimZnXTb83rG/rxmg54bymdfF+XCM1qoHa1u/BfxnTF1WG4j8LiYHagj6rMYsD0P1uj/62imJ1ntkySVB7VuZ5xRKvja7WyKV3nXe/kj4vR/QtssB6WttuENhGPHg/O9w/6H2IsxT24kGaHMaHaTeJ9zLeG+xlezzr9fz9PQTIeFOVEq0p610kdhtGnZqXbGe+ZsBFhzfoFYkHzNOSLkuTE3k5p+2w0+FatCeG59B+rn7sXOrUqLRMAqheha9ZC0lphKu8uiPgBgyij85c3za3zwndAGBTaAUkuRDVpEjriRfa8YFYiCANOpDnHkEihbnSSIQ2M6rw26ScgUy1EkiBT4KzE/rUZ0kuMOp3GIsU/wXPLctyNWuzsUzyMg3Kg1Yh/eKGkmmqjPjhARwuTf/hpf68iVigfupGFBlio7M1j31aBnjVmhrk8iq3NNnjTYrYZAhPAzss0Cx1ITPlUa8L7YiizcbWllwmSPAyZScGY4B5HcpndDomI5gvIQD9drfd3QlLUGNLrZVxFrsBn+SQIPhMNFWrpuoWBgjFqGdNSisk3peaPIrhSVtZB4WlRhbqhmIhDFMz2dAexLGU0T/HJuBmgIHLBHd+oylogRc5msixlf1FadLwUflo2BbWa1a/+eMzroMH2BoxlP6j5pUqHUr4LPTXRohYwR/ReeEYcFvRmUkp8qYH4bKYozpUkfX50vL1W3DZyI/AeGiMjZpMsQH4fM1fPxmP6hRw8Ow6OufCG/VVP69J43o5LBE3DDcGJ745lk2Ja1B+Pqemf2nyxYI+Y64bKv9bSkYj6JqeDFJh/ZWjYYZ1Bm9c4bezukP8zl4es165R/2Ry2pZCLjCVxxYNmfAxS1K1yPaf3bt/zJpvQJmAG13bl3hSrNuEDoO8MQXYTJYSuwMZesTI2zC2jVkqelSf1g1MoII9yf17FeolMQMn9HojE8fWKVDMtJwSN/mETLbfcnvSTaYpN8/UHBEVQ==
+sidebar_class_name: 'post api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Create an Automation'}></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/automations'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Creates a new automation.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-demo-123456',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`  \n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            name: { type: 'string', example: 'XYZ Onramp' },
+            destination_address: {
+              type: 'object',
+              properties: {
+                address_id: { type: 'string', example: '2MnKwiImf1MTX2pA0jY6fkITEYC' },
+                value_type: { type: 'string', example: 'SBC' },
+                transfer_type: { type: 'string', example: 'solana' },
+              },
+              required: ['address_id', 'value_type', 'transfer_type'],
+              title: 'AutomationDestinationAddress',
+            },
+          },
+          required: ['name', 'destination_address'],
+          title: 'AutomationCreateRequest',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Automation successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+                description: 'The ID of the newly created automation',
+                example: 'a2f96718-fde5-4dc9-9d0c-5fa145f5af11',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

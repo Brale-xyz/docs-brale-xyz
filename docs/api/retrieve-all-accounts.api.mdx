@@ -1,0 +1,104 @@
+---
+id: retrieve-all-accounts
+title: 'Retrieve all accounts'
+description: 'Returns an array of accounts.'
+sidebar_label: 'Retrieve all accounts'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVl1vIjcU/SvWPK6AwEBIGq1WBbat0mqVVbN5qEiEPJ5LcDNjz/oDMkH8995rQxg2EahvfaiENDPmnuNzv3y9Thx/tMnVNBkJob1yNnloJTlYYWTlpFbJVfInOG+UZVwxbgyvmZ4zvrXuJK3EgK20soA06yTtdulxyDB6B4lAoZUD5cj+w9kHelixgJLTm6srQGSAoal0UNrGus7+BuGSH6V+WwDLwXFZ2LAXE946XYLZbYuIyugKjJNRr8wbrNYZqR7RBp55WRW0JMT8cnBxedHupf1BezAc5O3LYZa3++cinffO88GwP0w2LYRy5+17XIcKJ94Y9Jn98deYRQwJdah7r7Cxu6YXB7RD5q1UYO1M8RKOix6NJ2yCUK5qdq0EoUGq45her9cOv17vYLeIOIacaFNpw4ODiOR5jhXxbrIOQ49UAG5W4D6z3glxaZ994VKxWxeDvUemJ0JROTYhjJCuPm76GSz7osnrXUJPOH6tV5xMX2R1Uv7gPIigDJsTOu5uR8lmQ3313UsDOXXnYay23uxERgV7duxgJ110PxbVaJsTZK0WGjmULzMwx3Wkvf5geHH5UzcNBVRiV70HmGtTcmzirUWToeTm6eftZwdrmXhWkFl5KrI8EyLW7w7mCydxG5hloGAuheTFTK8UGPtvTovDAjzdSL/rhWKfdeg/a090UJqm7fBL0//74D/eBz/QhkqIKd4nrgG/21bf+LX4bqj2kGfzZg9aDOsluIVG+uQRQtK5W+DHWWMAWjDLUMHTdeINdleycK6yV2dnvJKdzHBsm+f65c0Q+Wp07gV9sEiRbB6ITXgTsot0Y+AGzMjTntOH5t+3NGNj5TWNXjNBEkhbMMPvLBi90XBnIYytyMGcfgLFTLgqQM7mRpfhbyJnoPIKC8qxpeTshpZSJgqJc3AmMAP4xIhaNi/0qkMDq/B5JI+sWO/0cZ8QUhv5EmbN1W7rj8Hq033CFsBzMJ17FRIs1VwHv7b5GVM82bW1niuB81bl7Magl1hTgZCNvl6jm5SR6GLa6Xa6bxyPNNZXOPScpSGeFSDQPSab1LpJ3cIQoBlWONsNVrDBDJG2tnReobMMo4FVRt5Kw/B4a7BHc7wyoT7HMnArwNDMJXfhj6ahBV4WuEVRd9ivlIiGRq0M9pdt4a1jvn0L8BWvogK6MOV1WKx4rb1Di5Dn4DaGiJX8CcVLx4DbmjCZl0VTQXQWq6CKdWpDRrADtHUlV/ujl66WRsISI1YUzZvhQcTX+4viybvotoYdPLuzqsCTMswOEwZXbMBpwhs33QVKorX1OuMW7kyx2dDydw90Ok3xdcmNJG9CGyEglFhosSeoY9dDRf295IWnvekqS/322v6//fIN6/EfYz3jUA==
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Retrieve all accounts'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/accounts'} context={'endpoint'}></MethodEndpoint>
+
+Returns an array of accounts.
+
+<ParamsDetails parameters={undefined}></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'An array of accounts',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              description: 'The details of a customer account',
+              properties: {
+                id: { type: 'string', example: 'ccf84787-1234-464d-86bd-35c2f15d4636' },
+                status: {
+                  type: 'string',
+                  description: 'Current KYB status of the account',
+                  example: 'complete',
+                },
+                business_name: { type: 'string', example: 'ABC Company Inc' },
+                ein: { type: 'string', example: '111-11-1111' },
+                business_type: { type: 'string', example: 'Corporation' },
+                address: {
+                  type: 'object',
+                  properties: {
+                    street_line_1: { type: 'string', example: '123 Main St' },
+                    street_line_2: { type: 'string', example: 'Apt C' },
+                    city: { type: 'string', example: 'Des Moines' },
+                    state: { type: 'string', example: 'Iowa' },
+                    zip: { type: 'string', example: '12345' },
+                    country: { type: 'string', example: 'USA' },
+                  },
+                  required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                  title: 'AccountAddress',
+                },
+                phone_number: { type: 'string', example: '2134678902' },
+                email: { type: 'string', format: 'email', example: 'mark@example.com' },
+                website: { type: 'string', example: 'abccompany.com' },
+                ultimate_beneficial_owners: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      name: { type: 'string', example: 'John Doe' },
+                      ssn: { type: 'string', example: '222-22-2222' },
+                      address: {
+                        type: 'object',
+                        properties: {
+                          street_line_1: { type: 'string', example: '123 Main St' },
+                          street_line_2: { type: 'string', example: 'Apt C' },
+                          city: { type: 'string', example: 'Des Moines' },
+                          state: { type: 'string', example: 'Iowa' },
+                          zip: { type: 'string', example: '12345' },
+                          country: { type: 'string', example: 'USA' },
+                        },
+                        required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                        title: 'AccountAddress',
+                      },
+                    },
+                    required: ['name', 'ssn', 'address'],
+                    title: 'UltimateBeneficialOwner',
+                  },
+                },
+              },
+              title: 'Account',
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

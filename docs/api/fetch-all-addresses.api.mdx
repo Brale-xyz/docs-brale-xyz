@@ -1,0 +1,93 @@
+---
+id: fetch-all-addresses
+title: 'Fetch all addresses'
+description: 'Retrieves all addresses (internal and external) associated with the given account.'
+sidebar_label: 'Fetch all addresses'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vdtu2zgQ/RWCT23h2K7TNBtjsYDTpt30pUEuSIvECChqHHEjkwqHsq0a/vedoWRbrrvZfdknkdTMmTlzXcqgHlEO7+QoTT0gAspxR6aA2psiGGflUF5C8AZmgELluVBrQfHK2ADeKnqzqYBFfXktFKLTRgVIxdyETIQMxKOZgRVKa1fa0L23siML5dUUSIntL6WlCxlrRB5MSiKGzRcqZHT28FwaD6kcBl9CR6LOYKrkcClDVbAmkpf2Ua5+dv+azJ9/FG4SHWnw5WrMkFg4y5wJZdDv82dXdyRyg4F1N7TJFe2IOGGQ+JveG/7sOeOSv0AHZuldAT6Y2sgWZSuqvFcVkw0wxX+HoMDsce5IWKhpkUe4t8lAH6bvDo7eH/92cNJXyYFOYXLwdnD4jp/4hYOEQYUSX8bSjg8BWL7Oz0vSVy5XVokPJQaXGiqLW6oXCKzc8P6V/n6ynD3QmTJWzKP+OvQ7to4Pyyqc/Pl09rw4Sa6z799u1c3pxftjvEXz5QyrL0f+6oOBj4ujafQ+eGVxAv6Bzf+X6G+raWP0rmEoxytGNCF60jSOXLUfP0PYNNRlU2UswTJU85mjJMpHiNnl8h7KXlOY2FtuW2DVa5cdgp+tu6X0OSllIRQ47PVUYbqJVzl0F9WPvZheeJeWmi+ihojFj6BLb0IV4U5BefCjkl25G7d/X3Fl1xFrC23ixC7Iphv5nkShPR9uEGL71RgiuCcaBx5C6S2NiYl30/ibwQXYtHA0W8TMKPGVnwZC54Y67kHTAKAvFReKSe7mXXFudV6mNXiNSoXDl3vJms6bH4p9GK5N/x6l/riXIgOVgudhxGkxduIiryaFpxxPcY5YKqshjrivnlhSYURAMbo4J5qckZrioNvv9veI1zBYFoXzAQV1XZKDJnrCtKFdG7pDISAxqj+RlGhsPW7jkNUOK+RSJbKCokFTltkaL9zcttBrcRpU5F8QCYQ5UGgmNJXjj7YggprmZCKvuuITJ6Llo7M0owvs0AScNKeoPldF7UHs9So+FqpyZSCJmOdIm0IkpuqJnDdBgMKKdZLS5G0ParJUBUVdpxgzQo3hMEyV5Zw0u+ETBJ3tLqGf473cDuf/a281hR9IsVfkNKfY2diPy6aZ79ZbjN0b7mw01V6zGTFk6eUyUQg3Pl+t+Pm5BM9tSceZ8oaDE5s0NRgDJYcTqn94gfmry2ZZvha/3n7/wGI9Ey1PxJnKS77R8Qmq3dW8GpN03T/RtVpgpDUUoaXK25GHyWbkfT67pmb7G+vW8Vg=
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Fetch all addresses'}></Heading>
+
+<MethodEndpoint
+  method={'get'}
+  path={'/accounts/{account_id}/addresses'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Retrieves all addresses (internal and external) associated with the given account.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A list of addresses',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              addresses: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    id: { type: 'string', example: 'a1b2c3d4-5678-90ab-cdef-1234567890ab' },
+                    status: { type: 'string', example: 'complete' },
+                    name: { type: 'string', example: 'Solana Custodial Wallet' },
+                    address: {
+                      type: 'string',
+                      description: 'The on-chain wallet address',
+                      example: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me',
+                    },
+                    transfer_types: {
+                      type: 'array',
+                      items: { type: 'string' },
+                      example: ['Solana'],
+                    },
+                  },
+                  title: 'Address',
+                },
+              },
+            },
+            title: 'GetAddressesResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
