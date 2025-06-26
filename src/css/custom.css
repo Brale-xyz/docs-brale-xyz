@@ -1,18 +1,8 @@
-/* Import Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* Import Tailwind layers first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* Light mode styles: you can override the default Infima variables here. */
 
 :root {
   --brale-border-color: #d0d5dd;
@@ -97,6 +87,12 @@ tbody {
   width: 100%;
 }
 
+.badge.badge--success {
+  background-color: #eff8ff;
+  border: 1px solid #2e90fa;
+  color: #175cd3;
+}
+
 .breadcrumbs__link {
   color: var(--brale-text-color-secondary);
 }
@@ -137,7 +133,9 @@ tbody {
   font-size: 14px;
 }
 
-.theme-api-markdown .openapi-tabs__response-code-item.success.active {
+.theme-api-markdown .openapi-tabs__response-code-item.success.active,
+.badge.badge--primary {
+  background-color: #ecfdf3;
   border: 1px solid #087443;
   color: #087443;
 }
@@ -148,12 +146,26 @@ tbody {
 .theme-api-markdown .openapi-explorer__response-container,
 .theme-api-markdown
   .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
-  border-radius: var(--brale-border-radius-card);
   border: 1px solid var(--brale-border-color);
+  border-radius: var(--brale-border-radius-card);
+  box-shadow: none;
   overflow: clip;
 }
 
-/* Dark mode styles: for readability concerns, you should choose a lighter palette in dark mode. */
+.theme-api-markdown .openapi-explorer__request-form:hover,
+.theme-api-markdown .openapi-explorer__response-container:hover {
+  box-shadow: none;
+}
+
+.theme-api-markdown .openapi-explorer__request-btn {
+  background-color: var(--brale-text-color-tertiary);
+  color: #ffffff;
+}
+
+.theme-api-markdown .openapi-explorer__request-btn:hover {
+  background-color: #5925dc;
+}
+
 [data-theme='dark'] {
   --brale-border-color-dark: #424242;
   --brale-border-color-dark-hover: #5c5c5c;
@@ -201,6 +213,10 @@ tbody {
   border-bottom: 1px solid var(--brale-border-color-dark);
 }
 
+[data-theme='dark'] .badge.badge--success {
+  border: 1px solid #84caff;
+}
+
 [data-theme='dark'] .breadcrumbs__link {
   color: var(--brale-text-color-tertiary-dark);
 }
@@ -243,12 +259,12 @@ tbody {
   overflow: clip;
 }
 
-[data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active {
+[data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active,
+[data-theme='dark'] .badge.badge--primary {
   border: 1px solid #73e2a3;
   color: #087443;
 }
 
-/* Add any custom Tailwind styles in a layer to prevent conflicts */
 @layer components {
   .global-border {
     @apply border border-solid border-gray-300 dark:border-gray-700;
