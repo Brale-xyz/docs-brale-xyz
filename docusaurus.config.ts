@@ -38,6 +38,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           docItemComponent: '@theme/ApiItem', // Derived from docusaurus-theme-openapi
         },
