@@ -444,3 +444,14 @@ tbody {
     @apply bg-gray-100 dark:bg-gray-900;
   }
 }
+
+.menu__list-item--collapsed .menu__link--sublist:after,
+.menu__list-item--collapsed .menu__caret:before {
+  opacity: 0.5;
+  transform: scale(0.75) rotateZ(90deg);
+}
+
+.menu__link--sublist-caret::after {
+  opacity: 0.5;
+  transform: scale(0.75) rotate(180deg);
+}
