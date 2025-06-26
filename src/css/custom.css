@@ -170,7 +170,12 @@ tbody {
   background-color: var(--brale-background-color-secondary) !important;
 }
 
-.openapi-schema__list-item code {
+.theme-api-markdown .openapi__heading {
+  margin-bottom: 1.25rem !important;
+}
+
+.openapi-schema__list-item code,
+.openapi-params__list-item code {
   background-color: #d2e9f3;
   border: 1px solid #b8ccd4;
   color: rgba(55, 65, 81, 1);
@@ -354,7 +359,8 @@ tbody {
   background-color: var(--brale-background-color-dark-secondary) !important;
 }
 
-[data-theme='dark'] .openapi-schema__list-item code {
+[data-theme='dark'] .openapi-schema__list-item code,
+[data-theme='dark'] .openapi-params__list-item code {
   background-color: #113644;
   border: 1px solid #315461;
   color: rgb(183, 205, 240);
