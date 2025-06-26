@@ -170,6 +170,13 @@ tbody {
   background-color: var(--brale-background-color-secondary) !important;
 }
 
+.openapi-schema__list-item code {
+  background-color: #d2e9f3;
+  border: 1px solid #b8ccd4;
+  color: rgba(55, 65, 81, 1);
+  padding: 4px 6px;
+}
+
 .pagination-nav__sublabel {
   color: var(--brale-text-color-secondary);
 }
@@ -345,6 +352,13 @@ tbody {
 [data-theme='dark'] .openapi-explorer__code-block-code-line-number,
 [data-theme='dark'] .openapi-security__summary-container {
   background-color: var(--brale-background-color-dark-secondary) !important;
+}
+
+[data-theme='dark'] .openapi-schema__list-item code {
+  background-color: #113644;
+  border: 1px solid #315461;
+  color: rgb(183, 205, 240);
+  padding: 4px 6px;
 }
 
 [data-theme='dark'] .pagination-nav__sublabel {
