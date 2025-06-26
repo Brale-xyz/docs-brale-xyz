@@ -126,6 +126,19 @@ tbody {
   color: var(--brale-text-color-tertiary);
 }
 
+.tabs__item.openapi-tabs__mime-item.active,
+.tabs__item.openapi-tabs__schema-item.active,
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant.active {
+  background-color: var(--brale-background-color-secondary);
+  border: 1px solid var(--brale-border-color);
+}
+
+.tabs__item.openapi-tabs__mime-item:hover,
+.tabs__item.openapi-tabs__schema-item:hover,
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant:hover {
+  border: 1px solid var(--brale-border-color-hover);
+}
+
 .theme-doc-sidebar-item-link,
 .theme-doc-sidebar-item-link-level-1,
 .theme-doc-sidebar-item-category > div {
@@ -134,7 +147,8 @@ tbody {
 }
 
 .theme-api-markdown .openapi-tabs__response-code-item.success.active,
-.badge.badge--primary {
+.badge.badge--primary,
+.theme-doc-version-badge.badge.badge--secondary {
   background-color: #ecfdf3;
   border: 1px solid #087443;
   color: #087443;
@@ -247,6 +261,20 @@ tbody {
   color: var(--brale-text-color-primary-dark);
 }
 
+[data-theme='dark'] .tabs__item.openapi-tabs__mime-item.active,
+[data-theme='dark'] .tabs__item.openapi-tabs__schema-item.active,
+[data-theme='dark'] .tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant.active {
+  background-color: var(--brale-background-color-dark-secondary);
+  border: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] .tabs__item.openapi-tabs__mime-item:hover,
+[data-theme='dark'] .tabs__item.openapi-tabs__schema-item:hover,
+[data-theme='dark'] .tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant:hover,
+[data-theme='dark'] .tabs__item.openapi-tabs__code-item:hover {
+  border: 1px solid var(--brale-border-color-dark-hover);
+}
+
 [data-theme='dark'] .theme-api-markdown .openapi-security__details,
 [data-theme='dark'] .theme-api-markdown .openapi__method-endpoint,
 [data-theme='dark'] .theme-api-markdown .openapi-explorer__request-form,
@@ -260,7 +288,8 @@ tbody {
 }
 
 [data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active,
-[data-theme='dark'] .badge.badge--primary {
+[data-theme='dark'] .badge.badge--primary,
+[data-theme='dark'] .theme-doc-version-badge.badge.badge--secondary {
   border: 1px solid #73e2a3;
   color: #087443;
 }
