@@ -87,6 +87,41 @@ tbody {
   width: 100%;
 }
 
+.api-method.get > .menu__link,
+.api-method.post > .menu__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.api-method.get > .menu__link::after {
+  content: 'GET';
+  display: inline-block;
+  font: var(--ifm-code-font-size) / var(--ifm-pre-line-height) var(--ifm-font-family-monospace);
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 6px;
+  background-color: rgba(211, 248, 223, 1);
+  border: 1px solid rgba(74, 222, 128, 1);
+  color: rgba(22, 101, 52, 1);
+  vertical-align: middle;
+}
+
+.api-method.post > .menu__link::after {
+  content: 'POST';
+  display: inline-block;
+  font: var(--ifm-code-font-size) / var(--ifm-pre-line-height) var(--ifm-font-family-monospace);
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 6px;
+  background-color: rgba(219, 234, 254, 1);
+  border: 1px solid rgba(96, 165, 250, 1);
+  color: rgba(30, 64, 175, 1);
+}
+
 .badge.badge--success {
   background-color: rgba(219, 234, 254, 1);
   border: 1px solid rgba(96, 165, 250, 1);
@@ -118,6 +153,23 @@ tbody {
   font-size: 14px;
 }
 
+.openapi-explorer__playground-editor pre.prism-code,
+.openapi-explorer__code-block-content pre.prism-code,
+.openapi-explorer__form-item-input {
+  background-color: var(--brale-background-color-secondary) !important;
+  border: 1px solid var(--brale-border-color) !important;
+  border-radius: 6px;
+}
+
+.openapi-explorer__form-item-input:hover,
+.openapi-explorer__form-item-input:focus {
+  border: 1px solid var(--brale-border-color-hover) !important;
+}
+
+.openapi-explorer__code-block-code-line-number {
+  background-color: var(--brale-background-color-secondary) !important;
+}
+
 .pagination-nav__sublabel {
   color: var(--brale-text-color-secondary);
 }
@@ -144,6 +196,16 @@ tbody {
 .theme-doc-sidebar-item-category > div {
   border-radius: var(--brale-border-radius-sidebar);
   font-size: 14px;
+}
+
+.theme-api-markdown .openapi-explorer__floating-btn button {
+  background-color: var(--brale-background-color-secondary);
+  border: 1px solid var(--brale-border-color);
+  color: var(--brale-text-color-primary);
+}
+
+.theme-api-markdown .openapi-explorer__floating-btn button:hover {
+  border: 1px solid var(--brale-border-color-hover);
 }
 
 .theme-api-markdown .openapi-tabs__response-code-item.success.active,
@@ -194,7 +256,7 @@ tbody {
   --ifm-heading-color: var(--brale-text-color-primary-dark);
   --ifm-navbar-background-color: var(--brale-background-color-dark);
   --ifm-card-background-color: var(--brale-background-color-dark-secondary);
-  --ifm-code-background: var(--brale-background-color-dark-secondary);
+  --ifm-code-background: var(--brale-background-color-dark-secondary) !important;
   --ifm-color-danger: #f97066;
   --ifm-color-primary: #ffffff;
   --ifm-font-color-base: var(--brale-text-color-secondary-dark);
@@ -253,6 +315,38 @@ tbody {
   border: 1px solid var(--brale-border-color-dark-hover);
 }
 
+[data-theme='dark'] .openapi-explorer__floating-btn button {
+  background-color: var(--brale-background-color-dark-secondary);
+  border: 1px solid var(--brale-border-color-dark);
+  color: var(--brale-text-color-primary-dark);
+}
+
+[data-theme='dark'] .openapi-explorer__floating-btn button:hover {
+  border: 1px solid var(--brale-border-color-dark-hover);
+}
+
+[data-theme='dark'] .openapi-explorer__playground-editor pre.prism-code,
+[data-theme='dark'] .openapi-explorer__code-block-content pre.prism-code,
+[data-theme='dark'] .openapi-explorer__form-item-input {
+  background-color: var(--brale-background-color-dark-secondary) !important;
+  border: 1px solid var(--brale-border-color-dark) !important;
+  border-radius: 6px;
+}
+
+[data-theme='dark'] .openapi-explorer__form-item-input:hover,
+[data-theme='dark'] .openapi-explorer__form-item-input:focus {
+  border: 1px solid var(--brale-border-color-dark-hover) !important;
+}
+
+[data-theme='dark'] .openapi-explorer__form-item-input:focus {
+  background-color: var(--brale-background-color-dark) !important;
+}
+
+[data-theme='dark'] .openapi-explorer__code-block-code-line-number,
+[data-theme='dark'] .openapi-security__summary-container {
+  background-color: var(--brale-background-color-dark-secondary) !important;
+}
+
 [data-theme='dark'] .pagination-nav__sublabel {
   color: var(--brale-text-color-tertiary-dark);
 }
@@ -295,6 +389,18 @@ tbody {
   background-color: rgba(20, 29, 23, 1);
   border: 1px solid rgba(22, 101, 52, 1);
   color: rgba(74, 222, 128, 1);
+}
+
+[data-theme='dark'] .api-method.get > .menu__link::after {
+  background-color: rgba(20, 29, 23, 1);
+  border: 1px solid rgba(22, 101, 52, 1);
+  color: rgba(74, 222, 128, 1);
+}
+
+[data-theme='dark'] .api-method.post > .menu__link::after {
+  background-color: rgba(30, 58, 138, 0.2);
+  border: 1px solid rgba(30, 64, 175, 1);
+  color: rgba(96, 165, 250, 1);
 }
 
 @layer components {
