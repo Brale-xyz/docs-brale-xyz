@@ -32,7 +32,9 @@
   --ifm-card-background-color: var(--brale-background-color-secondary);
   --ifm-card-border-radius: var(--brale-border-radius-card);
   --ifm-code-border-radius: var(--brale-border-radius);
+  --ifm-color-danger: #f04438;
   --ifm-color-primary: #000000;
+  --ifm-color-success: #ecfdf3;
   --ifm-code-background: var(--brale-background-color-secondary);
   --ifm-code-font-size: 90%;
   --ifm-font-color-base: var(--brale-text-color-secondary);
@@ -135,6 +137,22 @@ tbody {
   font-size: 14px;
 }
 
+.theme-api-markdown .openapi-tabs__response-code-item.success.active {
+  border: 1px solid #087443;
+  color: #087443;
+}
+
+.theme-api-markdown .openapi-security__details,
+.theme-api-markdown .openapi__method-endpoint,
+.theme-api-markdown .openapi-explorer__request-form,
+.theme-api-markdown .openapi-explorer__response-container,
+.theme-api-markdown
+  .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
+  border-radius: var(--brale-border-radius-card);
+  border: 1px solid var(--brale-border-color);
+  overflow: clip;
+}
+
 /* Dark mode styles: for readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --brale-border-color-dark: #424242;
@@ -151,6 +169,7 @@ tbody {
   --ifm-navbar-background-color: var(--brale-background-color-dark);
   --ifm-card-background-color: var(--brale-background-color-dark-secondary);
   --ifm-code-background: var(--brale-background-color-dark-secondary);
+  --ifm-color-danger: #f97066;
   --ifm-color-primary: #ffffff;
   --ifm-font-color-base: var(--brale-text-color-secondary-dark);
   --ifm-menu-color-background-active: var(--brale-background-color-dark-secondary);
@@ -210,6 +229,23 @@ tbody {
 [data-theme='dark'] .menu__link:hover,
 [data-theme='dark'] .table-of-contents__link.toc-highlight.table-of-contents__link--active {
   color: var(--brale-text-color-primary-dark);
+}
+
+[data-theme='dark'] .theme-api-markdown .openapi-security__details,
+[data-theme='dark'] .theme-api-markdown .openapi__method-endpoint,
+[data-theme='dark'] .theme-api-markdown .openapi-explorer__request-form,
+[data-theme='dark'] .theme-api-markdown .openapi-explorer__response-container,
+[data-theme='dark']
+  .theme-api-markdown
+  .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
+  border-radius: var(--brale-border-radius-card);
+  border: 1px solid var(--brale-border-color-dark);
+  overflow: clip;
+}
+
+[data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active {
+  border: 1px solid #73e2a3;
+  color: #087443;
 }
 
 /* Add any custom Tailwind styles in a layer to prevent conflicts */

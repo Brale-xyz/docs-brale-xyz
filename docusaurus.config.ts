@@ -91,11 +91,6 @@ const config: Config = {
           position: 'left',
           label: 'API',
         },
-        {
-          href: 'https://github.com/brale-xyz/docs-brale-xyz',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     prism: {
