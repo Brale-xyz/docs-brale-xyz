@@ -88,9 +88,9 @@ tbody {
 }
 
 .badge.badge--success {
-  background-color: #eff8ff;
-  border: 1px solid #2e90fa;
-  color: #175cd3;
+  background-color: rgba(219, 234, 254, 1);
+  border: 1px solid rgba(96, 165, 250, 1);
+  color: rgba(30, 64, 175, 1);
 }
 
 .breadcrumbs__link {
@@ -149,9 +149,9 @@ tbody {
 .theme-api-markdown .openapi-tabs__response-code-item.success.active,
 .badge.badge--primary,
 .theme-doc-version-badge.badge.badge--secondary {
-  background-color: #ecfdf3;
-  border: 1px solid #087443;
-  color: #087443;
+  background-color: rgba(211, 248, 223, 1);
+  border: 1px solid rgba(74, 222, 128, 1);
+  color: rgba(22, 101, 52, 1);
 }
 
 .theme-api-markdown .openapi-security__details,
@@ -228,7 +228,9 @@ tbody {
 }
 
 [data-theme='dark'] .badge.badge--success {
-  border: 1px solid #84caff;
+  background-color: rgba(30, 58, 138, 0.2);
+  border: 1px solid rgba(30, 64, 175, 1);
+  color: rgba(96, 165, 250, 1);
 }
 
 [data-theme='dark'] .breadcrumbs__link {
@@ -290,8 +292,9 @@ tbody {
 [data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active,
 [data-theme='dark'] .badge.badge--primary,
 [data-theme='dark'] .theme-doc-version-badge.badge.badge--secondary {
-  border: 1px solid #73e2a3;
-  color: #087443;
+  background-color: rgba(20, 29, 23, 1);
+  border: 1px solid rgba(22, 101, 52, 1);
+  color: rgba(74, 222, 128, 1);
 }
 
 @layer components {
