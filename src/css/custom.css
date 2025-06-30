@@ -227,6 +227,11 @@ tbody {
   border: 1px solid var(--brale-border-color-hover);
 }
 
+.theme-doc-version-badge.badge.badge--secondary {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
 .theme-api-markdown .openapi-tabs__response-code-item.success.active,
 .badge.badge--primary,
 .theme-doc-version-badge.badge.badge--secondary {

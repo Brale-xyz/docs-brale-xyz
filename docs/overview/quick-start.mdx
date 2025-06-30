@@ -54,9 +54,7 @@ Once these variables are added, you can request an Auth token from the Authoriza
 
 Now fetch your account ID that you will pass into subsequent requests. Since you haven't registered any customer accounts yet, the only account ID returned will be your own account.
 
-```shell
-GET https://api.brale.xyz/accounts
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts" />
 
 ```shell title="Request"
 curl --request GET \
@@ -78,9 +76,7 @@ Now fetch your Addresses, which are the on-chain wallets associated with your ac
 
 Brale automatically creates custodial wallets for your account - you do not need to create them. You'll see one for EVM (Ethereum compatible) blockchains, one for Solana, etc.
 
-```shell
-GET https://api.brale.xyz/accounts/:account_id/addresses
-```
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/:account_id/addresses" />
 
 ```shell title="Request"
 # 👇 Set this once after Step 4
@@ -138,9 +134,7 @@ Use Transfers to initiate funds movement from fiat to stablecoins (onramp), stab
 
 Here's an example of onramping USD to SBC on Base via wire transfer. Include the account ID and the address ID you fetched in Step 4. You must also include an idempotency key.
 
-```shell
-POST https://api.brale.xyz/accounts/:account_id/transfers
-```
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/:account_id/transfers" />
 
 ```shell title="Request"
 curl --request POST \
