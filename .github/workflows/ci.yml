@@ -22,3 +22,5 @@ jobs:
       - run: npm ci
       - run: npm run format:check
       - run: npm run lint
+      - run: npm run build
+      - run: npx docusaurus broken-links-check --out-dir build
