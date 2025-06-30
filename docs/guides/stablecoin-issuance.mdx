@@ -1,0 +1,78 @@
+---
+sidebar_position: 1
+title: 'Stablecoin Issuance'
+hide_title: true
+sidebar_label: 'Stablecoin Issuance'
+---
+
+<Intro heading="Stablecoin Issuance" />
+
+## Overview
+
+Brale enables businesses to create their own stablecoins in minutes and earn treasury revenue on underlying reserves, managed by Brale. Stablecoins are fully backed by cash, cash equivalents, and short-duration U.S. treasuries held in segregated accounts.
+
+Brale shares 90% of treasury revenue with businesses monthly.
+
+Once issued, stablecoins are made available to your customers via the API (see [Transfers](/docs/key-concepts/transfers), [Automations](/docs/key-concepts/automations)) and to other distributors (OTCs, Market Makers, Custodians, etc.)
+
+## Why create your own stablecoin
+
+Issuance allows businesses to benefit from the treasury economics of a stablecoin and provides an additional degree of control not available with third-party stablecoins:
+
+- **Treasury Revenue**: Earn treasury revenue on funds at rest. This allows fintechs to monetize user deposits, and for emerging ecosystems and app chains to monetize all digital dollars on their network.
+- **Free on and off ramps**: Once issued, your stablecoin is available to your customers to acquire via USD or USDC with $0 fees. Make your stablecoin available via the Brale Dashboard, by embedding into your application using the Brale API, or by embedding the Brale.io onramp widget.
+- **Branded**: Create branded, cohesive product experiences leveraging the trust and familiarity of your brand.
+- **Issue Natively on Emerging Blockchains**: Issue a native-fiat backed stablecoin on your L1 / L2 / Appchain.
+
+## How to create a stablecoin
+
+Issue natively on 14+ blockchains in less than 10 minutes. Below is a live walkthrough.
+
+<YouTubeEmbed videoId="0M7bdTS4l2w" />
+
+## How it works
+
+1. Launch your stablecoin through the Brale dashboard by choosing your name, ticker symbol, logo, and chain(s).
+2. The stablecoin will be immediately listed on Brale's exchange and can be acquired via USD or USDC.
+3. Brale manages the regulated reserves.
+4. Brale shares treasury revenue with you monthly.
+
+## Supported currencies
+
+Brale supports U.S. Dollar and Mexican Peso stablecoins, with additional currencies coming soon. You can also issue stablecoins managed by your own reserves. To learn more about self-managing reserves, see [Tokenization](/docs/guides/tokenization).
+
+Supported currencies:
+
+- U.S. Dollar
+- Mexican Peso
+- Brazilian Real (coming soon)
+- British Pound (coming soon)
+
+To request additional currencies, please reach out to our team at [support@brale.xyz](mailto:support@brale.xyz).
+
+## Cross Chain Swaps
+
+Stablecoins are issued natively on each chain and can be swapped 1:1 between chains at any time. Stablecoins are burned on the source chain, and minted on the destination chain. Brale does not use any wrapping or locking mechanism - all stablecoins are issued natively and enforce natural supply.
+
+### Swap from Solana to Base
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request" showLineNumbers
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "value_type": "SBC",
+    "transfer_type": "solana"
+  },
+  "destination": {
+    "address_id": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+    "value_type": "SBC",
+    "transfer_type": "base"
+  }
+}
+```

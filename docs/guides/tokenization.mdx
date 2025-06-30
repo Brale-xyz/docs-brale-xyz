@@ -1,0 +1,77 @@
+---
+sidebar_position: 7
+title: 'Tokenization'
+hide_title: true
+sidebar_label: 'Tokenization'
+---
+
+<Intro
+  heading="Tokenization"
+  subheading="Brale enables businesses to issue, manage, and custody tokens on all supported blockchains."
+/>
+
+Tokenization makes it easy to manage on-chain supply of digital assets against off-chain reserves (or points, goods and services, etc.) across multiple blockchains. This also enables local currency stablecoins with existing banking relationships to easily manage on-chain operations with their team, or to expand their assets to additional blockchains without development effort.
+
+To get access to the Tokenization API, reach out to our team at [support@brale.xyz](mailto:support@brale.xyz).
+
+## Issue Tokens
+
+Issue new tokens on all supported blockchains through the Brale Dashboard.
+
+<WIPCallout callout="Add image: https://files.readme.io/ea0d10ce92162951bcce92fa145288e0b96efd2100178a4c1b8f4ae205e24690-Screenshot_2025-03-21_at_12.27.02_PM.png" />
+
+## Increasing and Decreasing Supply of Tokens
+
+Mint and Burn using [Transfers](/docs/key-concepts/transfers) or via the Brale Dashboard.
+
+### Mint More Supply
+
+<WIPCallout callout="Add image: https://files.readme.io/98ab124926a0eb0b30f35391b2530a15440aed558a447aab1991200f059d0a46-Screenshot_2025-03-23_at_2.40.25_PM.png" />
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/transfers" />
+
+```json title="Request" showLineNumbers
+{
+  "amount": "100",
+  "destination_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+### Decrease Supply
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/transfers" />
+
+```json title="Request" showLineNumbers
+{
+  "amount": "100",
+  "source_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+### Transfer Tokens
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/transfers" />
+
+```json title="Request" showLineNumbers
+{
+  "amount": "100",
+  "source_address": {
+    "address_id": "string",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  },
+  "destination_address": {
+    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "value_type": "TKZ",
+    "transfer_type": "Solana"
+  }
+}
+```

@@ -1,0 +1,135 @@
+---
+id: create-a-new-external-financial-institution
+title: 'Create a new external financial institution'
+description: 'Links an external bank account to the specified account (ACH, wire, etc.).'
+sidebar_label: 'Create a new external financial institution'
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV9tu2zgQ/RWCT21h2Y7jJo6xWMBJWmx2t2iRy1MapLQ0itlIpEpScV3D/74zpGxLVi7tYp82D45lzY1nZs4Ml9yJO8vH1/y9VELFUmTsTFknXemkVpbfdHgCNjayoGc+5n9LdW+ZUAy+OzAK5adC3TMRx7pUjjnN3AyYLSCWqYRk8+LV5OSPDptLAx0GLu6+7n5WvMMLYUQOaImCWHKFD+ikUrqVCYpIclsIN8PvBr6VaCLhY2dK6HAbzyAXfLzkblGQpnVGqju+2g37EoM6O2U69eFV9lFsGczPQCRg0EEVwFkCeaEdqHgR/QWLX/MM30VeZPSbJDMRfuhob7A/fHvAd+OasFLJbyUi5tVZaREzBLEw8AAIW1IWmYyFA6YLMMInpcveiXjGPn28uGQUFljH8hI/UJkJpmDO5DZ+dg+LLrvyr66uCAPDnMxRCaOMpoIcBudoN0Q+Zl9C5Bg0YNSHEYyOpviU7EcCn6Ph4OBgb7h3OOz3+18Yw0yubgJEaPZYJwvCZRexWCsMyNErUYRT4Wl6Xy0BsWwDqqdfIXZUI4bO7iRYehsytAt7HfXj0koF1rKTGcT3hOpkk2/ujFA2BXMb9Dd2hDGC8iwd5Pb5tF5jfVIxUjHzG3xDHXCbgBMysy8fQM8VltqzJ/hTKGCnGsjtuhdUmU9f0gtFdjg66pOm0djE6u6nNI9Ghwdvh/uDPVJ8CuJ2S5HkuqkIhYbNqprYMb2gkySJwbS8jBA6BHC3GWbxdu/FE7MPQip24bNb1xw8rzkpHDshnVi6xfOip2DZB001FXxgOz6vcKbngkR/yOInEuaDoBybF+K4upjw1arORdc7WFWnWQcZIthaxyZFag/HD2U1qXJSK7Sdxngkjrjqq1YwobRbNdsqxarEdnzWoqOSOa0aatdJpdps5J0mrJnaDLbaXDsxgPCcB75CB8GFLZBcQwUO+r7umgW/HZFya4rZMo4RwbTMsgWLveGEN9juTe/NrxAcDr2f6r3tOEPG3/pm6WNhNvI33Y+Tt4fpMDrCv2goBhCJ0WgUTdPDUZKKUXwwGHpUPDA4nmc6oRmsrY+WRvGY96rc2d5yO65XvY33qObd9tbbApUmmIf1vC9NRtPXucKOez1RyO7UiAy63xc/Wmf+ZHRSxgFzb8IPHQtxaXwHo7ljEAbMpKQAr2/qry8I/IBvXWiDM4XAq6nuIfJCrRhojBLiwQYO6ntQOINdaRQhb3TuX5NxBiopkDQce5CCfaSfBizOJBbFLaYqwf+IkmVppuddXLrirEyC8WAVOY0ePnPS1Eb+8ONyvHb9m5f6/TNnYXehdYqyReP0fDuI362Tvtmtnp6OreHYHHTtOVdNsu24ak+r+khqT6Ta2NmsXo2p0RgaO2Ohwf0t6q/4fU3vdQ7fUHjg6YqmKy6uUXHg211ibLKfVKn2ZbQmLipfdmZtiV2AK5dK2EeDGhidzx+bfDpDH9QAoaIG3X6336qzYMaWRaGNs7ifiWkGMYbPZN20rpvGvVqhGGV0WuUYrBdDTbuwtNjQahl4gopLGoYprFkP4khdGJ9jU3BzwEpMpXD+RV3QgsgzdJHhcvme6r4Wo1a41Be2g/yUVt+8+lwUIQJcVrE2/Y+FWGBRoIRvK39shIjl4h6Dl46BsAvSmZYyq0cQDotNVwRasL4BOp6kcqFqBR/IvlqMN7eWp1iykYfllsb/64tPVUwOrfWKDKuYgvd0uKwY9npdeFSx48aV6HGS9Rxf0Sx264zoGq0sl7TkX5lstaKfkRqouK/x64MwkkD03JlI6wHl4xRpCZ5B4tV5NY1fs8evVU+cbr1pK1pQHkRW0hN+xQtK8863oqW6upL969D+LzerJ8AMoLXvqRtc6W4bhE4CPNFlWJTWEq1L2FYDJwIUriZLKwyN080uQBDR0lXd9XKdkJgRc2J5/PSJ1UWoS7oM0m9Lngl1V4o7kg0u6e8fmoSnBw==
+sidebar_class_name: 'post api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Create a new external financial institution'}
+></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/financial-institutions/external'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Links an external bank account to the specified account (ACH, wire, etc.).
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-demo-123456',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`  \n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            name: { type: 'string', example: 'Business Checking Account' },
+            transfer_type: { type: 'array', items: { type: 'string' }, example: ['ach', 'wire'] },
+            bank_details: {
+              type: 'object',
+              properties: {
+                owner: { type: 'string', example: 'Jane Doe' },
+                account_number: { type: 'string', example: '1234567890' },
+                routing_number: { type: 'string', example: '987654321' },
+                name: {
+                  type: 'string',
+                  description: 'The name of the bank',
+                  example: 'Example Bank',
+                },
+                address: {
+                  type: 'object',
+                  properties: {
+                    street_line_1: { type: 'string', example: '123 Main St' },
+                    street_line_2: { type: 'string', example: 'Apt C' },
+                    city: { type: 'string', example: 'Des Moines' },
+                    state: { type: 'string', example: 'Iowa' },
+                    zip: { type: 'string', example: '12345' },
+                    country: { type: 'string', example: 'USA' },
+                  },
+                  required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                  title: 'AccountAddress',
+                },
+                account_type: { type: 'string', example: 'checking' },
+              },
+              required: ['owner', 'account_number', 'routing_number', 'name', 'account_type'],
+              title: 'BankDetails',
+            },
+          },
+          required: ['name', 'transfer_type', 'bank_details'],
+          title: 'FinancialInstitutionCreateRequest',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Financial institution successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+                description: 'The ID of the newly created financial institution',
+                example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

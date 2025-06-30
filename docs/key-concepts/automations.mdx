@@ -1,0 +1,101 @@
+---
+sidebar_position: 7
+title: 'Automations'
+hide_title: true
+sidebar_label: 'Automations'
+---
+
+<Intro
+  heading="Automations"
+  subheading="Automations allow businesses to set up automatic onramps, offramps, or stablecoin swaps that are triggered upon receiving funds—without requiring a manual transfer request."
+/>
+
+## Common Automation Flows
+
+- **Fiat to Stablecoin (Onramp)** - Automatically mints stablecoins when a fiat deposit is received.
+- **Stablecoin to Fiat (Offramp)** - Automatically converts stablecoins to fiat and withdraws to a bank account. _(Coming soon)_
+- **Stablecoin to Stablecoin (Swap)** - Automatically swaps one stablecoin for another. _(Coming soon)_
+
+## Onramp Automation
+
+Automations provide a unique account number and routing number for wire transfers and ACH deposits. When funds are received, stablecoins are automatically minted to a pre-defined wallet address. Businesses can use automations to direct unique pre-funding coordinates to their customers, which mint stablecoins in a customer's wallet.
+
+## Creating an Automation
+
+Create an automation to receive USD and automatically mint SBC to a Solana wallet.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
+
+```json title="Request" showLineNumbers
+{
+  "name": "XYZ Onramp",
+  "type": "USD",
+  "destination": {
+    "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+    "value_type": "SBC",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+```json title="Response" showLineNumbers
+{
+  "id": "string"
+}
+```
+
+## Listing Automations for a Customer
+
+Retrieve all automations associated with a customer Account.
+
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
+
+```json title="Response" showLineNumbers
+{
+  "automations": [
+    {
+      "name": "Customer Onramp",
+      "status": "active",
+      "wire_instructions": {
+        "bank_beneficiary_name": "Jane Business",
+        "bank_name": "Example Bank",
+        "bank_address": "456 Commerce St., Des Moines, IA 50309",
+        "bank_beneficiary": "XYZ Holdings LLC",
+        "bank_account_number": "123456789",
+        "bank_routing_number": "87654321"
+      },
+      "destination": {
+        "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+        "value_type": "SBC",
+        "transfer_type": "Solana"
+      }
+    },
+    {
+      "name": "Business Payin",
+      "status": "pending",
+      "wire_instructions": {
+        "bank_beneficiary_name": "John Enterprise",
+        "bank_name": "Fictional Bank",
+        "bank_address": "789 Market St., Chicago, IL 60601",
+        "bank_beneficiary": "ABC Capital Inc.",
+        "bank_account_number": "987654321",
+        "bank_routing_number": "12345678"
+      },
+      "destination": {
+        "address_id": "2MyQyQ2JCZJHNEUujTI8fT1nULc",
+        "value_type": "SBC",
+        "transfer_type": "Ethereum"
+      }
+    }
+  ]
+}
+```
+
+## Retrieve an Automation
+
+Retrieve a specific Automation.
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/automations/automation_id"
+/>

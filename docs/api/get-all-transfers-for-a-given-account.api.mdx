@@ -1,0 +1,127 @@
+---
+id: get-all-transfers-for-a-given-account
+title: 'Get all transfers for a given account'
+description: 'Returns a list of transfers associated with the specified account.'
+sidebar_label: 'Get all transfers for a given account'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktvGzcQ/isET22gt2RbXhQFHOQBnxIk9qW2YXDJWYn1imQ4pGVF0H/vkLuK1486CdD2VF20y535ON+8tzyIBfLigp95YbACj/yqxxWg9NoFbQ0v+CcI0RtkgtUaA7MVC3thJhCt1CKAYmsdliwsgaEDqStNR0JKG00Y8B53wosVhHRBcbHlhl4IuhW41opEdLrMibCkZw9fovageBF8hB5HuYSV4MWWh41Lmhi8Ngu+e2zsGRlw+iYbSU8tPt9dJUh01iBgQpmMRunvoe7JU4JkirQmAGGQ+Kvhq/T3xBjhvdgkBgFW2Dm35Z8gQ2LvrQMfdHM5BhEiPiXT43AnVq5ORw6MagmKVebwovh4NBoQJZKWHlI4rsWzGpX1q/SFKxLqB01R6MJMRpOD/mjSHx2cjY+L6XExng2m48M/EnB06t8BRhu9hO+77VbUEa4bmZd8cf75TYLdx/AHNNaUatnTSlGWYErHZ+RNrGtRJoUmJ+/11VGpJnOY9Y+ncNifTcfT/nw+kn1RHo+P5iCkmpYJv9JGGCqX+lobDDrElHg/fVs5lergqKLb6NefiQn0xXw+75fV0VxVYi4PJzO+Sx7QISvsa/utUc7qVA65agJZ02T+/57/Dz2/EPgOvuMWKubxs0B0mH49Tr10acl8voAcr9Q2Cz5sGx4Ot/etdTfstjMEf7vvwtHXpLQMwWExHAqnB6UXNQzuNl/548b60VsVZXphDURuqggyeh02Ge41CA/+JCZTLq66nz+njtnkUlfomwuSCbzt8tnRWeiJDecIua03GCzYGzDM5/FE06bydpU/J3AGrcvZrRbsQzqaMFlr6uTX1CIV/VM2IKtqux6wUyPrqBrwBlWb/HLJk6b1+msulWJ/9W9Z6vdLzpYgFPjBpcnx0qaymVcbt9fJn+wUMVL60Twyin3wxJJingHZycdTopki0lCcDCj2T4g3MBidsz4gowFC+SmJHtNdaNuF7pELSIxSi5URtaHyAsxipIkbTLOKyLJmYCS22jO7Nh30RpwGINkXWAlhDeSaiuZ9/tAVRBCrmq6oNwP2LgWiY6M1NPsd9miyVu1TVl8L11gQMVi1yYdObGwMJJHjnGmTi9hK3JDxOjAQuEk6ZdR114KGLGWBa/IUc0SoMCyGlcg9rt053gNZX9edJYZmFy03C31L5PYbw6MIbO/XgH9mH2oTP8BdGLpa6GxsrsdtW8wX++0oVW3xYFMK3WVtSQyT9HZbCoRzX+926fhLBJ/Kkh5vhddNQ6MiVRqzo3hRUf7DCzx/+dQuYb+y57eqv2GxX4pMWony6KA3eryBzcOVb3dF0k39ZNMagRMpwYWOatq6UjP51vLevz2jYvsLsMCpwQ==
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Get all transfers for a given account'}
+></Heading>
+
+<MethodEndpoint
+  method={'get'}
+  path={'/accounts/{account_id}/transfers'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Returns a list of transfers associated with the specified account.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A list of transfers',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                status: { type: 'string', example: 'pending' },
+                amount: { type: 'string', example: '100.00' },
+                created_at: {
+                  type: 'string',
+                  format: 'date-time',
+                  example: '2025-02-05T19:39:14.316Z',
+                },
+                updated_at: {
+                  type: 'string',
+                  format: 'date-time',
+                  example: '2025-02-05T19:39:14.316Z',
+                },
+                source: {
+                  type: 'object',
+                  properties: {
+                    value_type: { type: 'string', example: 'USD' },
+                    transfer_type: { type: 'string', example: 'wire' },
+                    address_id: {
+                      type: 'string',
+                      nullable: true,
+                      example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                    },
+                    financial_institution_id: {
+                      type: 'string',
+                      nullable: true,
+                      example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                    },
+                  },
+                  title: 'TransferEndpoint',
+                },
+                destination: {
+                  type: 'object',
+                  properties: {
+                    value_type: { type: 'string', example: 'USD' },
+                    transfer_type: { type: 'string', example: 'wire' },
+                    address_id: {
+                      type: 'string',
+                      nullable: true,
+                      example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                    },
+                    financial_institution_id: {
+                      type: 'string',
+                      nullable: true,
+                      example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                    },
+                  },
+                  title: 'TransferEndpoint',
+                },
+                gasFee: { type: 'string', example: '0.01' },
+              },
+              title: 'Transfer',
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

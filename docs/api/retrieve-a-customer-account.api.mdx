@@ -1,0 +1,122 @@
+---
+id: retrieve-a-customer-account
+title: 'Retrieve a customer account'
+description: 'Returns the details of a specific customer account, including KYB status.'
+sidebar_label: 'Retrieve a customer account'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVltPKzcQ/iuWn9qjXMiSAzSqqgZoK1odcXQ4PFSAIq93Qlx2bdf2EkKU/94Ze0M2hJI+9KEPlSJldz3zzTc3zyx5EPeej274WEpT6+D5XYcX4KVTNiij+Yh/gVA77VmYASsgCFV6ZqZMMG9BqqmSTNY+mAocEwmkw5SWZV0ofc9++/2U+SBC7Xu8w61wooIAjmwuucYXtKAKPFJky4oww2cHf9bKQcFHwdXwmtBXJHJxThyIUmMTtbycQSX4aMnDwhKuDw4p8NXqjiC9NdqDp/Ps4ID+tmHPN74RLnEAH6BoWZBGB8An1P3Q/0B/OzZN/gdIkt3lvBW81zGj4DhjwQWVOGJQdjzpcHgSlS3pk5TTk+HxyXF3kB0Ou8OjYdE9OcqL7uFHmU0HH4vh0eERX2FUYvDfwtpmeFY7h761ErYb4ZZ1Qw8ByEJee6XB+0lK53ukx6dn7AxVhV6wCy1JGyjx7+kMBoNu/A0GW9aSxnuaZ8ZZ40R0EDVFUWAV+LeStR16hAIIkxLtTAZ7yGWH7JNQml2FFOyNZrYnFDawM9KRKizeFz0Hzz4Z8nqd0D2OX5i5INFnZffSH36MJCjDbg+P66sxNlO7PW9exarxZk0yMdigYx8GFZL7qajGTU4Q1c4MYui6ysG9zyMbHA6Pjk++O8hiAVXYVW8pTI2rBDZrI9FGqIR7+LF57WEtE84ccq/2RVbkUqb6XavVZVBoBiY5aMDbUIlyYuY6XnEvSMI5QWFB/OofFOD+RvrVzDQ7N7H/vN/TQVmWdeMvy/7vg/94H7yCjZWQUrxJXEv9uqm+05fiu6TaQ5zVjg36SJ9xAM8MovN7iDmnmTvi/eaa9/2lKlZkE9zjelDXDjuMz0KwftTvC6t6uRPYOk+L551B8tmZopb0whIEp/nrQdYuZhjhTkE4cOOaDN/ctY+vaJ6m6msLvWSDKKxHPb3nUWiHw7WHOLoSBgvmATROdFpkcKBPnaniMYEz0IXFogrsUQl2SZ8yJkuFs3AiMQv4j1H1bFqaeY+GFi42CTyhYs3Tyy0nTePUc5w3o7Xp76PUD7eczUAU4Hq3OiZZ6amJfjU5OqV4sgvva6ElzlxdsEuHXmJdRUA2/nyBblJGkotZ76B3sON4gvG1xcEXPA3yvASJ7jHVhjZt6A6GAMVoW1sPV2w0EkNNv/B0Z6GzDKOBlUbeKsfwimuhJ3Fcj5BfYDmEOWBopkqEeNAW9CCqEk2Uix77mRLR4mg0rofWd3DzmDZPUX0ubGJAS1OxiB+tWJg6oETMc3QbQ8Qq8YDkVWAg/IJ08lqVbQbJWawCm+rUx4xgGxgfKqE31y8tvk7BI7y9rW3FfblZDf/Vfbmp+gBPoW9LvF/jxHFx3KW+veHrvkXxES6N2EwzdIVOlstceLh25WpFn3GfpZvtBh8fhVMUhdiNhfIxInw0xUJ/vW63XfvmS3M1fcv+bgl/k/F6Cmq6Eh9FWdMbPj7AIq3/qzuUSg0SKaUDvLfAhpYKLd10W7zcYL/89BW76S+2u1rQ
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Retrieve a customer account'}
+></Heading>
+
+<MethodEndpoint method={'get'} path={'/accounts/{id}'} context={'endpoint'}></MethodEndpoint>
+
+Returns the details of a specific customer account, including KYB status.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'id',
+      in: 'path',
+      required: true,
+      description: 'The ID of the account',
+      schema: { type: 'string' },
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'Details of the requested account',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            description: 'The details of a customer account',
+            properties: {
+              id: { type: 'string', example: 'ccf84787-1234-464d-86bd-35c2f15d4636' },
+              status: {
+                type: 'string',
+                description: 'Current KYB status of the account',
+                example: 'complete',
+              },
+              business_name: { type: 'string', example: 'ABC Company Inc' },
+              ein: { type: 'string', example: '111-11-1111' },
+              business_type: { type: 'string', example: 'Corporation' },
+              address: {
+                type: 'object',
+                properties: {
+                  street_line_1: { type: 'string', example: '123 Main St' },
+                  street_line_2: { type: 'string', example: 'Apt C' },
+                  city: { type: 'string', example: 'Des Moines' },
+                  state: { type: 'string', example: 'Iowa' },
+                  zip: { type: 'string', example: '12345' },
+                  country: { type: 'string', example: 'USA' },
+                },
+                required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                title: 'AccountAddress',
+              },
+              phone_number: { type: 'string', example: '2134678902' },
+              email: { type: 'string', format: 'email', example: 'mark@example.com' },
+              website: { type: 'string', example: 'abccompany.com' },
+              ultimate_beneficial_owners: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    name: { type: 'string', example: 'John Doe' },
+                    ssn: { type: 'string', example: '222-22-2222' },
+                    address: {
+                      type: 'object',
+                      properties: {
+                        street_line_1: { type: 'string', example: '123 Main St' },
+                        street_line_2: { type: 'string', example: 'Apt C' },
+                        city: { type: 'string', example: 'Des Moines' },
+                        state: { type: 'string', example: 'Iowa' },
+                        zip: { type: 'string', example: '12345' },
+                        country: { type: 'string', example: 'USA' },
+                      },
+                      required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                      title: 'AccountAddress',
+                    },
+                  },
+                  required: ['name', 'ssn', 'address'],
+                  title: 'UltimateBeneficialOwner',
+                },
+              },
+            },
+            title: 'Account',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

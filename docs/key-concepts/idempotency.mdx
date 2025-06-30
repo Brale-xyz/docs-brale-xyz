@@ -1,0 +1,68 @@
+---
+sidebar_position: 8
+title: 'Idempotency'
+hide_title: true
+sidebar_label: 'Idempotency'
+---
+
+<Intro heading="Idempotency" subheading="Guarantee that each POST request executes exactly once." />
+
+## What is an Idempotency Key?
+
+When you POST a request (create a transfer, etc.) you include a unique `Idempotency-Key` header. Brale stores that key along with the request signature so if you retry—because the network dropped or timed out—Brale recognizes the duplicate and returns the original response instead of performing the operation twice.
+
+```shell
+Idempotency-Key: 123e4567-e89b-12d3-a456-426614174000
+```
+
+## When is it required?
+
+| Endpoint type                         | Idempotency-Key header |
+| ------------------------------------- | ---------------------- |
+| `POST /…` (create)                    | **Required**           |
+| `GET /…`, `PUT/PATCH /…`, `DELETE /…` | **Do NOT include**     |
+
+If the header is missing on a POST request, Brale returns `400 Bad Request`.
+
+## Example
+
+```shell
+curl --request POST \
+  --url "https://api.brale.xyz/accounts/${ACCOUNT_ID}/transfers" \
+  --header "Authorization: Bearer ${AUTH_TOKEN}" \
+  --header "Content-Type: application/json" \
+  --header "Idempotency-Key: $(uuidgen)" \
+  --data '{
+    "amount": {"value": "10", "currency": "USD"},
+    "source": {"value_type": "usd", "transfer_type": "wire"},
+    "destination": {
+      "address_id": "'"${ADDRESS_ID}"'",
+      "value_type": "sbc",
+      "transfer_type": "base"
+    }
+  }'
+```
+
+:::tip
+Most HTTP clients let you generate a UUID at call time or set a default header.
+:::
+
+## Request Responses
+
+| Scenario                                 | Status                   | Body                                                                          |
+| ---------------------------------------- | ------------------------ | ----------------------------------------------------------------------------- |
+| First successful call                    | 201 Created              | Normal JSON response                                                          |
+| Retry with _same_ body                   | 201 Created              | _Same_ JSON as first call                                                     |
+| Retry with same key but _different_ body | 422 Unprocessable Entity | `{ "This Idempotency-Key can't be reused with a different payload or URI"" }` |
+
+## Troubleshooting
+
+| Error                           | Likely cause                            | Fix                                        |
+| ------------------------------- | --------------------------------------- | ------------------------------------------ |
+| **400 Missing Idempotency-Key** | Header omitted on POST/PUT              | Add a unique key (UUID).                   |
+| **422 Unprocessable Entity**    | Re-used key with different request body | Generate a fresh key per _logical_ action. |
+
+## Best Practices
+
+- Generate a UUID per logical action. Store it with your job record so retries use the same value.
+- Do not share keys across different endpoints. Keep one key scoped to one operation.

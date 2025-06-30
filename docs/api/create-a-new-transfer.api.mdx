@@ -1,0 +1,138 @@
+---
+id: create-a-new-transfer
+title: 'Create a new transfer'
+description: 'Creates a new transfer using the specified source and destination details.'
+sidebar_label: 'Create a new transfer'
+hide_title: true
+hide_table_of_contents: true
+api: eJztV9tu4zYQ/RWCT+3C8j3xBUWBZDcFgj4kyOUpCbIUScXcSKSWpOJ4Df/7zpByrNjZbFIURVHUD7Iuw5nhmZkzwyX17M7R6RW9sEy7TFpHb1pUSMetKr0ymk7pRyuZl44wouWc+FqQVE7pO+JnkrhScpUpKYgzleWSMC0I6PBKM9QB956p3LVpi5bMskJ6NDS9WlIND2CCcW4q7W+VABGFRkvmZ3Bv5ddKWSno1NtKtqjjM1kwOl1SvyhxpfMW3KCrbacvwK/jT8RkwcNaP4gto/qZZEJaMFA7cCxkURovNV8kf8rF+yzLR1aUOb5TqCaBi0l6/cFwb59u+3VAKq2+VgBaWA4oAmzekNLKB6k9EVWZKw54E1NKG+BzbXLE+IycnpxfEHQLkCVFBRdYXEdFbfwn93LRJpfh0+UlYmCJVwUsAi+TlKHBaBz0Rs+n5HP0HJyW4PUokeNJCk9ikDB4Tob9/f3esDcadrvdz4Rca7q6iRCB2kMjFojLNmLcaHDI4ydWxl3BbjpfHAKx3AXUpF8k95gjFvfulXRhbRFC91O5B5ZXcjc+zfD0ul2MF6+sRaReF748/0RXq2YiXNU2GhpuQCAm/RsdvI0yPzXcoutCe8OKOfiHS5gQVjqHZfSCvK7ynKW4IMZns16MUtEfy2EyGUgI9qA3SMbjLk9YOumNxpJxMUhRfwYFrbli+a3SUN2+woC+21o64GJvlIE1+CVD1pcJG4/HSZqNxiJjY77fHwbkwUJYsOamIy1Ko0IZ0wa9/I/8P4j8VkHUxflUBM8Dc7OrKTaTs8gcoC4qdCXQXIxVv9vDvy02XzcdV3EOOGewxQXhQRe2jAbVfOh8eA+7vAzhBrJJBuHoZXvJuCuyZMj3ZDJJ9wGySbY3AoIc7oth2EbYCXS2mRHYvowLtrCLTWmn7j+us9x0ulXHP/VcwE/ah3VTrGyOLcr70k07HVaqdmpZLtuPi287/eTUGlHx0GWjisDMTgJDKb8I6g4ls9IeVOjK1U3z8zmCFHFoCj3hgS7QuvWF/AlCOz5gr8EuG3VAN7uXGhqVr6yGXpNZU4TPqJzIOpPIg2LkBF/1Cc8VBO8WwingH5LckSw38zY51jyvRFQetSodHq4prjRWfQuJNl2b/i1I/X5NSWzwbexUEBfsOWebbnW0Dm+zu9T9IzSJZo9Ys8KG5pt0Er7uUEbkhee08LZaf63U31i/O+T4L/d3hSNfZkLe1WxxiPlOjp2rQHWcJ08sZCEUaJwoD06PwTRWTEzBfrvb7u4kZlTjqrI01juYepAWOaQfUU3Vpqm6BSkKYjibpTjiAhw4+4IYrHQL52XhcGCL5IPZqCwxc93QHsWBk8A/T1Lp5xJSN1PMhw9NQSdZkYOJHEa2P7BQGj4aDaNy6VowxGb1XVg+Z2X0AEZASObwsmQLU3mQCHUYtg0QkYLdg/PKE8ncAteklcqbHsTNQpWWkUdcqJhW4K+CheypJ+RI3FuHgG3Elxsm/nuPDXWaevnoO2XOVHAy8OSyJtmr9SEC2XT67EDhm2ebGTIzSC+XOApf2ny1wtfADRbpEm4fmFWxfwJ5CuUCQHSaAS/JV/b7y1ndF38lLx8+frCL+iXTeOpYkxDcwhj//GS0wmGzPrj8Zdf+K+ePH4AZQds9zT3hiifAKPQxwpNcoJ6NxM5RZbPiAGaP0jdkcdbAfvrU9hEi+J7WJ6LCCBSzbI4HSriGwJoQodB1w7slzZm+q9gdykaT+PsOPh9PUg==
+sidebar_class_name: 'post api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Create a new transfer'}></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/transfers'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Creates a new transfer using the specified source and destination details.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-demo-123456',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`  \n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            amount: {
+              type: 'object',
+              properties: {
+                value: { type: 'string', example: '100' },
+                currency: { type: 'string', example: 'USD' },
+              },
+              required: ['value', 'currency'],
+            },
+            source: {
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  type: 'string',
+                  nullable: true,
+                  example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                },
+                financial_institution_id: {
+                  type: 'string',
+                  nullable: true,
+                  example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                },
+              },
+              title: 'TransferEndpoint',
+            },
+            destination: {
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  type: 'string',
+                  nullable: true,
+                  example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
+                },
+                financial_institution_id: {
+                  type: 'string',
+                  nullable: true,
+                  example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
+                },
+              },
+              title: 'TransferEndpoint',
+            },
+          },
+          required: ['amount', 'source', 'destination'],
+          title: 'TransferCreateRequest',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Transfer successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: { id: { type: 'string', example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4' } },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

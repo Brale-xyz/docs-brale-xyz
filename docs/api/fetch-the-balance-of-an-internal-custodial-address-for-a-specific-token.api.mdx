@@ -1,0 +1,111 @@
+---
+id: fetch-the-balance-of-an-internal-custodial-address-for-a-specific-token
+title: 'Fetch the balance of an internal (custodial) address for a specific token'
+description: 'Returns balance data for a given address, chain, and token.   Provide `transfer_type` and `value_type` as query parameters.'
+sidebar_label: 'Fetch the balance of an internal (custodial) address for a specific token'
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVm1v2zYQ/isHfkoKw84ydEWNYUCSplv6pUFekHZJkFDUOeYikQpJOVEN//fekZKtvG4pNuyTROp099zbczcXQV55MT4VW3nu0Hv04nwgcvTK6Spoa8RYHGConfGQyUIahZDLIGFiHUi40jM0INO/A1BTqc0ApMkh2Gs0QwDYd3amc4TL4KTxE3QXoanwMgpdzmRRY3fh4aZG10AlnSwxoPPDMyMGYnUmoHNh6ECopFK2NuFC5ySiGWclw5TeHd7U2mEuxsHVOBBeTbGUYjwXbIfkfHDaXInFQz+Ppgh7H8BOINBbq5/EViaTn/+dyaS/b/Je0DqrMUz3zE5k4V9rNyusuo4ZAzQz7awp0QRYw+HVcACHlpItB7BLwBzW5Xof1Spt/y4kH2RWoLIEKdYPUJGp2jk0qgFlcxSLc7bhK2u4VEnr5sYGPx7raoMJOQapCx/rratgbSaWwCprArnM/78ZveHHI7Q2+wtV4CJ0tkIXdLJKQEPtH3s1EHgny6rgK2X5JSC7muL2kvRO7YMt0cGXr39CPORaFnAiC9LBKrrieFHLu5/rJrz/43r35u59djT9+uVEHm/v//LOn3j9adc3n966wx2NH+7elhHXvfLq65bOSc6nDlg+YXPRM3oqUq2Ic7ptI/xPVD0T2lbDy37+RFkna706fFH8cHtHLNhdHeJ5u7Wx6F+2DNh+O2iLjGVYighoaqmsxRVGzNz4YzFqWcKP5is+WoxkR6Z0veSMxWgZHGoLdLOO0GpXkKppCJUfj0ay0sPMyQKHd8038bBLiE3zWvEBkorYER6pS3RoorptlA7dVs0AT8/7nw+5ulOU+0LLyDEE0bYsn7Mo9AjDscdIV0lH26kuDgnMYeJsGT+zcmKWvKJ2DjDTEj7z1SaoQlPXXSiiCXpSlXuYFPZ2CHtGFXWelCetTAR0OBP8p3X6m2QM4870r1HqtzMBU5Q5Op4XnKzY3+xXl2+OJ+x5X8f2Zyr47MhLKpWoELb298hNzkhycXO4Mdx45HhS4+uqsi74PlvpvmrbVz2gEJAYVSRktdcmlkUUoz9947kpyFmgaMgQXdcO7K3paU/iRFaEL0CG4RYpNBMtQ/zQF/Qoy4JMFM0QPnIiehitoTFa0ZS2k0n7Fn+/lVVCEEmniZeVbGwdSCLmObpNIYJSXhN4HQClb/ifrNZFH0FylqqgSnUaJzglpLI+lNJwTtoR8hGDmkb1HSnTEJSccRr0hphvTXUkuL7k8rR0+AqVnmiVauRhluYrWv/fN5e2rwLehVFVkAWORWz3ecsgp90ew6QwvrfTLEkkfumvHkseod6eUmRZzXyeSY/Hrlgs+DrNY6aDXPuYkuVEfjZaP7IUPOPjNTZPLC8xZnQfV4nX4fr7zeBFJPcWlhWMcz44zapfGau1g3bRWYen18Zn4HQz0TR9IB3MXv5fF6Ln4bRbw4/BWRXdgod7ItkYqSSwpRRWofcrr1Ec1eW0/H33iBj5O8esUA8=
+sidebar_class_name: 'get api-method'
+info_path: docs/api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Fetch the balance of an internal (custodial) address for a specific token'}
+></Heading>
+
+<MethodEndpoint
+  method={'get'}
+  path={'/accounts/{account_id}/addresses/{address_id}/balances'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Returns balance data for a given address, chain, and token. Provide `transfer_type` and `value_type` as query parameters.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the account',
+    },
+    {
+      name: 'address_id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the address',
+    },
+    {
+      name: 'transfer_type',
+      in: 'query',
+      required: false,
+      schema: { type: 'string' },
+      description: 'The blockchain environment (e.g., Solana, Ethereum)',
+    },
+    {
+      name: 'value_type',
+      in: 'query',
+      required: false,
+      schema: { type: 'string' },
+      description: 'The stablecoin token or currency code',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'The address details and balance info',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              status: { type: 'string', example: 'complete' },
+              name: { type: 'string', example: 'Customer XYZ Custodial Wallet' },
+              address: { type: 'string', example: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me' },
+              transfer_types: { type: 'array', items: { type: 'string' }, example: ['Solana'] },
+              balances: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    balance: { type: 'string', example: '100' },
+                    value_type: { type: 'string', example: 'SBC' },
+                  },
+                  title: 'Balance',
+                },
+              },
+            },
+            title: 'AddressBalanceResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

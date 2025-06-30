@@ -1,30 +1,236 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Import Tailwind layers first */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Light mode styles: you can override the default Infima variables here. */
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
+  --brale-border-color: #d0d5dd;
+  --brale-border-color-hover: #98a2b3;
+  --brale-border-radius: 0.25rem;
+  --brale-border-radius-card: 0.75rem;
+  --brale-background-color: #f2f4f7;
+  --brale-background-color-secondary: #ffffff;
+  --brale-text-color-primary: #000000;
+  --brale-text-color-secondary: #374151;
+  --brale-text-color-tertiary: #6938ef;
+
+  --ifm-background-color: var(--brale-background-color) !important;
+  --ifm-breadcrumb-item-background-active: var(--brale-background-color-secondary);
+  --ifm-heading-color: var(--brale-text-color-primary);
+  --ifm-navbar-background-color: var(--brale-background-color);
+  --ifm-card-background-color: var(--brale-background-color-secondary);
+  --ifm-card-border-radius: var(--brale-border-radius-card);
+  --ifm-code-border-radius: var(--brale-border-radius);
+  --ifm-color-primary: #000000;
+  --ifm-code-background: var(--brale-background-color-secondary);
+  --ifm-code-font-size: 90%;
+  --ifm-font-color-base: var(--brale-text-color-secondary);
+  --ifm-menu-color: var(--brale-text-color-secondary);
+  --ifm-menu-color-active: var(--brale-text-color-tertiary);
+  --ifm-menu-color-background-active: var(--brale-background-color-secondary);
+  --ifm-menu-color-background-hover: var(--brale-background-color-secondary);
+  --ifm-pagination-nav-border-radius: var(--brale-border-radius-card);
+  --ifm-toc-border-color: var(--brale-border-color) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+:root .card:hover,
+:root .card[class^='cardContainer']:hover,
+.pagination-nav__link.pagination-nav__link--prev:hover,
+.pagination-nav__link.pagination-nav__link--next:hover {
+  border: 1px solid var(--brale-border-color-hover);
+}
+
+div[class*='codeBlockContainer_'],
+div[class*='codeBlockContent_'] pre.prism-code[class*='codeBlock_'],
+pre.prism-code[class*='codeBlock_'] span[class*='codeLineNumber_'] {
+  background-color: var(--brale-background-color-secondary) !important;
+}
+
+div[class*='codeBlockContainer_'],
+div[class*='codeBlockContent_'],
+code[class*='codeBlockLines_'],
+pre[class*='codeBlock_'] {
+  border-radius: var(--brale-border-radius-card);
+  box-shadow: none;
+}
+
+:is(p, ul, td, h1, h2, h3, h4, h5, h6) code,
+table th,
+table td,
+div[class*='codeBlockContainer_'] {
+  border: 1px solid var(--brale-border-color);
+}
+
+div[class*='codeBlockTitle_'],
+table thead tr,
+.navbar {
+  border-bottom: 1px solid var(--brale-border-color);
+}
+
+main article .theme-doc-markdown.markdown {
+  --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: none;
+}
+
+nav.menu.thin-scrollbar {
+  padding: 0.5rem;
+}
+
+thead,
+tbody {
+  width: 100%;
+}
+
+.breadcrumbs__link {
+  color: var(--brale-text-color-secondary);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link,
+:root .card,
+:root .card[class^='cardContainer'],
+.pagination-nav__link.pagination-nav__link--prev,
+.pagination-nav__link.pagination-nav__link--next {
+  box-shadow: none !important;
+  border: 1px solid var(--brale-border-color);
+}
+
+.menu__caret:hover {
+  background: none;
+}
+
+.navbar {
+  box-shadow: none;
+}
+
+.navbar__link {
+  font-size: 14px;
+}
+
+.pagination-nav__sublabel {
+  color: var(--brale-text-color-secondary);
+}
+
+.table-of-contents__link.toc-highlight.table-of-contents__link--active {
+  color: var(--brale-text-color-tertiary);
+}
+
+.theme-doc-sidebar-item-link,
+.theme-doc-sidebar-item-link-level-1,
+.theme-doc-sidebar-item-category > div {
+  border-radius: var(--brale-border-radius-sidebar);
+  font-size: 14px;
+}
+
+/* Dark mode styles: for readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --brale-border-color-dark: #424242;
+  --brale-border-color-dark-hover: #5c5c5c;
+  --brale-background-color-dark: #000000;
+  --brale-background-color-dark-secondary: #18181b;
+  --brale-text-color-primary-dark: #ffffff;
+  --brale-text-color-secondary-dark: #d1d5db;
+  --brale-text-color-tertiary-dark: #8791a4;
+
+  --ifm-background-color: var(--brale-background-color-dark) !important;
+  --ifm-breadcrumb-item-background-active: var(--brale-background-color-dark-secondary);
+  --ifm-heading-color: var(--brale-text-color-primary-dark);
+  --ifm-navbar-background-color: var(--brale-background-color-dark);
+  --ifm-card-background-color: var(--brale-background-color-dark-secondary);
+  --ifm-code-background: var(--brale-background-color-dark-secondary);
+  --ifm-color-primary: #ffffff;
+  --ifm-font-color-base: var(--brale-text-color-secondary-dark);
+  --ifm-menu-color-background-active: var(--brale-background-color-dark-secondary);
+  --ifm-menu-color-background-hover: var(--brale-background-color-dark-secondary);
+  --ifm-menu-color: var(--brale-text-color-tertiary-dark);
+  --ifm-menu-color-active: var(--brale-text-color-primary-dark);
+  --ifm-toc-border-color: var(--brale-border-color-dark) !important;
+  --ifm-toc-link-color: var(--brale-text-color-tertiary-dark);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] div[class*='codeBlockContainer_'],
+[data-theme='dark'] div[class*='codeBlockContent_'] pre.prism-code[class*='codeBlock_'],
+[data-theme='dark'] pre.prism-code[class*='codeBlock_'] span[class*='codeLineNumber_'] {
+  background-color: var(--brale-background-color-dark-secondary) !important;
+}
+
+[data-theme='dark'] :is(p, ul, td, h1, h2, h3, h4, h5, h6) code,
+[data-theme='dark'] table th,
+[data-theme='dark'] table td,
+[data-theme='dark'] td code,
+[data-theme='dark'] div[class*='codeBlockContainer_'] {
+  border: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] div[class*='codeBlockTitle_'],
+[data-theme='dark'] table thead tr,
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] .breadcrumbs__link {
+  color: var(--brale-text-color-tertiary-dark);
+}
+
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link,
+[data-theme='dark'] .card,
+[data-theme='dark'] .card[class^='cardContainer'],
+[data-theme='dark'] .pagination-nav__link,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--prev,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--next {
+  border: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] .card:hover,
+[data-theme='dark'] .card[class^='cardContainer']:hover,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--prev:hover,
+[data-theme='dark'] .pagination-nav__link.pagination-nav__link--next:hover {
+  border: 1px solid var(--brale-border-color-dark-hover);
+}
+
+[data-theme='dark'] .pagination-nav__sublabel {
+  color: var(--brale-text-color-tertiary-dark);
+}
+
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link,
+[data-theme='dark'] .menu__link:hover,
+[data-theme='dark'] .table-of-contents__link.toc-highlight.table-of-contents__link--active {
+  color: var(--brale-text-color-primary-dark);
+}
+
+/* Add any custom Tailwind styles in a layer to prevent conflicts */
+@layer components {
+  .global-border {
+    @apply border border-solid border-gray-300 dark:border-gray-700;
+  }
+
+  .global-rounded {
+    @apply rounded-xl;
+  }
+
+  article img {
+    @apply global-border global-rounded;
+  }
+
+  .border-primary {
+    @apply border-gray-300 dark:border-gray-700;
+  }
+
+  .bg-secondary {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
 }

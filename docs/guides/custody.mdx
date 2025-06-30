@@ -1,0 +1,59 @@
+---
+sidebar_position: 6
+title: 'Custody'
+hide_title: true
+sidebar_label: 'Custody'
+---
+
+<Intro heading="Custody" subheading="Hold stablecoins on behalf of your end customers." />
+
+Brale enables businesses to hold fiat-backed stablecoins on behalf of their end users—unlocking powerful digital dollar experiences for wallets, marketplaces, fintech apps, and neobanks. Use stablecoins as account balances, enable fast transfers, or power embedded payouts.
+
+:::info
+Custody is available to approved business Accounts operating in supported geographies. It is not available for individuals.
+:::
+
+## What It Does
+
+Custody lets you:
+
+- Create and manage custodial wallets for end users
+- Hold stablecoin balances across all supported chains
+- Initiate transfers and payouts directly from custodied funds
+- Earn revenue share on idle balances of Brale-issued stablecoins
+
+## How It Works
+
+All Brale Accounts support custodial wallets on all supported chains out of the box—no custom wallet infrastructure required.
+
+## Who It's For
+
+Use cases include:
+
+- Wallets that want to show balances and enable transactions
+- Neobanks offering digital dollar accounts
+- Marketplaces holding funds for sellers or escrow
+- Fintech platforms embedding payments or savings
+
+## How It Works
+
+1. **Create Wallets**  
+   When you [register an Account](/docs/key-concepts/accounts), custodial wallets are created automatically on all supported chains. There's no additional setup required.
+2. **Receive Deposits**  
+   You or your users can send stablecoins directly to custodial wallet addresses. Just [fetch wallet addresses](/docs/key-concepts/addresses) and fund them.
+3. **Track Balances**  
+   Use the Balances endpoint to query stablecoin holdings across all wallets and chains.
+4. **Initiate Payouts**  
+   Send funds from any custodial wallet using the [Transfers](/docs/key-concepts/transfers) endpoint. This supports on-chain transfers, off-chain payouts, and more.
+5. **Earn Revenue Share**  
+   When using your own stablecoin, you earn a share of revenue on all custodied assets.
+
+## Related API References
+
+POST /accounts - Register an account
+
+GET /addresses - Fetch custodial wallet addresses. Custodial wallets have type `internal`
+
+GET /balances - View wallet balances
+
+POST /transfers - Initiate transfers and payouts
