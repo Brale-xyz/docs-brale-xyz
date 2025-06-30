@@ -4,6 +4,9 @@ on:
   push: { branches: [main] }
   pull_request:
 
+env:
+  FONT_AWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONT_AWESOME_NPM_AUTH_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
