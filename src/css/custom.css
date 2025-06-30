@@ -249,7 +249,7 @@ tbody {
   border: 1px solid var(--brale-border-color);
   border-radius: var(--brale-border-radius-card);
   box-shadow: none;
-  overflow: clip;
+  overflow: scroll;
 }
 
 .theme-api-markdown .openapi-explorer__request-form:hover,
@@ -419,7 +419,7 @@ tbody {
   .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
   border-radius: var(--brale-border-radius-card);
   border: 1px solid var(--brale-border-color-dark);
-  overflow: clip;
+  overflow: scroll;
 }
 
 [data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active,
