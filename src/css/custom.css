@@ -386,6 +386,12 @@ tbody {
   padding: 4px 6px;
 }
 
+[data-theme='dark'] .openapi-tabs__code-item--http::after,
+[data-theme='dark'] .openapi-tabs__code-item--rust::after,
+[data-theme='dark'] .openapi-tabs__code-item--shell::after {
+  filter: brightness(0) invert(1);
+}
+
 [data-theme='dark'] .pagination-nav__sublabel {
   color: var(--brale-text-color-tertiary-dark);
 }

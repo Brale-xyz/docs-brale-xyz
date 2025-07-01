@@ -73,6 +73,63 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    languageTabs: [
+      {
+        language: 'javascript',
+      },
+      {
+        language: 'python',
+      },
+      {
+        highlight: 'bash',
+        language: 'curl',
+      },
+      {
+        language: 'csharp',
+      },
+      {
+        language: 'go',
+      },
+      {
+        language: 'nodejs',
+      },
+      {
+        language: 'ruby',
+      },
+      {
+        language: 'php',
+      },
+      {
+        language: 'java',
+      },
+      {
+        language: 'powershell',
+      },
+      {
+        language: 'dart',
+      },
+      {
+        language: 'c',
+      },
+      {
+        language: 'objective-c',
+      },
+      {
+        language: 'ocaml',
+      },
+      {
+        language: 'r',
+      },
+      {
+        language: 'swift',
+      },
+      {
+        language: 'kotlin',
+      },
+      {
+        language: 'rust',
+      },
+    ],
     navbar: {
       logo: {
         alt: 'Brale logo',
