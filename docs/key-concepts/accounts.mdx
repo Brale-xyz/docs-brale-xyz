@@ -20,7 +20,7 @@ Customers can also self onboard at https://app.brale.xyz/signup.
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "business_name": "ABC Company Inc",
   "ein": "111-11-1111",
@@ -57,7 +57,7 @@ Brale will review the Account and return a `status` field denoting the customer'
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/:id" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "status": "complete",
   "business_name": "ABC Company Inc"

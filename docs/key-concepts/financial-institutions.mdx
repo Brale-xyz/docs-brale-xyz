@@ -24,7 +24,7 @@ Link your customer's bank account by adding it to their Account.
   endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
 />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
     "owner": "Jane Doe",
     "account_number": "1234567890",
@@ -62,7 +62,7 @@ Retrieve details of a linked financial institution by ID.
   endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/:id"
 />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "2O0bbQgbSL52PktkiTgv3yq3hiB",
   "name": "Example Bank",
@@ -92,7 +92,7 @@ This guide walks you through how to enable your customers to securely link their
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/financial_institution/plaid_link_token" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "link_token": "link_token_XYZ",
   "expires_at": "2025-03-23T03:22:34.086Z",
@@ -120,7 +120,7 @@ Once the user completes linking, you'll receive a `public_token`. You must excha
 POST https://api.brale.xyz/financial_institution/exchange_public_token
 ```
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "public_token": "public_token_XYZ"
 }
@@ -134,7 +134,7 @@ Shortly after exchanging the public token, the user’s bank accounts are idempo
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/financial_institutions/:id" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "name": "Business Checking Account",
   "transfer_type": ["ACH", "Wire"],

@@ -26,7 +26,7 @@ Create an automation to receive USD and automatically mint SBC to a Solana walle
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "name": "XYZ Onramp",
   "type": "USD",
@@ -38,7 +38,7 @@ Create an automation to receive USD and automatically mint SBC to a Solana walle
 }
 ```
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "string"
 }
@@ -50,7 +50,7 @@ Retrieve all automations associated with a customer Account.
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "automations": [
     {

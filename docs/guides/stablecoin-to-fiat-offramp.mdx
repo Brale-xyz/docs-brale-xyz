@@ -34,7 +34,7 @@ Here is an example of directly adding a financial institution.
   endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
 />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "name": "Company ABC Checking",
   "transfer_type": ["Ach", "Wire"],
@@ -60,7 +60,7 @@ Here is an example of directly adding a financial institution.
 }
 ```
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "2AbCdEfGHiJkLmN0pQrStUvWxYz"
 }
@@ -72,7 +72,7 @@ Once your customer has a Financial Institution and stablecoins are held in a Bra
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "amount": {
     "value": "100",

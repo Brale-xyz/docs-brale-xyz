@@ -35,7 +35,7 @@ This endpoint returns all addresses (whether internal or external) linked to the
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/addresses" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "addresses": [
     {
@@ -84,7 +84,7 @@ You can query the stablecoin balance of an internal address.
   endpoint="https://api.brale.xyz/accounts/account_id/addresses/address_id/balances?transfer_type=chain&value_type=token"
 />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "balance": {
     "amount": {
@@ -103,7 +103,7 @@ External addresses enable users to deposit stablecoins into or withdraw stableco
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "name": "User Ethereum Wallet",
   "transfer_types": ["Ethereum", "Avalanche", "Polygon"],
@@ -114,7 +114,7 @@ External addresses enable users to deposit stablecoins into or withdraw stableco
 }
 ```
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b"
 }

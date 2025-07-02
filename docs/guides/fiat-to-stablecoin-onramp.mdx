@@ -23,7 +23,7 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "amount": {
     "value": "100",
@@ -41,7 +41,7 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 }
 ```
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "transfer_123",
   "status": "pending",
@@ -72,7 +72,7 @@ Query a transfer that has been created through:
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/transfers/:id" />
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "status": "pending",
   "amount": {
@@ -102,7 +102,7 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "name": "XYZ Automation",
   "destination": {
@@ -115,7 +115,7 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 
 The response will return the unique account number and routing number to direct to your customer.
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "name": "XYZ Onramp",
   "status": "complete",

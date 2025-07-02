@@ -69,7 +69,7 @@ curl --request POST \
   }'
 ```
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "2vmNl7oBpIaM3lANbcsVPxXFHlG"
 }
@@ -82,7 +82,7 @@ curl --request POST \
 
 The transfer will be opened in a pending state until funds are received. When initiating a fiat to stablecoin transfer via wire, we will return a set of `wire_instructions` so you can provide them to your customer.
 
-```json title="Response" showLineNumbers
+```json title="Response"
 {
   "id": "transfer_123",
   "status": "pending",
@@ -113,7 +113,7 @@ Offramp your stablecoin to USD via wire transfer.
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "amount": {
     "value": "1",
@@ -141,7 +141,7 @@ Swap USDC to your own stablecoin (YSBC). All stablecoin swaps are 1:1 with no sl
 POST https://api.brale.xyz/accounts/account_id/transfers
 ```
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "amount": {
     "value": "100",
@@ -166,7 +166,7 @@ Process stablecoin payouts to one or many external addresses (EOAs).
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-```json title="Request" showLineNumbers
+```json title="Request"
 {
   "amount": {
     "value": "500",

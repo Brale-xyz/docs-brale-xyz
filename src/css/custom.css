@@ -7,8 +7,7 @@
 :root {
   --brale-border-color: #d0d5dd;
   --brale-border-color-hover: #98a2b3;
-  --brale-border-radius: 0.25rem;
-  --brale-border-radius-card: 0.75rem;
+  --brale-border-radius: 6px;
   --brale-background-color: #f2f4f7;
   --brale-background-color-secondary: #ffffff;
   --brale-text-color-primary: #000000;
@@ -20,7 +19,7 @@
   --ifm-heading-color: var(--brale-text-color-primary);
   --ifm-navbar-background-color: var(--brale-background-color);
   --ifm-card-background-color: var(--brale-background-color-secondary);
-  --ifm-card-border-radius: var(--brale-border-radius-card);
+  --ifm-card-border-radius: var(--brale-border-radius);
   --ifm-code-border-radius: var(--brale-border-radius);
   --ifm-color-danger: #f04438;
   --ifm-color-primary: #000000;
@@ -32,7 +31,7 @@
   --ifm-menu-color-active: var(--brale-text-color-tertiary);
   --ifm-menu-color-background-active: var(--brale-background-color-secondary);
   --ifm-menu-color-background-hover: var(--brale-background-color-secondary);
-  --ifm-pagination-nav-border-radius: var(--brale-border-radius-card);
+  --ifm-pagination-nav-border-radius: var(--brale-border-radius);
   --ifm-toc-border-color: var(--brale-border-color) !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
@@ -56,7 +55,7 @@ div[class*='codeBlockContainer_'],
 div[class*='codeBlockContent_'],
 code[class*='codeBlockLines_'],
 pre[class*='codeBlock_'] {
-  border-radius: var(--brale-border-radius-card);
+  border-radius: var(--brale-border-radius);
   box-shadow: none;
 }
 
@@ -109,7 +108,7 @@ tbody {
   font-size: 0.75em;
   font-weight: 600;
   padding: 0.15em 0.6em;
-  border-radius: 6px;
+  border-radius: var(--brale-border-radius);
   background-color: rgba(211, 248, 223, 1);
   border: 1px solid rgba(74, 222, 128, 1);
   color: rgba(22, 101, 52, 1);
@@ -123,7 +122,7 @@ tbody {
   font-size: 0.75em;
   font-weight: 600;
   padding: 0.15em 0.6em;
-  border-radius: 6px;
+  border-radius: var(--brale-border-radius);
   background-color: rgba(219, 234, 254, 1);
   border: 1px solid rgba(96, 165, 250, 1);
   color: rgba(30, 64, 175, 1);
@@ -148,6 +147,17 @@ tbody {
   border: 1px solid var(--brale-border-color);
 }
 
+.menu__list-item--collapsed .menu__link--sublist:after,
+.menu__list-item--collapsed .menu__caret:before {
+  opacity: 0.5;
+  transform: scale(0.75) rotateZ(90deg);
+}
+
+.menu__link--sublist-caret::after {
+  opacity: 0.5;
+  transform: scale(0.75) rotate(180deg);
+}
+
 .menu__caret:hover {
   background: none;
 }
@@ -165,7 +175,7 @@ tbody {
 .openapi-explorer__form-item-input {
   background-color: var(--brale-background-color-secondary) !important;
   border: 1px solid var(--brale-border-color) !important;
-  border-radius: 6px;
+  border-radius: var(--brale-border-radius);
 }
 
 .openapi-explorer__form-item-input:hover,
@@ -210,10 +220,21 @@ tbody {
   border: 1px solid var(--brale-border-color-hover);
 }
 
+.theme-doc-footer-edit-meta-row {
+  border: 1px solid var(--brale-border-color);
+  border-radius: var(--brale-border-radius);
+  margin: 0;
+  padding: 6px 0px;
+}
+
+.theme-doc-sidebar-item-category-level-1:not(:last-of-type) > ul > li:last-of-type {
+  padding-bottom: 1rem;
+}
+
 .theme-doc-sidebar-item-link,
 .theme-doc-sidebar-item-link-level-1,
 .theme-doc-sidebar-item-category > div {
-  border-radius: var(--brale-border-radius-sidebar);
+  border-radius: var(--brale-border-radius);
   font-size: 14px;
 }
 
@@ -247,7 +268,7 @@ tbody {
 .theme-api-markdown
   .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
   border: 1px solid var(--brale-border-color);
-  border-radius: var(--brale-border-radius-card);
+  border-radius: var(--brale-border-radius);
   box-shadow: none;
   overflow: scroll;
 }
@@ -361,7 +382,7 @@ tbody {
 [data-theme='dark'] .openapi-explorer__form-item-input {
   background-color: var(--brale-background-color-dark-secondary) !important;
   border: 1px solid var(--brale-border-color-dark) !important;
-  border-radius: 6px;
+  border-radius: var(--brale-border-radius);
 }
 
 [data-theme='dark'] .openapi-explorer__form-item-input:hover,
@@ -423,9 +444,13 @@ tbody {
 [data-theme='dark']
   .theme-api-markdown
   .tabs-container.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
-  border-radius: var(--brale-border-radius-card);
+  border-radius: var(--brale-border-radius);
   border: 1px solid var(--brale-border-color-dark);
   overflow: scroll;
+}
+
+[data-theme='dark'] .theme-doc-footer-edit-meta-row {
+  border: 1px solid var(--brale-border-color-dark);
 }
 
 [data-theme='dark'] .theme-api-markdown .openapi-tabs__response-code-item.success.active,
@@ -468,15 +493,4 @@ tbody {
   .bg-secondary {
     @apply bg-gray-100 dark:bg-gray-900;
   }
-}
-
-.menu__list-item--collapsed .menu__link--sublist:after,
-.menu__list-item--collapsed .menu__caret:before {
-  opacity: 0.5;
-  transform: scale(0.75) rotateZ(90deg);
-}
-
-.menu__link--sublist-caret::after {
-  opacity: 0.5;
-  transform: scale(0.75) rotate(180deg);
 }
