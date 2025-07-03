@@ -17,9 +17,9 @@ Brale distinguishes between internal and external addresses:
 
 Whether internal or external, all addresses possess:
 
-- `name` - A user-friendly label to identify the wallet.
-- `address` - The unique wallet address on a specific blockchain (EVM, Solana, etc.).
-- `transfer_types` - The blockchains the wallet supports. See Supported Chains for the full list. Each address is associated with only one blockchain environment (e.g., Solana, EVM).
+- `name`: A user-friendly label to identify the wallet.
+- `address`: The unique wallet address on a specific blockchain (EVM, Solana, etc.).
+- `transfer_types`: The blockchains the wallet supports. See Supported Chains for the full list. Each address is associated with only one blockchain environment (e.g., Solana, EVM).
 
 ## Custodial (Internal) Addresses
 
@@ -81,19 +81,21 @@ You can query the stablecoin balance of an internal address.
 
 <HTTPMethod
   method="GET"
-  endpoint="https://api.brale.xyz/accounts/account_id/addresses/address_id/balances?transfer_type=chain&value_type=token"
+  endpoint="https://api.brale.xyz/accounts/account_id/addresses/address_id/balance?transfer_type=chain&value_type=token"
 />
 
 ```json title="Response"
 {
+  "address": {
+    "id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "address": "0xcdEA458750b9A8D6C4Ba8B3D68CE98Ba2330352A"
+  },
   "balance": {
-    "amount": {
-      "value": "100",
-      "currency": "USD"
-    },
-    "value_type": "ysbc",
-    "transfer_type": "base"
-  }
+    "value": "45314.07",
+    "currency": "USD"
+  },
+  "value_type": "SBC",
+  "transfer_type": "base"
 }
 ```
 
@@ -107,15 +109,18 @@ External addresses enable users to deposit stablecoins into or withdraw stableco
 {
   "name": "User Ethereum Wallet",
   "transfer_types": ["Ethereum", "Avalanche", "Polygon"],
-  "metadata": {
-    "key": "value"
-  },
   "address": "0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26"
 }
 ```
 
 ```json title="Response"
 {
-  "id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b"
+  "id": "2xNNDU0Ibrmw61XPL5Fh9BXnNjp",
+  "name": "User Ethereum Wallet",
+  "status": "active",
+  "type": "external",
+  "address": "0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26",
+  "created": "2025-05-20T20:54:11.063281Z",
+  "transfer_types": ["Ethereum", "Avalanche", "Polygon"]
 }
 ```

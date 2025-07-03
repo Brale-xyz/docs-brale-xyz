@@ -16,40 +16,71 @@ To KYB and approve an account, we collect key details such as business name and 
 Customers can also self onboard at https://app.brale.xyz/signup.
 :::
 
-## Creating a customer
+## Creating an account
+
+You are required to pass in business information, controller information, and ultimate beneficial owner information.
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts" />
 
 ```json title="Request"
 {
   "business_name": "ABC Company Inc",
-  "ein": "111-11-1111",
-  "business_type": "Corporation",
+  "ein": "12-3456789",
   "address": {
     "street_line_1": "123 Main St",
     "street_line_2": "Apt C",
     "city": "Des Moines",
-    "state": "Iowa",
-    "zip": "12345",
-    "country": "USA"
+    "state": "IA",
+    "zip": "12345"
   },
   "phone_number": "2134678902",
   "email": "mark@example.com",
   "website": "abccompany.com",
   "business_controller": {
-    "name": "John Doe",
+    "first_name": "John",
+    "last_name": "Doe",
     "ssn": "222-22-2222",
+    "dob": "1981-01-25",
+    "email": "john@company.com",
+    "phone_number": "2154688987",
+    "ownership_percentage": "50",
     "address": {
       "street_line_1": "456 Elm St",
       "street_line_2": "Suite 5",
       "city": "Chicago",
-      "state": "Illinois",
-      "zip": "60601",
-      "country": "USA"
+      "state": "IL",
+      "zip": "60601"
     }
+  },
+  "beneficial_owners": [
+    {
+      "first_name": "Bob",
+      "last_name": "Nguyen",
+      "ssn": "888-77-6666",
+      "dob": "1981-11-02",
+      "email": "bob@skylineanalytics.io",
+      "phone_number": "2675550456",
+      "ownership_percentage": "50",
+      "address": {
+        "street_line_1": "301 Chestnut Street",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zip": "19106"
+      }
+    }
+  ],
+  "tos_attestation": {
+    "version": "2025-04-01",
+    "accepted_at": "2025-05-13 20:45:15Z",
+    "ip": "203.0.113.42", // Optional
+    "user_agent": "Mozilla/5.0 ..." // Optional
   }
 }
 ```
+
+### Presenting the Brale End-User Agreement
+
+Partners must show the exact Brale End-User Agreement (EUA) to their end users before calling `POST` `/accounts` and capture consent. The most recent version is hosted at <ExternalLink href="https://brale.xyz/legal/end-user-agreement" title="View Brale End-User Agreement">https://brale.xyz/legal/end-user-agreement</ExternalLink>.
 
 ## Account Status
 
@@ -59,9 +90,10 @@ Brale will review the Account and return a `status` field denoting the customer'
 
 ```json title="Response"
 {
-  "status": "complete",
-  "business_name": "ABC Company Inc"
-  //	...
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
+  "name": "ABC Company",
+  "status": "pending",
+  "created": "2023-09-19T14:46:20"
 }
 ```
 
@@ -80,5 +112,5 @@ All resources in the Brale API (Addresses, Financial Institutions, Transfers, Au
 :::info[Path Rule]
 
 Every endpoint that contains `{account_id}` must be called by including the account ID in the path.
-E.g. `GET https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/addresses`. Do not send the account ID in the body or query string.
+E.g. `GET` `https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/addresses`. Do not send the account ID in the body or query string.
 :::

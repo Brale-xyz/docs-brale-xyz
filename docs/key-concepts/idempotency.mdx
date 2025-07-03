@@ -49,18 +49,18 @@ Most HTTP clients let you generate a UUID at call time or set a default header.
 
 ## Request Responses
 
-| Scenario                                 | Status                   | Body                                                                          |
-| ---------------------------------------- | ------------------------ | ----------------------------------------------------------------------------- |
-| First successful call                    | 201 Created              | Normal JSON response                                                          |
-| Retry with _same_ body                   | 201 Created              | _Same_ JSON as first call                                                     |
-| Retry with same key but _different_ body | 422 Unprocessable Entity | `{ "This Idempotency-Key can't be reused with a different payload or URI"" }` |
+| Scenario                                 | Status                        | Body                                                                          |
+| ---------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------- |
+| First successful call                    | `201`: `Created`              | Normal JSON response                                                          |
+| Retry with _same_ body                   | `201`: `Created`              | Same JSON as first call                                                       |
+| Retry with same key but _different_ body | `422`: `Unprocessable Entity` | `{ "This Idempotency-Key can't be reused with a different payload or URI"" }` |
 
 ## Troubleshooting
 
-| Error                           | Likely cause                            | Fix                                        |
-| ------------------------------- | --------------------------------------- | ------------------------------------------ |
-| **400 Missing Idempotency-Key** | Header omitted on POST/PUT              | Add a unique key (UUID).                   |
-| **422 Unprocessable Entity**    | Re-used key with different request body | Generate a fresh key per _logical_ action. |
+| Error                            | Likely cause                            | Fix                                        |
+| -------------------------------- | --------------------------------------- | ------------------------------------------ |
+| `400`: `Missing Idempotency-Key` | Header omitted on POST/PUT              | Add a unique key (UUID).                   |
+| `422`: `Unprocessable Entity`    | Re-used key with different request body | Generate a fresh key per _logical_ action. |
 
 ## Best Practices
 

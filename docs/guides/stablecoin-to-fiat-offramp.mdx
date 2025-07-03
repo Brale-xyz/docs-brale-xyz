@@ -16,10 +16,6 @@ In order to submit a stablecoin-to-fiat transaction, first you need to:
 - Create a Financial Institution which is your customer's bank account where Brale will deposit USD
 - Deposit stablecoins to a Brale custodial address (address with type `internal`)
 
-## Stablecoin to Fiat via Wire
-
-Here is an example of offramping to your own stablecoin (YSBC) via wire transfer by calling the Transfers endpoint with the destination `transfer_type` of `wire`.
-
 ## Link a Financial Institution to your customer's Account
 
 You can add financial institutions in two ways:
@@ -36,33 +32,35 @@ Here is an example of directly adding a financial institution.
 
 ```json title="Request"
 {
-  "name": "Company ABC Checking",
-  "transfer_type": ["Ach", "Wire"],
-  "metadata": {
-    "nickname": "Payroll Account",
-    "createdBy": "InternalUser123"
+  "owner": "Jane Doe",
+  "account_number": "1234567890",
+  "routing_number": "987654321",
+  "name": "Example Bank",
+  "beneficiary_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
   },
-  "bankDetails": {
-    "owner": "John Doe",
-    "accountNumber": "1234567890",
-    "routingNumber": "987654321",
-    "name": "Bank Corp",
-    "address": {
-      "streetLine1": "123 Mockingbird Lane",
-      "streetLine2": "Apt 4B",
-      "city": "Metropolis",
-      "state": "NY",
-      "zip": "10001",
-      "country": "US"
-    },
-    "accountType": "checking"
-  }
+  "bank_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "account_type": "checking"
 }
 ```
 
 ```json title="Response"
 {
-  "id": "2AbCdEfGHiJkLmN0pQrStUvWxYz"
+  "id": "2O0bbQgbSL52PktkiTgv3yq3hiB",
+  "name": "Example Bank",
+  "status": "active",
+  "created": "2023-04-05T13:15:17.273102Z",
+  "routingNumber": "987654321"
 }
 ```
 
@@ -79,7 +77,7 @@ Once your customer has a Financial Institution and stablecoins are held in a Bra
     "currency": "USD"
   },
   "source": {
-    "address_id": "string",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
     "value_type": "YSBC",
     "transfer_type": "Solana"
   },

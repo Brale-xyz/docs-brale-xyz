@@ -17,8 +17,8 @@ Each transfer requires both a source and a destination, which can be:
 
 Each source and destination includes:
 
-- `value_type` - The currency being transferred (USD, USDC, USDT, MXN, etc.)
-- `transfer_type` - The payment rail used (Wire, ACH, Polygon, Solana, SPEI, etc.)
+- `value_type`: The currency being transferred (USD, USDC, USDT, MXN, etc.)
+- `transfer_type`: The payment rail used (Wire, ACH, Polygon, Solana, SPEI, etc.)
 
 ## Required Fields
 
@@ -35,12 +35,12 @@ Each source and destination includes:
 
 ## Transfer Scenarios: understanding `value_type` and `transfer_type`
 
-| Flow                                | Source         | Destination                       | Description                                 |
-| ----------------------------------- | -------------- | --------------------------------- | ------------------------------------------- |
-| Onramp<br/>(Fiat → Stablecoin)      | USD / wire     | SBC / base                        | Mint SBC on base funded by wire deposit.    |
-| Offramp<br/>(Stablecoin → Fiat)     | SBC / solana   | USD / ACH                         | Redeem SBC on Solana to USD via ACH.        |
-| Swap<br/>(Stablecoin ↔ Stablecoin) | USDC / solana  | SBC / solana                      | 1:1 swap from USDC to SBC with no slippage. |
-| On-chain Payout                     | USDC / polygon | USDC / polygon (external address) | Pay a recipient wallet.                     |
+| Flow                                | Source         | Destination                       | Description                                |
+| ----------------------------------- | -------------- | --------------------------------- | ------------------------------------------ |
+| Onramp<br/>(Fiat → Stablecoin)      | USD / wire     | SBC / base                        | Mint SBC on base funded by wire deposit    |
+| Offramp<br/>(Stablecoin → Fiat)     | SBC / solana   | USD / ACH                         | Redeem SBC on Solana to USD via ACH        |
+| Swap<br/>(Stablecoin ↔ Stablecoin) | USDC / solana  | SBC / solana                      | 1:1 swap from USDC to SBC with no slippage |
+| On-chain Payout                     | USDC / polygon | USDC / polygon (external address) | Pay a recipient wallet                     |
 
 Every request is scoped to an account, so the path always starts with:
 
@@ -69,18 +69,116 @@ curl --request POST \
   }'
 ```
 
+When initiating a fiat to stablecoin transfer via wire, we will return a set of `wire_instructions` so you can provide them to your customer.
+
 ```json title="Response"
 {
-  "id": "2vmNl7oBpIaM3lANbcsVPxXFHlG"
+  "id": "2xNL6PAF0cbcQHyjMQJ2RKRfbD9",
+  "status": "pending",
+  "source": {
+    "value_type": "USD",
+    "transfer_type": "wire"
+  },
+  "destination": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "base"
+  },
+  "updated_at": "2025-05-20T20:36:48.147281Z",
+  "created_at": "2025-05-20T20:36:48.147281Z",
+  "amount": {
+    "value": "10",
+    "currency": "USD"
+  },
+  "note": null,
+  "wire_instructions": {
+    // Brale Bank instructions
+  }
 }
 ```
+
+## Stablecoin to USD (Wire Offramp or Payout)
+
+Offramp your stablecoin to USD via wire transfer.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "1",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "Polygon"
+  },
+  "destination": {
+    "financial_institution_id": "bank_12345",
+    "value_type": "USD",
+    "transfer_type": "wire",
+    "memo": "BRL*Transaction"
+  }
+}
+```
+
+## Stablecoin Swaps
+
+Swap USDC to your own stablecoin (YSBC). All stablecoin swaps are 1:1 with no slippage.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "USDC",
+    "transfer_type": "Solana"
+  },
+  "destination": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "YSBC",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+## Stablecoin Payout
+
+Process stablecoin payouts to one or many external addresses (EOAs).
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "500",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "Solana"
+  },
+  "destination": {
+    "address_id": "2xNL6PAF0cbcQHyjMQJ2RKRfbD9",
+    "value_type": "SBC",
+    "transfer_type": "Solana"
+  }
+}
+```
+
+## Retrieving Transfers
 
 <HTTPMethod
   method="GET"
   endpoint="https://api.brale.xyz/accounts/account_id/transfers/transfer_id"
 />
-
-The transfer will be opened in a pending state until funds are received. When initiating a fiat to stablecoin transfer via wire, we will return a set of `wire_instructions` so you can provide them to your customer.
 
 ```json title="Response"
 {
@@ -107,84 +205,6 @@ The transfer will be opened in a pending state until funds are received. When in
 }
 ```
 
-## Stablecoin to USD (Wire Offramp or Payout)
-
-Offramp your stablecoin to USD via wire transfer.
-
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
-
-```json title="Request"
-{
-  "amount": {
-    "value": "1",
-    "currency": "USD"
-  },
-  "source": {
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
-    "value_type": "ysbc",
-    "transfer_type": "Polygon"
-  },
-  "destination": {
-    "financial_institution_id": "bank_12345",
-    "value_type": "USD",
-    "transfer_type": "wire",
-    "memo": "BRL*Transaction"
-  }
-}
-```
-
-## Stablecoin Swaps
-
-Swap USDC to your own stablecoin (YSBC). All stablecoin swaps are 1:1 with no slippage.
-
-```
-POST https://api.brale.xyz/accounts/account_id/transfers
-```
-
-```json title="Request"
-{
-  "amount": {
-    "value": "100",
-    "currency": "USD"
-  },
-  "source": {
-    "address_id": "string",
-    "value_type": "USDC",
-    "transfer_type": "Solana"
-  },
-  "destination": {
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
-    "value_type": "YSBC",
-    "transfer_type": "Solana"
-  }
-}
-```
-
-## Stablecoin Payout
-
-Process stablecoin payouts to one or many external addresses (EOAs).
-
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
-
-```json title="Request"
-{
-  "amount": {
-    "value": "500",
-    "currency": "USD"
-  },
-  "source": {
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
-    "value_type": "USDC",
-    "transfer_type": "Polygon"
-  },
-  "destination": {
-    "address_id": "recipient_wallet_id",
-    "value_type": "USDC",
-    "transfer_type": "Polygon"
-  }
-}
-```
-
 ## Transfer Statuses
 
 | Value        | Description                                                                                                                                                           |
@@ -203,3 +223,7 @@ A transfer will progress from `pending` → `processing` → `complete`. Transfe
 
 - Inbound ACH transactions are limited to $50,000 per transaction.
 - There are no limits for wire or stablecoin transactions.
+
+```
+
+```

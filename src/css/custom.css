@@ -7,7 +7,7 @@
 :root {
   --brale-border-color: #d0d5dd;
   --brale-border-color-hover: #98a2b3;
-  --brale-border-radius: 6px;
+  --brale-border-radius: 8px;
   --brale-background-color: #f2f4f7;
   --brale-background-color-secondary: #ffffff;
   --brale-text-color-primary: #000000;
@@ -479,7 +479,7 @@ tbody {
   }
 
   .global-rounded {
-    @apply rounded-xl;
+    @apply rounded-lg;
   }
 
   article img {

@@ -30,12 +30,12 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
     "currency": "USD"
   },
   "source": {
-    "value_type": "usd",
+    "value_type": "USD",
     "transfer_type": "wire"
   },
   "destination": {
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
-    "value_type": "ysbc",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "YSBC",
     "transfer_type": "solana"
   }
 }
@@ -51,14 +51,14 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
   },
   "source": {
     "transfer_type": "wire",
-    "value_type": "usd"
+    "value_type": "USD"
   },
   "destination": {
     "transfer_type": "polygon",
-    "value_type": "ysbc",
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b"
+    "value_type": "YSBC",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4"
   },
-  "source_deposit_instructions": {
+  "wire_instructions": {
     // ...Brale bank details
   }
 }
@@ -68,7 +68,7 @@ Initially, the status of the transfer will be `pending`. Once Brale receives the
 
 ### Fetching Transfers
 
-Query a transfer that has been created through:
+Query a transfer that has been created.
 
 <HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/transfers/:id" />
 
@@ -86,7 +86,7 @@ Query a transfer that has been created through:
     "transfer_type": "wire"
   },
   "destination": {
-    "address_id": "string",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
     "value_type": "ysbc",
     "transfer_type": "polygon"
   },
@@ -105,8 +105,9 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 ```json title="Request"
 {
   "name": "XYZ Automation",
+  "type": "USD",
   "destination": {
-    "address_id": "d7bd28e4-93e6-4313-880c-ab9178eacd3b",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
     "value_type": "ysbc",
     "transfer_type": "Solana"
   }
@@ -119,7 +120,7 @@ The response will return the unique account number and routing number to direct 
 {
   "name": "XYZ Onramp",
   "status": "complete",
-  "source_deposit_instructions": {
+  "wire_instructions": {
     "bank_beneficiary_name": "Jane Business",
     "bank_name": "Example Bank",
     "bank_address": "456 Commerce St., Des Moines, IA 50309",
@@ -128,7 +129,7 @@ The response will return the unique account number and routing number to direct 
     "bank_routing_number": "87654321"
   },
   "destination": {
-    "address_id": "0xDEADBEEF",
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
     "value_type": "YSBC",
     "transfer_type": "Solana"
   }
