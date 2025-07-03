@@ -36,22 +36,22 @@ Use cases include:
 ## How It Works
 
 1. **Create Wallets**  
-   When you register an Account, custodial wallets are created automatically on all supported chains. There's no additional setup required.
+   When you [register an Account](/key-concepts/accounts), custodial wallets are created automatically on all supported chains. There's no additional setup required.
 2. **Receive Deposits**  
-   You or your users can send stablecoins directly to custodial wallet addresses. Just fetch wallet addresses and fund them.
+   You or your users can send stablecoins directly to custodial wallet addresses. Just [fetch wallet addresses](/key-concepts/addresses) and fund them.
 3. **Track Balances**  
-   Use the Balances endpoint to query stablecoin holdings across all wallets and chains.
+   Use the [Balances endpoint](/api/fetch-the-balance-of-an-internal-custodial-address-for-a-specific-token) to query stablecoin holdings across all wallets and chains.
 4. **Initiate Payouts**  
-   Send funds from any custodial wallet using the Transfers endpoint. This supports on-chain transfers, off-chain payouts, and more.
+   Send funds from any custodial wallet using the [Transfers](/key-concepts/transfers) endpoint. This supports on-chain transfers, off-chain payouts, and more.
 5. **Earn Revenue Share**  
    When using your own stablecoin, you earn a share of revenue on all custodied assets.
 
 ## Related API References
 
-POST /accounts - Register an account
+[`POST /accounts`](/api/create-a-customer-account) - Register an account
 
-GET /addresses - Fetch custodial wallet addresses. Custodial wallets have type `internal`
+[`GET /addresses`](/api/fetch-all-addresses) - Fetch custodial wallet addresses. Custodial wallets have type `internal`
 
-GET /balances - View wallet balances
+[`GET /balances`](/api/fetch-the-balance-of-an-internal-custodial-address-for-a-specific-token) - View wallet balances
 
-POST /transfers - Initiate transfers and payouts
+[`POST /transfers`](/api/create-a-new-transfer) - Initiate transfers and payouts

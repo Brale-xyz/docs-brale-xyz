@@ -227,6 +227,10 @@ tbody {
   padding: 6px 0px;
 }
 
+.theme-doc-markdown a:has(code) {
+  text-decoration: none;
+}
+
 .theme-doc-sidebar-item-category-level-1:not(:last-of-type) > ul > li:last-of-type {
   padding-bottom: 1rem;
 }
