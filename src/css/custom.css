@@ -227,6 +227,29 @@ tbody {
   padding: 6px 0px;
 }
 
+.theme-admonition {
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-radius: var(--brale-border-radius);
+  box-shadow: none;
+}
+
+.theme-admonition.theme-admonition-note {
+  border-color: var(--brale-border-color);
+}
+
+.theme-admonition.theme-admonition-info,
+.theme-admonition.theme-admonition-tip,
+.theme-admonition.theme-admonition-warning,
+.theme-admonition.theme-admonition-danger {
+  border-color: var(--ifm-alert-border-color);
+}
+
+.theme-admonition.theme-admonition-note {
+  background-color: var(--brale-background-color-secondary);
+}
+
 .theme-doc-markdown a:has(code) {
   text-decoration: none;
 }
@@ -439,6 +462,11 @@ tbody {
 [data-theme='dark'] .tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant:hover,
 [data-theme='dark'] .tabs__item.openapi-tabs__code-item:hover {
   border: 1px solid var(--brale-border-color-dark-hover);
+}
+
+[data-theme='dark'] .theme-admonition.theme-admonition-note {
+  background-color: var(--brale-background-color-dark-secondary);
+  border-color: var(--brale-border-color-dark);
 }
 
 [data-theme='dark'] .theme-api-markdown .openapi-security__details,
