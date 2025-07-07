@@ -196,6 +196,21 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'html',
+      value: '<hr>',
+      className: 'sidebar-separator',
+    },
+    {
+      type: 'link',
+      label: 'GitHub',
+      href: 'https://github.com/Brale-xyz',
+    },
+    {
+      type: 'link',
+      label: 'Telegram',
+      href: 'https://t.me/bralecommunity',
+    },
   ],
 };
 

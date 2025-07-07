@@ -86,6 +86,22 @@ main article .theme-doc-markdown.markdown {
 
 nav.menu.thin-scrollbar {
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Push external links to bottom */
+.sidebar-separator {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+/* Alternative approach if flexbox doesn't work */
+.theme-doc-sidebar-item-link:has(+ .sidebar-separator),
+.sidebar-separator,
+.theme-doc-sidebar-item-link:has(.sidebar-separator ~ .theme-doc-sidebar-item-link) {
+  margin-top: auto;
 }
 
 thead,
