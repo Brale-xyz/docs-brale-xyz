@@ -69,6 +69,15 @@ const config: Config = {
     ],
   ],
 
+  scripts: [
+    {
+      src: 'https://plausible.io/js/plausible.js',
+      async: true,
+      defer: true,
+      'data-domain': 'docs.brale.xyz',
+    },
+  ],
+
   themes: ['docusaurus-theme-openapi-docs'], // export theme components
 
   themeConfig: {
