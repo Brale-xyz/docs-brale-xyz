@@ -81,6 +81,13 @@ const config: Config = {
             '/404', // Exclude error pages
           ],
         },
+        optionalLinks: [
+          {
+            title: 'OpenAPI Spec',
+            url: 'https://github.com/Brale-xyz/commons/blob/main/Resources/api-brale-xyz.yaml',
+            description: 'Machine-readable API specification',
+          },
+        ],
       },
     ],
   ],

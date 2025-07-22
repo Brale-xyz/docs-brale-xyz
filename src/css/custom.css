@@ -270,6 +270,18 @@ tbody {
   text-decoration: none;
 }
 
+.intro-subheading {
+  border-bottom: 1px solid var(--brale-border-color);
+  font-size: 1.25rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem !important;
+}
+
+.intro-subheading p {
+  margin: 0;
+  padding: 0;
+}
+
 .theme-doc-sidebar-item-link .menu__link {
   display: flex;
   align-items: center;
@@ -519,6 +531,10 @@ tbody {
 
 [data-theme='dark'] .theme-doc-footer-edit-meta-row {
   border: 1px solid var(--brale-border-color-dark);
+}
+
+[data-theme='dark'] .intro-subheading {
+  border-bottom: 1px solid var(--brale-border-color-dark);
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-link .menu__link svg {
