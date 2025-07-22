@@ -41,7 +41,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           docItemComponent: '@theme/ApiItem', // Derived from docusaurus-theme-openapi
-          editUrl: 'https://github.com/brale-xyz/docs-brale-xyz/edit/main/docs/',
+          editUrl: 'https://github.com/brale-xyz/docs-brale-xyz/edit/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
