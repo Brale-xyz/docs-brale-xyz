@@ -40,7 +40,7 @@ Use cases include:
 2. **Receive Deposits**  
    You or your users can send stablecoins directly to custodial wallet addresses. Just [fetch wallet addresses](/key-concepts/addresses) and fund them.
 3. **Track Balances**  
-   Use the [Balances endpoint](/api/fetch-the-balance-of-an-internal-custodial-address-for-a-specific-token) to query stablecoin holdings across all wallets and chains.
+   Use the [Balances endpoint](/api/get-address-balance) to query stablecoin holdings across all wallets and chains.
 4. **Initiate Payouts**  
    Send funds from any custodial wallet using the [Transfers](/key-concepts/transfers) endpoint. This supports on-chain transfers, off-chain payouts, and more.
 5. **Earn Revenue Share**  
@@ -48,10 +48,10 @@ Use cases include:
 
 ## Related API References
 
-[`POST /accounts`](/api/create-a-customer-account) - Register an account
+[`POST /accounts`](/api/create-account) - Register an account
 
-[`GET /addresses`](/api/fetch-all-addresses) - Fetch custodial wallet addresses. Custodial wallets have type `internal`
+[`GET /addresses`](/api/list-addresses) - Fetch custodial wallet addresses. Custodial wallets have type `internal`
 
-[`GET /balances`](/api/fetch-the-balance-of-an-internal-custodial-address-for-a-specific-token) - View wallet balances
+[`GET /balances`](/api/get-address-balance) - View wallet balances
 
-[`POST /transfers`](/api/create-a-new-transfer) - Initiate transfers and payouts
+[`POST /transfers`](/api/create-transfer) - Initiate transfers and payouts
