@@ -6,7 +6,12 @@ info:
     Brale supports stablecoin issuance and orchestration, enabling businesses and
     ecosystems to create their own stablecoins and convert between fiat and stablecoins
     seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the
-    Brale API makes it easy to build stablecoin enabled products.
+    Brale API makes it easy to build stablecoin-enabled products.
+
+    NOTE:
+    All resource IDs (including account_id, address_id, financial_institution_id,
+    and automation_id) are KSUIDs—26-character alphanumeric strings that are sortable
+    by time. Examples showing UUIDs are incorrect.
 
 # Define high-level tags to group endpoints by resource
 tags:
@@ -40,6 +45,14 @@ components:
         flow. Include the token in the "Authorization: Bearer <token>" header.
 
   schemas:
+    ## --------------------- KSUID SCHEMA --------------------- ##
+    Ksuid:
+      title: Kusid
+      type: string
+      format: ksuid
+      pattern: '^[a-zA-Z0-9]{26}$'
+      example: '2VcUIIsgARwVbEGlIYbhg6fGG57'
+
     ## --------------------- ACCOUNTS --------------------- ##
     AccountCreateRequest:
       type: object
@@ -79,12 +92,12 @@ components:
         - ultimate_beneficial_owners
 
     Account:
+      title: Account
       type: object
       description: The details of a customer account
       properties:
         id:
-          type: string
-          example: 'ccf84787-1234-464d-86bd-35c2f15d4636'
+          $ref: '#/components/schemas/Ksuid'
         status:
           type: string
           description: Current KYB status of the account
@@ -116,6 +129,7 @@ components:
             $ref: '#/components/schemas/UltimateBeneficialOwner'
 
     AccountAddress:
+      title: AccountAddress
       type: object
       properties:
         street_line_1:
@@ -144,6 +158,7 @@ components:
         - country
 
     UltimateBeneficialOwner:
+      title: UltimateBeneficialOwner
       type: object
       properties:
         name:
@@ -161,6 +176,7 @@ components:
 
     ## --------------------- TRANSFERS --------------------- ##
     Transfer:
+      title: Transfer
       type: object
       properties:
         status:
@@ -186,6 +202,7 @@ components:
           example: '0.01'
 
     TransferEndpoint:
+      title: TransferEndpoint
       type: object
       properties:
         value_type:
@@ -195,15 +212,14 @@ components:
           type: string
           example: 'wire'
         address_id:
-          type: string
           nullable: true
-          example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b'
+          $ref: '#/components/schemas/Ksuid'
         financial_institution_id:
-          type: string
           nullable: true
-          example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624'
+          $ref: '#/components/schemas/Ksuid'
 
     TransferCreateRequest:
+      title: TransferCreateRequest
       type: object
       properties:
         amount:
@@ -237,11 +253,11 @@ components:
             $ref: '#/components/schemas/Address'
 
     Address:
+      title: Address
       type: object
       properties:
         id:
-          type: string
-          example: 'a1b2c3d4-5678-90ab-cdef-1234567890ab'
+          $ref: '#/components/schemas/Ksuid'
         status:
           type: string
           example: 'complete'
@@ -259,6 +275,7 @@ components:
           example: ['Solana']
 
     AddressBalanceResponse:
+      title: AddressBalance
       type: object
       properties:
         status:
@@ -281,6 +298,7 @@ components:
             $ref: '#/components/schemas/Balance'
 
     Balance:
+      title: Balance
       type: object
       properties:
         balance:
@@ -291,6 +309,7 @@ components:
           example: 'SBC'
 
     AddressCreateRequest:
+      title: AddressCreateRequest
       type: object
       properties:
         name:
@@ -320,6 +339,7 @@ components:
             $ref: '#/components/schemas/FinancialInstitution'
 
     FinancialInstitutionCreateRequest:
+      title: FinancialInstitutionCreateRequest
       type: object
       properties:
         name:
@@ -338,8 +358,11 @@ components:
         - bank_details
 
     FinancialInstitution:
+      title: FinancialInstitution
       type: object
       properties:
+        id:
+          $ref: '#/components/schemas/Ksuid'
         name:
           type: string
           example: 'Business Checking Account'
@@ -352,6 +375,7 @@ components:
           $ref: '#/components/schemas/BankDetails'
 
     BankDetails:
+      title: Bank
       type: object
       properties:
         owner:
@@ -362,7 +386,7 @@ components:
           example: '1234567890'
         routing_number:
           type: string
-          example: '987654321'
+          example: '063108680'
         name:
           type: string
           description: The name of the bank
@@ -381,6 +405,7 @@ components:
 
     ## --------------------- AUTOMATIONS --------------------- ##
     AutomationCreateRequest:
+      title: AutomationCreateRequest
       type: object
       properties:
         name:
@@ -393,11 +418,11 @@ components:
         - destination_address
 
     AutomationDestinationAddress:
+      title: AutomationDestinationAddress
       type: object
       properties:
         address_id:
-          type: string
-          example: '2MnKwiImf1MTX2pA0jY6fkITEYC'
+          $ref: '#/components/schemas/Ksuid'
         value_type:
           type: string
           example: 'SBC'
@@ -410,8 +435,11 @@ components:
         - transfer_type
 
     Automation:
+      title: Automation
       type: object
       properties:
+        id:
+          $ref: '#/components/schemas/Ksuid'
         name:
           type: string
           example: 'Customer Onramp'
@@ -424,9 +452,10 @@ components:
           $ref: '#/components/schemas/AutomationDestinationAddress'
 
     WireInstructions:
+      title: WireInstructions
       type: object
       properties:
-        bank_beneficiary_name:
+        beneficiary_name:
           type: string
           example: 'Jane Business'
         bank_name:
@@ -435,17 +464,21 @@ components:
         bank_address:
           type: string
           example: '456 Commerce St., Des Moines, IA 50309'
-        bank_beneficiary:
-          type: string
-          example: 'XYZ Holdings LLC'
-        bank_account_number:
+        account_number:
           type: string
           example: '123456789'
-        bank_routing_number:
+        routing_number:
           type: string
-          example: '87654321'
+          example: '063108680'
+        beneficiary_address:
+          type: string
+          example: '612 Commerce St., Des Moines, IA 50309'
+        memo:
+          type: string
+          example: 'AB1C23456789'
 
     GetAutomationsResponse:
+      title: AutomationListResponse
       type: object
       properties:
         automations:
@@ -458,6 +491,7 @@ paths:
   /accounts:
     get:
       tags: [Accounts]
+      operationId: listAccounts
       summary: Retrieve all accounts
       description: Returns an array of accounts.
       responses:
@@ -471,6 +505,7 @@ paths:
                   $ref: '#/components/schemas/Account'
     post:
       tags: [Accounts]
+      operationId: createAccount
       summary: Create a customer account
       description: >
         Creates a new customer (account) with the required KYC/KYB details.
@@ -480,10 +515,10 @@ paths:
           required: true
           schema:
             type: string
-          example: idemp-demo-123456
+          example: idemp-123e4567-e89b-12d3-a456-426614174000
           description: >
             A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key.
-            Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
+            Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
       requestBody:
         required: true
         content:
@@ -499,22 +534,20 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
-                    description: The ID of the newly created account
-                    example: 'ccf84787-1234-464d-86bd-35c2f15d4636'
-
-  /accounts/{id}:
+                    $ref: '#/components/schemas/Ksuid'
+  /accounts/{account_id}:
     get:
       tags: [Accounts]
+      operationId: getAccount
       summary: Retrieve a customer account
       description: Returns the details of a specific customer account, including KYB status.
       parameters:
-        - name: id
+        - name: account_id
           in: path
           required: true
           description: The ID of the account
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
       responses:
         '200':
           description: Details of the requested account
@@ -527,6 +560,7 @@ paths:
   /accounts/{account_id}/transfers:
     get:
       tags: [Transfers]
+      operationId: listTransfers
       summary: Get all transfers for a given account
       description: Returns a list of transfers associated with the specified account.
       parameters:
@@ -534,7 +568,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
       responses:
         '200':
@@ -547,6 +581,7 @@ paths:
                   $ref: '#/components/schemas/Transfer'
     post:
       tags: [Transfers]
+      operationId: createTransfer
       summary: Create a new transfer
       description: Creates a new transfer using the specified source and destination details.
       parameters:
@@ -554,17 +589,17 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - in: header
           name: Idempotency-Key
           required: true
           schema:
             type: string
-          example: idemp-demo-123456
+          example: idemp-123e4567-e89b-12d3-a456-426614174000
           description: >
             A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key.
-            Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
+            Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
       requestBody:
         required: true
         content:
@@ -581,11 +616,12 @@ paths:
                 properties:
                   id:
                     type: string
+                    format: uuid
                     example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4'
-
   /accounts/{account_id}/transfers/{id}:
     get:
       tags: [Transfers]
+      operationId: getTransfer
       summary: Retrieve a single transfer
       description: Returns details for a specific transfer.
       parameters:
@@ -593,14 +629,14 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - name: id
           in: path
           required: true
           schema:
             type: string
-          description: The ID of the transfer
+          description: The ID of the transfer (UUID)
       responses:
         '200':
           description: A single transfer object
@@ -613,6 +649,7 @@ paths:
   /accounts/{account_id}/addresses:
     get:
       tags: [Addresses]
+      operationId: listAddresses
       summary: Fetch all addresses
       description: >
         Retrieves all addresses (internal and external) associated with the given account.
@@ -621,7 +658,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
       responses:
         '200':
@@ -634,6 +671,7 @@ paths:
   /accounts/{account_id}/addresses/external:
     post:
       tags: [Addresses]
+      operationId: createAddress
       summary: Create a new external address
       description: >
         Creates a non-custodial address (EOA) for the specified account.
@@ -642,17 +680,17 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - in: header
           name: Idempotency-Key
           required: true
           schema:
             type: string
-          example: idemp-demo-123456
+          example: idemp-123e4567-e89b-12d3-a456-426614174000
           description: >
             A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key.
-            Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
+            Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
       requestBody:
         required: true
         content:
@@ -668,13 +706,12 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
-                    description: The ID of the newly created address
-                    example: 'a1b2c3d4-5678-90ab-cdef-1234567890ab'
+                    $ref: '#/components/schemas/Ksuid'
 
   /accounts/{account_id}/addresses/{address_id}/balances:
     get:
       tags: [Addresses]
+      operationId: getAddressBalance
       summary: Fetch the balance of an internal (custodial) address for a specific token
       description: >
         Returns balance data for a given address, chain, and token.  
@@ -684,13 +721,13 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - name: address_id
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the address
         - name: transfer_type
           in: query
@@ -716,6 +753,7 @@ paths:
   /accounts/{account_id}/financial-institutions:
     get:
       tags: [Financial Institutions]
+      operationId: ListFinancialInstitutions
       summary: Fetch all financial institutions
       description: >
         Returns all financial institutions associated with the given account.
@@ -724,7 +762,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
       responses:
         '200':
@@ -737,6 +775,7 @@ paths:
   /accounts/{account_id}/financial-institutions/external:
     post:
       tags: [Financial Institutions]
+      operationId: createFinancialInstitution
       summary: Create a new external financial institution
       description: >
         Links an external bank account to the specified account (ACH, wire, etc.).
@@ -745,17 +784,17 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - in: header
           name: Idempotency-Key
           required: true
           schema:
             type: string
-          example: idemp-demo-123456
+          example: idemp-123e4567-e89b-12d3-a456-426614174000
           description: >
             A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key.
-            Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
+            Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
       requestBody:
         required: true
         content:
@@ -771,13 +810,12 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
-                    description: The ID of the newly created financial institution
-                    example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624'
+                    $ref: '#/components/schemas/Ksuid'
 
   /accounts/{account_id}/financial-institutions/{id}:
     get:
       tags: [Financial Institutions]
+      operationId: getFinancialInstitution
       summary: Fetch a specific financial institution
       description: >
         Retrieves details for the specified financial institution (bank account).
@@ -786,13 +824,13 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - name: id
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the financial institution
       responses:
         '200':
@@ -806,6 +844,7 @@ paths:
   /accounts/{account_id}/automations:
     post:
       tags: [Automations]
+      operationId: createAutomations
       summary: Create an Automation
       description: >
         Creates a new automation.
@@ -814,17 +853,17 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - in: header
           name: Idempotency-Key
           required: true
           schema:
             type: string
-          example: idemp-demo-123456
+          example: idemp-123e4567-e89b-12d3-a456-426614174000
           description: >
             A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key.
-            Use a UUID or timestamp-based string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
+            Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`
       requestBody:
         required: true
         content:
@@ -840,12 +879,11 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
-                    description: The ID of the newly created automation
-                    example: 'a2f96718-fde5-4dc9-9d0c-5fa145f5af11'
+                    $ref: '#/components/schemas/Ksuid'
 
     get:
       tags: [Automations]
+      operationId: listAutomations
       summary: Fetch all automations for an account
       description: >
         Retrieves all automations associated with the specified customer account.
@@ -854,7 +892,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
       responses:
         '200':
@@ -867,6 +905,7 @@ paths:
   /accounts/{account_id}/automations/{id}:
     get:
       tags: [Automations]
+      operationId: getAutomations
       summary: Retrieve a single automation
       description: Returns details for a specific automation.
       parameters:
@@ -874,13 +913,13 @@ paths:
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the account
         - name: id
           in: path
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/Ksuid'
           description: The ID of the automation
       responses:
         '200':

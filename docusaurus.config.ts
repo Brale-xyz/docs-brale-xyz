@@ -58,7 +58,7 @@ const config: Config = {
         docsPluginId: 'classic', // configured for preset-classic
         config: {
           brale: {
-            specPath: 'static/openapi/brale-api.yaml',
+            specPath: 'static/openapi/api-brale-xyz.yaml',
             outputDir: 'docs/api',
             sidebarOptions: {
               groupPathsBy: 'tag',

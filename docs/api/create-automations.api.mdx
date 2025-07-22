@@ -1,0 +1,125 @@
+---
+id: create-automations
+title: 'Create an Automation'
+description: 'Creates a new automation.'
+sidebar_label: 'Create an Automation'
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV9tuGzcQ/ZUB0YckWEm24jjNoiggJ24gBKgNX4ImtupQ3JHFeJfccEgrG0FAP6Jf2C8phtRlfYkT9CWoXiSSh8O5nhnNhZeXJPIzMQjeVtJra0iMMmFrdHE1LEQulEPpsQ3JRIGknK55KXLxMiIIJBicgVwju+dGZKKWTlbo0fFTc2FkhSIXUikbjL/QhciEZim19FORCYefgnZYiNy7gJkgNcVKinwuvPYlX30TKN7yTc1L8k6bS5GJiXWV9CIXVxQioJbeo2PZf57JzpdB5/1W58Vo3t9d/CQygZ9lVUeB/bfqdDiky8HR7O14/3U5fDeeXu5OXr9+9lwsbht7MkUYvgI7AT9FWJohFtk8WTFFWaAT2crOYYFVbT0a1XTeYPOwgTcMWrRV1Cyms91/ijvPdp938OcX4852v3jakTvPdjs7/d3d7Z3t5ztbW1t3ojOAYPSngJDkQiAswFuoHV6j8VCEutRKeoR13KkL+1JN4fDg+ARYXyQPVSDPl5dh1hvD4AqbLpzGo9PT4avrneVbXdhPFuTw4fst+HBuxGKUHIXk92zRsHdu+01Z49F4PpJ1MkFb0/tIbPX8nrzZpHBK2KMkf5NJdvwRFa9rx67wGonvp0jeDk87On+8ew8HxsmqXuaL1yY+dCGLwiHR/Wq82gAHS9y3dFnK47L5gRVxLcuAF+m1h/xyvPeS4d5JQxN033GDbCmNFItFu07O2mbfeP227NHtizF294dktFgkNNXWUHJvf2ubv24V0DpgQEEpJJqEsmwgESNr1ErFJ70nt7LvwXj+yDimTyYq9FPLTF/bWA2RiHPRW3Ib9eYbsl705I1GQOiuV8weXMkE6H1Nea8na90dO1li93Pz5Q4pHTpbBJV8GkXEiidUwWnfRHF7KB26QWBlzkbt42N2bvJfG7T2NasglsTK63EE3dGBCYs5PMkAb6/QgEMfnMECJs5W8ZiFA5qittp4uNYSDnirD6rUaPyFclig8VqWBJPSzrowNKoMRRKepGoTF+ecS1Pr9JfowHz19C8R9eu5gNQ+uHFyZJjLjjYsuL+K67qLtojnq7zTpowHE+JmXcfivVO77QLVZmLb2bvH0YYhUZBGIUhTwIFTUySfugoMDof8CDpKAeh3t7p3+1USQ6GurfME5OW4RGW1Ad0WbduiM0AjxyW3t3EgbZCI5xFTACpLDXmsiHteKlmOhXZgZ6YlPcGVNdfoPIzRzxANTLT08aANJJRViURl04XfOE1aOtoYDcrATibLX/H6TNZJg0DeFk3crGVjg6csZWE0e3A4hEpeIYH2gJIavjMOumxr0InGYgF1qiLqnpvfD072cxiUJTgkG5ziKYXgkY65yI7ZFHEGm5zIYKKNNErL8kIb8tqHmEARZYrWNHehi8cgHcKb49PhK/rnr7/7ux01lU4qjw5kWU+lCRU6rZbtn8BP2X0OgayL6sO4Aa8rXE8GBDS1M9aPJweKYG2UdQ6Vj3WQRV6qpGnlfWrgIA1syPl2Is03tPyNCXWZ2h4/+15dSh0fjWw2X5Lh2WpeZc7Lb8yu8ubsPGUOzc/EfD6WhKeuXCx4+1NAx7Q24iJzml0RSa7QFEMp8oksCR8w4dHRsq09hvtH0K/YsdyUplkVuMiFyMQVNjfH8MVoka3G1/+s2v9y2PyK55KH7g7wayfy0J9AL5MvOidpKFkh7sylmxsDpbD2LSwPDtzk1t2Y/SEyMV6Ov5UtGObkjP9DyFmKoq1T5vF8zHtzUUpzGeQlY9OT/PkXty7LCA==
+sidebar_class_name: 'post api-method'
+info_path: api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Create an Automation'}></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/automations'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Creates a new automation.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          title: 'AutomationCreateRequest',
+          type: 'object',
+          properties: {
+            name: { type: 'string', example: 'XYZ Onramp' },
+            destination_address: {
+              title: 'AutomationDestinationAddress',
+              type: 'object',
+              properties: {
+                address_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                },
+                value_type: { type: 'string', example: 'SBC' },
+                transfer_type: { type: 'string', example: 'solana' },
+              },
+              required: ['address_id', 'value_type', 'transfer_type'],
+            },
+          },
+          required: ['name', 'destination_address'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Automation successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                title: 'Kusid',
+                type: 'string',
+                format: 'ksuid',
+                pattern: '^[a-zA-Z0-9]{26}$',
+                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

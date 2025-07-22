@@ -1,0 +1,123 @@
+---
+id: create-address
+title: 'Create a new external address'
+description: 'Creates a non-custodial address (EOA) for the specified account.'
+sidebar_label: 'Create a new external address'
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV9tuG0cM/RVi0IckWF2sKHIiFAXkWAmEALWRxCla23WoWcqaendmMxfLiiCgH9Ev7JcUnFlZa8tJLyhQVC/S7JBcXg4PqZXweOnE8FSM8tySc+TEeSZMRRa9MnqSi6GQltBTLSAykZOTVlV8L4biZbx1gKCNbsngvMkVFoBJHh6Nj0aPYWYs+DmBq0iqmaIcUEoTtG+faZGJCi2W5MmyLyuhsSQxFLXIhcpFJhS/rEI/F5mw9CkoS7kYehsoE07OqUQxXAmvfMGqb4KLWn5Z8dF5q/SlyMTM2BK9GIorF6JAhd6TZds/n2Lr86j1U7f14nzVG6y/EZmgGyyraLD3QZ5MJu5y9HbxYTp+XUx+nM4vB7PXr5/ti/X9nLyfE0wOwcxizHUYYp2tUhRzwpysyDZxTnIqK+NJy2XrDS2/HuCdgNZNFxWbae31nlL/2WC/Rc9fTFt7vfxpC/vPBq1+bzDY6+/t97vd7k4RRxC0+hQIkl0IjnLwBipL16Q95KEqlERPcAsN14YxyjkcH717D+wvOQ9lcJ6VGQ20ALUNDK5o2YaTeHVyMjm87tfvasM4RTCEj389go9nWqzPU6LI+QOTLzk79/MmjfakPV9hlUJQRnd+cRz16gHc1ChPoH6bjG9hZKa/kORzZTkPXpFj5VTG+7VplubEkYWxn5OlUMIPWBTEeBDeonYzshes6ho20FpkIChPpft63U/FxrDIxOgaC9RyTiITx6ZYXhotzteZqLvxIS93oYvSByyA23mOSm9a+U5E3ZvD/oEc9MdP9+TzV729wUF3/1V379ngYH/w6mV3cIgv+tP9p3lvINbrJqBPU7p2Yt/6eL5eJxVXGe1SWnrdPf666+v4hlu3wTUuSEnOzUJRLCHRFvd4AwVPOk/uFf6rlVX5f0cq6ZOJkvzcMA9XJmIxcuBQdGpacZ3VlifXHdzweIfq7IhMOLLXG24NtmAK8r5yw04HK9WeWiyofbP8vAOGY2vyIPkAyUTsOUcyWOWX0dwBoSU7CuzT6Xnz+h3nOKWxKXSbcnZB1NTG52kU2vGBKYNZNNkAb65IgyUfrKYcZtaU8ZqNA+m8Mkp7uFYIR/yoB7JQpP2FtJST9goLB7PCLNow0bIIeTKerCodD2eCNY1VnyNbDDev/jZKfXcmIBE4jy4uELPJ2y0PjTflvZ1jD3b/bvP/eSM3+vhvNSBPz5lpQvmAaw4T5wJqSYA6hyMr5+R8YncYHU9EJhg1qQy9dre9OzeSGReqyljvwHmcFiSN0qCapk3TdAakcVrwmJkGp3REaxQjadzSMePx7En9yxVRFsxCN6wncWn0NVkPU/ILIg0zhT5eNAUdYVmQc8WyDa8YLA0fjbZYVi4DM5vVv6L6AqvkQVxmlvFhhUsTvMsSFmPYo+MJlHhFDpQHQrdknWlQRdODVgyWcqhSL7n2mf7+6P14CKOiAEvOBCt5W3DwSEVEcmK2HZ1tyC3+nimNWiosLpR2XvnACU1SOgcM3pRYP3oMaAnevDuZHLrff/2tN2Aytyg9WcCimqMOJVkl6zHswM85fZbAGRvdh+kSvCrpdkI7cHOzYP94grsorLQ01pKMi9w6iyRVom6gP83SeiOge5R9H1GrLVn/O5tlTTaebnynKlBFJyMHrmomPd3smezM8M7OeUumkbVrOj3PxJyZeHgqVqspOjqxxXrNjz8FssyK55m4Rqs4h5Ejc+UiBsRwhoWjr4T86G09Jx/DwzvkFwLabA2ad4ZrLAKfRCauaHl3j17zMlDvn//Ytf/ltviFzKUM7W7gt0nkrT0JvUy5aL1nO1uJncVyqzGSkirfkOX1g2fk7UznfIhMTOv9tTQ5i1lc8J8AXKQqmliOOEnjs5UoUF8GvGTZ9Er+/AH61rgD
+sidebar_class_name: 'post api-method'
+info_path: api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Create a new external address'}
+></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/addresses/external'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Creates a non-custodial address (EOA) for the specified account.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          title: 'AddressCreateRequest',
+          type: 'object',
+          properties: {
+            name: { type: 'string', example: 'User Ethereum Wallet' },
+            transfer_types: {
+              type: 'array',
+              items: { type: 'string' },
+              example: ['Ethereum', 'Avalanche', 'Polygon'],
+            },
+            address: {
+              type: 'string',
+              description: 'The actual on-chain address',
+              example: '0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26',
+            },
+          },
+          required: ['name', 'transfer_types', 'address'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'External address successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                title: 'Kusid',
+                type: 'string',
+                format: 'ksuid',
+                pattern: '^[a-zA-Z0-9]{26}$',
+                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

@@ -1,13 +1,13 @@
 ---
-id: get-all-transfers-for-a-given-account
+id: list-transfers
 title: 'Get all transfers for a given account'
 description: 'Returns a list of transfers associated with the specified account.'
 sidebar_label: 'Get all transfers for a given account'
 hide_title: true
 hide_table_of_contents: true
-api: eJztVktvGzcQ/isET22gt2RbXhQFHOQBnxIk9qW2YXDJWYn1imQ4pGVF0H/vkLuK1486CdD2VF20y535ON+8tzyIBfLigp95YbACj/yqxxWg9NoFbQ0v+CcI0RtkgtUaA7MVC3thJhCt1CKAYmsdliwsgaEDqStNR0JKG00Y8B53wosVhHRBcbHlhl4IuhW41opEdLrMibCkZw9fovageBF8hB5HuYSV4MWWh41Lmhi8Ngu+e2zsGRlw+iYbSU8tPt9dJUh01iBgQpmMRunvoe7JU4JkirQmAGGQ+Kvhq/T3xBjhvdgkBgFW2Dm35Z8gQ2LvrQMfdHM5BhEiPiXT43AnVq5ORw6MagmKVebwovh4NBoQJZKWHlI4rsWzGpX1q/SFKxLqB01R6MJMRpOD/mjSHx2cjY+L6XExng2m48M/EnB06t8BRhu9hO+77VbUEa4bmZd8cf75TYLdx/AHNNaUatnTSlGWYErHZ+RNrGtRJoUmJ+/11VGpJnOY9Y+ncNifTcfT/nw+kn1RHo+P5iCkmpYJv9JGGCqX+lobDDrElHg/fVs5lergqKLb6NefiQn0xXw+75fV0VxVYi4PJzO+Sx7QISvsa/utUc7qVA65agJZ02T+/57/Dz2/EPgOvuMWKubxs0B0mH49Tr10acl8voAcr9Q2Cz5sGx4Ot/etdTfstjMEf7vvwtHXpLQMwWExHAqnB6UXNQzuNl/548b60VsVZXphDURuqggyeh02Ge41CA/+JCZTLq66nz+njtnkUlfomwuSCbzt8tnRWeiJDecIua03GCzYGzDM5/FE06bydpU/J3AGrcvZrRbsQzqaMFlr6uTX1CIV/VM2IKtqux6wUyPrqBrwBlWb/HLJk6b1+msulWJ/9W9Z6vdLzpYgFPjBpcnx0qaymVcbt9fJn+wUMVL60Twyin3wxJJingHZycdTopki0lCcDCj2T4g3MBidsz4gowFC+SmJHtNdaNuF7pELSIxSi5URtaHyAsxipIkbTLOKyLJmYCS22jO7Nh30RpwGINkXWAlhDeSaiuZ9/tAVRBCrmq6oNwP2LgWiY6M1NPsd9miyVu1TVl8L11gQMVi1yYdObGwMJJHjnGmTi9hK3JDxOjAQuEk6ZdR114KGLGWBa/IUc0SoMCyGlcg9rt053gNZX9edJYZmFy03C31L5PYbw6MIbO/XgH9mH2oTP8BdGLpa6GxsrsdtW8wX++0oVW3xYFMK3WVtSQyT9HZbCoRzX+926fhLBJ/Kkh5vhddNQ6MiVRqzo3hRUf7DCzx/+dQuYb+y57eqv2GxX4pMWony6KA3eryBzcOVb3dF0k39ZNMagRMpwYWOatq6UjP51vLevz2jYvsLsMCpwQ==
+api: eJztV21rG0cQ/ivD0A9JOMmy0rjkKAUFO0YEmpDYgcZ2zWhvpNvmbveyM2dFEYL+iP7C/pKye5J9jvPSDy0tpfoi3e4zz837jNaotBDMz/AkkJM5B8GLDH3DgdR6Ny0wx8qK3lxnWLCYYJt4jzm+ZG2DEyCIOPBz0B0WSMQbS8oFLK2WoCWDNGzs3HIBZIxvnQ4xw4YC1ayRPz9bo6OaMcct4NIWmKGNL2tIS8ww8LvWBi4w19ByhmJKrgnzNarVKoo+ayVJ6aqJj6LBugVmOPehJsUc30qbAA2pcojcP5/R4MNk8GY0eHyxHh9svsEM+T3VTSIcvzan06ksJi+Xr2dHx9X0p1m5OJgfHz/6Djcf++SkZJgeJl+UvLMTNxdRc2m8E5ao7Hg0il+3ZSd3/YgZGu+UnUb4g70H8atnc2cjhUCr6CjlWvq+2MXuxh1+9gsbjdaHGGq1nT6ipK30KK/dduOHhl0RzzYZUp3M+iJ8fzQajkYRbQLHRLikT0pcx6Ug5YHamm97fzR+NBiNB6NHJ/uP84eP8/1vhw/3D95E4rYp/h5i8W0w/ClPHrmi8dbpVz16RVXLlx3mS246fXUY37iL+J+QWNrAKQhFEVgk1sg/lf4ZuraqaBaBsR43Gc6tI2csVZfWiVptY3L/q3TcdEWr1lFXeP9H+T8a5QXJU/6Kn0fD0T5utp8Ma9bSx9G3YO1UKzHHvW0jl731zWTa7PXbtHC42g2xNlSYY6naSL63R40dzgJVPHy/+nBniL4IvmhNfICOIg0LYdMGq6tE94QpcJi0UZWzi/71qzgJukzsg67tjSrgdkjG51kC3dHhVDiNq44D1L9lByFNdy5gHnydriM58LY04MoSPI9HYzCVZaeXJnDBTi1VAvPKL4cwdaZqi468Y7UuPZxjlPTBfkg1mO9e/X1C/XCOUDIVHIbnDmNYrJv7fm49if6EqUhLzjCQK+B5MCWLdtsLTF5MMcMYkc7E8XA0HN0xvKORtml8UAHRmEDGWwe2T+371Bmwo1ll3QJmrVjHIiwJxsbLSuIMBvXQTb1orQ3gl67H3sGNd1ccFGasS2YHc0uaLvpAYaorFqlWQ3gaA9HT0btAdSMZ+Pl8+yuJL6npNGhFfbFKhw2tfKuSdXFOZk9eTKGmtyxgFZhkFWVmra36GgySsVxA0+WpDM/dj89PjnKYVBUE7iYlTA8F7tkU7eiYmyLJ4KaBZfC5ttEpTq36mrZH94ECw7NXp9ND+f3X38YHA1NSIKMcgKqmJNfWHKyBrqYFtIzuCwziQ1IfZiuIU38IR121C0jpl1G/08iawNYZHwIbTZmWYeNFa0pDYbuKHrMCVVVvt537AAQLe8XuesP7KLPWN2vbX7Mmbwta+b3uNRXZpGzqM+ttkzrbLc2xG+W3Fmjtb/ilF43o9XpGwqeh2mzi8buWQ2w3FxleUbBdJz1bY2ElJQDmc6qEv2DnvZfb3fw+fHoL/owVuyXWxRU2DVTMETN8y6vb/wQ2F5sMu76QVOsAE2O40Z5o3JJjk7xu5cdHJ7jZ/AH/jG8H
 sidebar_class_name: 'get api-method'
-info_path: docs/api/brale-issuance-and-orchestration-api
+info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
@@ -46,7 +46,13 @@ Returns a list of transfers associated with the specified account.
       name: 'account_id',
       in: 'path',
       required: true,
-      schema: { type: 'string' },
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
       description: 'The ID of the account',
     },
   ]}
@@ -65,6 +71,7 @@ Returns a list of transfers associated with the specified account.
           schema: {
             type: 'array',
             items: {
+              title: 'Transfer',
               type: 'object',
               properties: {
                 status: { type: 'string', example: 'pending' },
@@ -80,44 +87,55 @@ Returns a list of transfers associated with the specified account.
                   example: '2025-02-05T19:39:14.316Z',
                 },
                 source: {
+                  title: 'TransferEndpoint',
                   type: 'object',
                   properties: {
                     value_type: { type: 'string', example: 'USD' },
                     transfer_type: { type: 'string', example: 'wire' },
                     address_id: {
+                      title: 'Kusid',
                       type: 'string',
+                      format: 'ksuid',
+                      pattern: '^[a-zA-Z0-9]{26}$',
+                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
                       nullable: true,
-                      example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
                     },
                     financial_institution_id: {
+                      title: 'Kusid',
                       type: 'string',
+                      format: 'ksuid',
+                      pattern: '^[a-zA-Z0-9]{26}$',
+                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
                       nullable: true,
-                      example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
                     },
                   },
-                  title: 'TransferEndpoint',
                 },
                 destination: {
+                  title: 'TransferEndpoint',
                   type: 'object',
                   properties: {
                     value_type: { type: 'string', example: 'USD' },
                     transfer_type: { type: 'string', example: 'wire' },
                     address_id: {
+                      title: 'Kusid',
                       type: 'string',
+                      format: 'ksuid',
+                      pattern: '^[a-zA-Z0-9]{26}$',
+                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
                       nullable: true,
-                      example: 'd7bd28e4-93e6-4313-880c-ab9178eacd3b',
                     },
                     financial_institution_id: {
+                      title: 'Kusid',
                       type: 'string',
+                      format: 'ksuid',
+                      pattern: '^[a-zA-Z0-9]{26}$',
+                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
                       nullable: true,
-                      example: 'b3cd57f4-9999-4a2e-a888-bf78dfa8c624',
                     },
                   },
-                  title: 'TransferEndpoint',
                 },
                 gasFee: { type: 'string', example: '0.01' },
               },
-              title: 'Transfer',
             },
           },
         },
