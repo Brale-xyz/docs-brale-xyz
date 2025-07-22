@@ -67,6 +67,21 @@ const config: Config = {
         },
       },
     ],
+    [
+      '@signalwire/docusaurus-plugin-llms-txt',
+      {
+        siteTitle: 'Brale API Docs',
+        siteDescription: 'Brale API Documentation',
+        depth: 2,
+        content: {
+          excludeRoutes: [
+            '**/_category_/**', // Exclude Docusaurus category pages
+            '**/*.xml', // Exclude XML files
+            '/404', // Exclude error pages
+          ],
+        },
+      },
+    ],
   ],
 
   scripts: [
