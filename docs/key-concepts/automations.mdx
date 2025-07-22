@@ -67,34 +67,38 @@ Retrieve all automations associated with a customer Account.
 {
   "automations": [
     {
+      "id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
       "name": "Customer Onramp",
-      "status": "active",
+      "status": "complete",
       "wire_instructions": {
-        "bank_beneficiary_name": "Jane Business",
+        "beneficiary_name": "Jane Business",
         "bank_name": "Example Bank",
         "bank_address": "456 Commerce St., Des Moines, IA 50309",
-        "bank_beneficiary": "XYZ Holdings LLC",
-        "bank_account_number": "123456789",
-        "bank_routing_number": "87654321"
+        "account_number": "123456789",
+        "routing_number": "063108680",
+        "beneficiary_address": "612 Commerce St., Des Moines, IA 50309",
+        "memo": "AB1C23456789"
       },
-      "destination": {
-        "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+      "destinationAddress": {
+        "address_id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
         "value_type": "SBC",
-        "transfer_type": "Solana"
+        "transfer_type": "solana"
       }
     },
     {
+      "id": "2VcUHHsgARwVbEGlIYbhg6fDD57",
       "name": "Business Payin",
       "status": "pending",
       "wire_instructions": {
-        "bank_beneficiary_name": "John Enterprise",
+        "beneficiary_name": "John Enterprise",
         "bank_name": "Fictional Bank",
         "bank_address": "789 Market St., Chicago, IL 60601",
-        "bank_beneficiary": "ABC Capital Inc.",
-        "bank_account_number": "987654321",
-        "bank_routing_number": "12345678"
+        "account_number": "987654321",
+        "routing_number": "12345678",
+        "beneficiary_address": "612 Market St., Chicago, IL 60601",
+        "memo": "XY1Z23456789"
       },
-      "destination": {
+      "destinationAddress": {
         "address_id": "2MyQyQ2JCZJHNEUujTI8fT1nULc",
         "value_type": "SBC",
         "transfer_type": "Ethereum"
