@@ -75,6 +75,7 @@ const config: Config = {
         siteDescription: 'Brale API Documentation',
         depth: 2,
         content: {
+          enableLlmsFullTxt: true,
           excludeRoutes: [
             '**/_category_/**', // Exclude Docusaurus category pages
             '**/*.xml', // Exclude XML files
