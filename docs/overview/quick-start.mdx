@@ -40,7 +40,7 @@ curl --request POST \
   --data grant_type=client_credentials
 ```
 
-Using the Brale API Postman collection, you can configure the client_id and the client_secret environment variables that are used to authenticate against the API.
+Using the Brale API Postman collection, you can configure the `client_id` and the `client_secret` environment variables that are used to authenticate against the API.
 
 <InlineImage
   srcDark="/img/brale-api-postman-collection-variables-dark@2x.png"
@@ -185,10 +185,11 @@ The response will include the transfer, which is opened in a pending state and t
 
 ## Next Steps
 
-Now that you've created your first transfer, follow Guides to get a deeper understanding of how to build with Brale.
+Now that you've created your first transfer, follow [Guides](/guides/stablecoin-issuance) to get a deeper understanding of how to build with Brale.
 
 ## Troubleshooting Common Issues
 
-| Status                     | Fix                                                                                              |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| `404`: `Account not found` | Replace `:account_id` with your account ID. Retrieve with `GET` `https://api.brale.xyz/accounts` |
+| Status                         | Fix                                                                                                                                                   |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `404`: `Account not found`     | Replace `:account_id` with your account ID. Retrieve with `GET` `https://api.brale.xyz/accounts`                                                      |
+| `403`: `Network not supported` | Your API creds are scoped to testnet, but you are using a `transfer_type` that is on mainnet. Please generate new API creds with mainnet permissions. |
