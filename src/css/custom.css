@@ -109,6 +109,10 @@ tbody {
   width: 100%;
 }
 
+table {
+  margin-bottom: 2.5rem;
+}
+
 .api-method.get > .menu__link,
 .api-method.post > .menu__link {
   display: flex;
