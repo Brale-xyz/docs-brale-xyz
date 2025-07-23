@@ -43,7 +43,10 @@ Each source and destination includes:
 
 Every request is scoped to an account, so the path always starts with:
 
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/{account_id}/transfers" />
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/transfers  // The ID of your or your customer's account"
+/>
 
 ## USD to Stablecoin (Wire Transfer)
 
@@ -203,6 +206,35 @@ Process stablecoin payouts to one or many external addresses (EOAs).
   }
 }
 ```
+
+## Retrieving Transfers & Pagination
+
+### List Call
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/transfers/transfer_id?page[size]=50"
+/>
+
+Returns the 50 most recent transfers.
+
+### Paging Forward
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/transfers/transfer_id?page[next]=g3QAAAABdw..."
+/>
+
+Use the `pagination.next` token from the previous response.
+
+### Paging Backward
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/transfers/transfer_id?page[prev]=g3QAAAABdw..."
+/>
+
+Only one of `page[next]` or `page[prev]` may be present.
 
 ## Transfer Statuses
 
