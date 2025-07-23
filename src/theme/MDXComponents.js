@@ -3,7 +3,6 @@ import {
   ExternalLink,
   HTTPMethod,
   InlineImage,
-  Intro,
   WIPCallout,
   YouTubeEmbed,
 } from '@site/src/components';
@@ -13,7 +12,6 @@ export default {
   ExternalLink,
   HTTPMethod,
   InlineImage,
-  Intro,
   WIPCallout,
   YouTubeEmbed,
 };
