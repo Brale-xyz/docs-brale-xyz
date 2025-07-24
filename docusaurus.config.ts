@@ -7,8 +7,8 @@ import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Brale API Docs',
-  tagline: 'Brale API Documentation',
+  title: 'Brale Stablecoin API Docs',
+  tagline: 'Brale Stablecoin API Documentation',
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
@@ -118,7 +118,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/og-image.png',
     languageTabs: [
       {
         language: 'javascript',
