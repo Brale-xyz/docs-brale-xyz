@@ -82,6 +82,28 @@ You are required to pass in business information, controller information, and ul
 
 Partners must show the exact Brale End-User Agreement (EUA) to their end users before calling `POST` `/accounts` and capture consent. The most recent version is hosted at <ExternalLink href="https://brale.xyz/legal/end-user-agreement" title="View Brale End-User Agreement">https://brale.xyz/legal/end-user-agreement</ExternalLink>.
 
+## Accounts - Required vs. Optional Fields
+
+| Field                            | Type   | Required | Description                                                                                                                                                           |
+| -------------------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `business.name	`                  | string | Yes      | Registered legal name                                                                                                                                                 |
+| `business.website`               | string | Yes      | Full URL incl. https://                                                                                                                                               |
+| `business.phone`                 | string | Yes      | Accepts multiple common formats: digits only `8134688604`, dashed `813-468-8604`, or with country code `18134688604`. Area code must be valid.                        |
+| `business.address.street_line_1` | string | Yes      |                                                                                                                                                                       |
+| `business.address.street_line_2` | string | No       | Apt / Suite / Floor.                                                                                                                                                  |
+| `business.address.city`          | string | Yes      |                                                                                                                                                                       |
+| `business.address.state`         | string | Yes      | Abbreviated format (NY, FL)                                                                                                                                           |
+| `business.address.zip`           | string | Yes      |                                                                                                                                                                       |
+| `business_controller`            | object | Yes      | One natural person who exercises control. API accepts U.S.-based controllers only; email support@brale.xyz if your controller is non-U.S. and we'll process manually. |
+| `beneficial_owners`              | array  | Yes      | Individual with ≥25% ownership                                                                                                                                        |
+| `tos_attestation`                | object | Yes      |                                                                                                                                                                       |
+
+## Common Errors when creating Accounts
+
+| HTTP Status | Code                   | Message                                               | Potential Cause                     | Fix                     |
+| ----------- | ---------------------- | ----------------------------------------------------- | ----------------------------------- | ----------------------- |
+| `422`       | `Unprocessable Entity` | Invalid format for business or controller information | Phone number area code is not valid | Include valid area code |
+
 ## Account Status
 
 Brale will review the Account and return a `status` field denoting the customer's KYB status. If the customer is in a pending status, you will need to wait for the customer to be verified before creating or linking addresses or bank accounts.
