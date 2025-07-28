@@ -1,183 +1,62 @@
-# Brale Stablecoin API Documentation
+# Brale API Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator, and serves as the official documentation for the Brale Stablecoin API.
+This repository contains the documentation for the [Brale Stablecoin API](https://brale.xyz/developers) - Brale is a stablecoin issuance platform that also enables developers to seamlessly onramp and offramp stablecoins. Stablecoin swaps are also supported across more than a dozen blockchains.
 
-## Prerequisites
+## Live Site
 
-- **Node.js**: Version 18.0 or higher (see `engines` field in package.json)
-- **npm**: Latest version recommended
-- **Git**: For version control
-
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/brale-xyz/docs-brale-xyz.git
-cd docs-brale-xyz
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-## Local Development
-
-Start the local development server:
-
-```bash
-npm start
-```
-
-This command:
-
-- Starts a local development server at `http://localhost:3000`
-- Opens up a browser window automatically
-- Enables hot reloading - most changes are reflected live without restarting the server
-
-### Development URLs
-
-The site is configured with the following URLs:
-
-- **Production**: `https://docs.brale.xyz`
-- **Development**: `https://dev-docs.brale.xyz`
-- **Local**: `http://localhost:3000`
-
-## Available Scripts
-
-### Development
-
-- `npm start` - Start development server
-- `npm run build` - Build for production
-- `npm run serve` - Serve the built site locally
-- `npm run clear` - Clear build cache
-
-### Code Quality
-
-- `npm run typecheck` - Run TypeScript type checking
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Fix ESLint issues automatically
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
-
-### Documentation
-
-- `npm run write-translations` - Extract translatable strings
-- `npm run write-heading-ids` - Add heading IDs to markdown files
-
-## Project Structure
-
-```
-docs-brale-xyz/
-├── docs/                    # Documentation content
-│   ├── api/                # Auto-generated API docs from OpenAPI spec
-│   ├── coverage/           # Coverage and payment methods
-│   ├── guides/             # How-to guides
-│   ├── key-concepts/       # Core concepts
-│   └── overview/           # Getting started
-├── static/
-│   ├── img/               # Images and assets
-│   └── openapi/           # OpenAPI specification
-├── src/
-│   ├── components/        # Custom React components
-│   ├── css/              # Custom styles
-│   └── theme/            # Theme customizations
-└── docusaurus.config.ts  # Main configuration
-```
-
-## Key Features
-
-- **OpenAPI Integration**: API documentation is auto-generated from `static/openapi/api-brale-xyz.yaml`
-- **Multi-language Code Examples**: Supports JavaScript, Python, cURL, C#, Go, Ruby, PHP, Java, PowerShell, Dart, and more
-- **Search Integration**: Includes LLM-powered search via `@signalwire/docusaurus-plugin-llms-txt`
-- **Analytics**: Plausible analytics integration
-- **Cloudflare Pages Deployment**: Configured for Cloudflare Pages hosting
-
-## Build
-
-Generate static content for production:
-
-```bash
-npm run build
-```
-
-This command generates static content into the `build` directory that can be served using any static content hosting service.
-
-## Deployment
-
-This project is configured for deployment to **Cloudflare Pages**.
-
-### Deploy to Cloudflare Pages
-
-```bash
-npm run deploy
-```
-
-This command:
-
-1. Builds the site using `npm run pages:build`
-2. Deploys to Cloudflare Pages using `wrangler pages deploy`
-
-### Preview Deployment
-
-To preview the production build locally:
-
-```bash
-npm run preview
-```
-
-### Environment Setup
-
-For deployment, ensure you have:
-
-- **Wrangler CLI**: Install with `npm install -g wrangler`
-- **Cloudflare Account**: Configured with appropriate permissions
-- **Environment Variables**: Set up in Cloudflare Pages dashboard if needed
+The documentation is live at: [https://docs.brale.xyz](https://docs.brale.xyz)
 
 ## Contributing
 
-1. Make your changes in a feature branch
-2. Ensure code quality checks pass:
-   ```bash
-   npm run typecheck
-   npm run lint
-   npm run format:check
-   ```
-3. Test your changes locally with `npm start`
-4. Submit a pull request
+We welcome contributions to improve our documentation! Here's how you can help:
 
-## Troubleshooting
+### What You Can Contribute
 
-### Common Issues
+- **Content improvements**: Fix typos, clarify explanations, add examples
+- **UI/UX improvements**: Better layouts, navigation, or styling
+- **Technical improvements**: Better code examples, API documentation
 
-**Build fails with TypeScript errors:**
+### Quick Start for Contributors
 
-```bash
-npm run typecheck
-```
+1. **Fork** this repository
+2. **Clone** your fork locally
+3. **Install dependencies**: `npm install`
+4. **Start development server**: `npm start`
+5. **Make your changes** to the documentation
+6. **Submit a pull request**
 
-**Linting issues:**
+## About This Documentation
 
-```bash
-npm run lint:fix
-npm run format
-```
+This documentation site is built with [Docusaurus](https://docusaurus.io/) and covers:
 
-**Cache issues:**
+- [Key topics covered]
+- [Main features documented]
+- [API references, guides, etc.]
+
+### Development Setup
 
 ```bash
-npm run clear
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm build
+
+# Deploy to staging
+npm deploy
 ```
 
-**OpenAPI generation issues:**
+## Repository Structure
 
-- Ensure `static/openapi/api-brale-xyz.yaml` exists and is valid
-- Check that the OpenAPI spec is properly formatted
+- `/docs/` - Main documentation content
+- `/blog/` - Blog posts and announcements
+- `/src/` - Custom React components and styling
+- `/static/` - Static assets (images, files)
 
-### Getting Help
+## Getting Help
 
-- Check the [Docusaurus documentation](https://docusaurus.io/docs)
-- Review the [OpenAPI plugin documentation](https://github.com/cloud-annotations/docusaurus-openapi)
-- Open an issue in this repository for project-specific questions
+- **Telegram**: [https://t.me/+cKrTnXrus_43NWMx](https://t.me/+cKrTnXrus_43NWMx)
+- **Issues**: [https://github.com/Brale-xyz/docs-brale-xyz/issues](https://github.com/Brale-xyz/docs-brale-xyz/issues)
