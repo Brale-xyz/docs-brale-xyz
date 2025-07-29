@@ -1,0 +1,59 @@
+---
+sidebar_position: 5
+title: 'Stablecoin Payouts'
+sidebar_label: 'Stablecoin Payouts'
+---
+
+<p class="intro-subheading">
+  Leverage stablecoin payouts alongside traditional payment methods to send money to on-chain
+  addresses anywhere in the world. Payouts are Transfers from an internal (Brale custodial) address
+  to one or many external addresses.
+</p>
+
+## USDC Payout
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfer" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "addressId": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "valueType": "USDC",
+    "transferType": "solana"
+  },
+  "destination": {
+    "addressId": "2VcUImV6vUAo1v0cspsjD4TsmMQ",
+    "valueType": "USDC",
+    "transferType": "solana"
+  }
+}
+```
+
+## Payouts from your Stablecoin
+
+A common workflow is to hold custodial balances in the form of your created stablecoin, but to process payouts in another stablecoin, like USDC. Here is an example of paying out of your stablecoin balance to USDC on Solana.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "YSBC",
+    "transfer_type": "solana"
+  },
+  "destination": {
+    "address_id": "2VcUImV6vUAo1v0cspsjD4TsmMQ",
+    "value_type": "USDC",
+    "transfer_type": "solana"
+  }
+}
+```

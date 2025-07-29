@@ -1,0 +1,162 @@
+---
+id: create-transfer
+title: 'Create a new transfer'
+description: 'Creates a new transfer using the specified source and destination details.'
+sidebar_label: 'Create a new transfer'
+hide_title: true
+hide_table_of_contents: true
+api: eJztV+9u2zYQf5UDsQ9tITuO6ziJMQxIm6wwCqxFmxTY0qylqVPMRiJVHhnXNQTsIfaEe5LhSDlWkqYthgHrhvlLIvF4uv+/362El+ckJqfi2ElDBToSZ5mwNTrptTXTXEyEcig9rgVEJnIk5XTNAmIiHsdjAgkGF+BbMQikzTn4OQLVqHShMQeywSkEaXLIkbw28SOQo5e6pL7IRC2drNCzHZPTlTCyQjERUikbjH+jc5EJzR+tpZ+LTDh8H7TDXEy8C5gJUnOspJishNe+5KtPA8VbflnzI3mnzbnIRGFdJb2YiAsKUaCW3qNj3b+eyt7Hg94vg97+2Wo4br4TmcAPsqqjwuErdTKd0vnBi8Wr2dGTcvrzbH4+Lp482dkVzc3YHM8RpodgixiI1g3RZKvkxRxlHiPa+jnNsaqtR6OWvae4/LyD1xxquiZqVtPbHj7E0c54t4d7+7Pe9jB/2JOjnXFvNByPt0fbu6PBYHArmQcQjH4fEJJeCIQ5eAu1w0s0HvJQl1pJj3BVI9SHI6nm8PzZy2Nge5E8VIE8X26rQm8cgwtc9uEkHp2cTA8vR+23+nCUPJjA26/34O1rI5qzFCgk/8jmS47Ozbgpazwaz0eyTi5oa7beEXu9+kTdrMs9VfeLpH1TR3b2DhU/144D4TVS1F3FBG/Sc4fcpSwD3s5iN4nbgwFnVQXnOGyfFz55eSiaplsup+03OhrOmkykDvyUo0cmr602X/Yx6n2TZL5oUybWA+Erbiy0Q74i89whEbf7P9XJmTChLOWMBbmCmkwU2kijtCzfaENe+8AV9E3Z2KT5s56r/2f5P5rlG43eDp2r5r5eBGfrC1RbQym5w8E2/7mBVWvkpqAUEhWhLJeQwJ+d6YzQB1sPbkzNz9ZSG727ohVSsDbh2C/2Bmq72OntDfKiN1I72Nufjfd6s/1iZ3d7mI/G+Ug06ZeJCv3cMk+pbZzQkRpMxFaLtrS12tCHZstf8ZxMELrLNdMIrmRA9r6mydaWrHV/5mSJ/Q/Lj7dA8rmzeVCRuiQVEYEIVXDaL6O6RygduoPAppyedY9fctBSXLpCV/FhE0QL9Pw8i0K3bGAAZU6RdIC3F2jAoQ/OYA6Fs1U8ZuWAbdPDpZbwjF8NQZUajX+jHOZovJYlQVHaRR+mRpUhT8qTVm3iw2vBN63TH2NhTdaf/j5K/fBaQKIzfUbkJhOMrS82qHy0Tm8XJVscjGDXxbr1WNnAVXcexdNbMycNlutz5QuddXezfwXN647Zb8q6hjlyYbsT6xHXMkyJgjQtAX/m1BzJJw4HB8+nIhPcDam8hv1B/zY7TGoo1LV1noA8jyVltQHdVW27qjNAI2clk8kZ7wRIxMuCyQGVpSV5rIgZZho0XGnagV2YjvYkrqy5ROdhhn6BaKDQ0seDriChrEokKpd9+JGboGOjNU5WNWVgi6L9L15fyDpZEMjbfBlf1nJpg6cs9Vh0++D5FCp5gQTaA0pa8p1Z0GXXgl50FnOo04yg/mvz07PjowkclCU4bDeg6SHBPR07jQOzGVAZbAokg7sqIBkug7eVbF/dB+kQnr48mR7SH7/9Phz31Fw6qTw6kGU9lyZU6LRqyTaBn3P4HAJZF82H2RK8rvCKhxPQ3C7YPubpFIW1UdY5VD52eRZnbiVjD7Q7TCLMN7bBm5W02qDJ37s/ts3m8YPfqkupo5Fxtq9aYDhdb5OMAJNrm6Xv7sBzRpPJqVitZpLwxJVNw6/fB3Q84s8ycSmdTrh8uhK5pph4MSlkSfgZf++9aLH7Pnx6PbzDi/alNLwXrgenyMQFLq+vyA0T/Xa1/Mum/SsXwTsilyJ0e7m+CiIv5EnocYpF75j1bCRu7YybGwdKYe07skyOGPCveAnHQ2Ri1q6mlc1ZzMkF7/dykbJoYzoiLYjvVqKU5jzIc5ZNn+Tfn2rZDgY=
+sidebar_class_name: 'post api-method'
+info_path: api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Create a new transfer'}></Heading>
+
+<MethodEndpoint
+  method={'post'}
+  path={'/accounts/{account_id}/transfers'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Creates a new transfer using the specified source and destination details.
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          title: 'TransferCreateRequest',
+          type: 'object',
+          properties: {
+            amount: {
+              type: 'object',
+              properties: {
+                value: { type: 'string', example: '100' },
+                currency: { type: 'string', example: 'USD' },
+              },
+              required: ['value', 'currency'],
+            },
+            source: {
+              title: 'TransferEndpoint',
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  nullable: true,
+                },
+                financial_institution_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  nullable: true,
+                },
+              },
+            },
+            destination: {
+              title: 'TransferEndpoint',
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  nullable: true,
+                },
+                financial_institution_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  nullable: true,
+                },
+              },
+            },
+          },
+          required: ['amount', 'source', 'destination'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Transfer successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+                format: 'uuid',
+                example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

@@ -1,0 +1,138 @@
+---
+sidebar_position: 3
+title: 'Accounts'
+sidebar_label: 'Accounts'
+---
+
+<p class="intro-subheading">
+  Get authenticated, grab your IDs, and create your first stablecoin transfer in less than five
+  minutes.
+</p>
+
+To KYB and approve an account, we collect key details such as business name and EIN. For more information, see our Compliance Requirements. If additional details are required, we will notify you with the necessary steps to complete KYB.
+
+:::note
+Customers can also self onboard at https://app.brale.xyz/signup.
+:::
+
+## Creating an account
+
+You are required to pass in business information, controller information, and ultimate beneficial owner information.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts" />
+
+```json title="Request"
+{
+  "business_name": "ABC Company Inc",
+  "ein": "12-3456789",
+  "address": {
+    "street_line_1": "123 Main St",
+    "street_line_2": "Apt C",
+    "city": "Des Moines",
+    "state": "IA",
+    "zip": "12345"
+  },
+  "phone_number": "2134678902",
+  "email": "mark@example.com",
+  "website": "abccompany.com",
+  "business_controller": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "ssn": "222-22-2222",
+    "dob": "1981-01-25",
+    "email": "john@company.com",
+    "phone_number": "2154688987",
+    "ownership_percentage": "50",
+    "address": {
+      "street_line_1": "456 Elm St",
+      "street_line_2": "Suite 5", // Optional
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60601"
+    }
+  },
+  "beneficial_owners": [
+    // Required for all individuals who own 25% or greater of the business
+    {
+      "first_name": "Bob",
+      "last_name": "Nguyen",
+      "ssn": "888-77-6666",
+      "dob": "1981-11-02",
+      "email": "bob@skylineanalytics.io",
+      "phone_number": "2675550456",
+      "ownership_percentage": "50",
+      "address": {
+        "street_line_1": "301 Chestnut Street",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zip": "19106"
+      }
+    }
+  ],
+  "tos_attestation": {
+    "version": "2025-04-01",
+    "accepted_at": "2025-05-13 20:45:15Z",
+    "ip": "203.0.113.42", // Optional
+    "user_agent": "Mozilla/5.0 ..." // Optional
+  }
+}
+```
+
+### Presenting the Brale End-User Agreement
+
+Partners must show the exact Brale End-User Agreement (EUA) to their end users before calling `POST` `/accounts` and capture consent. The most recent version is hosted at <ExternalLink href="https://brale.xyz/legal/end-user-agreement" title="View Brale End-User Agreement">https://brale.xyz/legal/end-user-agreement</ExternalLink>.
+
+## Accounts - Required vs. Optional Fields
+
+| Field                            | Type   | Required | Description                                                                                                                                                           |
+| -------------------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `business.name	`                  | string | Yes      | Registered legal name                                                                                                                                                 |
+| `business.website`               | string | Yes      | Full URL incl. https://                                                                                                                                               |
+| `business.phone`                 | string | Yes      | Accepts multiple common formats: digits only `8134688604`, dashed `813-468-8604`, or with country code `18134688604`. Area code must be valid.                        |
+| `business.address.street_line_1` | string | Yes      |                                                                                                                                                                       |
+| `business.address.street_line_2` | string | No       | Apt / Suite / Floor.                                                                                                                                                  |
+| `business.address.city`          | string | Yes      |                                                                                                                                                                       |
+| `business.address.state`         | string | Yes      | Abbreviated format (NY, FL)                                                                                                                                           |
+| `business.address.zip`           | string | Yes      |                                                                                                                                                                       |
+| `business_controller`            | object | Yes      | One natural person who exercises control. API accepts U.S.-based controllers only; email support@brale.xyz if your controller is non-U.S. and we'll process manually. |
+| `beneficial_owners`              | array  | Yes      | Individual with ≥25% ownership                                                                                                                                        |
+| `tos_attestation`                | object | Yes      |                                                                                                                                                                       |
+
+## Common Errors when creating Accounts
+
+| HTTP Status | Code                   | Message                                               | Potential Cause                     | Fix                     |
+| ----------- | ---------------------- | ----------------------------------------------------- | ----------------------------------- | ----------------------- |
+| `422`       | `Unprocessable Entity` | Invalid format for business or controller information | Phone number area code is not valid | Include valid area code |
+
+## Account Status
+
+Brale will review the Account and return a `status` field denoting the customer's KYB status. If the customer is in a pending status, you will need to wait for the customer to be verified before creating or linking addresses or bank accounts.
+
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/:id" />
+
+```json title="Response"
+{
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
+  "name": "ABC Company",
+  "status": "pending",
+  "created": "2023-09-19T14:46:20"
+}
+```
+
+### Account Statuses
+
+| Value      | Description                                  |
+| ---------- | -------------------------------------------- |
+| `pending`  | KYB is in progress                           |
+| `complete` | KYB is completed and the account is approved |
+| `rejected` | The account's KYB was rejected               |
+
+## Using Account ID in every request
+
+All resources in the Brale API (Addresses, Financial Institutions, Transfers, Automations, etc.) are scoped to specific accounts. Supply the ID in the path, never in the body.
+
+:::info[Path Rule]
+
+Every endpoint that contains `{account_id}` must be called by including the account ID in the path.
+E.g. `GET` `https://api.brale.xyz/accounts/2Js1YFqlfxgNqC2KTPEjrWIwKU7/addresses`. Do not send the account ID in the body or query string.
+:::

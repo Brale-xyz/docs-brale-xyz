@@ -1,0 +1,132 @@
+---
+id: get-financial-institution
+title: 'Fetch a specific financial institution'
+description: 'Retrieves details for the specified financial institution (bank account).'
+sidebar_label: 'Fetch a specific financial institution'
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV/9u2zYQfpUDsT/aQrFdd01bYxjgNmngFl2LpimwOZ5BUWeLs0Sq5CmuYwjYQ+wJ9yTDUbKtxPlRDAWG+R+b0t3Hu48f785rQXLuxWAsXmsjjdIyg5HxpKkkbY0Xk0jYAp3k1SgRAzFH2pq2LEUkEvTK6SKsBuIjktN4gR4SJKkzDzPrgFIEX6DSM40JzLZ76h0SPIilWYBUypaGHnbOGbuQTuZI6DjWtTAyRzEQjc1UJyISmnctJKUiEg6/lNphIgbkSoyEVynmUgzWgjRl7Pq29MGLVgUvPTlt5iISM+tySWIgFr4MBoUkQsfYv4/lweXw4LfewYvJun9Y/SAigV9lXgTA/md1Nhr5+fDj8nN8fJKNfo3T+eHs5OTpM1FdJ+dTijA6AjsLhDRpiCraZvY/z+jGgxXVhPPwhTUePYfe7/X46yrS8BZZ2PgPVCQioawhNMSej7qP+GufjFsk2nCzhSoci5t0HY5O/ks+65Nf7+23A3hZem3Qe3iVolpoM4fhVjmCnDR+hm5a+29xpHNyxWIizP0+ftXaYCykYq0ttUMxqSLBF3HaXN82NS+lWdzLpl0adHcn9EYahCOLHMXmLpsyj+/ze9x/8uPTw2fPX/TY09mStJl/k2fv8Mnj3vPD5727GN9XNltutB3Xye8wj+tfEFjhTJLEob9CWHNOw+bNfdR5cog0zbTB6eN7qYB3Uhs4DSpoe/bv9hwWBK/YR2la3W16hB7eWdZevYeke5Q6skvJppe6+IaTDEEwP+6eOM5Oh6Kq2sVwfI2rJptNkHUEO/RJS2jX7skN26nmmu3tWUt7T7N7Umwkdm3PSVV/IpEjpbZpqnUhScVAdBtr313vGlzV3VbFg1ZV9N21TirOF93FpjuWLhMDkRIVftDtykJ3Yicz7HxdXe6p+4OzSalCga0hQpX2qEoXZDFei5coHbphycGNJ+3Xp1x3a8m2jbaccgii6VW8joPRXgxnHsPNqjGA7AINOKTSGR4SnM3DawYHNElhtSG40BLe86M+qEyjoalymKAhLXnWyOyyAyOjsjKpwWtUbcLiXLCndfoyDDaDzdY/BaufzwWkKBN0PHzwQWkzs1cKIPMJI+9LaRSCNAm8dypFT/WkBMMPIxEJPpE6xX6n1+ntJV7D+LIorCMPnmScobLagG5D2zZ0BGhknHH1j5t+gD6YobJ+5bnMA1lQDiWF1LUDuzQt9NpcWXOBjiBGWiIamGlJ4UXb0KPMM/Q+W3XgNR9EK0ZrnMwLH4GdzZpfwX0pizqC0pNNVuFhIVe2JB/V5xzSHn4YQS4X6EEToPQr9olLnbUjOAjJYgJFrVPfOTe/vP90PIBhloFDb0unePLw8ECH02ZidtcmgqYah9/bKzRtXaHayiQgS7K5bB49BOkQ3p6ejY7833/+1T88UKl0UhE6kFmRSlPm6LSCum54oJTpcwjeuhA+xCsgnWMHmgbhwad2yfGdMWow1kZZ51BRUFokCuspl4a11kyCr5FUCnIzNatbZqtr0lrvpqTvPIk3V5vwK3WLTOoQdqg466aAjTfljhvd4MqMfnMNYzOd8F+N1HpigPU6lh7PXFZV/PhLidwaxpNIXEinmd1QmRLtgzrEYCYzj3dw8OBjU74fws2z9y2JbYYowz3lQmYlr0QkFri6+v+DZ/fvEM5th/svguOguN/VlSzwVb8YKoUFtVx4iuayvm1HJ8efRFX9Awz33QM=
+sidebar_class_name: 'get api-method'
+info_path: api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading
+  as={'h1'}
+  className={'openapi__heading'}
+  children={'Fetch a specific financial institution'}
+></Heading>
+
+<MethodEndpoint
+  method={'get'}
+  path={'/accounts/{account_id}/financial-institutions/{id}'}
+  context={'endpoint'}
+></MethodEndpoint>
+
+Retrieves details for the specified financial institution (bank account).
+
+<Heading
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      name: 'id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the financial institution',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A financial institution object',
+      content: {
+        '*/*': {
+          schema: {
+            title: 'FinancialInstitution',
+            type: 'object',
+            properties: {
+              id: {
+                title: 'Kusid',
+                type: 'string',
+                format: 'ksuid',
+                pattern: '^[a-zA-Z0-9]{26}$',
+                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+              },
+              name: { type: 'string', example: 'Business Checking Account' },
+              transfer_type: { type: 'array', items: { type: 'string' }, example: ['ach', 'wire'] },
+              bank_details: {
+                title: 'Bank',
+                type: 'object',
+                properties: {
+                  owner: { type: 'string', example: 'Jane Doe' },
+                  account_number: { type: 'string', example: '1234567890' },
+                  routing_number: { type: 'string', example: '063108680' },
+                  name: {
+                    type: 'string',
+                    description: 'The name of the bank',
+                    example: 'Example Bank',
+                  },
+                  address: {
+                    title: 'AccountAddress',
+                    type: 'object',
+                    properties: {
+                      street_line_1: { type: 'string', example: '123 Main St' },
+                      street_line_2: { type: 'string', example: 'Apt C' },
+                      city: { type: 'string', example: 'Des Moines' },
+                      state: { type: 'string', example: 'Iowa' },
+                      zip: { type: 'string', example: '12345' },
+                      country: { type: 'string', example: 'USA' },
+                    },
+                    required: ['street_line_1', 'city', 'state', 'zip', 'country'],
+                  },
+                  account_type: { type: 'string', example: 'checking' },
+                },
+                required: ['owner', 'account_number', 'routing_number', 'name', 'account_type'],
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
