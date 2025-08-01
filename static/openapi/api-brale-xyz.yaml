@@ -53,6 +53,25 @@ components:
       pattern: '^[a-zA-Z0-9]{26}$'
       example: '2VcUIIsgARwVbEGlIYbhg6fGG57'
 
+    Pagination:
+      title: Pagination
+      description: Cursor-based pagination metadata
+      type: object
+      additionalProperties: false
+      properties:
+        page_size:
+          type: integer
+          example: 25
+        next:
+          type: string
+          nullable: true
+          example: g3QAAAABdw...
+        prev:
+          type: string
+          nullable: true
+          example: g3QAAAABdw...
+      required: [page_size]
+
     ## --------------------- ACCOUNTS --------------------- ##
     AccountCreateRequest:
       type: object
@@ -100,8 +119,12 @@ components:
           $ref: '#/components/schemas/Ksuid'
         status:
           type: string
-          description: Current KYB status of the account
-          example: 'complete'
+          description: Current KYB / onboarding status of the account
+          enum:
+            - complete
+            - pending
+            - rejected
+          example: complete
         business_name:
           type: string
           example: 'ABC Company Inc'
@@ -181,10 +204,15 @@ components:
       properties:
         status:
           type: string
-          example: 'pending'
+          description: Lifecycle stage of the transfer
+          enum:
+            - pending
+            - processing
+            - complete
+            - canceled
+          example: pending
         amount:
-          type: string
-          example: '100.00'
+          $ref: '#/components/schemas/Amount'
         created_at:
           type: string
           format: date-time
@@ -197,9 +225,6 @@ components:
           $ref: '#/components/schemas/TransferEndpoint'
         destination:
           $ref: '#/components/schemas/TransferEndpoint'
-        gasFee:
-          type: string
-          example: '0.01'
 
     TransferEndpoint:
       title: TransferEndpoint
@@ -217,6 +242,43 @@ components:
         financial_institution_id:
           nullable: true
           $ref: '#/components/schemas/Ksuid'
+
+    TransfersList:
+      title: TransfersList
+      description: List of transfers plus pagination cursors
+      type: object
+      additionalProperties: false
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transfer'
+      required: [pagination, transfers]
+      example:
+        pagination:
+          next: g3QAAAABdw...
+          page_size: 25
+        transfers:
+          - id: '30NoY6R1Ns2tRBcx1Kb16SnuXOW'
+            status: complete
+            source:
+              transaction_id: '0xdd5646ea…'
+              address_id: '2MhCCIHu…'
+              value_type: ACE
+              transfer_type: base
+            destination:
+              transaction_id: '0xdd5646ea…'
+              address_id: '2O6asmN…'
+              value_type: ACE
+              transfer_type: base
+            updated_at: '2025-07-25T21:05:07.779018Z'
+            created_at: '2025-07-25T21:03:55.364134Z'
+            amount:
+              value: '0.10'
+              currency: USD
+            note: null
 
     TransferCreateRequest:
       title: TransferCreateRequest
@@ -260,7 +322,11 @@ components:
           $ref: '#/components/schemas/Ksuid'
         status:
           type: string
-          example: 'complete'
+          enum:
+            - pending
+            - active
+            - archived
+          example: active
         name:
           type: string
           example: 'Solana Custodial Wallet'
@@ -274,28 +340,73 @@ components:
             type: string
           example: ['Solana']
 
+    AddressReference:
+      title: AddressReference
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/components/schemas/Ksuid'
+        address:
+          type: string
+          example: '0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b'
+      required: [id, address]
+
+    Amount:
+      title: Amount
+      type: object
+      description: Monetary value with explicit currency
+      additionalProperties: false
+      properties:
+        value:
+          type: string
+          example: '11234.88'
+        currency:
+          type: string
+          example: 'USD'
+      required:
+        - value
+        - currency
+
     AddressBalanceResponse:
       title: AddressBalance
       type: object
+      additionalProperties: false
+      description: Balance of **one** token on **one** chain for a specific wallet
       properties:
-        status:
-          type: string
-          example: 'complete'
-        name:
-          type: string
-          example: 'Customer XYZ Custodial Wallet'
         address:
+          $ref: '#/components/schemas/AddressReference'
+        balance:
+          $ref: '#/components/schemas/Amount'
+        transfer_type:
           type: string
-          example: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me'
-        transfer_types:
-          type: array
-          items:
-            type: string
-          example: ['Solana']
-        balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/Balance'
+          description: Blockchain where the balance lives
+          enum:
+            - solana
+            - ethereum
+            - polygon
+            - base
+            - arbitrum
+            - canton
+            - avalanche
+            - base_sepolia
+            - sepolia
+            - solana_devnet
+          example: solana
+        value_type:
+          type: string
+          description: Token ticker
+          example: SBC
+      required: [address, balance, transfer_type, value_type]
+      example:
+        address:
+          id: 2VcUIIsgARwVbEGlIYbhg6fGG57
+          address: 73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me
+        balance:
+          value: '100.00'
+          currency: SBC
+        transfer_type: solana
+        value_type: SBC
 
     Balance:
       title: Balance
@@ -366,11 +477,13 @@ components:
         name:
           type: string
           example: 'Business Checking Account'
-        transfer_type:
-          type: array
-          items:
-            type: string
-          example: ['ach', 'wire']
+        status:
+          type: string
+          enum:
+            - processing
+            - active
+            - archived
+          example: active
         bank_details:
           $ref: '#/components/schemas/BankDetails'
 
