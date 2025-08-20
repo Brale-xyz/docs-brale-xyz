@@ -75,7 +75,7 @@ Retrieve details of a linked financial institution by ID.
 Creating Financial Institutions through Plaid is not yet supported. To learn more, please reach out to our team.
 :::
 
-This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Financial Institutions can be used for ACH pulls.
+This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Financial Institutions can be used for ACH pulls (debits).
 
 ### Overview of the Flow
 
@@ -83,13 +83,13 @@ This guide walks you through how to enable your customers to securely link their
 2. Initialize Plaid Link in your front-end using the `link_token`.
 3. Plaid returns a `public_token` once the user has successfully linked their account.
 4. Exchange the `public_token` with Brale to finalize the linking process.
-5. Fetch the newly created Financial Institutions for the end user, then proceed with transfers, withdrawals, etc.
+5. Fetch the newly created Financial Institutions for the end user, then proceed with transfers, etc.
 
 ### Request a Plaid Link Token
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial_institution/plaid/link_token"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/plaid/link_token"
 />
 
 ```json title="Request"
@@ -114,7 +114,7 @@ This guide walks you through how to enable your customers to securely link their
 | Parameters              | Description                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------------- |
 | `link_token`            | The token you will use to launch Plaid Link in your front-end or mobile app.       |
-| `expires_at`            | Time at which the `link_token` will no longer be valid.                            |
+| `expiration`            | Time at which the `link_token` will no longer be valid.                            |
 | `exchange_callback_url` | The endpoint to which you should send the `public_token` to finalize the exchange. |
 
 ### Render the Plaid Link SDK
@@ -129,7 +129,7 @@ Once the user completes linking, you'll receive a `public_token`. You must excha
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial_institution/register_account"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/register_account"
 />
 
 ```json title="Request"
@@ -152,7 +152,7 @@ Shortly after exchanging the public token, the user’s bank accounts are idempo
 
 <HTTPMethod
   method="GET"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial_institutions/:id"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/:id"
 />
 
 ```json title="Response"
