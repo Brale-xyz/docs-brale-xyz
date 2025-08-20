@@ -87,12 +87,26 @@ This guide walks you through how to enable your customers to securely link their
 
 ### Request a Plaid Link Token
 
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/financial_institution/plaid_link_token" />
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial_institution/plaid/link_token"
+/>
+
+```json title="Request"
+{
+  "user_id": "user_123456789", // Required
+  "link_customization_name": "vip-user",
+  "date_of_birth": "1990-01-01",
+  "email_address": "user@example.com",
+  "legal_name": "John Doe",
+  "phone_number": "+1234567890"
+}
+```
 
 ```json title="Response"
 {
   "link_token": "link_token_XYZ",
-  "expires_at": "2025-03-23T03:22:34.086Z",
+  "expiration": "2025-03-23T03:22:34.086Z",
   "exchange_callback_url": "https://api.brale.xyz/exchange_public_token/{unique-id}"
 }
 ```
@@ -113,9 +127,10 @@ For production apps, it's recommended you send the public_token to your own back
 
 Once the user completes linking, you'll receive a `public_token`. You must exchange it for permanent access tokens and link information.
 
-```
-POST https://api.brale.xyz/financial_institution/exchange_public_token
-```
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial_institution/register_account"
+/>
 
 ```json title="Request"
 {
@@ -123,13 +138,22 @@ POST https://api.brale.xyz/financial_institution/exchange_public_token
 }
 ```
 
-After this call completes, our system retrieves the linked bank accounts and creates External Accounts for each account the user selected.
+```json title="Response"
+{
+  "financial_institution_id": "fi_123456789"
+}
+```
+
+After this call completes, our system retrieves the linked bank account and creates a Financial Insitution for the account the user selected.
 
 ### Check for Newly Created Financial Institutions
 
 Shortly after exchanging the public token, the user’s bank accounts are idempotently created as Financial Institutions which you can query.
 
-<HTTPMethod method="GET" endpoint="https://api.brale.xyz/financial_institutions/:id" />
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial_institutions/:id"
+/>
 
 ```json title="Response"
 {
