@@ -43,3 +43,13 @@ curl --request GET \
   --url https://api.brale.xyz/tokens \
   --header 'Authorization: Bearer OiVz67P7emAx0JUJRmYHP4pI-nSlYQn7ivTQE.A-tXeGnuzQBRSjq9QNGQXZ4aRl7Rbm8wY'
 ```
+
+## Token Expiration
+
+Access tokens are short-lived and expire 60 minutes after issuance.
+
+When a token expires:
+
+- API calls will return a `401 Unauthorized` error.  
+- Your application should request a new token using the same client credentials before retrying the request.  
+- Best practice is to refresh the token automatically rather than caching it indefinitely.
