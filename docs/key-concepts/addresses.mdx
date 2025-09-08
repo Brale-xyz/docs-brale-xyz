@@ -5,25 +5,103 @@ sidebar_label: 'Addresses'
 ---
 
 <p class="intro-subheading">
-  Addresses are on-chain wallet addresses that can send and receive stablecoins.
+  Addresses are on-chain wallet addresses that can send and receive stablecoins as well as off-chain
+  addresses that can send and receive US fiat.
 </p>
 
 Brale distinguishes between internal and external addresses:
 
-- Internal addresses – Custodial addresses managed by Brale on behalf of customers.
-- External addresses (EOAs) – Non-custodial addresses controlled by users outside of Brale.
+- **Internal addresses** - Custodial addresses managed by Brale on behalf of customers.
+- **External addresses (EOAs)** - Non-custodial addresses controlled by users outside of Brale.
+- **External addresses** `NEW` - Addresses associated with an ACH `transfer_type` that power 2nd and 3rd Party Transfers [link to guide].
+  - To learn more and see how this can benefit your business, schedule a meeting to <ExternalLink href="https://brale.xyz/contact" title="Schedule a meeting with Brale">talk to sales</ExternalLink>.
 
 Whether internal or external, all addresses possess:
 
-- `name`: A user-friendly label to identify the wallet.
-- `address`: The unique wallet address on a specific blockchain (EVM, Solana, etc.).
-- `transfer_types`: The blockchains the wallet supports. See [Supported Chains](https://docs.brale.xyz/docs/stablecoins-and-blockchains) for the full list. Each address is associated with only one blockchain environment (e.g., Solana, EVM).
+- `name`: A user-friendly label to identify the address.
+- `transfer_types`: The supported `transfer_types` of the address.
 
 ## Custodial (Internal) Addresses
 
 Brale provides custodial wallets that allow businesses to securely hold and transfer stablecoins on behalf of themselves or their customers. Custodial addresses support all supported blockchains.
 
 When your customer's Account is onboarded, Brale automatically generates internal custodial addresses on all supported blockchains. You do not need to create them manually.
+
+## Non-Custodial (External) Addresses
+
+Linking external addresses enable users to deposit stablecoins into or withdraw stablecoins from their custodial addresses as well as mint stablecoins into or redeem stablecoins from their custodial addresses.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
+
+### Non-Custodial (External) Address for Blockchain Supported Chains
+
+The blockchains the address supports. See [Supported Chains](/coverage/stablecoins-and-blockchains) for the full list. Each address is associated with only one blockchain environment (e.g., Solana, EVM).
+
+```json title="Request"
+{
+  "name": "Non-Custodial (External) Wallet",
+  "transfer_types": ["Ethereum"],
+  "wallet_address": "0x123456789"
+}
+```
+
+```json title="Response"
+{
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57"
+}
+```
+
+### Non-Custodial (External) Address for ACH Credits
+
+These support the following `transfer_types` and enable USD to be sent to a destination in a transfer.
+
+- `ach-credit`
+- `ach-credit-same-day`
+
+```json title="Request"
+{
+  "name": "2nd/3rd Party Bank",
+  "transfer_types": ["ach-credit"],
+  "account_number": "123456789",
+  "routing_number": "987654321",
+  "account_type": "checking, savings",
+  "first_name": "Steve",
+  "last_name": "Brown",
+  "business_name": "Name of Business", - optional
+  "email": "b@brale.xyz"
+}
+```
+
+```json title="Response"
+{
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57"
+}
+```
+
+### Non-Custodial (External) Address for ACH Debits
+
+These support the following `transfer_types` and enable USD to be pulled from a source in a transfer.
+
+- `ach-debit`
+- `ach-debit-same-day`
+
+```json title="Request"
+{
+  "name": "2nd/3rd Party Bank",
+  "transfer_types": ["ach-debit"],
+  "plaid_token": "98s83sjsd39sds"
+}
+```
+
+```json title="Response"
+{
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57"
+}
+```
+
+:::note
+These addresses require a Plaid token to verify ownership.
+:::
 
 ## Fetching Addresses
 
@@ -38,36 +116,39 @@ This endpoint returns all addresses (whether internal or external) linked to the
   "addresses": [
     {
       "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
-      "status": "complete",
-      "name": "Solana Custodial Wallet",
+      "status": "active",
+      "name": "Internal Custodial Wallet",
       "type": "Internal",
       "address": "73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me",
       "created": "2023-03-07T17:31:37.997502Z",
       "transfer_types": ["solana", "solana_devnet"]
     },
     {
+      "id": "a1b2c3d4-5678-90ab-cdef-1234567890bc",
+      "status": "active",
+      "name": "External Non-Custodial Wallet",
+      "type": "External",
+      "address": "73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me",
+      "created": "2023-03-07T17:31:37.997502Z",
+      "transfer_types": ["solana", "solana_devnet"]
+    },
+    {
+      "id": "b2c3d4e5-6789-01ab-cdef-2345678901ab",
+      "status": "active",
+      "name": "2nd/3rd Party ACH Credit",
+      "type": "External",
+      "routing_number": "987654321",
+      "created": "2023-03-07T17:31:37.997502Z",
+      "transfer_types": ["ach-credit", "ach-credit-same-day"]
+    },
+    {
       "id": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
-      "status": "complete",
-      "name": "EVM Custodial Wallet",
-      "address": "0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26",
-      "transfer_types": [
-        "avalanche",
-        "ethereum",
-        "fuji",
-        "mordor",
-        "classic",
-        "sepolia",
-        "alfajores",
-        "celo",
-        "base",
-        "base_sepolia",
-        "optimism",
-        "amoy",
-        "polygon",
-        "arbitrum",
-        "viction",
-        "bnb"
-      ]
+      "status": "active",
+      "name": "2nd/3rd Party ACH Debit",
+      "type": "External",
+      "routing_number": "987654321",
+      "created": "2023-03-07T17:31:37.997502Z",
+      "transfer_types": ["ach-debit", "ach-debit-same-day"]
     }
   ]
 }
@@ -94,31 +175,5 @@ You can query the stablecoin balance of an internal address.
   },
   "value_type": "SBC",
   "transfer_type": "base"
-}
-```
-
-## Linking an external Wallet Address
-
-External addresses enable users to deposit stablecoins into or withdraw stablecoins from custodial addresses. To link an external wallet to an Account, send the following request:
-
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
-
-```json title="Request"
-{
-  "name": "User Ethereum Wallet",
-  "transfer_types": ["Ethereum", "Avalanche", "Polygon"],
-  "address": "0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26"
-}
-```
-
-```json title="Response"
-{
-  "id": "2xNNDU0Ibrmw61XPL5Fh9BXnNjp",
-  "name": "User Ethereum Wallet",
-  "status": "active",
-  "type": "external",
-  "address": "0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26",
-  "created": "2025-05-20T20:54:11.063281Z",
-  "transfer_types": ["Ethereum", "Avalanche", "Polygon"]
 }
 ```
