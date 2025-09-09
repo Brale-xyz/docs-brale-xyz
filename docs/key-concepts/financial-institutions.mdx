@@ -12,7 +12,7 @@ sidebar_label: 'Financial Institutions'
 You can add external accounts through:
 
 1. Financial Institutions API
-2. Plaid (coming soon)
+2. Plaid
 
 ## Create through the Financial Institutions API
 
@@ -106,11 +106,11 @@ This guide walks you through how to enable your customers to securely link their
 }
 ```
 
-| Parameters              | Description                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| `link_token`            | The token you will use to launch Plaid Link in your front-end or mobile app.       |
-| `expiration`            | Time at which the `link_token` will no longer be valid.                            |
-| `exchange_callback_url` | The endpoint to which you should send the `public_token` to finalize the exchange. |
+| Parameters     | Description                                                                        |
+| -------------- | ---------------------------------------------------------------------------------- |
+| `link_token`   | The token you will use to launch Plaid Link in your front-end or mobile app.       |
+| `expiration`   | Time at which the `link_token` will no longer be valid.                            |
+| `callback_url` | The endpoint to which you should send the `public_token` to finalize the exchange. |
 
 ### Render the Plaid Link SDK
 

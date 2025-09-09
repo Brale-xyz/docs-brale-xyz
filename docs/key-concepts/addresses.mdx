@@ -5,16 +5,18 @@ sidebar_label: 'Addresses'
 ---
 
 <p class="intro-subheading">
-  Addresses are on-chain wallet addresses that can send and receive stablecoins as well as off-chain
-  addresses that can send and receive US fiat.
+  Addresses are represented by an `address_id`, which uniquely identifies a wallet or account for a
+  specific `transfer_type`.
 </p>
 
-Brale distinguishes between internal and external addresses:
+An `address_id` can represent either an onchain or offchain destination (e.g. blockchain wallet, bank account, RTP endpoint), depending on the `transfer_type`.
 
-- **Internal addresses** - Custodial addresses managed by Brale on behalf of customers.
-- **External addresses (EOAs)** - Non-custodial addresses controlled by users outside of Brale.
-- **External addresses** `NEW` - Addresses associated with an ACH `transfer_type` that power [2nd & 3rd Party Transfers](/guides/2nd-and-3rd-party-transfers).
-  - To learn more and see how this can benefit your business, schedule a meeting to <ExternalLink href="https://brale.xyz/contact" title="Schedule a meeting with Brale">talk to sales</ExternalLink>.
+The `address_id` is commonly used in the Brale API as the source or destination of a transfer.
+
+Brale distinguishes between internal and external addresses using the type field:
+
+- `type`: `internal` - An `address_id` associated with wallets managed by Brale on behalf of you or your customers.
+- `type`: `external` - An `address_id` managed outside of Brale's infrastructure (e.g., user-owned wallet or external account).
 
 Whether internal or external, all addresses possess:
 
