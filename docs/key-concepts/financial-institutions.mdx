@@ -71,10 +71,6 @@ Retrieve details of a linked financial institution by ID.
 
 ## Create Financial Institutions through Plaid
 
-:::warning[Coming Soon]
-Creating Financial Institutions through Plaid is not yet supported. To learn more, please reach out to our team.
-:::
-
 This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Financial Institutions can be used for ACH pulls (debits).
 
 ### Overview of the Flow
@@ -94,12 +90,11 @@ This guide walks you through how to enable your customers to securely link their
 
 ```json title="Request"
 {
-  "user_id": "user_123456789", // Required
-  "link_customization_name": "vip-user",
-  "date_of_birth": "1990-01-01",
-  "email_address": "user@example.com",
-  "legal_name": "John Doe",
-  "phone_number": "+1234567890"
+  "link_customization_name": "vip-user", - optional
+  "date_of_birth": "1990-01-01", - optional
+  "email_address": "user@example.com", - optional
+  "legal_name": "John Doe", - optional
+  "phone_number": "+1234567890" - optional
 }
 ```
 
@@ -107,7 +102,7 @@ This guide walks you through how to enable your customers to securely link their
 {
   "link_token": "link_token_XYZ",
   "expiration": "2025-03-23T03:22:34.086Z",
-  "exchange_callback_url": "https://api.brale.xyz/exchange_public_token/{unique-id}"
+  "callback_url": "https://api.brale.xyz/exchange_public_token/{unique-id}"
 }
 ```
 
@@ -129,7 +124,7 @@ Once the user completes linking, you'll receive a `public_token`. You must excha
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/register_account"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/register-account"
 />
 
 ```json title="Request"
