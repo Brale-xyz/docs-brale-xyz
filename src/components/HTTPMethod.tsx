@@ -26,9 +26,7 @@ export function HTTPMethod({ method, endpoint }: HTTPMethodProps): ReactNode {
     <div className="global-rounded global-border mb-5 flex items-center bg-white pl-4 dark:bg-gray-900">
       <code className={getMethodStyles(method)}>{method}</code>
       <div className="flex-1 overflow-x-auto whitespace-pre-wrap break-all">
-        <CodeBlock language="shell" className="m-0 grow border-none">
-          {endpoint}
-        </CodeBlock>
+        <CodeBlock className="m-0 grow border-none">{endpoint}</CodeBlock>
       </div>
     </div>
   );

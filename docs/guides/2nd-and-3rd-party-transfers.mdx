@@ -1,0 +1,93 @@
+---
+sidebar_position: 6
+title: '2nd & 3rd Party Transfers'
+sidebar_label: '2nd & 3rd Party Transfers'
+---
+
+<p class="intro-subheading">
+  We've expanded our Transfers endpoint to support both 2nd and 3rd Party transfers via ACH transfer
+  types.
+</p>
+
+When Brale is initiating a transfer on behalf of our customer or our customer's customer, it can be confusing to see Brale's name show up on the transfer. This is where the power of 2nd and 3rd party transfers comes in as it enables the receiver of these transfers to see our customer's or our customer's customer's name on the transfer.
+
+To learn more and see how this can benefit your business, schedule a meeting to <ExternalLink href="https://brale.xyz/contact" title="Schedule a meeting with Brale">talk to sales</ExternalLink>.
+
+## Creating 2nd/3rd Party Transfers
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+Below are identical API calls with the exception of what `account_id` is used to make the call.
+
+- `account_id: 1111` = `Company Alpha`
+  - This is Brale's direct customer
+- `account_id: 2222` = `Company Beta`
+  - This is Company Alpha's direct customer
+
+The name associated with the Account will show up on the transfer, which makes it easier for the receiver to identify and reconcile the transfer.
+
+### Example of a 2nd Party Transfer
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+`account_id` = `1111`
+
+The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Alpha`.
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "value_type": "USD",
+    "transfer_type": "ach-debit",
+    "address_id": "9999"
+  },
+  "destination": {
+    "value_type": "SBC",
+    "transfer_type": "Canton",
+    "address_id": "8888"
+  }
+}
+```
+
+```json title="Response"
+{
+  "id": "9f80c1f5-80df-4c5e-9b68-b9f5712d46d4"
+}
+```
+
+### Example of a 3rd Party Transfer
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+`account_id` = `2222`
+
+The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Beta`.
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "value_type": "USD",
+    "transfer_type": "ach-debit",
+    "address_id": "9999"
+  },
+  "destination": {
+    "value_type": "SBC",
+    "transfer_type": "Canton",
+    "address_id": "8888"
+  }
+}
+```
+
+```json title="Response"
+{
+  "id": "9f80c1f5-80df-4c5e-9b68-b9f5712d46d4"
+}
+```

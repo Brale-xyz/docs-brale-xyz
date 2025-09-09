@@ -5,9 +5,14 @@ sidebar_label: 'Accounts'
 ---
 
 <p class="intro-subheading">
-  Get authenticated, grab your IDs, and create your first stablecoin transfer in less than five
-  minutes.
+  Accounts are represented by account_ids, which are assigned to KYB'd (business) entities. If you
+  have an API Key and Secret, your application has its own `account_id`. You can also create
+  additional `account_ids` for your business clients.
 </p>
+
+Each `account_id` is associated with one or more custodial (`type=internal`) onchain wallets, which are represented by `address_ids`. An `account_id` may also be linked to a `financial_institution_id` to enable first-party fiat funding for mints and redemptions.
+
+The `account_id` is used in the request URL across many Brale API endpoints to scope the request to a specific application or client.
 
 To KYB and approve an account, we collect key details such as business name and EIN. For more information, see our Compliance Requirements. If additional details are required, we will notify you with the necessary steps to complete KYB.
 
