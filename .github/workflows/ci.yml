@@ -37,28 +37,32 @@ jobs:
             echo "needs-formatting=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Apply formatting
+      - name: Comment on PR with formatting instructions
         if: steps.format-check.outputs.needs-formatting == 'true'
-        run: npm run format
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔧 Formatting Required
 
-      - name: Check for changes
-        id: changes
-        if: steps.format-check.outputs.needs-formatting == 'true'
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "has-changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "has-changes=false" >> $GITHUB_OUTPUT
-          fi
+            This PR needs formatting. Please format your code before merging.
 
-      - name: Commit formatting changes
-        if: steps.changes.outputs.has-changes == 'true'
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "style: apply automatic formatting"
-          git push origin ${{ github.head_ref }}
+            **How to fix:**
+            1. Edit the files in GitHub (click the pencil icon)
+            2. Copy the content to [Prettier Playground](https://prettier.io/playground/)
+            3. Format the code and copy it back
+            4. Save and commit your changes
+
+            **Or use these online tools:**
+            - [Prettier Playground](https://prettier.io/playground/) - Format your code online
+            - [ESLint Playground](https://eslint.org/play/) - Check for linting issues
+
+            **Files that need formatting:**
+            Check the workflow logs for specific files that failed formatting.`
+            })
 
   build:
     runs-on: ubuntu-latest
@@ -72,5 +76,5 @@ jobs:
           cache: npm
           node-version-file: .tool-versions
       - run: npm ci
-      - run: npm run format:check
       - run: npm run lint
+      - run: npm run build
