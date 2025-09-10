@@ -8,6 +8,58 @@ env:
   FONT_AWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONT_AWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
+  auto-format:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check if formatting is needed
+        id: format-check
+        run: |
+          if ! npm run format:check; then
+            echo "needs-formatting=true" >> $GITHUB_OUTPUT
+          else
+            echo "needs-formatting=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Apply formatting
+        if: steps.format-check.outputs.needs-formatting == 'true'
+        run: npm run format
+
+      - name: Check for changes
+        id: changes
+        if: steps.format-check.outputs.needs-formatting == 'true'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit formatting changes
+        if: steps.changes.outputs.has-changes == 'true'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "style: apply automatic formatting"
+          git push origin ${{ github.head_ref }}
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -22,4 +74,3 @@ jobs:
       - run: npm ci
       - run: npm run format:check
       - run: npm run lint
-      - run: npm run build
