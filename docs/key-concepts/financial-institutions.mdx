@@ -90,7 +90,6 @@ This guide walks you through how to enable your customers to securely link their
 
 ```json title="Request"
 {
-  "link_customization_name": "vip-user", // Optional
   "date_of_birth": "1990-01-01", // Optional
   "email_address": "user@example.com", // Optional
   "legal_name": "John Doe", // Optional
@@ -118,9 +117,9 @@ In your front-end, initialize Plaid Link using the link_token you received.
 
 For production apps, it's recommended you send the public_token to your own backend (over HTTPS), and then have your backend call our exchange endpoint. That way, you avoid exposing your own platform API keys in the browser.
 
-### Exchange the Public Token
+### Register Financial Institution (exchange the public token)
 
-Once the user completes linking, you'll receive a `public_token`. You must exchange it for permanent access tokens and link information.
+Send us the public_token you received from Plaid Link. Brale securely exchanges it for a Plaid access_token server-side and creates/updates a Financial Institution on the specified Account.
 
 <HTTPMethod
   method="POST"
@@ -130,7 +129,7 @@ Once the user completes linking, you'll receive a `public_token`. You must excha
 ```json title="Request"
 {
   "public_token": "public_token_XYZ",
-  "customer_webhook_url": "https://mywebhook.com" // Optional - receive notification when Plaid auth expires
+  "customer_webhook_url": "https://mywebhook.com"
 }
 ```
 
@@ -179,9 +178,9 @@ At this point, you can initiate ACH pulls or other transactions using these new 
 
 When Plaid signals that an Item requires user action (e.g., credentials changed), Brale can notify you via webhook and you can present a Plaid update Link flow to the user.
 
-### Receive Brale webhook (optional but recommended)
+### Receive Brale webhook
 
-If you supplied `customer_webhook` during the exchange step, Brale will `POST` a JSON payload when re-auth is required.
+Brale will `POST` a JSON payload when re-auth is required to the `customer_webhook` you provide during the exchange step.
 
 ```json title="Example payload"
 {
@@ -201,7 +200,7 @@ If you supplied `customer_webhook` during the exchange step, Brale will `POST` a
 
 ```json title="Response"
 {
-  "active": true,
+  "status": "active",
   "last_updated": "2025-09-13T17:17:00Z",
   "financial_institution_id": "fi_id123",
   "needs_update": true
