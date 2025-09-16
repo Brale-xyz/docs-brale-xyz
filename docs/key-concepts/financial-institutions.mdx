@@ -20,7 +20,7 @@ Link your customer's bank account by adding it to their Account.
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/external"
 />
 
 ```json title="Request"
@@ -56,7 +56,7 @@ Retrieve details of a linked financial institution by ID.
 
 <HTTPMethod
   method="GET"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/:id"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/{id}"
 />
 
 ```json title="Response"
@@ -85,12 +85,11 @@ This guide walks you through how to enable your customers to securely link their
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/plaid/link_token"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/plaid/link_token"
 />
 
 ```json title="Request"
 {
-  "link_customization_name": "vip-user", // Optional
   "date_of_birth": "1990-01-01", // Optional
   "email_address": "user@example.com", // Optional
   "legal_name": "John Doe", // Optional
@@ -118,18 +117,19 @@ In your front-end, initialize Plaid Link using the link_token you received.
 
 For production apps, it's recommended you send the public_token to your own backend (over HTTPS), and then have your backend call our exchange endpoint. That way, you avoid exposing your own platform API keys in the browser.
 
-### Exchange the Public Token
+### Register Financial Institution (exchange the public token)
 
-Once the user completes linking, you'll receive a `public_token`. You must exchange it for permanent access tokens and link information.
+Send us the public_token you received from Plaid Link. Brale securely exchanges it for a Plaid access_token server-side and creates/updates a Financial Institution on the specified Account.
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/register-account"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/register-account"
 />
 
 ```json title="Request"
 {
-  "public_token": "public_token_XYZ"
+  "public_token": "public_token_XYZ",
+  "customer_webhook_url": "https://mywebhook.com"
 }
 ```
 
@@ -141,13 +141,13 @@ Once the user completes linking, you'll receive a `public_token`. You must excha
 
 After this call completes, our system retrieves the linked bank account and creates a Financial Insitution for the account the user selected.
 
-### Check for Newly Created Financial Institutions
+### Check for newly created Financial Institutions
 
-Shortly after exchanging the public token, the user’s bank accounts are idempotently created as Financial Institutions which you can query.
+Shortly after exchanging the public token, the user's bank accounts are idempotently created as Financial Institutions which you can query.
 
 <HTTPMethod
   method="GET"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/:id"
+  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/{id}"
 />
 
 ```json title="Response"
@@ -173,3 +173,51 @@ Shortly after exchanging the public token, the user’s bank accounts are idempo
 ```
 
 At this point, you can initiate ACH pulls or other transactions using these new Financial Institutions.
+
+## Handling Re-Authentication
+
+When Plaid signals that an Item requires user action (e.g., credentials changed), Brale can notify you via webhook and you can present a Plaid update Link flow to the user.
+
+### Receive Brale webhook
+
+Brale will `POST` a JSON payload when re-auth is required to the `customer_webhook` you provide during the exchange step.
+
+```json title="Example payload"
+{
+  "reason": "Plaid item requires re-authentication",
+  "timestamp": "2025-09-13T17:17:00Z",
+  "event_type": "ITEM_LOGIN REQUIRED",
+  "financial_institution_id": "fi_id123"
+}
+```
+
+### Check status
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/{fi_id}/status"
+/>
+
+```json title="Response"
+{
+  "status": "active",
+  "last_updated": "2025-09-13T17:17:00Z",
+  "financial_institution_id": "fi_id123",
+  "needs_update": true
+}
+```
+
+### Request an updated link token
+
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/financial-institutions/{fi_id}/update-link-token"
+/>
+
+```json title="Response"
+{
+  "link_token": "link_token_XYZ"
+}
+```
+
+Open Plaid Link again with this `link_token`. Plaid will streamline the flow and only ask the user to re-authenticate. Run Step 3 again with the new `public_token` (same endpoint). The existing Financial Institution is updated in place and retains the same `financial_institution_id`.
