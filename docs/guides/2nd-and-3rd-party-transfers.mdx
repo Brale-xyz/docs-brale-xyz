@@ -61,11 +61,13 @@ The name on this transfer, name on the ACH transaction of the receiving end, wil
 
 ### Example of a 3rd Party Transfer
 
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/{account_id}/transfers" />
 
-`account_id` = `2222`
+`account_id` = `1111`
 
-The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Beta`.
+`brand.account_id` = `2222`
+
+The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Beta`, which is the name associated with `brand.account_id` = `2222`.
 
 ```json title="Request"
 {
@@ -82,6 +84,9 @@ The name on this transfer, name on the ACH transaction of the receiving end, wil
     "value_type": "SBC",
     "transfer_type": "Canton",
     "address_id": "8888"
+  },
+  "brand": {
+    "account_id": 2222
   }
 }
 ```
