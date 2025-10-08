@@ -225,6 +225,16 @@ components:
           $ref: '#/components/schemas/TransferEndpoint'
         destination:
           $ref: '#/components/schemas/TransferEndpoint'
+        brand:
+          $ref: '#/components/schemas/Brand'
+
+    Brand:
+      title: Brand
+      type: object
+      properties:
+        account_id:
+          type: string
+          example: '2222'
 
     TransferEndpoint:
       title: TransferEndpoint
@@ -301,11 +311,7 @@ components:
         destination:
           $ref: '#/components/schemas/TransferEndpoint'
         brand:
-          type: object
-          properties:
-            account_id:
-              type: string
-              example: '2222'
+          $ref: '#/components/schemas/Brand'
       required:
         - amount
         - source
