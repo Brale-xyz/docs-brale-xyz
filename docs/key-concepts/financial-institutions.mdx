@@ -61,11 +61,24 @@ Retrieve details of a linked financial institution by ID.
 
 ```json title="Response"
 {
-  "id": "2O0bbQgbSL52PktkiTgv3yq3hiB",
-  "name": "Example Bank",
-  "status": "active",
-  "created": "2023-04-05T13:15:17.273102Z",
-  "routingNumber": "987654321"
+  "owner": "Jane Doe",
+  "account_number": "****7890",
+  "routing_number": "063108680",
+  "beneficiary_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "bank_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "account_type": "checking"
 }
 ```
 

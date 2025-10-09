@@ -44,6 +44,30 @@ When you submit a mint in sandbox, we skip the fiat leg and immediately mint on-
 }
 ```
 
+## 3. Burn Tokens on Testnets
+
+When you submit a redemption in sandbox, we immediately burn on-chain and skip the fiat payout. This simulates an offramp transaction.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "solana_devnet"
+  },
+  "destination": {
+    "value_type": "USD",
+    "transfer_type": "wire"
+  }
+}
+```
+
 ## Follow the Quick Start Guide
 
 Follow [Quick Start - Your First Stablecoin Transfer](/overview/quick-start) for next steps to get deeper with the Brale API.
