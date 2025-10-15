@@ -33,7 +33,7 @@ When your customer's Account is onboarded, Brale automatically generates interna
 
 Linking external addresses enable users to deposit stablecoins into or withdraw stablecoins from their custodial addresses as well as mint stablecoins into or redeem stablecoins from their custodial addresses.
 
-<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
+<HTTPMethod method="POST" endpoint="/accounts/{account_id}/addresses/external" />
 
 ### Non-Custodial (External) Address for Blockchain Supported Chains
 
@@ -111,7 +111,7 @@ Retrieve all addresses associated with the authenticated Account.
 
 This endpoint returns all addresses (whether internal or external) linked to the Account.
 
-<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/addresses" />
+<HTTPMethod method="GET" endpoint="/accounts/{account_id}/addresses" />
 
 ```json title="Response"
 {
@@ -162,7 +162,7 @@ You can query the stablecoin balance of an internal address.
 
 <HTTPMethod
   method="GET"
-  endpoint="https://api.brale.xyz/accounts/account_id/addresses/address_id/balance?transfer_type=chain&value_type=token"
+  endpoint="/accounts/{account_id}/addresses/address_id/balance?transfer_type=chain&value_type=token"
 />
 
 ```json title="Response"
@@ -179,3 +179,38 @@ You can query the stablecoin balance of an internal address.
   "transfer_type": "base"
 }
 ```
+
+### Filtering Addresses
+
+You can narrow results on `GET /accounts/{account_id}/addresses` with optional query parameters.
+
+## Query Parameters
+
+| Param           | Type              | Description                                                                           |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------- |
+| `address`       | string            | Exact on-chain address (e.g., EVM, Solana).                                           |
+| `type`          | enum              | Filter by address type: `internal` \| `external`.                                     |
+| `transfer_type` | enum (repeatable) | Filter by one or more transfer types (e.g., `ethereum`, `base`, `solana`, `stellar`). |
+
+## Examples
+
+External addresses usable on Solana OR Base
+
+<HTTPMethod
+  method="GET"
+  endpoint="/accounts/{account_id}/addresses?type=external&transfer_type=solana&transfer_type=base"
+/>
+
+Exact EVM address (case-insensitive)
+
+<HTTPMethod
+  method="GET"
+  endpoint="/accounts/{account_id}/addresses?address=0xEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+/>
+
+Internal EVM addresses that support Ethereum
+
+<HTTPMethod
+  method="GET"
+  endpoint="/accounts/{account_id}/addresses?type=internal&transfer_type=ethereum"
+/>
