@@ -179,3 +179,24 @@ You can query the stablecoin balance of an internal address.
   "transfer_type": "base"
 }
 ```
+
+### Filtering Addresses
+
+You can narrow results on `GET /accounts/{account_id}/addresses` with optional query parameters.
+
+## Query Parameters
+
+## Examples
+
+External addresses usable on Solana OR Base
+
+<GET /accounts/{account_id}/addresses?type=external&transfer_type=solana&transfer_type=base />
+
+Exact EVM address (case-insensitive)
+
+<GET /accounts/{account_id}/addresses?address=0xEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE />
+
+Internal EVM addresses that support Ethereum
+
+<GET /accounts/{account_id}/addresses?type=internal&transfer_type=ethereum />
+
