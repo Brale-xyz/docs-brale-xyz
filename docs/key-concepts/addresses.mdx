@@ -186,6 +186,13 @@ You can narrow results on `GET /accounts/{account_id}/addresses` with optional q
 
 ## Query Parameters
 
+| Param          | Type               | Description |
+| ---            | ---                | --- |
+| `address`      | string             | Exact on-chain address (e.g., EVM, Solana). |
+| `type`         | enum               | Filter by address type: `internal` \| `external`. |
+| `transfer_type`| enum (repeatable)  | Filter by one or more transfer types (e.g., `ethereum`, `base`, `solana`, `stellar`). |
+
+
 ## Examples
 
 External addresses usable on Solana OR Base
