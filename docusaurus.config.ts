@@ -82,7 +82,14 @@ const config: Config = {
     [
       '@signalwire/docusaurus-plugin-llms-txt',
       {
-        includeOrder: ['/overview/**', '/key-concepts/**', '/guides/**', '/coverage/**', '/api/**'],
+        includeOrder: [
+          '/overview/**',
+          '/key-concepts/**',
+          '/guides/**',
+          '/coverage/**',
+          '/api/**',
+          '/IO/**',
+        ],
         siteTitle: 'Brale API Docs',
         siteDescription: 'Brale API Documentation',
         depth: 2,
