@@ -22,3 +22,6 @@ yarn-error.log*
 # wrangler files
 .wrangler
 .dev.vars*
+
+# Jetbrains IDE Files
+/.idea
