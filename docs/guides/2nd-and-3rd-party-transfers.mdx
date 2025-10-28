@@ -5,34 +5,37 @@ sidebar_label: '2nd & 3rd Party Transfers'
 ---
 
 <p class="intro-subheading">
-  We've expanded our Transfers endpoint to support both 2nd and 3rd Party transfers via ACH transfer
-  types.
+  We've expanded the Transfers endpoint to support both 2nd and 3rd party ACH transfers.
 </p>
 
-When Brale is initiating a transfer on behalf of our customer or our customer's customer, it can be confusing to see Brale's name show up on the transfer. This is where the power of 2nd and 3rd party transfers comes in as it enables the receiver of these transfers to see our customer's or our customer's customer's name on the transfer.
+When Brale initiates a transfer on behalf of your business or your customer's business, 2nd/3rd-party branding ensures the **receiver sees the intended business name** on the ACH transaction (instead of “Brale”).
 
-To learn more and see how this can benefit your business, schedule a meeting to <ExternalLink href="https://brale.xyz/contact" title="Schedule a meeting with Brale">talk to sales</ExternalLink>.
+To learn more and see a demo, schedule a meeting to <ExternalLink href="https://brale.xyz/contact" title="Schedule a meeting with Brale">talk to sales</ExternalLink>.
 
 ## Creating 2nd/3rd Party Transfers
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-Below are identical API calls with the exception of what `account_id` is used to make the call.
+Use the `brand` object to control the business name displayed to the receiver. Pass the target account inside the request body under `brand.account_id`. The `brand.account_id` is the **Account whose name should appear** to the receiver.
 
-- `account_id: 1111` = `Company Alpha`
-  - This is Brale's direct customer
-- `account_id: 2222` = `Company Beta`
-  - This is Company Alpha's direct customer
+- `account_id: aB3hJkL9mN2PqRsTuvWxyz1234` = `Company Alpha`
+  - Your business (Brale's direct customer)
+- `account_id: 34fcsGrCgN0Z9zC1v55eP0I6AKW` = `Company Beta`
+  - Your customer
 
-The name associated with the Account will show up on the transfer, which makes it easier for the receiver to identify and reconcile the transfer.
+If you omit `brand`, the transfer uses your default branding.
 
-### Example of a 2nd Party Transfer
+> **Definitions**
+> - **2nd-party**: You are the brand (display name = your business).
+> - **3rd-party**: Your customer's business is the brand (display name = your customer).
+
+### Example of a 2nd Party Transfer (brand = your business)
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-`account_id` = `1111`
+`brand.account_id` = `aB3hJkL9mN2PqRsTuvWxyz1234` (Company Alpha)
 
-The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Alpha`.
+The receiver will see **Company Alpha** as the name on the ACH transaction.
 
 ```json title="Request"
 {
@@ -43,12 +46,15 @@ The name on this transfer, name on the ACH transaction of the receiving end, wil
   "source": {
     "value_type": "USD",
     "transfer_type": "ach-debit",
-    "address_id": "9999"
+    "address_id": "34R7rk6hBuBl8Dmytqyz3iSSSQd"
   },
   "destination": {
     "value_type": "SBC",
     "transfer_type": "Canton",
-    "address_id": "8888"
+    "address_id": "34R8PiuPLgHlXbWci7JlSmLapQY"
+  },
+  "brand": {
+    "account_id": "aB3hJkL9mN2PqRsTuvWxyz1234"
   }
 }
 ```
@@ -59,13 +65,13 @@ The name on this transfer, name on the ACH transaction of the receiving end, wil
 }
 ```
 
-### Example of a 3rd Party Transfer
+### Example of a 3rd Party Transfer (brand = your customer)
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
-`account_id` = `2222`
+`brand.account_id` = `34fcsGrCgN0Z9zC1v55eP0I6AKW` (Company Beta)
 
-The name on this transfer, name on the ACH transaction of the receiving end, will be `Company Beta`.
+The receiver will see Company Beta as the originator name on the ACH transaction.
 
 ```json title="Request"
 {
@@ -76,12 +82,15 @@ The name on this transfer, name on the ACH transaction of the receiving end, wil
   "source": {
     "value_type": "USD",
     "transfer_type": "ach-debit",
-    "address_id": "9999"
+    "address_id": "34R7rk6hBuBl8Dmytqyz3iSSSQd"
   },
   "destination": {
     "value_type": "SBC",
     "transfer_type": "Canton",
-    "address_id": "8888"
+    "address_id": "34fczKxoKRUMuZeWyMj9hhqVjuJ"
+  },
+  "brand": {
+    "account_id": "34fcsGrCgN0Z9zC1v55eP0I6AKW"
   }
 }
 ```
