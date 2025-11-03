@@ -6,27 +6,27 @@ sidebar_label: 'Stablecoin to Fiat (Offramp)'
 
 <p class="intro-subheading">
   Brale makes it easy for you and your customers to convert stablecoins into USD via wire transfer
-  or ACH.
+  , ACH, and RTP.
 </p>
 
 In order to submit a stablecoin-to-fiat transaction, first you need to:
 
 - Create an [Account](/key-concepts/accounts) respresenting your customer
-- Create a [Financial Institution](/key-concepts/financial-institutions) which is your customer's bank account where Brale will deposit USD
+- Create an [Address](/key-concepts/addresses) which is your customer's bank account where Brale will deposit USD
 - Deposit stablecoins to a Brale custodial address (address with type `internal`)
 
-## Link a Financial Institution to your customer's Account
+## Link an Address to your customer's Account
 
-You can add financial institutions in two ways:
+You can add addresses in two ways:
 
-1. Financial Institutions API
-2. Plaid (coming soon)
+1. Addresses API
+2. Plaid
 
-Here is an example of directly adding a financial institution.
+Here is an example of directly adding an offchain address.
 
 <HTTPMethod
   method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/financial-institutions/external"
+  endpoint="https://api.brale.xyz/accounts/account_id/addresses/external"
 />
 
 ```json title="Request"
@@ -35,6 +35,7 @@ Here is an example of directly adding a financial institution.
   "account_number": "1234567890",
   "routing_number": "987654321",
   "name": "Example Bank",
+  "transfer_types": ["ach_credit"]
   "beneficiary_address": {
     "street_line_1": "100 Example St",
     "street_line_2": "Suite 500",
@@ -55,17 +56,42 @@ Here is an example of directly adding a financial institution.
 
 ```json title="Response"
 {
-  "id": "2O0bbQgbSL52PktkiTgv3yq3hiB",
-  "name": "Example Bank",
-  "status": "active",
-  "created": "2023-04-05T13:15:17.273102Z",
-  "routingNumber": "987654321"
+    "id": "34yxvqP90NfeeYkQGriO6bSfn1K",
+    "name": "THE BANK OF TAMPA",
+    "owner": "Jane Doe",
+    "status": "active",
+    "transfer_types": [
+        "ach_credit",
+        "same_day_ach_credit"
+    ],
+    "created": "2025-11-03T19:57:25.965990Z",
+    "bank_address": {
+        "state": "CA",
+        "zip": "90001",
+        "city": "Springfield",
+        "country": "US",
+        "street_line_1": "100 Example St",
+        "street_line_2": "Suite 500"
+    },
+    "beneficiary_address": {
+        "state": "CA",
+        "zip": "90001",
+        "city": "Springfield",
+        "country": "US",
+        "street_line_1": "100 Example St",
+        "street_line_2": "Suite 500"
+    },
+    "account_number": "****7890",
+    "needs_update": false,
+    "last_updated": "2025-11-03T19:57:26.801044Z",
+    "routingNumber": "063108680",
+    "account_type": "checking"
 }
 ```
 
 ## Stablecoin to USD via Wire
 
-Once your customer has a Financial Institution and stablecoins are held in a Brale controlled address, you can submit a Transfer request with the destination of the financial institution.
+Once your customer has anAddress and stablecoins are held in a Brale controlled address, you can submit a Transfer request with the destination of the address.
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
 
@@ -81,7 +107,7 @@ Once your customer has a Financial Institution and stablecoins are held in a Bra
     "transfer_type": "Solana"
   },
   "destination": {
-    "financial_institution_id": "2AbCdEfGHiJkLmN0pQrStUvWxYz",
+    "address_id": "2AbCdEfGHiJkLmN0pQrStUvWxYz",
     "value_type": "USD",
     "transfer_type": "wire"
   }
