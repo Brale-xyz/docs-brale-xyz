@@ -27,9 +27,8 @@ Each source and destination includes:
 | `amount`                   | Body                        | object | `{ "value": "10", "currency": "USD" }`                   |
 | `source`                   | Body                        | object | Origin of funds (fiat rail or on-chain address)          |
 | `value_type`               | In `source` / `destination` | string | Currency/token (e.g., USD, USDC, SBC)                    |
-| `transfer_type`            | In `source` / `destination` | string | Payment rail or chain (e.g., wire, ach, polygon, solana) |
-| `address_id`               | In `source` / `destination` | string | Wallet that is sending and/or receiving stablecoins      |
-| `financial_institution_id` | In `source` / `destination` | string | Bank account that sends/receives fiat                    |
+| `transfer_type`            | In `source` / `destination` | string | Payment rail / chain (wire, ach_credit, polygon, solana) |
+| `address_id`               | In `source` / `destination` | string | Wallet or fiat account sending or receiving value        |
 | `Idempotency-Key`          | Header                      | string | UUID that guarantees exactly-once execution              |
 
 ## Transfer Scenarios: understanding `value_type` and `transfer_type`
@@ -99,6 +98,35 @@ When initiating a fiat to stablecoin transfer via wire, we will return a set of 
 }
 ```
 
+## USD to Stablecoin (ACH Debit)
+
+Onramp to your stablecoin by debiting a Plaid connected address.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "1",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "Polygon"
+  },
+  "destination": {
+    "address_id": "34yGFQf7tP1HJCPAWNGaN4rh4nX",
+    "value_type": "USD",
+    "transfer_type": "wire"
+  },
+  "brand": {"account_id": "34lCJZ2bxbPAzB3ou67Md01veUo}
+}
+```
+
+Optional `branding` object
+You can specify which Account’s name appears on the receiver’s bank statement line items for ACH/wire/RTP legs.
+
 ## Stablecoin to USD (Wire Offramp or Payout)
 
 Offramp your stablecoin to USD via wire transfer.
@@ -117,9 +145,34 @@ Offramp your stablecoin to USD via wire transfer.
     "transfer_type": "Polygon"
   },
   "destination": {
-    "financial_institution_id": "bank_12345",
+    "address_id": "34yGFQf7tP1HJCPAWNGaN4rh4nX",
     "value_type": "USD",
     "transfer_type": "wire"
+  }
+}
+```
+
+## Stablecoin to USD (ACH)
+
+Offramp your stablecoin to USD via ACH Credit.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "1",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "canton"
+  },
+  "destination": {
+    "address_id": "34yGFQf7tP1HJCPAWNGaN4rh4nX",
+    "value_type": "USD",
+    "transfer_type": "same_day_ach_credit"
   }
 }
 ```
