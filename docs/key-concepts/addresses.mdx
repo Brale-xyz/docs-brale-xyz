@@ -9,9 +9,7 @@ sidebar_label: 'Addresses'
   specific `transfer_type`.
 </p>
 
-An `address_id` can represent either an onchain or offchain destination (e.g. blockchain wallet, bank account, RTP endpoint), depending on the `transfer_type`.
-
-The `address_id` is commonly used in the Brale API as the source or destination of a transfer.
+An `address_id` can represent either an onchain wallet or offchain account (ACH, Wire, or RTP account), depending on the `transfer_type`. Use `address_id` wherever a source/destination is required in Transfers.
 
 Brale distinguishes between internal and external addresses using the type field:
 
@@ -20,8 +18,13 @@ Brale distinguishes between internal and external addresses using the type field
 
 Whether internal or external, all addresses possess:
 
-- `name`: A user-friendly label to identify the address.
-- `transfer_types`: The supported `transfer_types` of the address.
+- `name`: A human redable label
+- `transfer_types`: The `transfer_types` the address supports.
+
+## Supported Transfer Types
+
+- Off-chain rails: `wire`, `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp`.
+- On-chain (examples): `canton`, `base`, `polygon`, `solana`, `stellar`, `xrp_ledger`, … (use the API identifiers from Coverage → Stablecoins & Blockchains).
 
 ## Custodial (Internal) Addresses
 
@@ -31,18 +34,25 @@ When your customer's Account is onboarded, Brale automatically generates interna
 
 ## Non-Custodial (External) Addresses
 
-Linking external addresses enable users to deposit stablecoins into or withdraw stablecoins from their custodial addresses as well as mint stablecoins into or redeem stablecoins from their custodial addresses.
+Create external addresses to link on-chain wallets or off-chain bank endpoints.
+
+Addresses can be created in two ways:
+
+- Addresses API
+- Plaid
 
 <HTTPMethod method="POST" endpoint="/accounts/{account_id}/addresses/external" />
 
-### Non-Custodial (External) Address for Blockchain Supported Chains
+Offchain addresses supporting ach and rtp related transfer_types can also be registered via Plaid. See the full guide below.
+
+### Create onchain external address
 
 The blockchains the address supports. See [Supported Chains](/coverage/stablecoins-and-blockchains) for the full list. Each address is associated with only one blockchain environment (e.g., Solana, EVM).
 
 ```json title="Request"
 {
   "name": "Non-Custodial (External) Wallet",
-  "transfer_types": ["Ethereum"],
+  "transfer_types": ["ethereum", "base"],
   "wallet_address": "0x123456789"
 }
 ```
@@ -53,24 +63,35 @@ The blockchains the address supports. See [Supported Chains](/coverage/stablecoi
 }
 ```
 
-### Non-Custodial (External) Address for ACH Credits
+### Create Non-Custodial (External) Address for ACH Credits
 
 These support the following `transfer_types` and enable USD to be sent to a destination in a transfer.
 
-- `ach-credit`
-- `ach-credit-same-day`
+- `ach_credit`
+- `same_day_ach_credit`
 
 ```json title="Request"
 {
-  "name": "2nd/3rd Party Bank",
-  "transfer_types": ["ach-credit"],
-  "account_number": "123456789",
-  "routing_number": "987654321",
-  "account_type": "checking, savings",
-  "first_name": "Steve",
-  "last_name": "Brown",
-  "business_name": "Name of Business", // Optional
-  "email": "b@brale.xyz"
+  "owner": "Jane Doe",
+  "transfer_types": ["ach_credit", "same_day_ach_credit"],
+  "account_number": "1234567890",
+  "routing_number": "063108680",
+  "name": "Example Bank",
+  "bank_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "beneficiary_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "account_type": "checking"
 }
 ```
 
@@ -80,30 +101,153 @@ These support the following `transfer_types` and enable USD to be sent to a dest
 }
 ```
 
-### Non-Custodial (External) Address for ACH Debits
+## Create Addresses through Plaid
 
-These support the following `transfer_types` and enable USD to be pulled from a source in a transfer.
+This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Addresses can be used for ACH debits, ACH credit,s and RTP.
 
-- `ach-debit`
-- `ach-debit-same-day`
+### Overview of the Flow
+
+1. Request a Plaid Link Token from Brale.
+2. Initialize Plaid Link in your front-end using the `link_token`.
+3. Plaid returns a `public_token` once the user has successfully linked their account.
+4. Exchange the `public_token` with Brale to finalize the linking process.
+5. Fetch the newly created Address for the end user, then proceed with transfers, etc.
+
+### Request a Plaid Link Token
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/{account_id}/plaid/link_token" />
 
 ```json title="Request"
 {
-  "name": "2nd/3rd Party Bank",
-  "transfer_types": ["ach-debit"],
-  "plaid_token": "98s83sjsd39sds"
+  "date_of_birth": "1990-01-01", // Optional
+  "email_address": "user@example.com", // Optional
+  "legal_name": "John Doe", // Optional
+  "phone_number": "+1234567890" // Optional
 }
 ```
 
 ```json title="Response"
 {
-  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57"
+  "expiration": "2025-03-23T03:22:34.086Z",
+  "link_token": "link_token_XYZ",
+  "callback_url": "https://api.brale.xyz/exchange_public_token/{unique-id}"
 }
 ```
 
-:::note
-These addresses require a Plaid token to verify ownership.
-:::
+| Parameters     | Description                                                                        |
+| -------------- | ---------------------------------------------------------------------------------- |
+| `link_token`   | The token you will use to launch Plaid Link in your front-end or mobile app.       |
+| `expiration`   | Time at which the `link_token` will no longer be valid.                            |
+| `callback_url` | The endpoint to which you should send the `public_token` to finalize the exchange. |
+
+### Render the Plaid Link SDK
+
+In your front-end, initialize Plaid Link using the link_token you received.
+
+For production apps, it's recommended you send the public_token to your own backend (over HTTPS), and then have your backend call our exchange endpoint. That way, you avoid exposing your own platform API keys in the browser.
+
+### Register Address (exchange the public token)
+
+Send us the public_token you received from Plaid Link. Brale securely exchanges it for a Plaid access_token server-side and creates an Address on the specified Account.
+
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/plaid/register-account"
+/>
+
+```json title="Request"
+{
+  "public_token": "public_token_XYZ",
+  "customer_webhook_url": "https://mywebhook.com",
+  "transfer_types": ["ach_debit", "same_day_ach_debit", "ach_credit", "same_day_ach_credit"]
+}
+```
+
+```json title="Response"
+{
+  "address_id": "34yknnMShvDbSW6tQg4HLlN41QO"
+}
+```
+
+After this call completes, our system retrieves the linked bank account and creates an Address for the account the user selected.
+
+### Check for newly created Addresses
+
+Shortly after exchanging the public token, the user's bank accounts are idempotently created as an Address which you can query.
+
+<HTTPMethod method="GET" endpoint="https://api.brale.xyz/accounts/account_id/address/{id}" />
+
+```json title="Response"
+{
+  "name": "Business Checking Account",
+  "transfer_type": ["ACH", "Wire"],
+  "bank_details": {
+    "owner": "Jane Doe",
+    "account_number": "1234567890",
+    "routing_number": "987654321",
+    "name": "Example Bank",
+    "address": {
+      "street_line_1": "100 Example St",
+      "street_line_2": "Suite 500",
+      "city": "Springfield",
+      "state": "CA",
+      "zip": "90001",
+      "country": "US"
+    },
+    "account_type": "checking"
+  }
+}
+```
+
+At this point, you can initiate ACH debits or other transactions using these new Addresses.
+
+## Handling Re-Authentication
+
+When Plaid signals that an Item requires user action (e.g., credentials changed), Brale can notify you via webhook and you can present a Plaid update Link flow to the user.
+
+### Receive Brale webhook
+
+Brale will `POST` a JSON payload when re-auth is required to the `customer_webhook` you provide during the exchange step.
+
+```json title="Example payload"
+{
+  "reason": "Plaid item requires re-authentication",
+  "timestamp": "2025-09-13T17:17:00Z",
+  "event_type": "ITEM_LOGIN REQUIRED",
+  "address_id": "address_id123"
+}
+```
+
+### Check status
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/addresses/{address_id}"
+/>
+
+```json title="Response"
+{
+  "status": "active",
+  "last_updated": "2025-09-13T17:17:00Z",
+  "address_id": "34yxvqP90NfeeYkQGriO6bSfn1K",
+  "needs_update": true
+}
+```
+
+### Request an updated link token
+
+<HTTPMethod
+  method="POST"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/addresses/{address_id}/update-link-token"
+/>
+
+```json title="Response"
+{
+  "link_token": "link_token_XYZ"
+}
+```
+
+Open Plaid Link again with this `link_token`. Plaid will streamline the flow and only ask the user to re-authenticate. Run Step 3 again with the new `public_token` (same endpoint). The existing Address is updated in place and retains the same `address_id`.
 
 ## Fetching Addresses
 
@@ -126,31 +270,48 @@ This endpoint returns all addresses (whether internal or external) linked to the
       "transfer_types": ["solana", "solana_devnet"]
     },
     {
-      "id": "a1b2c3d4-5678-90ab-cdef-1234567890bc",
+      "id": "34yxvqP90NfeeYkQGriO6bSfn1K",
+      "name": "THE BANK OF TAMPA",
+      "owner": "Jane Doe",
       "status": "active",
-      "name": "External Non-Custodial Wallet",
-      "type": "External",
-      "address": "73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me",
-      "created": "2023-03-07T17:31:37.997502Z",
-      "transfer_types": ["solana", "solana_devnet"]
+      "transfer_types": ["ach_credit", "same_day_ach_credit"],
+      "created": "2025-11-03T19:57:25.965990Z",
+      "bank_address": {
+        "state": "CA",
+        "zip": "90001",
+        "city": "Springfield",
+        "country": "US",
+        "street_line_1": "100 Example St",
+        "street_line_2": "Suite 500"
+      },
+      "beneficiary_address": {
+        "state": "CA",
+        "zip": "90001",
+        "city": "Springfield",
+        "country": "US",
+        "street_line_1": "100 Example St",
+        "street_line_2": "Suite 500"
+      },
+      "account_number": "****7890",
+      "needs_update": false,
+      "last_updated": "2025-11-03T19:57:26.801044Z",
+      "routingNumber": "063108680",
+      "account_type": "checking"
     },
     {
-      "id": "b2c3d4e5-6789-01ab-cdef-2345678901ab",
+      "id": "34yGFQf7tP1HJCPAWNGaN4rh4nX",
+      "name": "JPMORGAN CHASE BANK, NA",
+      "owner": "Alberta Bobbeth Charleson",
       "status": "active",
-      "name": "2nd/3rd Party ACH Credit",
-      "type": "External",
-      "routing_number": "987654321",
-      "created": "2023-03-07T17:31:37.997502Z",
-      "transfer_types": ["ach-credit", "ach-credit-same-day"]
-    },
-    {
-      "id": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
-      "status": "active",
-      "name": "2nd/3rd Party ACH Debit",
-      "type": "External",
-      "routing_number": "987654321",
-      "created": "2023-03-07T17:31:37.997502Z",
-      "transfer_types": ["ach-debit", "ach-debit-same-day"]
+      "transfer_types": ["ach_debit"],
+      "created": "2025-11-03T13:58:14.528239Z",
+      "bank_address": null,
+      "beneficiary_address": null,
+      "account_number": "****1111",
+      "needs_update": false,
+      "last_updated": "2025-11-03T13:58:14.528239Z",
+      "routingNumber": "021000021",
+      "account_type": "savings"
     }
   ]
 }
