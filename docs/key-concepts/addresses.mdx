@@ -71,15 +71,26 @@ These support the following `transfer_types` and enable USD to be sent to a dest
 
 ```json title="Request"
 {
-  "name": "2nd/3rd Party Bank",
-  "transfer_types": ["ach_credit", "same_day_ach_credit],
-  "account_number": "123456789",
-  "routing_number": "987654321",
-  "account_type": "checking",
-  "first_name": "Steve",
-  "last_name": "Brown",
-  "business_name": "Name of Business", // Optional
-  "email": "b@brale.xyz"
+  "owner": "Jane Doe",
+  "transfer_types": ["ach_credit", "same_day_ach_credit"],
+  "account_number": "1234567890",
+  "routing_number": "063108680",
+  "name": "Example Bank",
+  "bank_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "beneficiary_address": {
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "account_type": "checking"
 }
 ```
 
@@ -88,7 +99,7 @@ These support the following `transfer_types` and enable USD to be sent to a dest
   "id": "2VcUIIsgARwVbEGlIYbhg6fGG57"
 }
 ```
-## Create Financial Institutions through Plaid
+## Create Addresses through Plaid
 
 This guide walks you through how to enable your customers to securely link their bank accounts via Plaid. After linking, the new Addresses can be used for ACH debits, ACH credit,s and RTP.
 
@@ -207,7 +218,7 @@ Brale will `POST` a JSON payload when re-auth is required to the `customer_webho
   "reason": "Plaid item requires re-authentication",
   "timestamp": "2025-09-13T17:17:00Z",
   "event_type": "ITEM_LOGIN REQUIRED",
-  "financial_institution_id": "fi_id123"
+  "address_id": "address_id123"
 }
 ```
 
@@ -222,7 +233,7 @@ Brale will `POST` a JSON payload when re-auth is required to the `customer_webho
 {
   "status": "active",
   "last_updated": "2025-09-13T17:17:00Z",
-  "financial_institution_id": "fi_id123",
+  "address_id": "34yxvqP90NfeeYkQGriO6bSfn1K",
   "needs_update": true
 }
 ```
