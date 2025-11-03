@@ -9,6 +9,10 @@ sidebar_label: 'Financial Institutions'
   used to withdraw or receive funds.
 </p>
 
+:::warning[Legacy / Deprecated]
+The Financial Institutions resource is superseded by Addresses. New integrations should create offchain accounts (ACH, wire, RTP) as Addresses and pass their `address_id` to Transfers. Plaid endpoints are now under /plaid/*. Existing FI integrations continue to work during a deprecation window.
+:::
+
 You can add external accounts through:
 
 1. Financial Institutions API
