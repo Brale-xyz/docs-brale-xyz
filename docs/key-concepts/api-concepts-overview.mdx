@@ -9,8 +9,8 @@ sidebar_label: 'API Concepts Overview'
 </p>
 
 - [Accounts](/key-concepts/accounts) - Your customers
-- [Addresses](/key-concepts/addresses) - On-chain wallet addresses that can receive or send stablecoins
-- [Financial Institutions](/key-concepts/financial-institutions) - Financial accounts that can receive or send funds
+- [Addresses](/key-concepts/addresses) - A single resource that represents both onchain wallet addresses and offchain bank accounts. Use `address_id` everywhere a source or destination is needed.
+- [Financial Institutions (Legacy)](/key-concepts/financial-institutions) - Financial accounts that can receive or send funds. Kept for backwards compatiblity - new integrations should use Addresses.
 - [Transfers](/key-concepts/transfers) - Convert into, out of, and between stablecoins and fiat
 - [Automations](/key-concepts/automations) - A unique bank account number that will send deposited fiat funds to a pre-set on-chain wallet address
 - [Idempotency](/key-concepts/idempotency) - Ensure each POST request is processed only once
