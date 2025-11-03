@@ -11,7 +11,7 @@ sidebar_label: 'Fiat to Stablecoin (Onramp)'
 
 There are two ways to onramp to stablecoins through the Brale API:
 
-- Submit a [Transfer](/key-concepts/transfers) request with a source value_type of wire or ACH
+- Submit a [Transfer](/key-concepts/transfers) request with a source value_type of `wire`, `ach_debit`, or `same_day_ach_debit`
 - Create an [Automation](/key-concepts/automations), which automatically mints stablecoins to a pre-configured destination wallet when funds are received (Automatic Onramp)
 
 Businesses can also onramp directly via the Brale Dashboard, and individuals can onramp through [Brale.io](https://brale.io/).
@@ -65,7 +65,53 @@ Here is an example of onramping to your own stablecoin (YSBC) via wire transfer 
 
 Initially, the status of the transfer will be `pending`. Once Brale receives the funds at the bank account provided in `source_deposit_instructions` the stablecoins will immediately be minted to the destination wallet.
 
-### Fetching Transfers
+## Fiat to Stablecoin via ACH Debit
+
+You can initiate ACH debits (same day or standard) from Plaid-linked addresses. See [Addresses](https://docs.brale.xyz/key-concepts/addresses) for the full flow of linking Plaid accounts as addresses you can pull from.
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/transfers" />
+
+```json title="Request"
+{
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "USD",
+    "transfer_type": "ach_debit"
+  },
+  "destination": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "SBC",
+    "transfer_type": "canton"
+  }
+}
+```
+
+```json title="Response"
+{
+  "id": "transfer_123",
+  "status": "pending",
+  "amount": {
+    "value": "100",
+    "currency": "USD"
+  },
+  "source": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
+    "value_type": "USD"
+    "transfer_type": "ach_debit",
+  },
+  "destination": {
+    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4"
+    "value_type": "SBC"
+    "transfer_type": "canton"
+  }
+}
+```
+
+## Fetching Transfers
 
 Query a transfer that has been created.
 
