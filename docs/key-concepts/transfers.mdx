@@ -21,15 +21,15 @@ Each source and destination includes:
 
 ## Required Fields
 
-| Field                      | Where                       | Type   | Description                                              |
-| :------------------------- | :-------------------------- | :----- | :------------------------------------------------------- |
-| `account_id`               | Path                        | string | Account whose funds are being moved                      |
-| `amount`                   | Body                        | object | `{ "value": "10", "currency": "USD" }`                   |
-| `source`                   | Body                        | object | Origin of funds (fiat rail or on-chain address)          |
-| `value_type`               | In `source` / `destination` | string | Currency/token (e.g., USD, USDC, SBC)                    |
-| `transfer_type`            | In `source` / `destination` | string | Payment rail / chain (wire, ach_credit, polygon, solana) |
-| `address_id`               | In `source` / `destination` | string | Wallet or fiat account sending or receiving value        |
-| `Idempotency-Key`          | Header                      | string | UUID that guarantees exactly-once execution              |
+| Field             | Where                       | Type   | Description                                              |
+| :---------------- | :-------------------------- | :----- | :------------------------------------------------------- |
+| `account_id`      | Path                        | string | Account whose funds are being moved                      |
+| `amount`          | Body                        | object | `{ "value": "10", "currency": "USD" }`                   |
+| `source`          | Body                        | object | Origin of funds (fiat rail or on-chain address)          |
+| `value_type`      | In `source` / `destination` | string | Currency/token (e.g., USD, USDC, SBC)                    |
+| `transfer_type`   | In `source` / `destination` | string | Payment rail / chain (wire, ach_credit, polygon, solana) |
+| `address_id`      | In `source` / `destination` | string | Wallet or fiat account sending or receiving value        |
+| `Idempotency-Key` | Header                      | string | UUID that guarantees exactly-once execution              |
 
 ## Transfer Scenarios: understanding `value_type` and `transfer_type`
 

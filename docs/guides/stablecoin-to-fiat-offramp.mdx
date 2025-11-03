@@ -5,8 +5,8 @@ sidebar_label: 'Stablecoin to Fiat (Offramp)'
 ---
 
 <p class="intro-subheading">
-  Brale makes it easy for you and your customers to convert stablecoins into USD via wire transfer
-  , ACH, and RTP.
+  Brale makes it easy for you and your customers to convert stablecoins into USD via wire transfer ,
+  ACH, and RTP.
 </p>
 
 In order to submit a stablecoin-to-fiat transaction, first you need to:
@@ -24,10 +24,7 @@ You can add addresses in two ways:
 
 Here is an example of directly adding an offchain address.
 
-<HTTPMethod
-  method="POST"
-  endpoint="https://api.brale.xyz/accounts/account_id/addresses/external"
-/>
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/addresses/external" />
 
 ```json title="Request"
 {
@@ -56,36 +53,33 @@ Here is an example of directly adding an offchain address.
 
 ```json title="Response"
 {
-    "id": "34yxvqP90NfeeYkQGriO6bSfn1K",
-    "name": "THE BANK OF TAMPA",
-    "owner": "Jane Doe",
-    "status": "active",
-    "transfer_types": [
-        "ach_credit",
-        "same_day_ach_credit"
-    ],
-    "created": "2025-11-03T19:57:25.965990Z",
-    "bank_address": {
-        "state": "CA",
-        "zip": "90001",
-        "city": "Springfield",
-        "country": "US",
-        "street_line_1": "100 Example St",
-        "street_line_2": "Suite 500"
-    },
-    "beneficiary_address": {
-        "state": "CA",
-        "zip": "90001",
-        "city": "Springfield",
-        "country": "US",
-        "street_line_1": "100 Example St",
-        "street_line_2": "Suite 500"
-    },
-    "account_number": "****7890",
-    "needs_update": false,
-    "last_updated": "2025-11-03T19:57:26.801044Z",
-    "routingNumber": "063108680",
-    "account_type": "checking"
+  "id": "34yxvqP90NfeeYkQGriO6bSfn1K",
+  "name": "THE BANK OF TAMPA",
+  "owner": "Jane Doe",
+  "status": "active",
+  "transfer_types": ["ach_credit", "same_day_ach_credit"],
+  "created": "2025-11-03T19:57:25.965990Z",
+  "bank_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "beneficiary_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "account_number": "****7890",
+  "needs_update": false,
+  "last_updated": "2025-11-03T19:57:26.801044Z",
+  "routingNumber": "063108680",
+  "account_type": "checking"
 }
 ```
 
