@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Brale Issuance and Orchestration API
   version: 2.3.1
-  description: >
+  description: |
     Brale supports stablecoin issuance and orchestration, enabling businesses and
     ecosystems to create their own stablecoins and convert between fiat and stablecoins
     seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the
@@ -14,6 +14,12 @@ info:
 
 
     **What's new in 2.3.1**
+    - Unified **Addresses** model for on-chain and off-chain endpoints
+      - `Transfers` now accepts **address_id only** (no financial_institution_id)
+      - Optional `branding` object to control bank statement presentation
+    - Added off-chain rails: `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp-credit`
+    - Plaid endpoints moved to `/accounts/{account_id}/plaid/*`
+    - `Financial Institutions` marked **deprecated** (migration path to **Addresses**)
     - Create Account now uses `CreateManagedAccountRequest` with `beneficial_owners`, `business_controller`, and `EndUserTosAttestation`.
     - Transfers now accept `brand` (replaces `branding`, still aliased in docs).
     - Plaid endpoints updated to return `address_id` and accept `transfer_types`.
