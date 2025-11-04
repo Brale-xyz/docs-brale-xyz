@@ -1,7 +1,7 @@
 ---
 id: brale-issuance-and-orchestration-api
 title: 'Brale Issuance and Orchestration API'
-description: 'Brale supports stablecoin issuance and orchestration, enabling businesses and ecosystems to create their own stablecoins and convert between fiat and stablecoins seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the Brale API makes it easy to build stablecoin-enabled products.'
+description: 'Brale supports stablecoin issuance and orchestration, enabling businesses and'
 sidebar_label: Introduction
 sidebar_position: 0
 hide_title: true
@@ -16,7 +16,7 @@ import Export from '@theme/ApiExplorer/Export';
 
 <span
   className={'theme-doc-version-badge badge badge--secondary'}
-  children={'Version: 2.0.0'}
+  children={'Version: 2.3.1'}
 ></span>
 
 <Heading
@@ -25,8 +25,29 @@ import Export from '@theme/ApiExplorer/Export';
   children={'Brale Issuance and Orchestration API'}
 ></Heading>
 
-Brale supports stablecoin issuance and orchestration, enabling businesses and ecosystems to create their own stablecoins and convert between fiat and stablecoins seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the Brale API makes it easy to build stablecoin-enabled products.
-NOTE: All resource IDs (including account_id, address_id, financial_institution_id, and automation_id) are KSUIDs—26-character alphanumeric strings that are sortable by time. Examples showing UUIDs are incorrect.
+Brale supports stablecoin issuance and orchestration, enabling businesses and
+ecosystems to create their own stablecoins and convert between fiat and stablecoins
+seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the
+Brale API makes it easy to build stablecoin-enabled products.
+
+NOTE: All resource IDs (including account_id, address_id, financial_institution_id,
+and automation_id) are KSUIDs—26-character alphanumeric strings that are sortable
+by time. Examples showing UUIDs are incorrect.
+
+**What's new in 2.3.1**
+
+- Unified **Addresses** model for on-chain and off-chain endpoints
+  - `Transfers` now accepts **address_id only** (no financial_institution_id)
+  - Optional `branding` object to control bank statement presentation
+- Added off-chain rails: `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp-credit`
+- Plaid endpoints moved to `/accounts/{account_id}/plaid/*`
+- `Financial Institutions` marked **deprecated** (migration path to **Addresses**)
+- Create Account now uses `CreateManagedAccountRequest` with `beneficial_owners`, `business_controller`, and `EndUserTosAttestation`.
+- Transfers now accept `brand` (replaces `branding`, still aliased in docs).
+- Plaid endpoints updated to return `address_id` and accept `transfer_types`.
+- Off-chain Address creation uses `CreateExternalAddressRequest` oneOf with bank + blockchain variants.
+- FI endpoints kept but marked deprecated; use Addresses instead.
+- `rtp_credit` is the canonical RTP rail name.
 
 <div style={{ marginBottom: '2rem' }}>
   <Heading
@@ -49,6 +70,37 @@ NOTE: All resource IDs (including account_id, address_id, financial_institution_
             <tr>
               <th>HTTP Authorization Scheme:</th>
               <td>bearer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+    <TabItem label={'OAuth 2.0: oauth'} value={'oauth'}>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Security Scheme Type:</th>
+              <td>oauth2</td>
+            </tr>
+            <tr>
+              <th>OAuth Flow (clientCredentials):</th>
+              <td>
+                <div>Token URL: https://auth.brale.xyz/oauth2/token</div>
+                <span>Scopes:</span>
+                <ul>
+                  <li>accounts:read: Read account details</li>
+                  <li>accounts:write: Create or update accounts</li>
+                  <li>addresses:read: Read address details</li>
+                  <li>addresses:write: Create addresses</li>
+                  <li>automations:read: Read automations</li>
+                  <li>automations:write: Create automations</li>
+                  <li>financial-institutions:read: Read FI details (legacy)</li>
+                  <li>financial-institutions:write: Create FI (legacy)</li>
+                  <li>transfers:read: Read transfers</li>
+                  <li>transfers:write: Create transfers</li>
+                </ul>
+              </td>
             </tr>
           </tbody>
         </table>
