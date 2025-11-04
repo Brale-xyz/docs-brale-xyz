@@ -17,7 +17,7 @@ info:
     - Unified **Addresses** model for on-chain and off-chain endpoints
       - `Transfers` now accepts **address_id only** (no financial_institution_id)
       - Optional `branding` object to control bank statement presentation
-    - Added off-chain rails: `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp`
+    - Added off-chain rails: `ach-credit`, `same-day-ach-credit`, `ach-debit`, `same-day-ach-debit`, `rtp`
     - Plaid endpoints moved to `/accounts/{account_id}/plaid/*`
     - `Financial Institutions` marked **deprecated** (migration path to **Addresses**)
 tags:
@@ -92,9 +92,6 @@ components:
         ein:
           type: string
           example: 111-11-1111
-        business_type:
-          type: string
-          example: Corporation
         address:
           $ref: '#/components/schemas/AccountAddress'
         phone_number:
@@ -114,7 +111,6 @@ components:
       required:
         - business_name
         - ein
-        - business_type
         - address
         - phone_number
         - email
