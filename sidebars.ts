@@ -212,14 +212,14 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'doc',
-          id: 'api/create-a-plaid-link-token',
-          label: 'Create a Plaid Link token',
+          id: 'api/create-plaid-link-token',
+          label: 'Create Plaid link token',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'api/exchange-public-token-and-register-an-ach-debit-address',
-          label: 'Exchange public_token and register an ACH-debit address',
+          id: 'api/register-financial-institution-account-via-plaid-and-return-address-id',
+          label: 'Register financial institution account via Plaid and return address ID',
           className: 'api-method post',
         },
       ],
