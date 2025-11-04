@@ -17,7 +17,7 @@ info:
     - Unified **Addresses** model for on-chain and off-chain endpoints
       - `Transfers` now accepts **address_id only** (no financial_institution_id)
       - Optional `branding` object to control bank statement presentation
-    - Added off-chain rails: `ach-credit`, `same-day-ach-credit`, `ach-debit`, `same-day-ach-debit`, `rtp`
+    - Added off-chain rails: `ach-credit`, `same-day-ach-credit`, `ach-debit`, `same-day-ach-debit`, `rtp-credit`
     - Plaid endpoints moved to `/accounts/{account_id}/plaid/*`
     - `Financial Institutions` marked **deprecated** (migration path to **Addresses**)
 tags:
