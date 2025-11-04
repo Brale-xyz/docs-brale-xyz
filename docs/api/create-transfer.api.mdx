@@ -1,71 +1,207 @@
 ---
 id: create-transfer
-title: "Create a new transfer"
-description: "Creates a new transfer using the specified source and destination details."
-sidebar_label: "Create a new transfer"
+title: 'Create a new transfer'
+description: 'Creates a new transfer using the specified source and destination details.'
+sidebar_label: 'Create a new transfer'
 hide_title: true
 hide_table_of_contents: true
 api: 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
-sidebar_class_name: "post api-method"
+sidebar_class_name: 'post api-method'
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-import ParamsDetails from "@theme/ParamsDetails";
-import RequestSchema from "@theme/RequestSchema";
-import StatusCodes from "@theme/StatusCodes";
-import OperationTabs from "@theme/OperationTabs";
-import TabItem from "@theme/TabItem";
-import Heading from "@theme/Heading";
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
 
-<Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Create a new transfer"}
->
-</Heading>
+<Heading as={'h1'} className={'openapi__heading'} children={'Create a new transfer'}></Heading>
 
 <MethodEndpoint
-  method={"post"}
-  path={"/accounts/{account_id}/transfers"}
-  context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+  method={'post'}
+  path={'/accounts/{account_id}/transfers'}
+  context={'endpoint'}
+></MethodEndpoint>
 
 Creates a new transfer using the specified source and destination details.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
-  children={"Request"}
->
-</Heading>
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
 
 <ParamsDetails
-  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"in":"header","name":"Idempotency-Key","required":true,"schema":{"type":"string"},"example":"idemp-123e4567-e89b-12d3-a456-426614174000","description":"A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n"}]}
->
-  
-</ParamsDetails>
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      in: 'header',
+      name: 'Idempotency-Key',
+      required: true,
+      schema: { type: 'string' },
+      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
+      description:
+        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
+    },
+  ]}
+></ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"required":true,"content":{"application/json":{"schema":{"title":"TransferCreateRequest","type":"object","properties":{"amount":{"type":"object","properties":{"value":{"type":"string","example":"100"},"currency":{"type":"string","example":"USD"}},"required":["value","currency"]},"source":{"title":"TransferEndpoint","type":"object","properties":{"value_type":{"type":"string","example":"USD"},"transfer_type":{"type":"string","example":"wire"},"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}},"required":["address_id","value_type","transfer_type"]},"destination":{"title":"TransferEndpoint","type":"object","properties":{"value_type":{"type":"string","example":"USD"},"transfer_type":{"type":"string","example":"wire"},"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}},"required":["address_id","value_type","transfer_type"]},"branding":{"type":"object","properties":{"account_id":{"type":"string","description":"Account whose name should appear on bank statement line items"}},"title":"TransferBranding"}},"required":["amount","source","destination"]},"examples":{"ach_debit_to_solana":{"summary":"Onramp via ACH debit → Mint on Solana","value":{"amount":{"value":"2500","currency":"USD"},"source":{"address_id":"addr_ach_debit","value_type":"USD","transfer_type":"ach_debit"},"destination":{"address_id":"addr_solana_internal","value_type":"SBC","transfer_type":"solana"}}},"wire_offramp_with_branding":{"summary":"Burn on Polygon → Wire out (branding override)","value":{"amount":{"value":"10000","currency":"USD"},"source":{"address_id":"addr_polygon_internal","value_type":"SBC","transfer_type":"polygon"},"destination":{"address_id":"addr_wire_external","value_type":"USD","transfer_type":"wire"},"branding":{"account_id":"acct_company_beta"}}},"rtp_payout":{"summary":"Stablecoin payout via RTP","value":{"amount":{"value":"150","currency":"USD"},"source":{"address_id":"addr_treasury_sbc","value_type":"SBC","transfer_type":"ethereum"},"destination":{"address_id":"addr_rtp_external","value_type":"USD","transfer_type":"rtp"}}}}}}}}
->
-  
-</RequestSchema>
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          title: 'TransferCreateRequest',
+          type: 'object',
+          properties: {
+            amount: {
+              type: 'object',
+              properties: {
+                value: { type: 'string', example: '100' },
+                currency: { type: 'string', example: 'USD' },
+              },
+              required: ['value', 'currency'],
+            },
+            source: {
+              title: 'TransferEndpoint',
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                },
+              },
+              required: ['address_id', 'value_type', 'transfer_type'],
+            },
+            destination: {
+              title: 'TransferEndpoint',
+              type: 'object',
+              properties: {
+                value_type: { type: 'string', example: 'USD' },
+                transfer_type: { type: 'string', example: 'wire' },
+                address_id: {
+                  title: 'Kusid',
+                  type: 'string',
+                  format: 'ksuid',
+                  pattern: '^[a-zA-Z0-9]{26}$',
+                  example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                },
+              },
+              required: ['address_id', 'value_type', 'transfer_type'],
+            },
+            branding: {
+              type: 'object',
+              properties: {
+                account_id: {
+                  type: 'string',
+                  description: 'Account whose name should appear on bank statement line items',
+                },
+              },
+              title: 'TransferBranding',
+            },
+          },
+          required: ['amount', 'source', 'destination'],
+        },
+        examples: {
+          ach_debit_to_solana: {
+            summary: 'Onramp via ACH debit → Mint on Solana',
+            value: {
+              amount: { value: '2500', currency: 'USD' },
+              source: {
+                address_id: 'addr_ach_debit',
+                value_type: 'USD',
+                transfer_type: 'ach_debit',
+              },
+              destination: {
+                address_id: 'addr_solana_internal',
+                value_type: 'SBC',
+                transfer_type: 'solana',
+              },
+            },
+          },
+          wire_offramp_with_branding: {
+            summary: 'Burn on Polygon → Wire out (branding override)',
+            value: {
+              amount: { value: '10000', currency: 'USD' },
+              source: {
+                address_id: 'addr_polygon_internal',
+                value_type: 'SBC',
+                transfer_type: 'polygon',
+              },
+              destination: {
+                address_id: 'addr_wire_external',
+                value_type: 'USD',
+                transfer_type: 'wire',
+              },
+              branding: { account_id: 'acct_company_beta' },
+            },
+          },
+          rtp_payout: {
+            summary: 'Stablecoin payout via RTP',
+            value: {
+              amount: { value: '150', currency: 'USD' },
+              source: {
+                address_id: 'addr_treasury_sbc',
+                value_type: 'SBC',
+                transfer_type: 'ethereum',
+              },
+              destination: {
+                address_id: 'addr_rtp_external',
+                value_type: 'USD',
+                transfer_type: 'rtp',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"201":{"description":"Transfer successfully created","content":{"*/*":{"schema":{"type":"object","properties":{"id":{"type":"string","format":"uuid","example":"9f80c1f5-80df-4c5e-9b68-b9f5712d46d4"}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    '201': {
+      description: 'Transfer successfully created',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+                format: 'uuid',
+                example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4',
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

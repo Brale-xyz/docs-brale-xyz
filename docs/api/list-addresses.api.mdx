@@ -1,72 +1,109 @@
 ---
 id: list-addresses
-title: "Fetch all addresses"
-description: "Retrieves all addresses (internal and external) associated with the given account."
-sidebar_label: "Fetch all addresses"
+title: 'Fetch all addresses'
+description: 'Retrieves all addresses (internal and external) associated with the given account.'
+sidebar_label: 'Fetch all addresses'
 hide_title: true
 hide_table_of_contents: true
 api: eJzFVv1u20YSf5XBosDFAiX7XCRBhOIApXFcpcDFSOymPdtnjciRufVyl9kZSlYEAfcQ94R9kmKWlEU3Sf8rqn/E3Z3P33xujOAtm/GlmRRFJGZic52ZUFNEscFPCzM2zrLsnzNTEOfR1vpuxuYdSbS0JAZ0DnBHB0+sF4oeHaAvgO7bwwEgc8gtChWwslKClAS3dkkeMM9D42V05U1maoxYkVBU6zbGY0VmbDqSG1uYzFhVX6OUJjORPjY2UmHGEhvKDOclVWjGGyNWnLL+2HDiknWtR5Zo/a3JzCLECsWMzR03iaBGUVvN2Pz3EoefJsP/HA1fXG+On22/MZmhe6zqJPD4p/xiOuXbybvVT/OTUzf9ZV7ePlucnj59brZ/ROm8JJi+grBI/nZumO21Ws518IrseGOOj4707zHvBDQCyou9KOTBC3lR8sHhQP96Prc+hvmvlIu6FDWiYlsleyl7UowR14qpUMV92LrA74H7ilBb/J1gs6A0fX8eNJJvKs3vmnzR3mAudkn6EfPSLqnQjN9r6p63WZdzXxD5QPs+OPQI3zcsobDo4AM6R6LMHchf4v88M4If5iVaD6vEv4vzI13Pv23W8uKHu5OP9y/m5+UvP3/Ai5dnz57zB7ZvTnj95ml8/72lV/dPq2S9RPS8oHij6v881I/s2/aUXhpOHprMzJEVs5WNZK63+sseon1K+/7wrktn09FUJGXQLnJL0sa7NGNz2FUAH272Jb097Oc3U1zuqr+JzoxNKVLz+PAQazuaR3Q0ul9/+gzPsxiKJtcDtCJSlTHlTbSyTuJeEkaKk0ZNubzuP7/XEmrR6hM9YKQmmK676HmeiD6z4YIp1XkrAyTckYdI0kRPBSxiqNKzCgfyRR2sF1hahLd6dQy5s+TlJo9UkBeLjmHhwmoEU5+7pmiFt1KtT4cro5wh2k+pb493qr9LVP+6MlASFhS1uWpYrF+EfsG+VDxhytygzym17LcxL4mlHQQwOZuazGhEWhePR8ejo88cb8VwU9chCgMLzh3lwXqwfdGhLzoD8jh31t/CvGHr2/GRhkYeeM2apiAB8kgoyXUbIax8T3pLnge/pCgwJ1kReVhYlPTQJ2TCyhGzW4/gtQaiZ2PwEauaMwiLRfeV2FdYtxakOl+nyxrXoRHO2jgntydnU6jwjhisACGvlWfeWNe3YJicpQLqNk95dOX//fb8ZAwT5yAShybmOivSBNVoKzD7Isl2zSF9L6xHn1t0N9azWGkU0JbKF4CNhAq7qwPASPDj+4vpK/7tf/8/fqYtJ2IuFAFdXaJvKoo2h7YPMEip8EUCDjGZD/M1iK1oBCdtg2DgMqzUvguVmoitz0OMlOsYv/KDwYcS5R8Mnlaaqsejf46OBgMYwoW3C0sFDAYPrWMwgCoU5GAR4r4lpnxZLLrTrlr4ygMMYXbedTmegQ8rxYlqYRgM9ihB8G49GMATH76K10Er7m3KY3Qwm0dM82IG7bxL4Q9eYnAwR3+nERWqyAvUkZi8JJyv/BAmRUF9kyNax2OYYV6mirYyy2DGWNFNgeubx9d6Kmj+BZqH2yj1DIZw5tAWezygCksq1MzZV5prrQyHA+Wdvd7hANM9DjyDCuNdCkpBdaRctzRFrrK3XRvQ/q1KHoXtQJtKZurAUqHXttKta69J8vLxXvjHlrHZLzJ/1SrZ9W6he0kgJGPTSNl08+hyt1iqeeNHSyb29+IysCj1ZqPj8CK67VavPzYUdbJcZ2aJ0WqtpDlTWE61bsYLdEx/4vmTd93+egBf3hS/4sVupHsd6Et0jZ5MZu5o/Xhb3l5vM9OOgGRaSzBJ5dJj1U1S5+HD1D49OTfb7e+voD10
-sidebar_class_name: "get api-method"
+sidebar_class_name: 'get api-method'
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-import ParamsDetails from "@theme/ParamsDetails";
-import RequestSchema from "@theme/RequestSchema";
-import StatusCodes from "@theme/StatusCodes";
-import OperationTabs from "@theme/OperationTabs";
-import TabItem from "@theme/TabItem";
-import Heading from "@theme/Heading";
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
 
-<Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Fetch all addresses"}
->
-</Heading>
+<Heading as={'h1'} className={'openapi__heading'} children={'Fetch all addresses'}></Heading>
 
 <MethodEndpoint
-  method={"get"}
-  path={"/accounts/{account_id}/addresses"}
-  context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+  method={'get'}
+  path={'/accounts/{account_id}/addresses'}
+  context={'endpoint'}
+></MethodEndpoint>
 
 Retrieves all addresses (internal and external) associated with the given account.
 
-
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
-  children={"Request"}
->
-</Heading>
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
 
 <ParamsDetails
-  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"}]}
->
-  
-</ParamsDetails>
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+  ]}
+></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"A list of addresses","content":{"*/*":{"schema":{"type":"object","properties":{"addresses":{"type":"array","items":{"title":"Address","type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"status":{"type":"string","enum":["pending","active","archived"],"example":"active"},"name":{"type":"string","example":"Solana Custodial Wallet"},"address":{"type":"string","description":"The on-chain wallet address","example":"73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me"},"transfer_types":{"type":"array","items":{"type":"string"},"example":["solana","base","wire"]}}}}},"title":"GetAddressesResponse"}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    '200': {
+      description: 'A list of addresses',
+      content: {
+        '*/*': {
+          schema: {
+            type: 'object',
+            properties: {
+              addresses: {
+                type: 'array',
+                items: {
+                  title: 'Address',
+                  type: 'object',
+                  properties: {
+                    id: {
+                      title: 'Kusid',
+                      type: 'string',
+                      format: 'ksuid',
+                      pattern: '^[a-zA-Z0-9]{26}$',
+                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                    },
+                    status: {
+                      type: 'string',
+                      enum: ['pending', 'active', 'archived'],
+                      example: 'active',
+                    },
+                    name: { type: 'string', example: 'Solana Custodial Wallet' },
+                    address: {
+                      type: 'string',
+                      description: 'The on-chain wallet address',
+                      example: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me',
+                    },
+                    transfer_types: {
+                      type: 'array',
+                      items: { type: 'string' },
+                      example: ['solana', 'base', 'wire'],
+                    },
+                  },
+                },
+              },
+            },
+            title: 'GetAddressesResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
