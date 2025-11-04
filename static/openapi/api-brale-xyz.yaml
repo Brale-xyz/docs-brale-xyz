@@ -136,9 +136,6 @@ components:
         ein:
           type: string
           example: 111-11-1111
-        business_type:
-          type: string
-          example: Corporation
         address:
           $ref: '#/components/schemas/AccountAddress'
         phone_number:
