@@ -206,6 +206,24 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Plaid',
+      items: [
+        {
+          type: 'doc',
+          id: 'api/create-a-plaid-link-token',
+          label: 'Create a Plaid Link token',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
+          id: 'api/exchange-public-token-and-register-an-ach-debit-address',
+          label: 'Exchange public_token and register an ACH-debit address',
+          className: 'api-method post',
+        },
+      ],
+    },
   ],
 };
 
