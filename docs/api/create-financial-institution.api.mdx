@@ -1,143 +1,78 @@
 ---
 id: create-financial-institution
-title: 'Create a new external financial institution'
-description: 'Links an external bank account to the specified account (ACH, wire, etc.).'
-sidebar_label: 'Create a new external financial institution'
+title: "Create a new external financial institution"
+description: "Links an external bank account to the specified account (ACH, wire, etc.)."
+sidebar_label: "Create a new external financial institution"
 hide_title: true
 hide_table_of_contents: true
-api: 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
-sidebar_class_name: 'post api-method'
+api: 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
+sidebar_class_name: "post api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Create a new external financial institution'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new external financial institution"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'post'}
-  path={'/accounts/{account_id}/financial-institutions/external'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"post"}
+  path={"/accounts/{account_id}/financial-institutions/external"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+:::caution deprecated
+
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+
+:::
 
 Links an external bank account to the specified account (ACH, wire, etc.).
 
+Deprecated. Use Addresses. Create an off-chain Address (ACH/Wire/RTP) and pass its `address_id` to Transfers. Plaid endpoints have moved to `/accounts/{account_id}/plaid/*`.
+
+
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      in: 'header',
-      name: 'Idempotency-Key',
-      required: true,
-      schema: { type: 'string' },
-      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
-      description:
-        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"in":"header","name":"Idempotency-Key","required":true,"schema":{"type":"string"},"example":"idemp-123e4567-e89b-12d3-a456-426614174000","description":"A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n"}]}
+>
+  
+</ParamsDetails>
 
 <RequestSchema
-  title={'Body'}
-  body={{
-    required: true,
-    content: {
-      'application/json': {
-        schema: {
-          title: 'FinancialInstitutionCreateRequest',
-          type: 'object',
-          properties: {
-            name: { type: 'string', example: 'Business Checking Account' },
-            transfer_type: { type: 'array', items: { type: 'string' }, example: ['ach', 'wire'] },
-            bank_details: {
-              title: 'Bank',
-              type: 'object',
-              properties: {
-                owner: { type: 'string', example: 'Jane Doe' },
-                account_number: { type: 'string', example: '1234567890' },
-                routing_number: { type: 'string', example: '063108680' },
-                name: {
-                  type: 'string',
-                  description: 'The name of the bank',
-                  example: 'Example Bank',
-                },
-                address: {
-                  title: 'AccountAddress',
-                  type: 'object',
-                  properties: {
-                    street_line_1: { type: 'string', example: '123 Main St' },
-                    street_line_2: { type: 'string', example: 'Apt C' },
-                    city: { type: 'string', example: 'Des Moines' },
-                    state: { type: 'string', example: 'Iowa' },
-                    zip: { type: 'string', example: '12345' },
-                    country: { type: 'string', example: 'USA' },
-                  },
-                  required: ['street_line_1', 'city', 'state', 'zip', 'country'],
-                },
-                account_type: { type: 'string', example: 'checking' },
-              },
-              required: ['owner', 'account_number', 'routing_number', 'name', 'account_type'],
-            },
-          },
-          required: ['name', 'transfer_type', 'bank_details'],
-        },
-      },
-    },
-  }}
-></RequestSchema>
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"title":"FinancialInstitutionCreateRequest","type":"object","properties":{"name":{"type":"string","example":"Business Checking Account"},"transfer_type":{"type":"array","items":{"type":"string"},"example":["ach","wire"]},"bank_details":{"title":"Bank","type":"object","properties":{"owner":{"type":"string","example":"Jane Doe"},"account_number":{"type":"string","example":"1234567890"},"routing_number":{"type":"string","example":63108680},"name":{"type":"string","description":"The name of the bank","example":"Example Bank"},"address":{"title":"AccountAddress","type":"object","properties":{"street_line_1":{"type":"string","example":"123 Main St"},"street_line_2":{"type":"string","example":"Apt C"},"city":{"type":"string","example":"Des Moines"},"state":{"type":"string","example":"Iowa"},"zip":{"type":"string","example":"12345"},"country":{"type":"string","example":"USA"}},"required":["street_line_1","city","state","zip","country"]},"account_type":{"type":"string","example":"checking"}},"required":["owner","account_number","routing_number","name","account_type"]}},"required":["name","transfer_type","bank_details"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '201': {
-      description: 'Financial institution successfully created',
-      content: {
-        '*/*': {
-          schema: {
-            type: 'object',
-            properties: {
-              id: {
-                title: 'Kusid',
-                type: 'string',
-                format: 'ksuid',
-                pattern: '^[a-zA-Z0-9]{26}$',
-                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"201":{"description":"Financial institution successfully created","content":{"*/*":{"schema":{"type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

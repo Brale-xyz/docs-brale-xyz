@@ -1,123 +1,72 @@
 ---
 id: create-address
-title: 'Create a new external address'
-description: 'Creates a non-custodial address (EOA) for the specified account.'
-sidebar_label: 'Create a new external address'
+title: "Create a new external address"
+description: "Creates a non-custodial address (EOA) for the specified account."
+sidebar_label: "Create a new external address"
 hide_title: true
 hide_table_of_contents: true
-api: eJzVV9tuG0cM/RVi0IckWF2sKHIiFAXkWAmEALWRxCla23WoWcqaendmMxfLiiCgH9Ev7JcUnFlZa8tJLyhQVC/S7JBcXg4PqZXweOnE8FSM8tySc+TEeSZMRRa9MnqSi6GQltBTLSAykZOTVlV8L4biZbx1gKCNbsngvMkVFoBJHh6Nj0aPYWYs+DmBq0iqmaIcUEoTtG+faZGJCi2W5MmyLyuhsSQxFLXIhcpFJhS/rEI/F5mw9CkoS7kYehsoE07OqUQxXAmvfMGqb4KLWn5Z8dF5q/SlyMTM2BK9GIorF6JAhd6TZds/n2Lr86j1U7f14nzVG6y/EZmgGyyraLD3QZ5MJu5y9HbxYTp+XUx+nM4vB7PXr5/ti/X9nLyfE0wOwcxizHUYYp2tUhRzwpysyDZxTnIqK+NJy2XrDS2/HuCdgNZNFxWbae31nlL/2WC/Rc9fTFt7vfxpC/vPBq1+bzDY6+/t97vd7k4RRxC0+hQIkl0IjnLwBipL16Q95KEqlERPcAsN14YxyjkcH717D+wvOQ9lcJ6VGQ20ALUNDK5o2YaTeHVyMjm87tfvasM4RTCEj389go9nWqzPU6LI+QOTLzk79/MmjfakPV9hlUJQRnd+cRz16gHc1ChPoH6bjG9hZKa/kORzZTkPXpFj5VTG+7VplubEkYWxn5OlUMIPWBTEeBDeonYzshes6ho20FpkIChPpft63U/FxrDIxOgaC9RyTiITx6ZYXhotzteZqLvxIS93oYvSByyA23mOSm9a+U5E3ZvD/oEc9MdP9+TzV729wUF3/1V379ngYH/w6mV3cIgv+tP9p3lvINbrJqBPU7p2Yt/6eL5eJxVXGe1SWnrdPf666+v4hlu3wTUuSEnOzUJRLCHRFvd4AwVPOk/uFf6rlVX5f0cq6ZOJkvzcMA9XJmIxcuBQdGpacZ3VlifXHdzweIfq7IhMOLLXG24NtmAK8r5yw04HK9WeWiyofbP8vAOGY2vyIPkAyUTsOUcyWOWX0dwBoSU7CuzT6Xnz+h3nOKWxKXSbcnZB1NTG52kU2vGBKYNZNNkAb65IgyUfrKYcZtaU8ZqNA+m8Mkp7uFYIR/yoB7JQpP2FtJST9goLB7PCLNow0bIIeTKerCodD2eCNY1VnyNbDDev/jZKfXcmIBE4jy4uELPJ2y0PjTflvZ1jD3b/bvP/eSM3+vhvNSBPz5lpQvmAaw4T5wJqSYA6hyMr5+R8YncYHU9EJhg1qQy9dre9OzeSGReqyljvwHmcFiSN0qCapk3TdAakcVrwmJkGp3REaxQjadzSMePx7En9yxVRFsxCN6wncWn0NVkPU/ILIg0zhT5eNAUdYVmQc8WyDa8YLA0fjbZYVi4DM5vVv6L6AqvkQVxmlvFhhUsTvMsSFmPYo+MJlHhFDpQHQrdknWlQRdODVgyWcqhSL7n2mf7+6P14CKOiAEvOBCt5W3DwSEVEcmK2HZ1tyC3+nimNWiosLpR2XvnACU1SOgcM3pRYP3oMaAnevDuZHLrff/2tN2Aytyg9WcCimqMOJVkl6zHswM85fZbAGRvdh+kSvCrpdkI7cHOzYP94grsorLQ01pKMi9w6iyRVom6gP83SeiOge5R9H1GrLVn/O5tlTTaebnynKlBFJyMHrmomPd3smezM8M7OeUumkbVrOj3PxJyZeHgqVqspOjqxxXrNjz8FssyK55m4Rqs4h5Ejc+UiBsRwhoWjr4T86G09Jx/DwzvkFwLabA2ad4ZrLAKfRCauaHl3j17zMlDvn//Ytf/ltviFzKUM7W7gt0nkrT0JvUy5aL1nO1uJncVyqzGSkirfkOX1g2fk7UznfIhMTOv9tTQ5i1lc8J8AXKQqmliOOEnjs5UoUF8GvGTZ9Er+/AH61rgD
-sidebar_class_name: 'post api-method'
+api: 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
+sidebar_class_name: "post api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Create a new external address'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new external address"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'post'}
-  path={'/accounts/{account_id}/addresses/external'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"post"}
+  path={"/accounts/{account_id}/addresses/external"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Creates a non-custodial address (EOA) for the specified account.
 
+
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      in: 'header',
-      name: 'Idempotency-Key',
-      required: true,
-      schema: { type: 'string' },
-      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
-      description:
-        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"in":"header","name":"Idempotency-Key","required":true,"schema":{"type":"string"},"example":"idemp-123e4567-e89b-12d3-a456-426614174000","description":"A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n"}]}
+>
+  
+</ParamsDetails>
 
 <RequestSchema
-  title={'Body'}
-  body={{
-    required: true,
-    content: {
-      'application/json': {
-        schema: {
-          title: 'AddressCreateRequest',
-          type: 'object',
-          properties: {
-            name: { type: 'string', example: 'User Ethereum Wallet' },
-            transfer_types: {
-              type: 'array',
-              items: { type: 'string' },
-              example: ['Ethereum', 'Avalanche', 'Polygon'],
-            },
-            address: {
-              type: 'string',
-              description: 'The actual on-chain address',
-              example: '0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26',
-            },
-          },
-          required: ['name', 'transfer_types', 'address'],
-        },
-      },
-    },
-  }}
-></RequestSchema>
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"oneOf":[{"type":"object","required":["name","transfer_types","address"],"properties":{"name":{"type":"string"},"transfer_types":{"type":"array","items":{"type":"string","description":"Rail or chain identifier","enum":["wire","ach_credit","same_day_ach_credit","ach_debit","same_day_ach_debit","rtp","solana","ethereum","polygon","base","arbitrum","canton","avalanche","base_sepolia","sepolia","solana_devnet","stellar","xrp_ledger"],"title":"TransferType"},"description":"Must include a supported chain (e.g., ethereum, base, solana, xrp_ledger)"},"address":{"type":"string","description":"On-chain wallet address"}},"title":"ExternalAddressOnchainCreate"},{"type":"object","required":["transfer_types"],"properties":{"name":{"type":"string"},"owner":{"type":"string","description":"Account owner/beneficiary name"},"transfer_types":{"type":"array","items":{"type":"string","description":"Rail or chain identifier","enum":["wire","ach_credit","same_day_ach_credit","ach_debit","same_day_ach_debit","rtp","solana","ethereum","polygon","base","arbitrum","canton","avalanche","base_sepolia","sepolia","solana_devnet","stellar","xrp_ledger"],"title":"TransferType"},"description":"One or more rails (wire, ach_credit, same_day_ach_credit, ach_debit, same_day_ach_debit, rtp)"},"plaid_token":{"type":"string","description":"Required when using ach_debit or same_day_ach_debit"},"account_number":{"type":"string"},"routing_number":{"type":"string"},"account_type":{"type":"string","enum":["checking","savings"]},"bank_address":{"title":"AccountAddress","type":"object","properties":{"street_line_1":{"type":"string","example":"123 Main St"},"street_line_2":{"type":"string","example":"Apt C"},"city":{"type":"string","example":"Des Moines"},"state":{"type":"string","example":"Iowa"},"zip":{"type":"string","example":"12345"},"country":{"type":"string","example":"USA"}},"required":["street_line_1","city","state","zip","country"]},"beneficiary_address":{"title":"AccountAddress","type":"object","properties":{"street_line_1":{"type":"string","example":"123 Main St"},"street_line_2":{"type":"string","example":"Apt C"},"city":{"type":"string","example":"Des Moines"},"state":{"type":"string","example":"Iowa"},"zip":{"type":"string","example":"12345"},"country":{"type":"string","example":"USA"}},"required":["street_line_1","city","state","zip","country"]},"email":{"type":"string","format":"email"}},"title":"ExternalAddressOffchainCreate"}],"title":"AddressCreateRequest"},"examples":{"onchain_base":{"summary":"On-chain (Base)","value":{"name":"Base External Wallet","transfer_types":["base"],"address":"0xE57e438aE0b1557bFC1ad70BD7751635E473D888"}},"offchain_wire":{"summary":"Off-chain (Wire)","value":{"owner":"Jane Doe","transfer_types":["wire"],"account_number":"1234567890","routing_number":63108680,"account_type":"checking","name":"Example Bank","bank_address":{"street_line_1":"100 Example St","street_line_2":"Suite 500","city":"Springfield","state":"CA","zip":"90001"},"beneficiary_address":{"street_line_1":"100 Example St","street_line_2":"Suite 500","city":"Springfield","state":"CA","zip":"90001"}}},"offchain_ach_debit":{"summary":"Off-chain (ACH Debit via Plaid)","value":{"name":"Operating Account (ACH Debit)","transfer_types":["ach_debit","same_day_ach_debit"],"plaid_token":"PUBLIC_TOKEN_EXCHANGED_WITH_BRALE"}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '201': {
-      description: 'External address successfully created',
-      content: {
-        '*/*': {
-          schema: {
-            type: 'object',
-            properties: {
-              id: {
-                title: 'Kusid',
-                type: 'string',
-                format: 'ksuid',
-                pattern: '^[a-zA-Z0-9]{26}$',
-                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"201":{"description":"External address successfully created","content":{"*/*":{"schema":{"type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

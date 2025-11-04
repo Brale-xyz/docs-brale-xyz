@@ -1,30 +1,40 @@
 openapi: 3.0.3
 info:
   title: Brale Issuance and Orchestration API
-  version: 2.0.0
+  version: 2.2.0
   description: >
     Brale supports stablecoin issuance and orchestration, enabling businesses and
     ecosystems to create their own stablecoins and convert between fiat and stablecoins
     seamlessly. From stablecoin onramps, offramps, and swaps to custody and payouts, the
     Brale API makes it easy to build stablecoin-enabled products.
 
-    NOTE:
-    All resource IDs (including account_id, address_id, financial_institution_id,
+    NOTE: All resource IDs (including account_id, address_id, financial_institution_id,
     and automation_id) are KSUIDs—26-character alphanumeric strings that are sortable
     by time. Examples showing UUIDs are incorrect.
 
-# Define high-level tags to group endpoints by resource
+
+    **What's new in 2.1.0**
+    - Unified **Addresses** model for on-chain and off-chain endpoints
+      - `Transfers` now accepts **address_id only** (no financial_institution_id)
+      - Optional `branding` object to control bank statement presentation
+    - Added off-chain rails: `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp`
+    - Plaid endpoints moved to `/accounts/{account_id}/plaid/*`
+    - `Financial Institutions` marked **deprecated** (migration path to **Addresses**)
 tags:
   - name: Accounts
     description: Endpoints related to managing customer accounts (KYB, details, etc.)
   - name: Transfers
-    description: Endpoints for creating and retrieving transfers (fiat to stablecoins, etc.)
+    description: Endpoints for creating and retrieving transfers (fiat to stablecoins,
+      etc.)
   - name: Addresses
-    description: On-chain wallet addresses (custodial or external)
+    description: On-chain and off-chain endpoints (custodial or external) represented
+      by a single Addresses resource
   - name: Financial Institutions
-    description: Bank or other financial institutions linked to an account
+    description: Legacy (deprecated) bank endpoints. Use Addresses instead.
   - name: Automations
     description: Automated deposit addresses or onramps
+  - name: Plaid
+    description: Plaid integration endpoints for ACH debit functionality
 
 servers:
   - url: https://api.brale.xyz
@@ -50,9 +60,8 @@ components:
       title: Kusid
       type: string
       format: ksuid
-      pattern: '^[a-zA-Z0-9]{26}$'
-      example: '2VcUIIsgARwVbEGlIYbhg6fGG57'
-
+      pattern: ^[a-zA-Z0-9]{26}$
+      example: 2VcUIIsgARwVbEGlIYbhg6fGG57
     Pagination:
       title: Pagination
       description: Cursor-based pagination metadata
@@ -70,7 +79,8 @@ components:
           type: string
           nullable: true
           example: g3QAAAABdw...
-      required: [page_size]
+      required:
+        - page_size
 
     ## --------------------- ACCOUNTS --------------------- ##
     AccountCreateRequest:
@@ -78,13 +88,13 @@ components:
       properties:
         business_name:
           type: string
-          example: 'ABC Company Inc'
+          example: ABC Company Inc
         ein:
           type: string
-          example: '111-11-1111'
+          example: 111-11-1111
         business_type:
           type: string
-          example: 'Corporation'
+          example: Corporation
         address:
           $ref: '#/components/schemas/AccountAddress'
         phone_number:
@@ -93,10 +103,10 @@ components:
         email:
           type: string
           format: email
-          example: 'mark@example.com'
+          example: mark@example.com
         website:
           type: string
-          example: 'abccompany.com'
+          example: abccompany.com
         ultimate_beneficial_owners:
           type: array
           items:
@@ -109,7 +119,6 @@ components:
         - phone_number
         - email
         - ultimate_beneficial_owners
-
     Account:
       title: Account
       type: object
@@ -127,13 +136,13 @@ components:
           example: complete
         business_name:
           type: string
-          example: 'ABC Company Inc'
+          example: ABC Company Inc
         ein:
           type: string
-          example: '111-11-1111'
+          example: 111-11-1111
         business_type:
           type: string
-          example: 'Corporation'
+          example: Corporation
         address:
           $ref: '#/components/schemas/AccountAddress'
         phone_number:
@@ -142,54 +151,52 @@ components:
         email:
           type: string
           format: email
-          example: 'mark@example.com'
+          example: mark@example.com
         website:
           type: string
-          example: 'abccompany.com'
+          example: abccompany.com
         ultimate_beneficial_owners:
           type: array
           items:
             $ref: '#/components/schemas/UltimateBeneficialOwner'
-
     AccountAddress:
       title: AccountAddress
       type: object
       properties:
         street_line_1:
           type: string
-          example: '123 Main St'
+          example: 123 Main St
         street_line_2:
           type: string
-          example: 'Apt C'
+          example: Apt C
         city:
           type: string
-          example: 'Des Moines'
+          example: Des Moines
         state:
           type: string
-          example: 'Iowa'
+          example: Iowa
         zip:
           type: string
           example: '12345'
         country:
           type: string
-          example: 'USA'
+          example: USA
       required:
         - street_line_1
         - city
         - state
         - zip
         - country
-
     UltimateBeneficialOwner:
       title: UltimateBeneficialOwner
       type: object
       properties:
         name:
           type: string
-          example: 'John Doe'
+          example: John Doe
         ssn:
           type: string
-          example: '222-22-2222'
+          example: 222-22-2222
         address:
           $ref: '#/components/schemas/AccountAddress'
       required:
@@ -225,24 +232,22 @@ components:
           $ref: '#/components/schemas/TransferEndpoint'
         destination:
           $ref: '#/components/schemas/TransferEndpoint'
-
     TransferEndpoint:
       title: TransferEndpoint
       type: object
       properties:
         value_type:
           type: string
-          example: 'USD'
+          example: USD
         transfer_type:
           type: string
-          example: 'wire'
+          example: wire
         address_id:
-          nullable: true
           $ref: '#/components/schemas/Ksuid'
-        financial_institution_id:
-          nullable: true
-          $ref: '#/components/schemas/Ksuid'
-
+      required:
+        - address_id
+        - value_type
+        - transfer_type
     TransfersList:
       title: TransfersList
       description: List of transfers plus pagination cursors
@@ -255,22 +260,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transfer'
-      required: [pagination, transfers]
+      required:
+        - pagination
+        - transfers
       example:
         pagination:
           next: g3QAAAABdw...
           page_size: 25
         transfers:
-          - id: '30NoY6R1Ns2tRBcx1Kb16SnuXOW'
+          - id: 30NoY6R1Ns2tRBcx1Kb16SnuXOW
             status: complete
             source:
-              transaction_id: '0xdd5646ea…'
-              address_id: '2MhCCIHu…'
+              transaction_id: "0xdd5646ea\u2026"
+              address_id: "2MhCCIHu\u2026"
               value_type: ACE
               transfer_type: base
             destination:
-              transaction_id: '0xdd5646ea…'
-              address_id: '2O6asmN…'
+              transaction_id: "0xdd5646ea\u2026"
+              address_id: "2O6asmN\u2026"
               value_type: ACE
               transfer_type: base
             updated_at: '2025-07-25T21:05:07.779018Z'
@@ -279,7 +286,6 @@ components:
               value: '0.10'
               currency: USD
             note: null
-
     TransferCreateRequest:
       title: TransferCreateRequest
       type: object
@@ -292,7 +298,7 @@ components:
               example: '100'
             currency:
               type: string
-              example: 'USD'
+              example: USD
           required:
             - value
             - currency
@@ -300,6 +306,8 @@ components:
           $ref: '#/components/schemas/TransferEndpoint'
         destination:
           $ref: '#/components/schemas/TransferEndpoint'
+        branding:
+          $ref: '#/components/schemas/TransferBranding'
       required:
         - amount
         - source
@@ -313,7 +321,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Address'
-
     Address:
       title: Address
       type: object
@@ -329,17 +336,19 @@ components:
           example: active
         name:
           type: string
-          example: 'Solana Custodial Wallet'
+          example: Solana Custodial Wallet
         address:
           type: string
           description: The on-chain wallet address
-          example: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me'
+          example: 73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me
         transfer_types:
           type: array
           items:
             type: string
-          example: ['Solana']
-
+          example:
+            - solana
+            - base
+            - wire
     AddressReference:
       title: AddressReference
       type: object
@@ -350,8 +359,9 @@ components:
         address:
           type: string
           example: '0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b'
-      required: [id, address]
-
+      required:
+        - id
+        - address
     Amount:
       title: Amount
       type: object
@@ -363,11 +373,10 @@ components:
           example: '11234.88'
         currency:
           type: string
-          example: 'USD'
+          example: USD
       required:
         - value
         - currency
-
     AddressBalanceResponse:
       title: AddressBalance
       type: object
@@ -397,7 +406,11 @@ components:
           type: string
           description: Token ticker
           example: SBC
-      required: [address, balance, transfer_type, value_type]
+      required:
+        - address
+        - balance
+        - transfer_type
+        - value_type
       example:
         address:
           id: 2VcUIIsgARwVbEGlIYbhg6fGG57
@@ -407,7 +420,6 @@ components:
           currency: SBC
         transfer_type: solana
         value_type: SBC
-
     Balance:
       title: Balance
       type: object
@@ -417,28 +429,11 @@ components:
           example: '100'
         value_type:
           type: string
-          example: 'SBC'
-
+          example: SBC
     AddressCreateRequest:
-      title: AddressCreateRequest
-      type: object
-      properties:
-        name:
-          type: string
-          example: 'User Ethereum Wallet'
-        transfer_types:
-          type: array
-          items:
-            type: string
-          example: ['Ethereum', 'Avalanche', 'Polygon']
-        address:
-          type: string
-          description: The actual on-chain address
-          example: '0xD4Bc64E31c8F216B07F0156B76FC06Da94b73d26'
-      required:
-        - name
-        - transfer_types
-        - address
+      oneOf:
+        - $ref: '#/components/schemas/ExternalAddressOnchainCreate'
+        - $ref: '#/components/schemas/ExternalAddressOffchainCreate'
 
     ## --------------------- FINANCIAL INSTITUTIONS --------------------- ##
     GetFinancialInstitutionsResponse:
@@ -448,26 +443,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinancialInstitution'
-
     FinancialInstitutionCreateRequest:
       title: FinancialInstitutionCreateRequest
       type: object
       properties:
         name:
           type: string
-          example: 'Business Checking Account'
+          example: Business Checking Account
         transfer_type:
           type: array
           items:
             type: string
-          example: ['ach', 'wire']
+          example:
+            - ach
+            - wire
         bank_details:
           $ref: '#/components/schemas/BankDetails'
       required:
         - name
         - transfer_type
         - bank_details
-
     FinancialInstitution:
       title: FinancialInstitution
       type: object
@@ -476,7 +471,7 @@ components:
           $ref: '#/components/schemas/Ksuid'
         name:
           type: string
-          example: 'Business Checking Account'
+          example: Business Checking Account
         status:
           type: string
           enum:
@@ -486,29 +481,28 @@ components:
           example: active
         bank_details:
           $ref: '#/components/schemas/BankDetails'
-
     BankDetails:
       title: Bank
       type: object
       properties:
         owner:
           type: string
-          example: 'Jane Doe'
+          example: Jane Doe
         account_number:
           type: string
           example: '1234567890'
         routing_number:
           type: string
-          example: '063108680'
+          example: 063108680
         name:
           type: string
           description: The name of the bank
-          example: 'Example Bank'
+          example: Example Bank
         address:
           $ref: '#/components/schemas/AccountAddress'
         account_type:
           type: string
-          example: 'checking'
+          example: checking
       required:
         - owner
         - account_number
@@ -523,13 +517,12 @@ components:
       properties:
         name:
           type: string
-          example: 'XYZ Onramp'
+          example: XYZ Onramp
         destination_address:
           $ref: '#/components/schemas/AutomationDestinationAddress'
       required:
         - name
         - destination_address
-
     AutomationDestinationAddress:
       title: AutomationDestinationAddress
       type: object
@@ -538,15 +531,14 @@ components:
           $ref: '#/components/schemas/Ksuid'
         value_type:
           type: string
-          example: 'SBC'
+          example: SBC
         transfer_type:
           type: string
-          example: 'solana'
+          example: solana
       required:
         - address_id
         - value_type
         - transfer_type
-
     Automation:
       title: Automation
       type: object
@@ -555,41 +547,39 @@ components:
           $ref: '#/components/schemas/Ksuid'
         name:
           type: string
-          example: 'Customer Onramp'
+          example: Customer Onramp
         status:
           type: string
-          example: 'complete'
+          example: complete
         wire_instructions:
           $ref: '#/components/schemas/WireInstructions'
         destinationAddress:
           $ref: '#/components/schemas/AutomationDestinationAddress'
-
     WireInstructions:
       title: WireInstructions
       type: object
       properties:
         beneficiary_name:
           type: string
-          example: 'Jane Business'
+          example: Jane Business
         bank_name:
           type: string
-          example: 'Example Bank'
+          example: Example Bank
         bank_address:
           type: string
-          example: '456 Commerce St., Des Moines, IA 50309'
+          example: 456 Commerce St., Des Moines, IA 50309
         account_number:
           type: string
           example: '123456789'
         routing_number:
           type: string
-          example: '063108680'
+          example: 063108680
         beneficiary_address:
           type: string
-          example: '612 Commerce St., Des Moines, IA 50309'
+          example: 612 Commerce St., Des Moines, IA 50309
         memo:
           type: string
-          example: 'AB1C23456789'
-
+          example: AB1C23456789
     GetAutomationsResponse:
       title: AutomationListResponse
       type: object
@@ -598,12 +588,93 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Automation'
-
+    TransferType:
+      type: string
+      description: Rail or chain identifier
+      enum:
+        - wire
+        - ach_credit
+        - same_day_ach_credit
+        - ach_debit
+        - same_day_ach_debit
+        - rtp
+        - solana
+        - ethereum
+        - polygon
+        - base
+        - arbitrum
+        - canton
+        - avalanche
+        - base_sepolia
+        - sepolia
+        - solana_devnet
+        - stellar
+        - xrp_ledger
+    ExternalAddressOnchainCreate:
+      type: object
+      required:
+        - name
+        - transfer_types
+        - address
+      properties:
+        name:
+          type: string
+        transfer_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferType'
+          description: Must include a supported chain (e.g., ethereum, base, solana,
+            xrp_ledger)
+        address:
+          type: string
+          description: On-chain wallet address
+    ExternalAddressOffchainCreate:
+      type: object
+      required:
+        - transfer_types
+      properties:
+        name:
+          type: string
+        owner:
+          type: string
+          description: Account owner/beneficiary name
+        transfer_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferType'
+          description: One or more rails (wire, ach_credit, same_day_ach_credit, ach_debit,
+            same_day_ach_debit, rtp)
+        plaid_token:
+          type: string
+          description: Required when using ach_debit or same_day_ach_debit
+        account_number:
+          type: string
+        routing_number:
+          type: string
+        account_type:
+          type: string
+          enum:
+            - checking
+            - savings
+        bank_address:
+          $ref: '#/components/schemas/AccountAddress'
+        beneficiary_address:
+          $ref: '#/components/schemas/AccountAddress'
+        email:
+          type: string
+          format: email
+    TransferBranding:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account whose name should appear on bank statement line items
 paths:
   ## --------------------- ACCOUNTS --------------------- ##
   /accounts:
     get:
-      tags: [Accounts]
+      tags:
+        - Accounts
       operationId: listAccounts
       summary: Retrieve all accounts
       description: Returns an array of accounts.
@@ -617,7 +688,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Account'
     post:
-      tags: [Accounts]
+      tags:
+        - Accounts
       operationId: createAccount
       summary: Create a customer account
       description: >
@@ -650,10 +722,12 @@ paths:
                     $ref: '#/components/schemas/Ksuid'
   /accounts/{account_id}:
     get:
-      tags: [Accounts]
+      tags:
+        - Accounts
       operationId: getAccount
       summary: Retrieve a customer account
-      description: Returns the details of a specific customer account, including KYB status.
+      description: Returns the details of a specific customer account, including KYB
+        status.
       parameters:
         - name: account_id
           in: path
@@ -672,7 +746,8 @@ paths:
   ## --------------------- TRANSFERS --------------------- ##
   /accounts/{account_id}/transfers:
     get:
-      tags: [Transfers]
+      tags:
+        - Transfers
       operationId: listTransfers
       summary: Get all transfers for a given account
       description: Returns a list of transfers associated with the specified account.
@@ -716,10 +791,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/Transfer'
     post:
-      tags: [Transfers]
+      tags:
+        - Transfers
       operationId: createTransfer
       summary: Create a new transfer
-      description: Creates a new transfer using the specified source and destination details.
+      description: Creates a new transfer using the specified source and destination
+        details.
       parameters:
         - name: account_id
           in: path
@@ -742,6 +819,51 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TransferCreateRequest'
+            examples:
+              ach_debit_to_solana:
+                summary: "Onramp via ACH debit \u2192 Mint on Solana"
+                value:
+                  amount:
+                    value: '2500'
+                    currency: USD
+                  source:
+                    address_id: addr_ach_debit
+                    value_type: USD
+                    transfer_type: ach_debit
+                  destination:
+                    address_id: addr_solana_internal
+                    value_type: SBC
+                    transfer_type: solana
+              wire_offramp_with_branding:
+                summary: "Burn on Polygon \u2192 Wire out (branding override)"
+                value:
+                  amount:
+                    value: '10000'
+                    currency: USD
+                  source:
+                    address_id: addr_polygon_internal
+                    value_type: SBC
+                    transfer_type: polygon
+                  destination:
+                    address_id: addr_wire_external
+                    value_type: USD
+                    transfer_type: wire
+                  branding:
+                    account_id: acct_company_beta
+              rtp_payout:
+                summary: Stablecoin payout via RTP
+                value:
+                  amount:
+                    value: '150'
+                    currency: USD
+                  source:
+                    address_id: addr_treasury_sbc
+                    value_type: SBC
+                    transfer_type: ethereum
+                  destination:
+                    address_id: addr_rtp_external
+                    value_type: USD
+                    transfer_type: rtp
       responses:
         '201':
           description: Transfer successfully created
@@ -753,10 +875,11 @@ paths:
                   id:
                     type: string
                     format: uuid
-                    example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4'
+                    example: 9f80c1f5-80df-4c5e-9b68-b9f5712d46d4
   /accounts/{account_id}/transfers/{id}:
     get:
-      tags: [Transfers]
+      tags:
+        - Transfers
       operationId: getTransfer
       summary: Retrieve a single transfer
       description: Returns details for a specific transfer.
@@ -784,7 +907,8 @@ paths:
   ## --------------------- ADDRESSES --------------------- ##
   /accounts/{account_id}/addresses:
     get:
-      tags: [Addresses]
+      tags:
+        - Addresses
       operationId: listAddresses
       summary: Fetch all addresses
       description: >
@@ -803,10 +927,10 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/GetAddressesResponse'
-
   /accounts/{account_id}/addresses/external:
     post:
-      tags: [Addresses]
+      tags:
+        - Addresses
       operationId: createAddress
       summary: Create a new external address
       description: >
@@ -833,6 +957,44 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddressCreateRequest'
+            examples:
+              onchain_base:
+                summary: On-chain (Base)
+                value:
+                  name: Base External Wallet
+                  transfer_types:
+                    - base
+                  address: '0xE57e438aE0b1557bFC1ad70BD7751635E473D888'
+              offchain_wire:
+                summary: Off-chain (Wire)
+                value:
+                  owner: Jane Doe
+                  transfer_types:
+                    - wire
+                  account_number: '1234567890'
+                  routing_number: 063108680
+                  account_type: checking
+                  name: Example Bank
+                  bank_address:
+                    street_line_1: 100 Example St
+                    street_line_2: Suite 500
+                    city: Springfield
+                    state: CA
+                    zip: '90001'
+                  beneficiary_address:
+                    street_line_1: 100 Example St
+                    street_line_2: Suite 500
+                    city: Springfield
+                    state: CA
+                    zip: '90001'
+              offchain_ach_debit:
+                summary: Off-chain (ACH Debit via Plaid)
+                value:
+                  name: Operating Account (ACH Debit)
+                  transfer_types:
+                    - ach_debit
+                    - same_day_ach_debit
+                  plaid_token: PUBLIC_TOKEN_EXCHANGED_WITH_BRALE
       responses:
         '201':
           description: External address successfully created
@@ -843,14 +1005,14 @@ paths:
                 properties:
                   id:
                     $ref: '#/components/schemas/Ksuid'
-
   /accounts/{account_id}/addresses/{address_id}/balances:
     get:
-      tags: [Addresses]
+      tags:
+        - Addresses
       operationId: getAddressBalance
       summary: Fetch the balance of an internal (custodial) address for a specific token
       description: >
-        Returns balance data for a given address, chain, and token.  
+        Returns balance data for a given address, chain, and token.
         Provide `transfer_type` and `value_type` as query parameters.
       parameters:
         - name: account_id
@@ -888,11 +1050,16 @@ paths:
   ## --------------------- FINANCIAL INSTITUTIONS --------------------- ##
   /accounts/{account_id}/financial-institutions:
     get:
-      tags: [Financial Institutions]
+      tags:
+        - Financial Institutions
       operationId: ListFinancialInstitutions
       summary: Fetch all financial institutions
       description: >
         Returns all financial institutions associated with the given account.
+
+
+        Deprecated. Use Addresses. Create an off-chain Address (ACH/Wire/RTP) and
+        pass its `address_id` to Transfers. Plaid endpoints have moved to `/accounts/{account_id}/plaid/*`.
       parameters:
         - name: account_id
           in: path
@@ -907,14 +1074,19 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/GetFinancialInstitutionsResponse'
-
+      deprecated: true
   /accounts/{account_id}/financial-institutions/external:
     post:
-      tags: [Financial Institutions]
+      tags:
+        - Financial Institutions
       operationId: createFinancialInstitution
       summary: Create a new external financial institution
       description: >
         Links an external bank account to the specified account (ACH, wire, etc.).
+
+
+        Deprecated. Use Addresses. Create an off-chain Address (ACH/Wire/RTP) and
+        pass its `address_id` to Transfers. Plaid endpoints have moved to `/accounts/{account_id}/plaid/*`.
       parameters:
         - name: account_id
           in: path
@@ -947,14 +1119,19 @@ paths:
                 properties:
                   id:
                     $ref: '#/components/schemas/Ksuid'
-
+      deprecated: true
   /accounts/{account_id}/financial-institutions/{id}:
     get:
-      tags: [Financial Institutions]
+      tags:
+        - Financial Institutions
       operationId: getFinancialInstitution
       summary: Fetch a specific financial institution
       description: >
         Retrieves details for the specified financial institution (bank account).
+
+
+        Deprecated. Use Addresses. Create an off-chain Address (ACH/Wire/RTP) and
+        pass its `address_id` to Transfers. Plaid endpoints have moved to `/accounts/{account_id}/plaid/*`.
       parameters:
         - name: account_id
           in: path
@@ -975,15 +1152,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/FinancialInstitution'
+      deprecated: true
 
   ## --------------------- AUTOMATIONS --------------------- ##
   /accounts/{account_id}/automations:
     post:
-      tags: [Automations]
+      tags:
+        - Automations
       operationId: createAutomations
       summary: Create an Automation
-      description: >
-        Creates a new automation.
+      description: Creates a new automation.
       parameters:
         - name: account_id
           in: path
@@ -1016,9 +1194,9 @@ paths:
                 properties:
                   id:
                     $ref: '#/components/schemas/Ksuid'
-
     get:
-      tags: [Automations]
+      tags:
+        - Automations
       operationId: listAutomations
       summary: Fetch all automations for an account
       description: >
@@ -1037,10 +1215,10 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/GetAutomationsResponse'
-
   /accounts/{account_id}/automations/{id}:
     get:
-      tags: [Automations]
+      tags:
+        - Automations
       operationId: getAutomations
       summary: Retrieve a single automation
       description: Returns details for a specific automation.
@@ -1064,3 +1242,71 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Automation'
+
+  ## --------------------- PLAID --------------------- ##
+  /accounts/{account_id}/plaid/link_token:
+    post:
+      tags:
+        - Plaid
+      summary: Create a Plaid Link token
+      parameters:
+        - in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                legal_name:
+                  type: string
+                email_address:
+                  type: string
+                phone_number:
+                  type: string
+                date_of_birth:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Link token created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link_token:
+                    type: string
+  /accounts/{account_id}/plaid/register-account:
+    post:
+      tags:
+        - Plaid
+      summary: Exchange public_token and register an ACH-debit address
+      parameters:
+        - in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - public_token
+              properties:
+                public_token:
+                  type: string
+      responses:
+        '201':
+          description: ACH-debit address created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'

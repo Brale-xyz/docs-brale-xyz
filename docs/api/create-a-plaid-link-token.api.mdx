@@ -1,0 +1,71 @@
+---
+id: create-a-plaid-link-token
+title: "Create a Plaid Link token"
+description: "Create a Plaid Link token"
+sidebar_label: "Create a Plaid Link token"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zYQ/ZXBvHRjyE5qFC0qFAWyNyBo0QS7CfoQG/ZIGkfcUKSWQ8XrNQz0I/qF/ZJiKCV2Lt2n6sXmcDg8PDwzwy1GuhHMr/HCkqlwnmFLgRqOHNS8ReMwx5ZijRk6ahhzpLL0nYsLU2GGgT93JnCFeQwdZyhlzQ1hvsW4adVbYjDuBne7ee/MEl/7aqMeT9eW3kV2Uaeoba0pKRrvjj+Jd2p7FtoXn7iMmGEbfMshGhadtXxDdtGDfQYjQ27I2AVVVWCRFz3a2jteuK4pOLzoUFHkhV8tChNi/dwjw5UPDUXMkyfu0qfHl9Y76VFOT070p2Ipg2n1oJjj78bdQvS37KAMTJGV4v+LFuNuFyn2S7czQHwM503CAARJHbBHhxk2HGtfqTi8pM1UIzkeD+qQ4+1eJ7vjVgMcH0DIUDjc3ausCxZzrGNsJT8+ptZMikCWJ182X/EpqIvgq67UAfQhUKUlXHbBxE0K95opcDjtFNH1/HD6o5LV83Ho9MCHQsBBxTouktMzDFfCEGuGPsZwY4FjFxxXsAq+SdMaHNhVrTcuwp0hOFfTFEpr2MVFGbhiFw1ZgZX16wmcudJ2VR+8j2pcGsxQV/pgvqbbz++3/iV5/TpDqJkqDpOZQ71IVceHfbq9+0JNa/lpeuwV+yQr9hOPk2Fvf5IDOD2Z/jA++Wk8/VkzxLiVT7SaqLvia71OOBPpyJUM5Co4D2XNEkM6D5xenGGGKoie4elkOjl5xnsfRrq29SEKSKTCcumNA3MY2h+GzoAdFda4Gyg6MY5FWJIbl142ErkRiH5IOCXbBPBrdxC9dy+9u+MQoeC4ZnawMhTTxKGjMDWWRexmAu9VBwcYvQvUtJKBX62Gf2n5mtoeQSfRV5tkbGnjuyhZL7N07NOLM2jolgVMBCbZ6JqiM/YQwTgdlito+zSRycz9cX75LodTayGw+C6UDGdvBV6ZJDYlZp+qGQwaSP9XxpErDdmFcRJN7JTQ3stVQF30DQ2mI6DA8NvHq7O38s9ff09/HJc1BSojByDb1uS6hoMpoVeQQKyVvsAgPiT4UGwgmoYnMKhVQGq/VnxXGjU5G1f6ELiMk5mbudHoz5ridwKO15op08n3k5PRCMZw5czKcAWj0Wl/HpbRCBpfsYWVD+Cd4jOu18tqNYzuk1VmDmAMy8tATlYcZAnOr5UnbqPAaLRnCbyzm9EIXjn/n3wd9eHOk47JwrII5JT5JfTVOl2/dzF4CwW5W73RyA27CG1gYRcTzzM3htOq4kPIgYyVHJZU1qmgmLjMYCnU8KKizeKxWUcVFy/4PFhDbJcwHkr+Ax/Q+DuuFObymyV+pGuX7+95gLM9D7KEhsJtupSK28ClNjhlrjE3QxnQLqKbPLq2I61pWWo0DaXuNVSvb/WnR4Xjob5H/hIT0hQxtZ3t0Lqu7x82ghnmjx456WiYHbbQeYa1Nr78GrfbgoSvgt3t1Py546BtaJ7hHQWjyk5NqTKSMhPzFVnhZwgf2jy++jA8jI4As5eRD0ZyG62aZDsdYYa3vHn8QtvNdxn2rSGh6B3e9HuNLzXMPsCz58Uuu19xmpT/Td/5waPg4vzjJWZYDC89zTvMMdBan4y07sH6dPbUjJNti5bcTUc36tvH1O9fPA/Ahg==
+sidebar_class_name: "post api-method"
+info_path: api/brale-issuance-and-orchestration-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a Plaid Link token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/accounts/{account_id}/plaid/link_token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a Plaid Link token
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"in":"path","name":"account_id","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"legal_name":{"type":"string"},"email_address":{"type":"string"},"phone_number":{"type":"string"},"date_of_birth":{"type":"string","format":"date"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Link token created","content":{"application/json":{"schema":{"type":"object","properties":{"link_token":{"type":"string"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

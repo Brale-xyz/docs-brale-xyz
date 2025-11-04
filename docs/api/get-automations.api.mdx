@@ -1,138 +1,71 @@
 ---
 id: get-automations
-title: 'Retrieve a single automation'
-description: 'Returns details for a specific automation.'
-sidebar_label: 'Retrieve a single automation'
+title: "Retrieve a single automation"
+description: "Returns details for a specific automation."
+sidebar_label: "Retrieve a single automation"
 hide_title: true
 hide_table_of_contents: true
-api: eJzVV+9u20YMfxXisA9todiOu7itMAxw/izwii1F0nTYkiygTrR1i3SnHqmkrmFgD7En3JMMd3JiJenSFBhQzF+k05G/44/kkfRCCc5YpSdq3IirUIyzrM4S5WrycTXJVapmJN39ROXE2ps6LFWqDkkabxlyEjQlw9R5QOCatJkaDXij2lOJqtFjRUI+HLtQFitSqUKtXWPl3OQqUSaA1iiFSpSn943xlKtUfEOJYl1QhSpdKDFSBtXXDUctmddhyeKNnalETZ2vUFSqLriJAjWKkA/Yv5/gxsfxxm+DjVdni+Fo+Y1KFH3Aqo6Aw3f6eDLh2fjw6l22t19Ofs2K2Wi6v7/1Qi3vcn9bEEx2wU1BCoIVDbVMbpj93xndBE8tz4LxXDvLxMHe4WAQHrfVx8DGzsquJrjsD9KiEqWdFbIStJ71n4XHffbrTFu74Aag9iEzxbQGmPxruq0N8OLeeWuAnYbFVeThwHqs6qDEgtLww2rahRehIH9lPJ0by+Ib3d6+DuNfjKdJd+9zDsvI0tRog35+/nnzf0RLsN2wscQcjMnQXjxCb699g220FzdqmOc+wDyo+e3WCHZcVZHXBEfSS2CXGH5ywYIEJmPYGjwfvAqY1wXDNlVG/mHUzeHzb7dGL15GRe8aMXb2KMXB6Pnm4OXo5SCy6PjuUWRGm8NHkqmocg9jjbc3d9Yslu2lFWPjPRl3rLl3iXbvy30uS1bszr/u9brEsqHz9rSHXHO0vRPExaPlKflHaLAr0aIKXlwX45Mu7Vun38U+W7a/EDcp3KpBtsQLlar+Kje5v1i3tWV/XQ+5vzD5UiWKyV9eN8LGlypVhUjNab+PtellHkvqfZh/vNdw33iXt1ceWohYm5l0443MI9w2oSc/boJFJ2fd7aNQcdtAd4VuHBZMUKu2FNZZFLpnwzFTbBAtBoi7IAs+TgKUw9S7Km4HcCCb185YgUuDcBA+DUGXhqyca085WTEY5obSXfVgYnXZ5C14i2psXJyGrC6cNx+jF9Pro7+LUt+fKigIc/K9Uxtja+zUdRN4O/gTJswNWk2ANocDrwtiaUcdGL+ZhMiT55bisDfoDe4Rb2G4qWvnhYEFs5K0MxZMF9p1oRMgi1lp7AyyVT0ljmKkHc9ZqGIQB9oTSqRuPLgr20FvxbWzl+QFMpIrIgtTgxI3uoJMWJXEXM578EMIRMdGFzsRJ+Cm09VbVL/CurUgtKx8Hj/WOHeNcNLGOdIev5lAhRfEYAQIeR50ssaUXQs2IlnKoW7zlHun9ueDt3spjMsSPLFrQkmc7DI8MTHawTHru5LA+iomMDUWrTZYxjZopAkObaVs3pkyzk3+FNATvD46nuzy33/+NRxt6AI9aiEPWNYF2qYibzS0RYFBiuA+T8DOR/Mhm4OYinqwamIMXLirYN9xQI3CxmrnPWmJmZao2rFUaEOurYa+QxJv6JLCGHx3GrqbUIv1VPRlk/Tqvgp9kH5doom2xDKyWJWik+s2GWp+emvGxlvzfGryMPUXjiVoLRYZMh37crkMn9835ENVOQtl0Zvgp1hjcsMxziqdYsn0AK8nh6s6+xQ+PTD/C5vVR7Tz65KsUqUSdUHz238awsD9X5jzidnzSywKlpwtE9UWouikdmOsNdXSUQnjb6jKNy1kf++tWi7/AfVvp1c=
-sidebar_class_name: 'get api-method'
+api: eJzVV/1u2zYQf5UDMWCtITuO22adMAxwmq7whi1F22zYksympJPFRSI13imuaxjYQ+wJ9yTDUUqsNG2aAQOG+R+L5N2P98H72ijWS1LxqZo27CrNxllS55FyNfqwmmUqVkvk/nmkMqTUm1qWKlavkBtvCTJkbUqC3HnQQDWmJjcp6GvWkYpUrb2ukNHLtRtldYUqVjpNXWN5bjIVKSOgteZCRcrj743xmKmYfYORorTASqt4o9hwKazfNRS4eF3Lktgbu1SRyp2vNKtYXVATCGrNjF6wfz3Vw3fT4S/j4Zfnm8nB9jMVKXyrqzoATn5MT2YzWk5frX5Mnr8oZz8nxfIgf/HiyRdq+77ubwqE2RG4HLhA6NRQ2+has/+7RtfOU9tzEZ5qZwlJ5J2Mx/J3k30KZOyy7HOCS37DlFWkUmcZLQvXYG8gf7e13720nQmuAWovL5NNK4DJ/kuztQ7e3LpvB/CsIXYVeji2Xle1MBFrbuhuttTJB6PQr4zHubHEvknb6Otp/JPxOOuffcpgCVrMTWq0X88/Lf632iIcNmQsEokwibYX9+B73n7BobYX12w6y7zA3Mn5+MkBPHNVhT5FeM2jCI6Q4HsnEkQwm8KT8aPxl4J5lTBsUyXo70bdnzx6/OTgi6eB0buGjV3eh/Hg0f746cHTsajQM9y9NDnYn9xTkwordzfW9HD/2U6FbRuxbGwIkmlPmlsRdHSb7lNPpNNu/t/G1qUuG5y3t91lmteHz4ScvbaUo78HB7lSW63EirtMfNpX+8bt72Ofb9uf+I0L11XHVvFCxWqve5i0t9nVtO3eLhnS3sZkWxUpQn95VQUbX6pYFcw1xXt7ujajxOsSR2/X725V25feZW28QwsREjNh2njD6wB3iNqjnzYi0el5//i1pNvW0X2ia4OJCKqrSbJOAtEtGU4IQ3VoMYDdBVrwoQ3ADHLvqnAs4IA2q52xDJdGw7FsTSAtDVqepx4ztGy0NA2lW41gZtOyyVrwFtXYsDiTV104b94FK8ZXV38VqL4+U1CgztCPzmzwrbG56z/gQ7EnzIgabVMEbTM49mmBxG2fA9OXM/E8empVnIwmo/EtxVsYauraeSYg1kmJqTMWTB/a9aEjQKuT0tglJF0yRQpkmDpaE2NFwA5Sj5qD6saDW9keekueOnuJniFBXiFayI3mcNAnJNRViUTlegTfiCN6MrpQhigCl+fdV2Bf6bqVQOpVtg6btV67hilq/RzUnr6cQaUvkMAwoKa18CSNKfsSDIOymEHdvlMandkfjt88j2FaluCRXCMpcXZE8MAEb4thdrESwS4UI8iN1TY1ugw10HAjBm2pbNZrMeYmewjaI3z3+mR2RH/98efkYJgW2uuU0YMu60LbpkJvUmiTAgEXYj6PQM4H8SFZA5sKR9BVMAIq3ErkOxHUQGxs6rzHlEdn9swOBj8Vmj8nsLiSpzoZ7Y/GgwEM4cSa3GAGg0GXeZEGA6hchmVokJ0V+Yxt30ued6uraKEzCzCExZsu+9ACrFuJnbBmgsFgZyVwtlwPBvDAuo/a62ELdxzesS5hkXhtxfKLrjkL7neWvStB6rV4lLFCy1B7JLQc7HxmhzDNMuyL7KXpj2Gh0yJEtOFFBAvSFc4zvZ7f3JZVhskHaK53PdcLGMLLUptsZw+o3CVmIubiIzm2Foa9gfAuvrmyA8x2dqAFVNpfBKdkWHtMNWMmlqvMsksDksblkhtueyhJJVK1I660lbTSNfevkL3BS5Rx5/2u9/3csdl1v/9sYupSM+NbDjoGWULF2HRV5/SqHZLyHt+YpfSNuS02mUx3hSMWrs0m0YQnvtxuZfv3Br0UkHOpgN5ISIRykhkKIa3iXJeEd+j14FVXUh/Chwejj2jTbWq7vqq+KlYqUhe4vjkcymD1b4jzgRnjn0gkkpxvI9XWnGCk9mAa4rPHImOOFODrbuHF8zdqu/0baoFVLA==
+sidebar_class_name: "get api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Retrieve a single automation'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve a single automation"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'get'}
-  path={'/accounts/{account_id}/automations/{id}'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"get"}
+  path={"/accounts/{account_id}/automations/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Returns details for a specific automation.
 
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      name: 'id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the automation',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"name":"id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the automation"}]}
+>
+  
+</ParamsDetails>
 
-<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '200': {
-      description: 'A single automation object',
-      content: {
-        '*/*': {
-          schema: {
-            title: 'Automation',
-            type: 'object',
-            properties: {
-              id: {
-                title: 'Kusid',
-                type: 'string',
-                format: 'ksuid',
-                pattern: '^[a-zA-Z0-9]{26}$',
-                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-              },
-              name: { type: 'string', example: 'Customer Onramp' },
-              status: { type: 'string', example: 'complete' },
-              wire_instructions: {
-                title: 'WireInstructions',
-                type: 'object',
-                properties: {
-                  beneficiary_name: { type: 'string', example: 'Jane Business' },
-                  bank_name: { type: 'string', example: 'Example Bank' },
-                  bank_address: {
-                    type: 'string',
-                    example: '456 Commerce St., Des Moines, IA 50309',
-                  },
-                  account_number: { type: 'string', example: '123456789' },
-                  routing_number: { type: 'string', example: '063108680' },
-                  beneficiary_address: {
-                    type: 'string',
-                    example: '612 Commerce St., Des Moines, IA 50309',
-                  },
-                  memo: { type: 'string', example: 'AB1C23456789' },
-                },
-              },
-              destinationAddress: {
-                title: 'AutomationDestinationAddress',
-                type: 'object',
-                properties: {
-                  address_id: {
-                    title: 'Kusid',
-                    type: 'string',
-                    format: 'ksuid',
-                    pattern: '^[a-zA-Z0-9]{26}$',
-                    example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-                  },
-                  value_type: { type: 'string', example: 'SBC' },
-                  transfer_type: { type: 'string', example: 'solana' },
-                },
-                required: ['address_id', 'value_type', 'transfer_type'],
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"200":{"description":"A single automation object","content":{"*/*":{"schema":{"title":"Automation","type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"name":{"type":"string","example":"Customer Onramp"},"status":{"type":"string","example":"complete"},"wire_instructions":{"title":"WireInstructions","type":"object","properties":{"beneficiary_name":{"type":"string","example":"Jane Business"},"bank_name":{"type":"string","example":"Example Bank"},"bank_address":{"type":"string","example":"456 Commerce St., Des Moines, IA 50309"},"account_number":{"type":"string","example":"123456789"},"routing_number":{"type":"string","example":63108680},"beneficiary_address":{"type":"string","example":"612 Commerce St., Des Moines, IA 50309"},"memo":{"type":"string","example":"AB1C23456789"}}},"destinationAddress":{"title":"AutomationDestinationAddress","type":"object","properties":{"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"value_type":{"type":"string","example":"SBC"},"transfer_type":{"type":"string","example":"solana"}},"required":["address_id","value_type","transfer_type"]}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
