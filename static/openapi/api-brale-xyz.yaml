@@ -13,7 +13,7 @@ info:
     by time. Examples showing UUIDs are incorrect.
 
 
-    **What's new in 2.1.0**
+    **What's new in 2.2.0**
     - Unified **Addresses** model for on-chain and off-chain endpoints
       - `Transfers` now accepts **address_id only** (no financial_institution_id)
       - Optional `branding` object to control bank statement presentation
