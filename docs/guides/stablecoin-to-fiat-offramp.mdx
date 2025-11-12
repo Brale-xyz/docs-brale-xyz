@@ -5,7 +5,7 @@ sidebar_label: 'Stablecoin to Fiat (Offramp)'
 ---
 
 <p class="intro-subheading">
-  Brale makes it easy for you and your customers to convert stablecoins into USD via wire transfer ,
+  Brale makes it easy for you and your customers to convert stablecoins into USD via Wire transfer,
   ACH, and RTP.
 </p>
 
@@ -32,7 +32,7 @@ Here is an example of directly adding an offchain address.
   "account_number": "1234567890",
   "routing_number": "987654321",
   "name": "Example Bank",
-  "transfer_types": ["ach_credit"]
+  "transfer_types": ["ach_credit", "same_day_ach_credit", "rtp_credit"]
   "beneficiary_address": {
     "street_line_1": "100 Example St",
     "street_line_2": "Suite 500",
@@ -57,7 +57,7 @@ Here is an example of directly adding an offchain address.
   "name": "THE BANK OF TAMPA",
   "owner": "Jane Doe",
   "status": "active",
-  "transfer_types": ["ach_credit", "same_day_ach_credit"],
+  "transfer_types": ["ach_credit", "same_day_ach_credit", "rtp_credit"],
   "created": "2025-11-03T19:57:25.965990Z",
   "bank_address": {
     "state": "CA",
@@ -82,6 +82,10 @@ Here is an example of directly adding an offchain address.
   "account_type": "checking"
 }
 ```
+
+### RTP Enablement
+
+Offramps via RTP use the `rtp_credit` transfer_type on the destination Address. RTP capability is enabled asynchronously by our banking partner, so a newly created bank Address may initially not show `rtp_credit` even though it is eligible for real-time payments. Only treat an Address as RTP-capable once `"rtp_credit"` appears in its `transfer_types`. See **Key Concepts → Addresses → Create External Address for RTP** for details.
 
 ## Stablecoin to USD via Wire
 
