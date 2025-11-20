@@ -50,7 +50,7 @@ Create an automation to receive USD and automatically mint SBC to a Solana walle
 ```json title="Request"
 {
   "name": "XYZ Onramp",
-  "source":{
+  "source": {
     "value_type": "USD"
   },
   "destination": {
@@ -69,13 +69,13 @@ Automations are opened in a pending state and automatically transition into proc
   "name": "Customer ABC Automation",
   "status": "pending",
   "source": {
-      "transfer_type": null,
-      "value_type": "USD"
+    "transfer_type": null,
+    "value_type": "USD"
   },
   "destination": {
-      "transfer_type": "solana",
-      "address_id": "35LWXNTO2jem13nXCLyciFdi162",
-      "value_type": "ARB"
+    "transfer_type": "solana",
+    "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+    "value_type": "ARB"
   },
   "updated_at": "2025-11-20T15:56:03.531196Z",
   "created_at": "2025-11-20T15:56:03.531196Z"
@@ -94,56 +94,56 @@ Retrieve all automations associated with a customer Account.
 {
   "automations": [
     {
-        "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
-        "name": "Customer ABC Automation",
-        "status": "active",
-        "source": {
-            "transfer_type": null,
-            "value_type": "USD",
-            "funding_instructions": {
-                "bank_address": "123 Example St, Example City, NY 10001",
-                "beneficiary_address": "456 Sandbox Ave, Suite 100, Example City, IA 50000",
-                "beneficiary_name": "Example Payments Inc",
-                "routing_number": "000111222",
-                "account_number": "100123456789",
-                "bank_name": "Example Bank",
-                "memo": null
-                }
-            },
-        "destination": {
-            "transfer_type": "solana",
-            "address_id": "35LWXNTO2jem13nXCLyciFdi162",
-            "value_type": "ARB"
-        },
-        "updated_at": "2025-11-20T15:56:05.017508Z",
-        "created_at": "2025-11-20T15:56:03.531196Z"
-        },
-    {
-        "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
-        "name": "Customer XYZ Automation",
-        "status": "active",
-        "source": {
-            "transfer_type": null,
-            "value_type": "USD",
-            "funding_instructions": {
-                "bank_address": "123 Example St, Example City, NY 10001",
-                "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
-                "beneficiary_name": "Company ABC",
-                "routing_number": "000111222",
-                "account_number": "000123456789",
-                "bank_name": "Example Bank",
-                "memo": null
-                }
-            },
-        "destination": {
-            "transfer_type": "solana",
-            "address_id": "35LWXNTO2jem13nXCLyciFdi162",
-            "value_type": "ARB"
-        },
-        "updated_at": "2025-11-20T15:56:05.017508Z",
-        "created_at": "2025-11-20T15:56:03.531196Z"
+      "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
+      "name": "Customer ABC Automation",
+      "status": "active",
+      "source": {
+        "transfer_type": null,
+        "value_type": "USD",
+        "funding_instructions": {
+          "bank_address": "123 Example St, Example City, NY 10001",
+          "beneficiary_address": "456 Sandbox Ave, Suite 100, Example City, IA 50000",
+          "beneficiary_name": "Example Payments Inc",
+          "routing_number": "000111222",
+          "account_number": "100123456789",
+          "bank_name": "Example Bank",
+          "memo": null
         }
-    ]
+      },
+      "destination": {
+        "transfer_type": "solana",
+        "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+        "value_type": "ARB"
+      },
+      "updated_at": "2025-11-20T15:56:05.017508Z",
+      "created_at": "2025-11-20T15:56:03.531196Z"
+    },
+    {
+      "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
+      "name": "Customer XYZ Automation",
+      "status": "active",
+      "source": {
+        "transfer_type": null,
+        "value_type": "USD",
+        "funding_instructions": {
+          "bank_address": "123 Example St, Example City, NY 10001",
+          "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
+          "beneficiary_name": "Company ABC",
+          "routing_number": "000111222",
+          "account_number": "000123456789",
+          "bank_name": "Example Bank",
+          "memo": null
+        }
+      },
+      "destination": {
+        "transfer_type": "solana",
+        "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+        "value_type": "ARB"
+      },
+      "updated_at": "2025-11-20T15:56:05.017508Z",
+      "created_at": "2025-11-20T15:56:03.531196Z"
+    }
+  ]
 }
 ```
 
@@ -158,28 +158,28 @@ Retrieve a specific Automation.
 
 ```json title="Response"
 {
-    "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
-    "name": "Customer XYZ Automation",
-    "status": "active",
-    "source": {
-        "transfer_type": null,
-        "value_type": "USD",
-        "funding_instructions": {
-            "bank_address": "123 Example St, Example City, NY 10001",
-            "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
-            "beneficiary_name": "Company ABC",
-            "routing_number": "000111222",
-            "account_number": "000123456789",
-            "bank_name": "Example Bank",
-            "memo": null
-          }
-      },
-    "destination": {
-        "transfer_type": "solana",
-        "address_id": "35LWXNTO2jem13nXCLyciFdi162",
-        "value_type": "ARB"
-    },
-    "updated_at": "2025-11-20T15:56:05.017508Z",
-    "created_at": "2025-11-20T15:56:03.531196Z"
-  }
+  "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
+  "name": "Customer XYZ Automation",
+  "status": "active",
+  "source": {
+    "transfer_type": null,
+    "value_type": "USD",
+    "funding_instructions": {
+      "bank_address": "123 Example St, Example City, NY 10001",
+      "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
+      "beneficiary_name": "Company ABC",
+      "routing_number": "000111222",
+      "account_number": "000123456789",
+      "bank_name": "Example Bank",
+      "memo": null
+    }
+  },
+  "destination": {
+    "transfer_type": "solana",
+    "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+    "value_type": "ARB"
+  },
+  "updated_at": "2025-11-20T15:56:05.017508Z",
+  "created_at": "2025-11-20T15:56:03.531196Z"
+}
 ```

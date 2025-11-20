@@ -154,7 +154,7 @@ Here is an example of onramping to your own stablecoin (SBC) via wire transfer b
 ```json title="Request"
 {
   "name": "XYZ Onramp",
-  "source":{
+  "source": {
     "value_type": "USD"
   },
   "destination": {
@@ -164,6 +164,7 @@ Here is an example of onramping to your own stablecoin (SBC) via wire transfer b
   }
 }
 ```
+
 Automations are opened in a pending state and automatically transition into processing. Once virtual accounts are created and the automation is ready to use, it will transition to a completed status.
 
 When an automation becomes active, the source.funding_instructions object is populated with the virtual account’s bank details (routing number, account number, beneficiary name, etc.). These are the coordinates you share with your customer to fund the automation.
@@ -175,29 +176,29 @@ When an automation becomes active, the source.funding_instructions object is pop
 
 ```json title="Response"
 {
-    "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
-    "name": "Customer XYZ Automation",
-    "status": "active",
-    "source": {
-        "transfer_type": null,
-        "value_type": "USD",
-        "funding_instructions": {
-            "bank_address": "123 Example St, Example City, NY 10001",
-            "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
-            "beneficiary_name": "Company ABC",
-            "routing_number": "000111222",
-            "account_number": "000123456789",
-            "bank_name": "Example Bank",
-            "memo": null
-          }
-      },
-    "destination": {
-        "transfer_type": "solana",
-        "address_id": "35LWXNTO2jem13nXCLyciFdi162",
-        "value_type": "ARB"
-    },
-    "updated_at": "2025-11-20T15:56:05.017508Z",
-    "created_at": "2025-11-20T15:56:03.531196Z"
+  "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
+  "name": "Customer XYZ Automation",
+  "status": "active",
+  "source": {
+    "transfer_type": null,
+    "value_type": "USD",
+    "funding_instructions": {
+      "bank_address": "123 Example St, Example City, NY 10001",
+      "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
+      "beneficiary_name": "Company ABC",
+      "routing_number": "000111222",
+      "account_number": "000123456789",
+      "bank_name": "Example Bank",
+      "memo": null
+    }
+  },
+  "destination": {
+    "transfer_type": "solana",
+    "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+    "value_type": "ARB"
+  },
+  "updated_at": "2025-11-20T15:56:05.017508Z",
+  "created_at": "2025-11-20T15:56:03.531196Z"
 }
 ```
 
