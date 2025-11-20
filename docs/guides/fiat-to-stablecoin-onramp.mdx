@@ -140,10 +140,6 @@ Query a transfer that has been created.
 
 ## Fiat to Stablecoin Automation (Automatic Onramp)
 
-:::warning[Automations Maintenance]
-Automations are temporarily paused while we migrate virtual accounts for reliability and future capabilities. Target window: **Sep 22-Oct 1, 2025**. To learn more, please reach out to our team.
-:::
-
 <div className="mt-8">
   Automations provide a unique account number and routing number that accepts wire transfers and ACH
   deposits, and automatically mints stablecoins to a pre-defined wallet address. Businesses can use
@@ -151,42 +147,57 @@ Automations are temporarily paused while we migrate virtual accounts for reliabi
   customers' wallets.
 </div>
 
-Here is an example of onramping to your own stablecoin (YSBC) via wire transfer by creating a fiat-to-stablecoin automation.
+Here is an example of onramping to your own stablecoin (SBC) via wire transfer by creating a fiat-to-stablecoin automation.
 
 <HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/automations" />
 
 ```json title="Request"
 {
-  "name": "XYZ Automation",
-  "type": "USD",
+  "name": "XYZ Onramp",
+  "source":{
+    "value_type": "USD"
+  },
   "destination": {
-    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
-    "value_type": "ysbc",
+    "address_id": "2MhCCIHulVdXrHiEuQDJvnKbSkl",
+    "value_type": "SBC",
     "transfer_type": "Solana"
   }
 }
 ```
+Automations are opened in a pending state and automatically transition into processing. Once virtual accounts are created and the automation is ready to use, it will transition to a completed status.
 
-The response will return the unique account number and routing number to direct to your customer.
+When an automation becomes active, the source.funding_instructions object is populated with the virtual account’s bank details (routing number, account number, beneficiary name, etc.). These are the coordinates you share with your customer to fund the automation.
+
+<HTTPMethod
+  method="GET"
+  endpoint="https://api.brale.xyz/accounts/{account_id}/automations/{automation_id}"
+/>
 
 ```json title="Response"
 {
-  "name": "XYZ Onramp",
-  "status": "complete",
-  "wire_instructions": {
-    "beneficiary_name": "Jane Business",
-    "bank_name": "Example Bank",
-    "bank_address": "456 Commerce St., Des Moines, IA 50309",
-    "beneficiary_address": "612 Commerce St., Des Moines, IA 50309",
-    "account_number": "123456789",
-    "routing_number": "87654321",
-    "memo": "AB1C23456789"
-  },
-  "destination": {
-    "address_id": "2VcUIonJeVQzFoBuC7LdFT0dRe4",
-    "value_type": "YSBC",
-    "transfer_type": "Solana"
-  }
+    "id": "35kVg1llbsOBYvx9XKr9eOtsD9z",
+    "name": "Customer XYZ Automation",
+    "status": "active",
+    "source": {
+        "transfer_type": null,
+        "value_type": "USD",
+        "funding_instructions": {
+            "bank_address": "123 Example St, Example City, NY 10001",
+            "beneficiary_address": "25 Main Ave, Suite 100, Example City, IA 50000",
+            "beneficiary_name": "Company ABC",
+            "routing_number": "000111222",
+            "account_number": "000123456789",
+            "bank_name": "Example Bank",
+            "memo": null
+          }
+      },
+    "destination": {
+        "transfer_type": "solana",
+        "address_id": "35LWXNTO2jem13nXCLyciFdi162",
+        "value_type": "ARB"
+    },
+    "updated_at": "2025-11-20T15:56:05.017508Z",
+    "created_at": "2025-11-20T15:56:03.531196Z"
 }
 ```
 
