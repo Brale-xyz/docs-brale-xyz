@@ -129,7 +129,7 @@ Onchain Address Example
 
 ```json title="Request"
 {
-  "transfer_types": ["ethereum", "base"]
+  "additional_transfer_types": ["ethereum", "base"]
 }
 ```
 
@@ -138,7 +138,7 @@ Offchain Address Example
 
 ```json title="Request"
 {
-  "transfer_types": ["same_day_ach_credit", "ach_credit"]
+  "additional_transfer_types": ["same_day_ach_credit", "ach_credit"]
 }
 ```
 
@@ -149,7 +149,7 @@ Offchain Address Example
 - The values in `additional_transfer_types` are **added** to the Address’s existing `transfer_types`.
 - Existing `transfer_types` are preserved even if you don’t include them in the request.
 - Sending a transfer type that is already enabled is idempotent and has no effect.
-- This endpoint only updates transfer capabilities; it does **not** change other Address fields like `owner`, `wallet_address`, `account_number`, or `routing_number`.
+- This endpoint can also be used to update the `name` of the address, a human readable alias.
 
 ## Create Addresses through Plaid
 
