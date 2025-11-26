@@ -137,6 +137,7 @@ Suppose you have a non-custodial EVM wallet Address that currently only supports
 ```
 
 Response
+
 ```json title="Response"
 {
   "id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
@@ -162,43 +163,41 @@ Suppose you have an off-chain bank Address that currently only supports wires an
 ```
 
 Response
+
 ```json title="Response"
 {
-    "id": "35zDQqWZuiITc8emZc3T7viZSAV",
-    "name": "checking 7890",
-    "owner": "Jane Doe",
-    "status": "active",
-    "transfer_types": [
-        "rtp_credit",
-        "same_day_ach_credit",
-        "wire"
-    ],
-    "created": "2025-11-25T20:53:12.655227Z",
-    "bank_address": {
-        "state": "CA",
-        "zip": "90001",
-        "city": "Springfield",
-        "country": "US",
-        "street_line_1": "100 Example St",
-        "street_line_2": "Suite 500"
-    },
-    "beneficiary_address": {
-        "state": "CA",
-        "zip": "90001",
-        "city": "Springfield",
-        "country": "US",
-        "street_line_1": "100 Example St",
-        "street_line_2": "Suite 500"
-    },
-    "account_number": "****7890",
-    "needs_update": false,
-    "account_type": "checking",
-    "last_updated": "2025-11-25T21:35:40.898085Z",
-    "routingNumber": "063108680"
+  "id": "35zDQqWZuiITc8emZc3T7viZSAV",
+  "name": "checking 7890",
+  "owner": "Jane Doe",
+  "status": "active",
+  "transfer_types": ["rtp_credit", "same_day_ach_credit", "wire"],
+  "created": "2025-11-25T20:53:12.655227Z",
+  "bank_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "beneficiary_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "account_number": "****7890",
+  "needs_update": false,
+  "account_type": "checking",
+  "last_updated": "2025-11-25T21:35:40.898085Z",
+  "routingNumber": "063108680"
 }
 ```
 
 #### Updating Address Name
+
 You can also use this endpoint to update the human-readable name (alias) of an Address. You can send name on its own, or together with additional_transfer_types:
 
 ```json title="Request"
