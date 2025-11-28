@@ -23,7 +23,7 @@ Whether internal or external, all addresses possess:
 
 ## Supported Transfer Types
 
-- Off-chain rails: `wire`, `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp`.
+- Off-chain rails: `wire`, `ach_credit`, `same_day_ach_credit`, `ach_debit`, `same_day_ach_debit`, `rtp_credit`.
 - On-chain (examples): `canton`, `base`, `polygon`, `solana`, `stellar`, `xrp_ledger`, … (use the API identifiers from Coverage → Stablecoins & Blockchains).
 
 ## Custodial (Internal) Addresses
@@ -114,6 +114,107 @@ RTP eligibility is determined asynchronously by our banking partner after the ba
 ```
 
 After the bank confirms that the account is RTP-enabled, Brale will update the Address in place and add `rtp_credit` to transfer_types. This typically happens shortly after creation.
+
+### Update Address transfer types
+
+Sometimes you'll want an address to gain new capabilities over time. For example:
+
+- You want an EVM onchain address to start supporting an additional chain (e.g., `ethereum` in addition to `base`).
+- A bank account that initially only supports `wire` is upgraded to also support `ach_credit`.
+
+Instead of creating a new Address, you can add new `transfer_types` to an existing Address (and optionally update its `name`):
+
+Onchain Address Example - add a new EVM chain
+
+Suppose you have a non-custodial EVM wallet Address that currently only supports `base` and want to add `ethereum`:
+
+<HTTPMethod method="PATCH" endpoint="/accounts/{account_id}/addresses/{{address_id}}" />
+
+```json title="Request"
+{
+  "additional_transfer_types": ["ethereum"]
+}
+```
+
+Response
+
+```json title="Response"
+{
+  "id": "2VcUIIsgARwVbEGlIYbhg6fGG57",
+  "type": "external",
+  "name": "EVM Wallet",
+  "wallet_address": "0x123456789",
+  "transfer_types": ["base", "ethereum"]
+}
+```
+
+Note: All onchain transfer_types on a single Address must belong to the same blockchain environment (for example, all EVM mainnets). You cannot mix incompatible environments on the same Address.
+
+Offchain Address Example - add ACH Credit to a wire-only bank Address
+
+Suppose you have an off-chain bank Address that currently only supports wires and now want to update to include ACH and SDACH.
+
+<HTTPMethod method="PATCH" endpoint="/accounts/{account_id}/addresses/{{address_id}}" />
+
+```json title="Request"
+{
+  "additional_transfer_types": ["same_day_ach_credit", "ach_credit"]
+}
+```
+
+Response
+
+```json title="Response"
+{
+  "id": "35zDQqWZuiITc8emZc3T7viZSAV",
+  "name": "checking 7890",
+  "owner": "Jane Doe",
+  "status": "active",
+  "transfer_types": ["rtp_credit", "same_day_ach_credit", "wire"],
+  "created": "2025-11-25T20:53:12.655227Z",
+  "bank_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "beneficiary_address": {
+    "state": "CA",
+    "zip": "90001",
+    "city": "Springfield",
+    "country": "US",
+    "street_line_1": "100 Example St",
+    "street_line_2": "Suite 500"
+  },
+  "account_number": "****7890",
+  "needs_update": false,
+  "account_type": "checking",
+  "last_updated": "2025-11-25T21:35:40.898085Z",
+  "routingNumber": "063108680"
+}
+```
+
+#### Updating Address Name
+
+You can also use this endpoint to update the human-readable name (alias) of an Address. You can send name on its own, or together with additional_transfer_types:
+
+```json title="Request"
+{
+  "name": "My EVM Wallet"
+  "additional_transfer_types": ["base"]
+}
+```
+
+#### Behavior
+
+`additional_transfer_types` is a list of transfer types to **add** to this Address. These are merged into the existing `transfer_types`.
+
+- The values in `additional_transfer_types` are **added** to the Address’s existing `transfer_types`.
+- Existing `transfer_types` are preserved even if you don’t include them in the request.
+- Sending a transfer type that is already enabled is idempotent and has no effect.
+- This endpoint can also be used to update the `name` of the address, a human readable alias.
 
 ## Create Addresses through Plaid
 
