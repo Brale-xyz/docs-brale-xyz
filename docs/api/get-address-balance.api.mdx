@@ -1,168 +1,72 @@
 ---
 id: get-address-balance
-title: 'Fetch the balance of an internal (custodial) address for a specific token'
-description: 'Returns balance data for a given address, chain, and token.   Provide `transfer_type` and `value_type` as query parameters.'
-sidebar_label: 'Fetch the balance of an internal (custodial) address for a specific token'
+title: "Fetch the balance of an internal (custodial) address for a specific token"
+description: "Returns balance data for a given address, chain, and token.   Provide `transfer_type` and `value_type` as query parameters."
+sidebar_label: "Fetch the balance of an internal (custodial) address for a specific token"
 hide_title: true
 hide_table_of_contents: true
-api: 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
-sidebar_class_name: 'get api-method'
+api: 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
+sidebar_class_name: "get api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Fetch the balance of an internal (custodial) address for a specific token'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Fetch the balance of an internal (custodial) address for a specific token"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'get'}
-  path={'/accounts/{account_id}/addresses/{address_id}/balances'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"get"}
+  path={"/accounts/{account_id}/addresses/{address_id}/balances"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
 
-Returns balance data for a given address, chain, and token. Provide `transfer_type` and `value_type` as query parameters.
+
+
+Returns balance data for a given address, chain, and token.   Provide `transfer_type` and `value_type` as query parameters.
+
 
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      name: 'address_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the address',
-    },
-    {
-      name: 'transfer_type',
-      in: 'query',
-      required: false,
-      schema: { type: 'string' },
-      description: 'The blockchain environment (e.g., Solana, Ethereum)',
-    },
-    {
-      name: 'value_type',
-      in: 'query',
-      required: false,
-      schema: { type: 'string' },
-      description: 'The stablecoin token or currency code',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"name":"address_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the address"},{"name":"transfer_type","in":"query","required":false,"schema":{"type":"string"},"description":"The blockchain environment (e.g., Solana, Ethereum)"},{"name":"value_type","in":"query","required":false,"schema":{"type":"string"},"description":"The stablecoin token or currency code"}]}
+>
+  
+</ParamsDetails>
 
-<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '200': {
-      description: 'The address details and balance info',
-      content: {
-        '*/*': {
-          schema: {
-            title: 'AddressBalance',
-            type: 'object',
-            additionalProperties: false,
-            description: 'Balance of **one** token on **one** chain for a specific wallet',
-            properties: {
-              address: {
-                title: 'AddressReference',
-                type: 'object',
-                additionalProperties: false,
-                properties: {
-                  id: {
-                    title: 'Kusid',
-                    type: 'string',
-                    format: 'ksuid',
-                    pattern: '^[a-zA-Z0-9]{26}$',
-                    example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-                  },
-                  address: {
-                    type: 'string',
-                    example: '0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b',
-                  },
-                },
-                required: ['id', 'address'],
-              },
-              balance: {
-                title: 'Amount',
-                type: 'object',
-                description: 'Monetary value with explicit currency',
-                additionalProperties: false,
-                properties: {
-                  value: { type: 'string', example: '11234.88' },
-                  currency: { type: 'string', example: 'USD' },
-                },
-                required: ['value', 'currency'],
-              },
-              transfer_type: {
-                type: 'string',
-                description: 'Blockchain where the balance lives',
-                enum: [
-                  'solana',
-                  'ethereum',
-                  'polygon',
-                  'base',
-                  'arbitrum',
-                  'canton',
-                  'avalanche',
-                  'base_sepolia',
-                  'sepolia',
-                  'solana_devnet',
-                ],
-                example: 'solana',
-              },
-              value_type: { type: 'string', description: 'Token ticker', example: 'SBC' },
-            },
-            required: ['address', 'balance', 'transfer_type', 'value_type'],
-            example: {
-              address: {
-                id: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-                address: '73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me',
-              },
-              balance: { value: '100.00', currency: 'SBC' },
-              transfer_type: 'solana',
-              value_type: 'SBC',
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"200":{"description":"The address details and balance info","content":{"*/*":{"schema":{"title":"AddressBalance","type":"object","additionalProperties":false,"description":"Balance of **one** token on **one** chain for a specific wallet","properties":{"address":{"title":"AddressReference","type":"object","additionalProperties":false,"properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"address":{"type":"string","example":"0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b"}},"required":["id","address"]},"balance":{"title":"Amount","type":"object","description":"Monetary value with explicit currency","additionalProperties":false,"properties":{"value":{"type":"string","example":"11234.88"},"currency":{"type":"string","example":"USD"}},"required":["value","currency"]},"transfer_type":{"type":"string","description":"Blockchain where the balance lives","enum":["solana","ethereum","polygon","base","arbitrum","canton","avalanche","base_sepolia","sepolia","solana_devnet","tempo_testnet"],"example":"solana"},"value_type":{"type":"string","description":"Token ticker","example":"SBC"}},"required":["address","balance","transfer_type","value_type"],"example":{"address":{"id":"2VcUIIsgARwVbEGlIYbhg6fGG57","address":"73uyt9HkEqx9bThYXWaUBP67sWsiJEsyJ5rSCieDx5me"},"balance":{"value":"100.00","currency":"SBC"},"transfer_type":"solana","value_type":"SBC"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

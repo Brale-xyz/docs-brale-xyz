@@ -1,227 +1,71 @@
 ---
 id: create-transfer
-title: 'Create a new transfer'
-description: 'Creates a new transfer using the specified source and destination details.'
-sidebar_label: 'Create a new transfer'
+title: "Create a new transfer"
+description: "Creates a new transfer using the specified source and destination details."
+sidebar_label: "Create a new transfer"
 hide_title: true
 hide_table_of_contents: true
 api: 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
-sidebar_class_name: 'post api-method'
+sidebar_class_name: "post api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
-<Heading as={'h1'} className={'openapi__heading'} children={'Create a new transfer'}></Heading>
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new transfer"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'post'}
-  path={'/accounts/{account_id}/transfers'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"post"}
+  path={"/accounts/{account_id}/transfers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Creates a new transfer using the specified source and destination details.
 
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      in: 'header',
-      name: 'Idempotency-Key',
-      required: true,
-      schema: { type: 'string' },
-      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
-      description:
-        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"in":"header","name":"Idempotency-Key","required":true,"schema":{"type":"string"},"example":"idemp-123e4567-e89b-12d3-a456-426614174000","description":"A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n"}]}
+>
+  
+</ParamsDetails>
 
 <RequestSchema
-  title={'Body'}
-  body={{
-    required: true,
-    content: {
-      'application/json': {
-        schema: {
-          type: 'object',
-          additionalProperties: false,
-          required: ['amount', 'source', 'destination'],
-          properties: {
-            amount: {
-              title: 'Amount',
-              type: 'object',
-              description: 'Monetary value with explicit currency',
-              additionalProperties: false,
-              properties: {
-                value: { type: 'string', example: '11234.88' },
-                currency: { type: 'string', example: 'USD' },
-              },
-              required: ['value', 'currency'],
-            },
-            source: {
-              type: 'object',
-              additionalProperties: false,
-              title: 'PaymentData',
-              properties: {
-                address_id: { type: 'string', description: 'Preferred Address identifier' },
-                financial_institution_id: {
-                  type: 'string',
-                  deprecated: true,
-                  description: 'Legacy—use address_id',
-                },
-                transfer_type: { type: 'string' },
-                value_type: { type: 'string' },
-              },
-              required: ['transfer_type', 'value_type'],
-            },
-            destination: {
-              type: 'object',
-              additionalProperties: false,
-              title: 'PaymentData',
-              properties: {
-                address_id: { type: 'string', description: 'Preferred Address identifier' },
-                financial_institution_id: {
-                  type: 'string',
-                  deprecated: true,
-                  description: 'Legacy—use address_id',
-                },
-                transfer_type: { type: 'string' },
-                value_type: { type: 'string' },
-              },
-              required: ['transfer_type', 'value_type'],
-            },
-            brand: {
-              type: 'object',
-              nullable: true,
-              additionalProperties: false,
-              required: ['account_id'],
-              properties: { account_id: { type: 'string' } },
-              title: 'BrandData',
-            },
-            note: { type: 'string' },
-          },
-          title: 'CreateTransfer',
-        },
-        examples: {
-          ach_debit_to_solana: {
-            summary: 'Onramp via ACH debit → Mint on Solana',
-            value: {
-              amount: { value: '2500', currency: 'USD' },
-              source: {
-                address_id: 'addr_ach_debit',
-                value_type: 'USD',
-                transfer_type: 'ach_debit',
-              },
-              destination: {
-                address_id: 'addr_solana_internal',
-                value_type: 'SBC',
-                transfer_type: 'solana',
-              },
-            },
-          },
-          wire_offramp_with_branding: {
-            summary: 'Burn on Polygon → Wire out (branding override)',
-            value: {
-              amount: { value: '10000', currency: 'USD' },
-              source: {
-                address_id: 'addr_polygon_internal',
-                value_type: 'SBC',
-                transfer_type: 'polygon',
-              },
-              destination: {
-                address_id: 'addr_wire_external',
-                value_type: 'USD',
-                transfer_type: 'wire',
-              },
-              branding: { account_id: 'acct_company_beta' },
-            },
-          },
-          rtp_payout: {
-            summary: 'Stablecoin payout via RTP',
-            value: {
-              amount: { value: '150', currency: 'USD' },
-              source: {
-                address_id: 'addr_treasury_sbc',
-                value_type: 'SBC',
-                transfer_type: 'ethereum',
-              },
-              destination: {
-                address_id: 'addr_rtp_external',
-                value_type: 'USD',
-                transfer_type: 'rtp',
-              },
-            },
-          },
-          wire_offramp_with_brand: {
-            summary: 'Burn on Polygon → Wire out (brand override)',
-            value: {
-              amount: { value: '10000', currency: 'USD' },
-              source: {
-                address_id: 'addr_polygon_internal',
-                value_type: 'SBC',
-                transfer_type: 'polygon',
-              },
-              destination: {
-                address_id: 'addr_wire_external',
-                value_type: 'USD',
-                transfer_type: 'wire',
-              },
-              brand: { account_id: 'acct_company_beta' },
-            },
-          },
-        },
-      },
-    },
-  }}
-></RequestSchema>
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","additionalProperties":false,"required":["amount","source","destination"],"properties":{"amount":{"title":"Amount","type":"object","description":"Monetary value with explicit currency","additionalProperties":false,"properties":{"value":{"type":"string","example":"11234.88"},"currency":{"type":"string","example":"USD"}},"required":["value","currency"]},"source":{"type":"object","additionalProperties":false,"title":"PaymentData","properties":{"address_id":{"type":"string","description":"Preferred Address identifier"},"financial_institution_id":{"type":"string","deprecated":true,"description":"Legacy—use address_id"},"transfer_type":{"type":"string"},"value_type":{"type":"string"}},"required":["transfer_type","value_type"]},"destination":{"type":"object","additionalProperties":false,"title":"PaymentData","properties":{"address_id":{"type":"string","description":"Preferred Address identifier"},"financial_institution_id":{"type":"string","deprecated":true,"description":"Legacy—use address_id"},"transfer_type":{"type":"string"},"value_type":{"type":"string"}},"required":["transfer_type","value_type"]},"brand":{"type":"object","nullable":true,"additionalProperties":false,"required":["account_id"],"properties":{"account_id":{"type":"string"}},"title":"BrandData"},"note":{"type":"string"}},"title":"CreateTransfer"},"examples":{"ach_debit_to_solana":{"summary":"Onramp via ACH debit → Mint on Solana","value":{"amount":{"value":"2500","currency":"USD"},"source":{"address_id":"addr_ach_debit","value_type":"USD","transfer_type":"ach_debit"},"destination":{"address_id":"addr_solana_internal","value_type":"SBC","transfer_type":"solana"}}},"wire_offramp_with_branding":{"summary":"Burn on Polygon → Wire out (branding override)","value":{"amount":{"value":"10000","currency":"USD"},"source":{"address_id":"addr_polygon_internal","value_type":"SBC","transfer_type":"polygon"},"destination":{"address_id":"addr_wire_external","value_type":"USD","transfer_type":"wire"},"branding":{"account_id":"acct_company_beta"}}},"rtp_payout":{"summary":"Stablecoin payout via RTP","value":{"amount":{"value":"150","currency":"USD"},"source":{"address_id":"addr_treasury_sbc","value_type":"SBC","transfer_type":"ethereum"},"destination":{"address_id":"addr_rtp_external","value_type":"USD","transfer_type":"rtp"}}},"wire_offramp_with_brand":{"summary":"Burn on Polygon → Wire out (brand override)","value":{"amount":{"value":"10000","currency":"USD"},"source":{"address_id":"addr_polygon_internal","value_type":"SBC","transfer_type":"polygon"},"destination":{"address_id":"addr_wire_external","value_type":"USD","transfer_type":"wire"},"brand":{"account_id":"acct_company_beta"}}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '201': {
-      description: 'Transfer successfully created',
-      content: {
-        '*/*': {
-          schema: {
-            type: 'object',
-            properties: {
-              id: {
-                type: 'string',
-                format: 'uuid',
-                example: '9f80c1f5-80df-4c5e-9b68-b9f5712d46d4',
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"201":{"description":"Transfer successfully created","content":{"*/*":{"schema":{"type":"object","properties":{"id":{"type":"string","format":"uuid","example":"9f80c1f5-80df-4c5e-9b68-b9f5712d46d4"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

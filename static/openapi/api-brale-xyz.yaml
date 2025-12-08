@@ -414,6 +414,7 @@ components:
             - base_sepolia
             - sepolia
             - solana_devnet
+            - tempo_testnet
           example: solana
         value_type:
           type: string
@@ -617,6 +618,7 @@ components:
         - base_sepolia
         - sepolia
         - solana_devnet
+        - tempo_testnet
         - stellar
         - xrp_ledger
     ExternalAddressOnchainCreate:

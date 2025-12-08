@@ -1,112 +1,71 @@
 ---
 id: register-financial-institution-account-via-plaid-and-return-address-id
-title: 'Register financial institution account via Plaid and return address ID'
-description: 'Registers a bank using a Plaid public_token and returns the new Address ID.'
-sidebar_label: 'Register financial institution account via Plaid and return address ID'
+title: "Register financial institution account via Plaid and return address ID"
+description: "Registers a bank using a Plaid public_token and returns the new Address ID."
+sidebar_label: "Register financial institution account via Plaid and return address ID"
 hide_title: true
 hide_table_of_contents: true
 api: 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
-sidebar_class_name: 'post api-method'
+sidebar_class_name: "post api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Register financial institution account via Plaid and return address ID'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Register financial institution account via Plaid and return address ID"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'post'}
-  path={'/accounts/{account_id}/plaid/register-account'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"post"}
+  path={"/accounts/{account_id}/plaid/register-account"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Registers a bank using a Plaid public_token and returns the new Address ID.
 
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[{ in: 'path', name: 'account_id', required: true, schema: { type: 'string' } }]}
-></ParamsDetails>
+  parameters={[{"in":"path","name":"account_id","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
 
 <RequestSchema
-  title={'Body'}
-  body={{
-    required: true,
-    content: {
-      'application/json': {
-        schema: {
-          type: 'object',
-          title: 'RegisterAccountWithTransferTypesRequest',
-          required: ['public_token', 'customer_webhook_url', 'transfer_types'],
-          properties: {
-            public_token: {
-              type: 'string',
-              description: 'Plaid public token',
-              example: 'public-sandbox-123456789',
-            },
-            customer_webhook_url: {
-              type: 'string',
-              format: 'uri',
-              description: 'Webhook for Plaid item updates',
-              example: 'https://customer.com/webhooks/plaid-updates',
-            },
-            transfer_types: {
-              type: 'array',
-              minItems: 1,
-              items: { type: 'string', example: 'ach_credit' },
-              description: 'Rails to enable (e.g., ach_credit, wire, rtp_credit)',
-            },
-          },
-        },
-      },
-    },
-  }}
-></RequestSchema>
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","title":"RegisterAccountWithTransferTypesRequest","required":["public_token","customer_webhook_url","transfer_types"],"properties":{"public_token":{"type":"string","description":"Plaid public token","example":"public-sandbox-123456789"},"customer_webhook_url":{"type":"string","format":"uri","description":"Webhook for Plaid item updates","example":"https://customer.com/webhooks/plaid-updates"},"transfer_types":{"type":"array","minItems":1,"items":{"type":"string","example":"ach_credit"},"description":"Rails to enable (e.g., ach_credit, wire, rtp_credit)"}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '201': {
-      description: 'Created',
-      headers: {
-        Location: {
-          schema: { type: 'string' },
-          description: 'URL of the created address resource',
-        },
-      },
-      content: {
-        'application/json': {
-          schema: {
-            type: 'object',
-            title: 'RegisterAccountAddressResponse',
-            required: ['address_id'],
-            properties: {
-              address_id: {
-                type: 'string',
-                description: 'ID of the created address',
-                example: 'addr_123456789',
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"201":{"description":"Created","headers":{"Location":{"schema":{"type":"string"},"description":"URL of the created address resource"}},"content":{"application/json":{"schema":{"type":"object","title":"RegisterAccountAddressResponse","required":["address_id"],"properties":{"address_id":{"type":"string","description":"ID of the created address","example":"addr_123456789"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
