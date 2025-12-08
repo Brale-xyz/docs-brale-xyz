@@ -1417,7 +1417,7 @@ paths:
                 properties:
                   id:
                     $ref: '#/components/schemas/Ksuid'
-  /accounts/{account_id}/addresses/{address_id}/balances:
+  /accounts/{account_id}/addresses/{address_id}/balance:
     get:
       tags:
         - Addresses
