@@ -1,71 +1,143 @@
 ---
 id: get-transfer
-title: "Retrieve a single transfer"
-description: "Returns details for a specific transfer."
-sidebar_label: "Retrieve a single transfer"
+title: 'Retrieve a single transfer'
+description: 'Returns details for a specific transfer.'
+sidebar_label: 'Retrieve a single transfer'
 hide_title: true
 hide_table_of_contents: true
 api: eJztWP9uI7cRfpUBUSC2upJsX+6aU4sCSs53ENLEhs9K0ViulyJHWsa75B7JtawTBPQh+oR9kmLI3dVKtpumaNB/6n/kJWc+fvODwyE3zPOlY6Mbdm25dgu0jt0mzJRouVdGTyQbsSX6ZpYlTKITVpU0y0bsCn1ltQOJnqvcwcJY4OBKFGqhBPhab8ASVnLLC/S0xOhmwzQvkI0YF8JU2t8pyRKmCLLkPmMJs/ipUhYlG3lbYcKcyLDgbLRhXvmcVL+tXNDy65I+nbdKL1nCFsYW3LMRu3dVECi592gJ+683vP953P/xpP/2dnP2ZvsbljB85EUZAM9+ENPJxC3HV6sf5ucf8slf5tnyzeLDh9e/Y9tDy68zhMk7MAvwGUJtBtsmrWW/xKI9C35mqcancDSdTt4ds+0tQbvSaIeO0M5OTuhnH2MMTull3lE3859QeJYwYbRH7UmnN+zRz1NfdxKgJtuql5bSxau4uPPcV+6pUYc2/UktUKxFjuA8X+KhcRQXXRWUmSVqGRFKawQ6Fz+Eoah5pH+5FpijpNTdRbPR2yaMFyE4HXvGceSpNfssvzMaPbdreOB5hbBSPgN8LHMllAdRWYtarFnCuJSKVHh+2fHGgucODx0UkJ7zz4756enZqy8HX31F1NtF/qXG9OM7tt12U+ymXqiDcEtwFrlHecf9c4DtzpHcY9+rAvf3x8nZ6/7JWf/k9fXp29Grt6PTLwevTt/8SDyrUv46wM5UVuBzuXiuZWnUs1F8xuV3UeZnvZiwJgf/DY2VshgSTEqLzlEV+58VqIPwdyglXQ8c2ncby41Xmsek/7+jfy1Hx7+EFegzU5+skVTGRmxYnyFuuNkditthA+KGGyW3LGEO7UNziFY2ZyOWeV+60XDISzWYW57j4HH9+Uktu7RGVoI+IEKEk8OhqKzy6wD3NXKLdlwRn5vb7vRHOhFikLtCbciIAquPNPqeB6EnHKYOQ5mPGODNPWqwoYdACQtrijBN4IB11sGD4nBBQ2cgcoXa3wmLErVXnDqO3KwGMNEir2QEj6hKh48ZI01j1eeQ3qNm6T8EqT/OGGTIJdrBTFN+Gb5vV/g+o1TKzSqYHyl8s2MQpAlsuh+Myme7aAwj0DAIBkeZMrqzifrIIpeho+KyaSeatopOmEZsZZUnZt+ESg7GQiy9jY5j7S7BA9A42gVt5Q5Q2wkSqrwpgvMO4HbjB1KHYHuCC6W5FornfaWdV756ivx+0vaTRzkuuVgfv6x4sNj7SVen3Tx7+O3onsQB0E6o3rVKL0y36HxNsYWJcxW1H8C1hAsrMnQ+9s4wvpxQRUDrYvKfDV4NTp9siQjjqrI01jvqhuY5CqM0qC606UIngJrPc6WXMK+c0iFUJDbTKIxbO4+FA29A1LZkqCyYle7AB3kQRj+g9TBHv0LUsFDch4mO4Ew75EWOzuXrAbynTdphabTlRekSMItF/V/QX/EyUqicN3IdBku+NpV3CRGa6Wj5+HICBb9HB8oDcrcmpXml8i6HfrAXJZSxiLnBTM/09xfX5yMY5zlYjG0CTN45OFKhGJB3doU0gV2dTqDNpbtOLtHMTBPPXcbeKXkM3CJ8+3E6eef+8be/n73pi4xbLjxa4HmZcV0VaJWAeOw48Bn50CI4Y4MFMz1fAzU9AziPR4wDl5kVMaQe3gVppYWxFoUPts10r/fnjPsvHGhcUTUL6dPrzXQfplotFEro9cbNRu31oDAS83ADM5o4Kh0zZ7Gov5qK6mYaoA9pe+dLQZsVOQtL76DX27kKjM7XvR4cafOi044j3EUZO2BI55aH1jut7xghDYz21uQw5/qeAuuxQO2htOhQ++BrsmwsJXYpW6oCI0i5yELVVz5NIHW8wDvJ13f7w/Qlcf6MTDtqfdmvFWi5y5wrufMLFOYBJdFNXziNS1IY9oJy+r5xCEw6FSmFgtv7EB2JpUVBfTG5sFDLujLQiU+r7MXvmDDr4jOu6z+FpaK9ncaJ77jmS5T19BV+qtD5NN5L0jlqXKgQILPSFNYE0qY+3NUByNGmcYem51pOHdpr48beo4tBSAdEo82MTmLUcU3hyGKZc0Gs2kgn4LzKc+C54g4l5as0wh0PnvNyfVcgD8SzH9JdxqWBXLPkXgvlIrmLNjtq78UyR47t+ur8kVo9ntdCrbOMxotFdFlIxt/CPDfiPiI+cKu4DvWlT2fJjvQ98ZlXvonuLra/p2WhjSTQ7kAuAwQlXJOhoFxoSQTXRivBc7i6vgwZDvRkUHcgpXG+4KEPrx8SrtBbhQ9IDyv7d/jDw2Szu8v/kpeZutfx+OhDggceobXc1M3pDet0F6O9N5vuYTpS4Q6eGedJZ7OZc4dTm2+3NPypQkt95i21yVZRZQxdp1QuFPf2wvyiTUdXdd99DM8/v7xgSz3I9bpp0dmIsYTd43r/CYqeb/4LdA6faP4jWkSHLmexPw2eihPjsDc6KvRqQ816e6/4cH7Nttt/Av2X7mg=
-sidebar_class_name: "get api-method"
+sidebar_class_name: 'get api-method'
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-import ParamsDetails from "@theme/ParamsDetails";
-import RequestSchema from "@theme/RequestSchema";
-import StatusCodes from "@theme/StatusCodes";
-import OperationTabs from "@theme/OperationTabs";
-import TabItem from "@theme/TabItem";
-import Heading from "@theme/Heading";
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
 
-<Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Retrieve a single transfer"}
->
-</Heading>
+<Heading as={'h1'} className={'openapi__heading'} children={'Retrieve a single transfer'}></Heading>
 
 <MethodEndpoint
-  method={"get"}
-  path={"/accounts/{account_id}/transfers/{id}"}
-  context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+  method={'get'}
+  path={'/accounts/{account_id}/transfers/{id}'}
+  context={'endpoint'}
+></MethodEndpoint>
 
 Returns details for a specific transfer.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
-  children={"Request"}
->
-</Heading>
+  id={'request'}
+  as={'h2'}
+  className={'openapi-tabs__heading'}
+  children={'Request'}
+></Heading>
 
 <ParamsDetails
-  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":"The ID of the transfer (UUID)"}]}
->
-  
-</ParamsDetails>
+  parameters={[
+    {
+      name: 'account_id',
+      in: 'path',
+      required: true,
+      schema: {
+        title: 'Kusid',
+        type: 'string',
+        format: 'ksuid',
+        pattern: '^[a-zA-Z0-9]{26}$',
+        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+      },
+      description: 'The ID of the account',
+    },
+    {
+      name: 'id',
+      in: 'path',
+      required: true,
+      schema: { type: 'string' },
+      description: 'The ID of the transfer (UUID)',
+    },
+  ]}
+></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"A single transfer object","content":{"*/*":{"schema":{"title":"Transfer","type":"object","properties":{"status":{"type":"string","description":"Lifecycle stage of the transfer","enum":["pending","processing","complete","canceled"],"example":"pending"},"amount":{"title":"Amount","type":"object","description":"Monetary value with explicit currency","additionalProperties":false,"properties":{"value":{"type":"string","example":"11234.88"},"currency":{"type":"string","example":"USD"}},"required":["value","currency"]},"created_at":{"type":"string","format":"date-time","example":"2025-02-05T19:39:14.316Z"},"updated_at":{"type":"string","format":"date-time","example":"2025-02-05T19:39:14.316Z"},"source":{"title":"TransferEndpoint","type":"object","properties":{"value_type":{"type":"string","example":"USD"},"transfer_type":{"type":"string","example":"wire"},"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}},"required":["address_id","value_type","transfer_type"]},"destination":{"title":"TransferEndpoint","type":"object","properties":{"value_type":{"type":"string","example":"USD"},"transfer_type":{"type":"string","example":"wire"},"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}},"required":["address_id","value_type","transfer_type"]}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    '200': {
+      description: 'A single transfer object',
+      content: {
+        '*/*': {
+          schema: {
+            title: 'Transfer',
+            type: 'object',
+            properties: {
+              status: {
+                type: 'string',
+                description: 'Lifecycle stage of the transfer',
+                enum: ['pending', 'processing', 'complete', 'canceled'],
+                example: 'pending',
+              },
+              amount: {
+                title: 'Amount',
+                type: 'object',
+                description: 'Monetary value with explicit currency',
+                additionalProperties: false,
+                properties: {
+                  value: { type: 'string', example: '11234.88' },
+                  currency: { type: 'string', example: 'USD' },
+                },
+                required: ['value', 'currency'],
+              },
+              created_at: {
+                type: 'string',
+                format: 'date-time',
+                example: '2025-02-05T19:39:14.316Z',
+              },
+              updated_at: {
+                type: 'string',
+                format: 'date-time',
+                example: '2025-02-05T19:39:14.316Z',
+              },
+              source: {
+                title: 'TransferEndpoint',
+                type: 'object',
+                properties: {
+                  value_type: { type: 'string', example: 'USD' },
+                  transfer_type: { type: 'string', example: 'wire' },
+                  address_id: {
+                    title: 'Kusid',
+                    type: 'string',
+                    format: 'ksuid',
+                    pattern: '^[a-zA-Z0-9]{26}$',
+                    example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  },
+                },
+                required: ['address_id', 'value_type', 'transfer_type'],
+              },
+              destination: {
+                title: 'TransferEndpoint',
+                type: 'object',
+                properties: {
+                  value_type: { type: 'string', example: 'USD' },
+                  transfer_type: { type: 'string', example: 'wire' },
+                  address_id: {
+                    title: 'Kusid',
+                    type: 'string',
+                    format: 'ksuid',
+                    pattern: '^[a-zA-Z0-9]{26}$',
+                    example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
+                  },
+                },
+                required: ['address_id', 'value_type', 'transfer_type'],
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
