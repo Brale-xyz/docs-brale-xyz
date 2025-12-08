@@ -1,225 +1,72 @@
 ---
 id: create-address
-title: 'Create a new external address'
-description: 'Creates a non-custodial address (EOA) for the specified account.'
-sidebar_label: 'Create a new external address'
+title: "Create a new external address"
+description: "Creates a non-custodial address (EOA) for the specified account."
+sidebar_label: "Create a new external address"
 hide_title: true
 hide_table_of_contents: true
 api: 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
-sidebar_class_name: 'post api-method'
+sidebar_class_name: "post api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Create a new external address'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new external address"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'post'}
-  path={'/accounts/{account_id}/addresses/external'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"post"}
+  path={"/accounts/{account_id}/addresses/external"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Creates a non-custodial address (EOA) for the specified account.
 
+
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-    {
-      in: 'header',
-      name: 'Idempotency-Key',
-      required: true,
-      schema: { type: 'string' },
-      example: 'idemp-123e4567-e89b-12d3-a456-426614174000',
-      description:
-        'A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"},{"in":"header","name":"Idempotency-Key","required":true,"schema":{"type":"string"},"example":"idemp-123e4567-e89b-12d3-a456-426614174000","description":"A unique string used to prevent duplicate operations. Each POST request must use a new idempotency key. Use a UUIDv4 string. Example: `idemp-123e4567-e89b-12d3-a456-426614174000`\n"}]}
+>
+  
+</ParamsDetails>
 
 <RequestSchema
-  title={'Body'}
-  body={{
-    required: true,
-    content: {
-      'application/json': {
-        schema: {
-          type: 'object',
-          oneOf: [
-            {
-              type: 'object',
-              additionalProperties: false,
-              title: 'CreateExternalBlockchainAddressRequest',
-              required: ['name', 'address', 'transfer_types'],
-              properties: {
-                name: { type: 'string', example: 'Company External EVM Address', nullable: true },
-                address: { type: 'string', example: '0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b' },
-                transfer_types: { type: 'array', items: { type: 'string', example: 'solana' } },
-              },
-            },
-            {
-              type: 'object',
-              additionalProperties: false,
-              title: 'CreateExternalFinancialInstitutionRequest',
-              required: [
-                'owner',
-                'account_number',
-                'routing_number',
-                'bank_address',
-                'beneficiary_address',
-                'account_type',
-                'transfer_types',
-              ],
-              properties: {
-                owner: { type: 'string', example: 'Jane Doe' },
-                name: { type: 'string', example: 'First Last Bank' },
-                account_number: { type: 'string', example: '123456789' },
-                routing_number: { type: 'string', example: '123456789' },
-                account_type: {
-                  type: 'string',
-                  example: 'checking',
-                  enum: ['checking', 'savings'],
-                },
-                bank_address: {
-                  type: 'object',
-                  additionalProperties: false,
-                  title: 'USStreetAddress',
-                  required: ['street_line_1', 'city', 'state', 'zip'],
-                  properties: {
-                    street_line_1: { type: 'string', example: '100 Example St.' },
-                    street_line_2: { type: 'string', example: 'Suite 500' },
-                    city: { type: 'string', example: 'Springfield' },
-                    state: { type: 'string', example: 'CA' },
-                    zip: { type: 'string', example: '90001' },
-                    country: { type: 'string', example: 'USA' },
-                  },
-                },
-                beneficiary_address: {
-                  type: 'object',
-                  additionalProperties: false,
-                  title: 'USStreetAddress',
-                  required: ['street_line_1', 'city', 'state', 'zip'],
-                  properties: {
-                    street_line_1: { type: 'string', example: '100 Example St.' },
-                    street_line_2: { type: 'string', example: 'Suite 500' },
-                    city: { type: 'string', example: 'Springfield' },
-                    state: { type: 'string', example: 'CA' },
-                    zip: { type: 'string', example: '90001' },
-                    country: { type: 'string', example: 'USA' },
-                  },
-                },
-                transfer_types: {
-                  type: 'array',
-                  minItems: 1,
-                  description: 'Rails to enable for this bank endpoint',
-                  items: { type: 'string', example: 'ach_credit' },
-                  example: ['ach_credit', 'wire', 'rtp_credit'],
-                },
-              },
-            },
-          ],
-          title: 'CreateExternalAddressRequest',
-        },
-        examples: {
-          onchain_base: {
-            summary: 'On-chain (Base)',
-            value: {
-              name: 'Base External Wallet',
-              transfer_types: ['base'],
-              address: '0xE57e438aE0b1557bFC1ad70BD7751635E473D888',
-            },
-          },
-          offchain_wire: {
-            summary: 'Off-chain (Wire)',
-            value: {
-              owner: 'Jane Doe',
-              transfer_types: ['wire'],
-              account_number: '1234567890',
-              routing_number: 63108680,
-              account_type: 'checking',
-              name: 'Example Bank',
-              bank_address: {
-                street_line_1: '100 Example St',
-                street_line_2: 'Suite 500',
-                city: 'Springfield',
-                state: 'CA',
-                zip: '90001',
-              },
-              beneficiary_address: {
-                street_line_1: '100 Example St',
-                street_line_2: 'Suite 500',
-                city: 'Springfield',
-                state: 'CA',
-                zip: '90001',
-              },
-            },
-          },
-          offchain_ach_debit: {
-            summary: 'Off-chain (ACH Debit via Plaid)',
-            value: {
-              name: 'Operating Account (ACH Debit)',
-              transfer_types: ['ach_debit', 'same_day_ach_debit'],
-              plaid_token: 'PUBLIC_TOKEN_EXCHANGED_WITH_BRALE',
-            },
-          },
-        },
-      },
-    },
-  }}
-></RequestSchema>
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","oneOf":[{"type":"object","additionalProperties":false,"title":"CreateExternalBlockchainAddressRequest","required":["name","address","transfer_types"],"properties":{"name":{"type":"string","example":"Company External EVM Address","nullable":true},"address":{"type":"string","example":"0xb518d4d6221d9a41d23d71cbce8e106e7aab8f9b"},"transfer_types":{"type":"array","items":{"type":"string","example":"solana"}}}},{"type":"object","additionalProperties":false,"title":"CreateExternalFinancialInstitutionRequest","required":["owner","account_number","routing_number","bank_address","beneficiary_address","account_type","transfer_types"],"properties":{"owner":{"type":"string","example":"Jane Doe"},"name":{"type":"string","example":"First Last Bank"},"account_number":{"type":"string","example":"123456789"},"routing_number":{"type":"string","example":"123456789"},"account_type":{"type":"string","example":"checking","enum":["checking","savings"]},"bank_address":{"type":"object","additionalProperties":false,"title":"USStreetAddress","required":["street_line_1","city","state","zip"],"properties":{"street_line_1":{"type":"string","example":"100 Example St."},"street_line_2":{"type":"string","example":"Suite 500"},"city":{"type":"string","example":"Springfield"},"state":{"type":"string","example":"CA"},"zip":{"type":"string","example":"90001"},"country":{"type":"string","example":"USA"}}},"beneficiary_address":{"type":"object","additionalProperties":false,"title":"USStreetAddress","required":["street_line_1","city","state","zip"],"properties":{"street_line_1":{"type":"string","example":"100 Example St."},"street_line_2":{"type":"string","example":"Suite 500"},"city":{"type":"string","example":"Springfield"},"state":{"type":"string","example":"CA"},"zip":{"type":"string","example":"90001"},"country":{"type":"string","example":"USA"}}},"transfer_types":{"type":"array","minItems":1,"description":"Rails to enable for this bank endpoint","items":{"type":"string","example":"ach_credit"},"example":["ach_credit","wire","rtp_credit"]}}}],"title":"CreateExternalAddressRequest"},"examples":{"onchain_base":{"summary":"On-chain (Base)","value":{"name":"Base External Wallet","transfer_types":["base"],"address":"0xE57e438aE0b1557bFC1ad70BD7751635E473D888"}},"offchain_wire":{"summary":"Off-chain (Wire)","value":{"owner":"Jane Doe","transfer_types":["wire"],"account_number":"1234567890","routing_number":63108680,"account_type":"checking","name":"Example Bank","bank_address":{"street_line_1":"100 Example St","street_line_2":"Suite 500","city":"Springfield","state":"CA","zip":"90001"},"beneficiary_address":{"street_line_1":"100 Example St","street_line_2":"Suite 500","city":"Springfield","state":"CA","zip":"90001"}}},"offchain_ach_debit":{"summary":"Off-chain (ACH Debit via Plaid)","value":{"name":"Operating Account (ACH Debit)","transfer_types":["ach_debit","same_day_ach_debit"],"plaid_token":"PUBLIC_TOKEN_EXCHANGED_WITH_BRALE"}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '201': {
-      description: 'External address successfully created',
-      content: {
-        '*/*': {
-          schema: {
-            type: 'object',
-            properties: {
-              id: {
-                title: 'Kusid',
-                type: 'string',
-                format: 'ksuid',
-                pattern: '^[a-zA-Z0-9]{26}$',
-                example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"201":{"description":"External address successfully created","content":{"*/*":{"schema":{"type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

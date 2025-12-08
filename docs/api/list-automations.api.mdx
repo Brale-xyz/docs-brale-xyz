@@ -1,134 +1,72 @@
 ---
 id: list-automations
-title: 'Fetch all automations for an account'
-description: 'Retrieves all automations associated with the specified customer account.'
-sidebar_label: 'Fetch all automations for an account'
+title: "Fetch all automations for an account"
+description: "Retrieves all automations associated with the specified customer account."
+sidebar_label: "Fetch all automations for an account"
 hide_title: true
 hide_table_of_contents: true
 api: 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
-sidebar_class_name: 'get api-method'
+sidebar_class_name: "get api-method"
 info_path: api/brale-issuance-and-orchestration-api
 custom_edit_url: null
 ---
 
-import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
-import ParamsDetails from '@theme/ParamsDetails';
-import RequestSchema from '@theme/RequestSchema';
-import StatusCodes from '@theme/StatusCodes';
-import OperationTabs from '@theme/OperationTabs';
-import TabItem from '@theme/TabItem';
-import Heading from '@theme/Heading';
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
 
 <Heading
-  as={'h1'}
-  className={'openapi__heading'}
-  children={'Fetch all automations for an account'}
-></Heading>
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Fetch all automations for an account"}
+>
+</Heading>
 
 <MethodEndpoint
-  method={'get'}
-  path={'/accounts/{account_id}/automations'}
-  context={'endpoint'}
-></MethodEndpoint>
+  method={"get"}
+  path={"/accounts/{account_id}/automations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
 
 Retrieves all automations associated with the specified customer account.
 
+
 <Heading
-  id={'request'}
-  as={'h2'}
-  className={'openapi-tabs__heading'}
-  children={'Request'}
-></Heading>
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <ParamsDetails
-  parameters={[
-    {
-      name: 'account_id',
-      in: 'path',
-      required: true,
-      schema: {
-        title: 'Kusid',
-        type: 'string',
-        format: 'ksuid',
-        pattern: '^[a-zA-Z0-9]{26}$',
-        example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-      },
-      description: 'The ID of the account',
-    },
-  ]}
-></ParamsDetails>
+  parameters={[{"name":"account_id","in":"path","required":true,"schema":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"description":"The ID of the account"}]}
+>
+  
+</ParamsDetails>
 
-<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{
-    '200': {
-      description: 'A list of automations',
-      content: {
-        '*/*': {
-          schema: {
-            title: 'AutomationListResponse',
-            type: 'object',
-            properties: {
-              automations: {
-                type: 'array',
-                items: {
-                  title: 'Automation',
-                  type: 'object',
-                  properties: {
-                    id: {
-                      title: 'Kusid',
-                      type: 'string',
-                      format: 'ksuid',
-                      pattern: '^[a-zA-Z0-9]{26}$',
-                      example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-                    },
-                    name: { type: 'string', example: 'Customer Onramp' },
-                    status: { type: 'string', example: 'complete' },
-                    wire_instructions: {
-                      title: 'WireInstructions',
-                      type: 'object',
-                      properties: {
-                        beneficiary_name: { type: 'string', example: 'Jane Business' },
-                        bank_name: { type: 'string', example: 'Example Bank' },
-                        bank_address: {
-                          type: 'string',
-                          example: '456 Commerce St., Des Moines, IA 50309',
-                        },
-                        account_number: { type: 'string', example: '123456789' },
-                        routing_number: { type: 'string', example: 63108680 },
-                        beneficiary_address: {
-                          type: 'string',
-                          example: '612 Commerce St., Des Moines, IA 50309',
-                        },
-                        memo: { type: 'string', example: 'AB1C23456789' },
-                      },
-                    },
-                    destinationAddress: {
-                      title: 'AutomationDestinationAddress',
-                      type: 'object',
-                      properties: {
-                        address_id: {
-                          title: 'Kusid',
-                          type: 'string',
-                          format: 'ksuid',
-                          pattern: '^[a-zA-Z0-9]{26}$',
-                          example: '2VcUIIsgARwVbEGlIYbhg6fGG57',
-                        },
-                        value_type: { type: 'string', example: 'SBC' },
-                        transfer_type: { type: 'string', example: 'solana' },
-                      },
-                      required: ['address_id', 'value_type', 'transfer_type'],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  }}
-></StatusCodes>
+  responses={{"200":{"description":"A list of automations","content":{"*/*":{"schema":{"title":"AutomationListResponse","type":"object","properties":{"automations":{"type":"array","items":{"title":"Automation","type":"object","properties":{"id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"name":{"type":"string","example":"Customer Onramp"},"status":{"type":"string","example":"complete"},"wire_instructions":{"title":"WireInstructions","type":"object","properties":{"beneficiary_name":{"type":"string","example":"Jane Business"},"bank_name":{"type":"string","example":"Example Bank"},"bank_address":{"type":"string","example":"456 Commerce St., Des Moines, IA 50309"},"account_number":{"type":"string","example":"123456789"},"routing_number":{"type":"string","example":63108680},"beneficiary_address":{"type":"string","example":"612 Commerce St., Des Moines, IA 50309"},"memo":{"type":"string","example":"AB1C23456789"}}},"destinationAddress":{"title":"AutomationDestinationAddress","type":"object","properties":{"address_id":{"title":"Kusid","type":"string","format":"ksuid","pattern":"^[a-zA-Z0-9]{26}$","example":"2VcUIIsgARwVbEGlIYbhg6fGG57"},"value_type":{"type":"string","example":"SBC"},"transfer_type":{"type":"string","example":"solana"}},"required":["address_id","value_type","transfer_type"]}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
