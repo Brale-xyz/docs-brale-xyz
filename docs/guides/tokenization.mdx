@@ -73,6 +73,21 @@ Next, see **Tokenization – Mint, Burn & Transfers** for concrete API examples.
 }
 ```
 
+## Burning tokens
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/tokens/burns" />
+
+```json title="Request"
+{
+  "amount": "100",
+  "source": {
+    "address_id": "2srdkF6Sm8TWOJpWt1oNlTVes1w",
+    "value_type": "MY_TOKEN",
+    "transfer_type": "base"
+  }
+}
+```
+
 ## Related API References
 
 [`POST /tokens/mints`](/tokens/mints) - Mint tokens
