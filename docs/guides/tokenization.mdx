@@ -1,0 +1,105 @@
+---
+sidebar_position: 9
+title: 'Tokenization Overview'
+sidebar_label: 'Tokenization Overview'
+---
+
+<p class="intro-subheading">
+  This guide is for **tokenization programs** - cases where Brale **does not** manage fiat reserves
+  or act as the legal issuer of the token. If you're launching a fiat-backed stablecoin with Brale
+  as issuer, see **Stablecoin Issuance** instead.
+</p>
+
+Brale's tokenization API lets you issue and operate your own tokens (for example, a local currency stablecoin or a non-fiat asset) while using Brale for:
+
+- mint/burn execution on supported chains,
+- account & wallet orchestration,
+- key custody,
+- and unified reporting.
+
+In tokenization mode:
+
+- Brale **does not hold reserves** for your token and is not the legal issuer.
+- You are responsible for coordinating reserve assets
+- Your tokens are of kind **`attested`**, and can only be used by you (and your managed accounts).
+- You do **not** use the USD rails (wire/ACH/RTP) for these tokens.
+
+## When to use Tokenization
+
+Use tokenization when:
+
+- You want to issue a non-USD asset (e.g., basket, points, non-fiat asset).
+- You hold and manage the underlying collateral yourself.
+- You still want Brale to manage wallets, signing, and on-chain execution.
+
+Use **standard stablecoin issuance** when:
+
+- You want Brale to be the regulated issuer of a fiat-backed stablecoin.
+- Brale holds reserves and manages bank relationships on your behalf.
+
+## High-level flow
+
+1. **Account & mode**
+
+   - Brale marks your main account as **self-attested** (tokenization mode).
+   - You may create managed accounts that inherit this mode.
+
+2. **Token setup**
+
+   - Brale configures your token as kind **`attested`** on the chains you care about (e.g., Solana, Base).
+
+3. **Wallets & balances**
+
+   - Use the existing **Accounts** and **Addresses** APIs to create accounts and read wallet addresses and balances.
+   - In tokenization mode, **balances** are notional units mapped to any backing currency
+
+4. **Mint / Burn / Transfers**
+
+   - Use the `/accounts/{account_id}/tokens/mint` endpoint to **mint** tokens into a wallet.
+   - Use `/accounts/{account_id}/tokens/burn` to **burn** tokens from a wallet.
+   - Use `/accounts/{account_id}/tokens/transfers` to move tokens between custodial and external addresses.
+
+5. **Reporting**
+   - Use `GET /accounts/{account_id}/tokens/transactions` to view all tokenization mints, burns, and transfers in one place.
+
+Next, see **Tokenization – Mint, Burn & Transfers** for concrete API examples.
+
+## Minting tokens
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/tokens/mints" />
+
+```json title="Request"
+{
+  "amount": "100",
+  "destination": {
+    "address_id": "2srdkF6Sm8TWOJpWt1oNlTVes1w",
+    "value_type": "MY_TOKEN",
+    "transfer_type": "base"
+  }
+}
+```
+
+## Burning tokens
+
+<HTTPMethod method="POST" endpoint="https://api.brale.xyz/accounts/account_id/tokens/burns" />
+
+```json title="Request"
+{
+  "amount": "100",
+  "source": {
+    "address_id": "2srdkF6Sm8TWOJpWt1oNlTVes1w",
+    "value_type": "MY_TOKEN",
+    "transfer_type": "base"
+  }
+}
+```
+
+## Related API References
+
+[`POST /tokens/mints`](/tokens/mints) - Mint tokens
+
+[`POST /tokens/burns`](/tokens/burns) - Burn tokens
+
+[`POST /tokens/transfers`](/tokens/transfers) - Transfer tokens
+
+[`GET /tokens/tranactions`](/tokens/transactions) - Fetch all mints, burns, and transfers transactions
