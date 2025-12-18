@@ -31,6 +31,12 @@ Each source and destination includes:
 | `address_id`      | In `source` / `destination` | string | Wallet or fiat account sending or receiving value        |
 | `Idempotency-Key` | Header                      | string | UUID that guarantees exactly-once execution              |
 
+## Optional Fields
+
+| Field   | Where | Type   | Description |
+| :------ | :---- | :----- | :---------- |
+| `brand` | Body  | object | **ACH only.** `{ "account_id": "<ACCOUNT_ID>" }` to control which Account name appears on **ACH** bank statement line items (ACH debit + ACH credit). Not supported for `wire` or `rtp`. |
+
 ## Transfer Scenarios: understanding `value_type` and `transfer_type`
 
 | Flow                                | Source         | Destination                       | Description                                |
